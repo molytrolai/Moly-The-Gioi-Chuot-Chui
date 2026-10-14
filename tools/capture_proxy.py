@@ -375,7 +375,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": True, "status": st}, status=200)
                 return
 
-        if host in LOCAL_CONTROL_HOSTS or parsed.path == "/api/giftcode/redeem":
+        if host in LOCAL_CONTROL_HOSTS or parsed.path.startswith("/api/"):
             if parsed.path == "/api/giftcode/redeem":
                 client_ip = self.client_address[0]
                 if not rate_limiter.allow_giftcode(client_ip):
@@ -1227,7 +1227,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.wfile.write(captcha_bytes)
                 return
 
-        if host in LOCAL_CONTROL_HOSTS:
+        if host in LOCAL_CONTROL_HOSTS or parsed.path.startswith("/auth/google"):
             if parsed.path in {"/auth/google", "/auth/google/login", "/auth/google/"}:
                 auth_url = google_oidc.build_authorization_url()
                 self.send_response(302, "Found")
