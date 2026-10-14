@@ -309,7 +309,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 print(f"In-game registration created new account: {new_acc['user_id']}", flush=True)
                 return
 
-        if host in LOCAL_CONTROL_HOSTS or parsed.path.startswith("/api/accounts/"):
+        if host in LOCAL_CONTROL_HOSTS or parsed.path.startswith("/api/accounts/") or parsed.path.startswith("/api/user/lamu/"):
             client_ip = self.client_address[0]
             if parsed.path == "/api/accounts/create":
                 if not rate_limiter.allow_registration(client_ip):
