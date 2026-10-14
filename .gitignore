@@ -1,0 +1,30 @@
+# Environments and system files
+.env
+.DS_Store
+Thumbs.db
+*.log
+__pycache__/
+*.pyc
+
+# Heavy tools, desktop runtimes, and local toolchains
+tools/linux-portable/
+tools/ffdec-*/
+tools/ruffle-*/
+runtime/
+analysis/
+work/
+scratch/
+*.exe
+*.iso
+*.fd
+*.tar.gz
+
+# Incomplete sources and raw snapshots
+archive/source/
+archive/downloads/
+archive/community/
+archive/clients/captured-live/
+
+# Large release packages (distributed via GitHub Releases, not git tree)
+web/download/*.zip
+android/build/

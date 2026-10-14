@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_6" Layer="controlLevel" Ex="93" Ey="376" Cmd="alt_map" Param="6" Tips="Khu vui chơi Phía Tây" />
+		<Trigger ResName="go_47" Layer="controlLevel" Ex="874" Ey="211" Cmd="alt_map" Param="47" Tips="Quảng trường nhỏ Lili" />
+		
+		<Trigger ResName="horse_car" Layer="controlLevel" Ex="438" Ey="249" Cmd="alt_map" Param="24" Tips="Cỗ xe Ma thuật" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

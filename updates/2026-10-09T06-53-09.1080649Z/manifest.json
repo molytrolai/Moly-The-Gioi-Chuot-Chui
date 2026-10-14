@@ -1,0 +1,215 @@
+{
+  "capturedAtUtc": "2026-10-09T06:53:45.1355567Z",
+  "projectRoot": "E:\\Codex\\Projects\\Moly-Viet",
+  "sources": [
+    {
+      "name": "taomee-server-leak-full",
+      "checkout": "3778de747a8a100c1ed4b1adfe22b5c3315f1d83",
+      "origin": "3778de747a8a100c1ed4b1adfe22b5c3315f1d83"
+    },
+    {
+      "name": "MoleRuffle",
+      "checkout": "4049280c878528731020e0c10ff0ca0e1e05c040",
+      "origin": "4049280c878528731020e0c10ff0ca0e1e05c040"
+    }
+  ],
+  "clients": [
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/Client.swf",
+      "relativePath": "clients/china/Client.swf",
+      "bytes": 20695,
+      "sha256": "d371936cd83ac721441fb5e0c3073bfc634a20523a56c80af65144c092c0ae44"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/version/zzz_config.txt",
+      "relativePath": "clients/china/version/zzz_config.txt",
+      "bytes": 10,
+      "sha256": "c12f49ed22e9dfa5b951ca53eacb22d82245289d619a7b353ddb2309b185943f"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/config/Server.xml",
+      "relativePath": "clients/china/config/Server.xml",
+      "bytes": 469,
+      "sha256": "320ad4b726f068f6869f758d500f61b158b4eca1077b49299c6d1e00d41618c4"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/resource/xml/logo/loadingWord.xml",
+      "relativePath": "clients/china/resource/xml/logo/loadingWord.xml",
+      "bytes": 163,
+      "sha256": "29c9a9d6df57fc847fa197325a7af98f310e11f39debc4baf43109028068580c"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/resource/xml/ext.xml",
+      "relativePath": "clients/china/resource/xml/ext.xml",
+      "bytes": 1024,
+      "sha256": "d6ac801e61372b420b3314e113ecad8068829b3088ab8e2df9ab72b9b05767f2"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/resource/login/Login.swf",
+      "relativePath": "clients/china/resource/login/Login.swf",
+      "bytes": 489881,
+      "sha256": "52b932edeabfb572f487fe9c8a9841fbb649f3fe9aaaa4ee14e09bbf25525cf6"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/resource/login/LoginHome.swf",
+      "relativePath": "clients/china/resource/login/LoginHome.swf",
+      "bytes": 175856,
+      "sha256": "92d24d9db240b6404f9d87088d39e4e1bfbfc6f057751fdd0fdc56c91e9e66da"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/resource/ui/main_resource.swf",
+      "relativePath": "clients/china/resource/ui/main_resource.swf",
+      "bytes": 1065203,
+      "sha256": "83acd54c1b98d3bd79326fc5938d33ca8c1506a28dfb640eaf253846d7ac9341"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/module/external/logo/randomMC.swf",
+      "relativePath": "clients/china/module/external/logo/randomMC.swf",
+      "bytes": 471883,
+      "sha256": "ebec9f660396f5b6c5f009ae324e92dfc056df2b446b6deaa4b0ed0dc3eb2aaa"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/dll/TaomeeCoreDLL.swf",
+      "relativePath": "clients/china/dll/TaomeeCoreDLL.swf",
+      "bytes": 1133615,
+      "sha256": "b8deb651b68e09bcbea5741cd0773b443e5178d66d7125b6064ff9811bc4c297"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/dll/ClientConfigDLL.swf",
+      "relativePath": "clients/china/dll/ClientConfigDLL.swf",
+      "bytes": 799655,
+      "sha256": "e1a302274f7674aae355221f9ac984a52bcce2068f7dde95c2ebfcf15b7657e3"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/dll/ClientCommonDLL.swf",
+      "relativePath": "clients/china/dll/ClientCommonDLL.swf",
+      "bytes": 429461,
+      "sha256": "b591dae180542892c5b04664662a48ac53d1643657040988d7af456cc23f6a2d"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/dll/ClientSocketDLL.swf",
+      "relativePath": "clients/china/dll/ClientSocketDLL.swf",
+      "bytes": 523182,
+      "sha256": "03eb5e0ae6eb3f2b86f369ab7fe67c9ec9363123d81897b151337108728bec70"
+    },
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/dll/ClientAppDLL.swf",
+      "relativePath": "clients/china/dll/ClientAppDLL.swf",
+      "bytes": 1252419,
+      "sha256": "817fcd695473c6be63cfd4ff79f30068c458a48ad7eb57c9a72ef84f8d5abb62"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/Client.swf",
+      "relativePath": "clients/taiwan/Client.swf",
+      "bytes": 20673,
+      "sha256": "180b5e1988465d78fb692f5f8d580012df0d4dca1a1a98d1718d27e5cc0b3698"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/version/zzz_config.txt",
+      "relativePath": "clients/taiwan/version/zzz_config.txt",
+      "bytes": 10,
+      "sha256": "a3cb75edbe55ca2aeb829890749cfee90d9bcaa365c2315fbe4a0997dc749767"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/config/Server.xml",
+      "relativePath": "clients/taiwan/config/Server.xml",
+      "bytes": 704,
+      "sha256": "4a7e1c40e7fe82c04ce158993f7e02a840c162db9fa51475d4cc6e5abbdd07c2"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/resource/xml/logo/loadingWord.xml",
+      "relativePath": "clients/taiwan/resource/xml/logo/loadingWord.xml",
+      "bytes": 154,
+      "sha256": "c8739b10ebfd4bd911682ab460d6f82e224be324c8936b113e6332ea4c56f9af"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/resource/xml/ext.xml",
+      "relativePath": "clients/taiwan/resource/xml/ext.xml",
+      "bytes": 1027,
+      "sha256": "96f552e0a676f7ab3d8dee87f4b2ddd33f79694d51736c55118aea00ec948991"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/resource/login/Login.swf",
+      "relativePath": "clients/taiwan/resource/login/Login.swf",
+      "bytes": 442733,
+      "sha256": "657a3f32209d2099c3775cc910ee1e50bd1bdcf91944ae6d136c45c53438cf1b"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/resource/login/LoginHome.swf",
+      "relativePath": "clients/taiwan/resource/login/LoginHome.swf",
+      "bytes": 114386,
+      "sha256": "e1de2df9ce1d68240d26328913fb7c629d6312709a4d73e29cf56069bfdeb4e6"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/resource/ui/main_resource.swf",
+      "relativePath": "clients/taiwan/resource/ui/main_resource.swf",
+      "bytes": 550967,
+      "sha256": "29f30a3d6896a3063dbd576f79e583c2cea0ce1191714e74fbd896eb10097040"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/module/external/logo/randomMC.swf",
+      "relativePath": "clients/taiwan/module/external/logo/randomMC.swf",
+      "bytes": 744644,
+      "sha256": "f56719b263eee523de8dc9b45994b7f271095f6c2339482aeb73566f3955d4f5"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/dll/TaomeeCoreDLL.swf",
+      "relativePath": "clients/taiwan/dll/TaomeeCoreDLL.swf",
+      "bytes": 1038792,
+      "sha256": "3b648134db5e8838739c3c4ad6e364012320b24d835cd6073b48019db4ab03dc"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/dll/ClientConfigDLL.swf",
+      "relativePath": "clients/taiwan/dll/ClientConfigDLL.swf",
+      "bytes": 1043292,
+      "sha256": "17f0986af2dc0c034bbb3f712e9ce4d38a68ace6c71d06de0f4091d86244df91"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/dll/ClientCommonDLL.swf",
+      "relativePath": "clients/taiwan/dll/ClientCommonDLL.swf",
+      "bytes": 922633,
+      "sha256": "bbbc3c1714fc781dd934d4ef9312bd03d64c6d0c8b4a271aa93cb05d8bc165a9"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/dll/ClientSocketDLL.swf",
+      "relativePath": "clients/taiwan/dll/ClientSocketDLL.swf",
+      "bytes": 2019443,
+      "sha256": "d8d6f410cc6f87edb3fd8cd263beb0c2062a4ade8d1629457d217e63118425f9"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/dll/ClientAppDLL.swf",
+      "relativePath": "clients/taiwan/dll/ClientAppDLL.swf",
+      "bytes": 4547050,
+      "sha256": "a60ee3e2eec8082175bf6416198ab3c117fbc47c2a62f8bf711e168181ebbdc5"
+    }
+  ],
+  "note": "Public startup assets only; no authenticated resources, no full playable game, no deployment."
+}

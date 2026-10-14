@@ -1,0 +1,18 @@
+[
+xmin -40
+ymin -40
+xmax 9639
+ymax 1156
+wordwrap 1
+multiline 1
+readonly 1
+noselect 1
+font 22
+height 280
+color #ff000000
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]    Bản Việt hóa thử nghiệm không yêu cầu nạp tiền. Các nút thanh toán và liên kết ngoài đã bị vô hiệu hóa.

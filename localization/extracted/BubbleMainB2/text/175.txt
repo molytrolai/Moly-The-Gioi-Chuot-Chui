@@ -1,0 +1,11 @@
+[
+xmin 60
+ymin 44
+xmax 983
+ymax 982
+][
+font 155
+height 1040
+color #ffffff
+y 900
+]的

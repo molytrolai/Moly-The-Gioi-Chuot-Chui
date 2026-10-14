@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_382" Layer="depthLevel" Ex="221" Ey="416" Cmd="alt_map" Param="382" Tips="Bí cảnh Mưa Hoa" />
+		<Trigger ResName="go_384" Layer="depthLevel" Ex="742" Ey="422" Cmd="alt_map" Param="384" Tips="Vườn hoa Hoàng gia" />
+	</Triggers>
+
+	<Talks>
+	</Talks>
+</Map>

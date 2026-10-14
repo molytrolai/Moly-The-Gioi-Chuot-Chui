@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	 	
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_365" Layer="controlLevel" Ex="503" Ey="300" Cmd="alt_map" Param="365" Tips="Làng Đậu Jipu" />
+	</Triggers>
+
+</Map>

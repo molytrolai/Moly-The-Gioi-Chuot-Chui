@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		
+	</Triggers>
+	
+	<Talks>
+		
+		
+		<Talk ID="10" NpcID="10117" Face="正常" Msg="耶，本次餐厅体验愉快的结束啦～有没有发现餐厅的乐趣呢？" Option="恩，感觉好有趣哦" Cmd="act" Param="giveBounds" />
+		
+		<Talk ID="11" NpcID="10117" Face="正常" Msg="" Option="" Cmd="none" Param="" />
+		<Talk ID="12" NpcID="10117" Face="正常" Msg="" Option="" Cmd="none" Param="" />
+		<Talk ID="13" NpcID="10117" Face="正常" Msg="" Option="" Cmd="none" Param="" />
+	</Talks>
+</Map>

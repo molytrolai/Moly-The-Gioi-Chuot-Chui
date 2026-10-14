@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10038" Layer="depthLevel" Name="Huấn luyện viên Kevin" Ex="631" Ey="330" Cmd="s" Param="1" />
+	</NpcList>
+	
+	<Triggers>
+		
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="999" NpcID="10038" Face="正常" Msg="谢谢Cư dân Moly还惦记着我~小C越来越可爱了！" Option="^__^" Cmd="act" Param="fatherDayOver" AddTaskOption="1" />
+		
+		<Talk ID="1" NpcID="10038" Face="正常" Msg="你好{$username}，我是Huấn luyện viên Kevin老师，Lamu学院飞行、潜水、动物课的考官！" Option="介绍Lamu课堂$Không có việc gì đâu!" Cmd="s$none" Param="2$3" AddTaskOption="1" />
+		<Talk ID="2" NpcID="10038" Face="正常" Msg="我右手边楼上是飞行考试的地方，我身后是潜水考试项目！黑板上有动物考试的海报！想参加考试，要带上你的Lamu去学院教导处找Bác Bồ Đề参加课程学习哦！" Option="恩，Tôi hiểu rồi!" Cmd="none" Param="4" AddTaskOption="1" />
+		
+		
+		<Talk ID="10" NpcID="10038" Face="正常" Msg="哈哈，谢谢你Cư dân Moly，你真是有心啊！很浪漫的礼物，我先收下啦！" Option="你会用他们做什么呀？" Cmd="s" Param="11" IsHideClose="1" />
+		<Talk ID="11" NpcID="10038" Face="正常" Msg="我会在晚上把萤火虫释放到黑森林的沿路，为行人点亮道路!" Option="Huấn luyện viên Kevin老师真是个热心人！" Cmd="act" Param="showAward" />
+	</Talks>
+</Map>

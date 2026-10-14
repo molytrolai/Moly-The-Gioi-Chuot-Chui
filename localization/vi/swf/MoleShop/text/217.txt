@@ -1,0 +1,18 @@
+[
+xmin -40
+ymin -40
+xmax 9639
+ymax 1067
+wordwrap 1
+multiline 1
+readonly 1
+noselect 1
+font 22
+height 280
+color #ff000000
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]    Cửa hàng sử dụng Đậu Vàng. Tài khoản thử nghiệm đã được mở số dư miễn phí để kiểm tra vật phẩm.

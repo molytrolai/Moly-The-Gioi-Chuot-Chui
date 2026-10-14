@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "comment": "Cấu hình quảng cáo & liên kết nội bộ Việt Nam cho Thế Giới Chuột Chũi (Moly Việt). Bạn có thể tự do chỉnh sửa target_url và tiêu đề sau này.",
+  "default_redirect": "https://molyviet.vn",
+  "ads": [
+    {
+      "id": "community",
+      "title": "Cộng Đồng Chuột Chũi Việt Nam",
+      "subtitle": "Giao lưu, kết bạn và cùng nhau xây dựng Vương quốc Moly",
+      "target_url": "https://facebook.com/groups/molyvietnam",
+      "image": "/ads/banner_community.png",
+      "active": true
+    },
+    {
+      "id": "event",
+      "title": "Sự Kiện Khám Phá Moly Việt",
+      "subtitle": "Chuỗi sự kiện thám hiểm bí cảnh và phần thưởng hấp dẫn",
+      "target_url": "https://discord.gg/molyviet",
+      "image": "/ads/banner_event.png",
+      "active": true
+    },
+    {
+      "id": "vip_privilege",
+      "title": "Đặc Quyền Cư Dân VIP & Đậu Vàng",
+      "subtitle": "Kích hoạt VIP Siêu Cấp và nhận Đậu Vàng miễn phí cho thành viên",
+      "target_url": "http://127.0.0.1:18080/vip",
+      "image": "/ads/banner_vip.png",
+      "active": true
+    }
+  ],
+  "blocked_external_rules": {
+    "block_trackers": true,
+    "block_foreign_payment": true,
+    "replace_external_banner_with_vn": true
+  }
+}

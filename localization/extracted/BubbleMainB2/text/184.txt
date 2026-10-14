@@ -1,0 +1,11 @@
+[
+xmin 56
+ymin 32
+xmax 1002
+ymax 1019
+][
+font 155
+height 1040
+color #ffffff
+y 900
+]好

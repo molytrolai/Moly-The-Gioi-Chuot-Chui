@@ -1,0 +1,18 @@
+[
+xmin -40
+ymin -40
+xmax 2540
+ymax 710
+readonly 1
+noselect 1
+html 1
+useoutlines 1
+font 99
+height 600
+color #ffffffff
+align center
+leftmargin 0
+rightmargin 0
+indent 0
+leading 40
+]<p align="center"><font face="DFPHaiBaoW12-GB" size="30" color="#ffffff" letterSpacing="0.000000" kerning="1">+888</font></p>

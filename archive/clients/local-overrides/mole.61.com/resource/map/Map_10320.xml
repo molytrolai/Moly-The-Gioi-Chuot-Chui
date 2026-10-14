@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="explain_btn" Layer="controlLevel" Ex="210" Ey="435" Cmd="p" Param="WineshopExplainPanel" Tips="" />
+		
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

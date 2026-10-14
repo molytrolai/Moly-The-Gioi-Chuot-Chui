@@ -1,0 +1,16 @@
+[
+xmin -40
+ymin -40
+xmax 780
+ymax 320
+wordwrap 1
+multiline 1
+font 22
+height 280
+color #ff000000
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]

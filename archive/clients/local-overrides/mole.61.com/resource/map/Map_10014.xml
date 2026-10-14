@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="goBigHall_mc" Layer="topLevel" Ex="100" Ey="336" Cmd="alt_map" Param="15" Tips="Đại sảnh Lâu đài" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

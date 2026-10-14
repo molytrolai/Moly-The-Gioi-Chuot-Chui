@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	 	
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_112" Layer="controlLevel" Ex="499" Ey="534" Cmd="alt_map" Param="112" Tips="Đến Thung lũng Côn Trùng" />
+		<Trigger ResName="go_113" Layer="controlLevel" Ex="866" Ey="441" Cmd="alt_map" Param="113" Tips="Vào Nhụy Hoa Thần Bí" />
+	</Triggers>
+
+</Map>

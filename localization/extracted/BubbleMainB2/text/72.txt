@@ -1,0 +1,17 @@
+[
+xmin 495
+ymin -40
+xmax 3904
+ymax 440
+readonly 1
+noselect 1
+html 1
+font 71
+height 400
+color #ff661c00
+align center
+leftmargin 0
+rightmargin 0
+indent 0
+leading 40
+]<p align="center"><font face="幼圆" size="20" color="#661c00" letterSpacing="0.000000" kerning="1"><b>Alina女王</b></font></p>

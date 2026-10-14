@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_203" Layer="controlLevel" Ex="372.85" Ey="333" Cmd="alt_map" Param="203" Tips="Nhà hàng KFC" />
+		<Trigger ResName="game_btn" Layer="controlLevel" Ex="443" Ey="473" Cmd="p" Param="KFCGamePanel" Tips="Thế giới Trò chơi nhỏ" />
+		<Trigger ResName="quest_btn" Layer="controlLevel" Ex="699" Ey="435" Cmd="p" Param="KFCGameSpacePanel" Tips="Trạm Nạp Trí Tuệ" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

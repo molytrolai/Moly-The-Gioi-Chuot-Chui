@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	 	
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="tollgate_1" Layer="depthLevel" Ex="410" Ey="340" Cmd="act" Param="openTollgate" Tips="Loki Tà Ác" Data="1" />
+		<Trigger ResName="tollgate_2" Layer="depthLevel" Ex="530" Ey="370" Cmd="act" Param="openTollgate" Tips="Thor Hiếu Chiến" Data="2" />
+		<Trigger ResName="tollgate_3" Layer="depthLevel" Ex="490" Ey="370" Cmd="act" Param="openTollgate" Tips="Odin Ngủ Say" Data="3" />
+		
+		<Trigger ResName="go_360" Layer="controlLevel" Ex="490" Ey="500" Cmd="alt_map" Param="360" Tips="Đến Cầu Cầu Vồng Thần Điện" />
+	</Triggers>
+
+</Map>

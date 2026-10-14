@@ -1,0 +1,11 @@
+[
+xmin 40
+ymin 182
+xmax 307
+ymax 916
+][
+font 155
+height 1040
+color #ffffff
+y 900
+]!

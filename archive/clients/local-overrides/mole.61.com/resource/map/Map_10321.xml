@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_78" Layer="controlLevel" Ex="180" Ey="394" Cmd="alt_map" Param="78" Tips="Đại sảnh Đại học Moly" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

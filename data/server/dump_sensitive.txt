@@ -1,0 +1,78 @@
+=== SOVEREIGNTY & GEOPOLITICAL (6 questions) ===
+
+[1] File: questions.xml | ID: 6
+Content: 世界上最大的海是哪一个？
+A: 中国的南海 | B: 黑海 | C: 珊瑚海 | D: 红海
+Ans: 3
+
+[2] File: questions.xml | ID: 21
+Content: 著名风景区九寨沟位于我国哪个省？
+A: 台湾 | B: 云南 | C: 广西 | D: 四川
+Ans: 4
+
+[3] File: questions.xml | ID: 50
+Content: 黄河注入什么海？
+A: 渤海 | B: 黄海 | C: 东海 | D: 南海
+Ans: 1
+
+[4] File: questions.xml | ID: 260
+Content: 中国最热的地方在哪里？
+A: 吐鲁番盆地 | B: 南沙群岛 | C: 拉萨 | D: 
+Ans: 1
+
+[5] File: questions.xml | ID: 459
+Content: 我国的四大海域分别是什么？
+A: 东海、南海、长江、黄海 | B: 东海、南海、黄河、黄海 | C: 东海、南海、长江、黄河 | D: 东海、南海、渤海、黄海
+Ans: 4
+
+[6] File: class_questions.xml | ID: 173
+Content: 我国第一大岛是？
+A: 台湾岛 | B: 海南岛 | C:  | D: 
+Ans: 1
+
+=== EMERGENCY NUMBERS (9 questions) ===
+
+[1] File: questions.xml | ID: 1
+Content: 你知道火警的电话号码是多少吗？
+A: 110 | B: 121 | C: 112 | D: 119
+Ans: 4
+
+[2] File: questions.xml | ID: 3
+Content: 地震发生后不应该做的是哪件事情呢？
+A: 保持镇定，从容进行分析你的具体情况 | B: 帮助受伤的人，必要时给予急救 | C: 检查火源,如可能就立即把火扑灭 | D: 触摸电力线或与其连接的物体
+Ans: 4
+
+[3] File: questions.xml | ID: 413
+Content: 成年人谎报火警的，将会被处以什么惩罚？
+A: 警告、罚款或拘留 | B: 拘留或劳动教养 | C: 行政处分或者刑罚 | D: 
+Ans: 1
+
+[4] File: questions.xml | ID: 423
+Content: 向公安消防部门报警的内容有哪些？
+A: 单位名称、详细地址 | B: 起火物、火势情况 | C: 报警人的姓名、电话号码 | D: 上述都对
+Ans: 4
+
+[5] File: questions.xml | ID: 438
+Content: 身边没有IC卡，是否可以拨打IC卡电话报火警呢？
+A: 可以 | B: 不可以 | C: 不一定可以 | D: 
+Ans: 1
+
+[6] File: questions.xml | ID: 474
+Content: 报警人拨打火灾报警电话后，应该怎样做？
+A: 在家等候 | B: 不再理会此事 | C: 到门口或街上等候消防车到来 | D: 
+Ans: 3
+
+[7] File: questions.xml | ID: 503
+Content: 任何人发现火灾时，都应当怎样？
+A: 视而不见 | B: 立即报警 | C: 马上灭火 | D: 
+Ans: 2
+
+[8] File: questions.xml | ID: 580
+Content: 如果有人触电，首先应该采取什么措施？
+A: 打110报警电话 | B: 迅速切断电源 | C: 用手把他拉开 | D: 
+Ans: 2
+
+[9] File: questions.xml | ID: 68
+Content: 下列哪项是114号码的功能？
+A: 查询功能 | B: 救护功能 | C: 报警功能 | D: 
+Ans: 1

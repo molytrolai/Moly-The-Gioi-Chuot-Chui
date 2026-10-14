@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="tollgate_mc" Layer="depthLevel" Ex="600" Ey="190" Cmd="act" Param="openTollgate" Tips="Hang Động Thử Thách" />
+		<Trigger ResName="go_336" Layer="depthLevel" Ex="800" Ey="387" Cmd="alt_map" Param="336" Tips="Điện thờ Thời Gian" />
+		<Trigger ResName="go_339" Layer="depthLevel" Ex="228" Ey="166" Cmd="alt_map" Param="339" Tips="Mê cung Hang Rồng" />
+		<Trigger ResName="pala_mc" Layer="depthLevel" Ex="210" Ey="410" Cmd="act" Param="shenme" Tips="Thử thách Ác Ma Nhỏ" />
+		
+		<Trigger ResName="moguxie_mc" Layer="depthLevel" Ex="445" Ey="238" Cmd="act" Param="moguxie" Tips="Nấm Độc Hắc Ám" />
+		
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

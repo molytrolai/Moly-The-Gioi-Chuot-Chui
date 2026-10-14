@@ -1,0 +1,33 @@
+{
+  "capturedAtUtc": "2026-10-09T06:48:37.5493600Z",
+  "projectRoot": "E:\\Codex\\Projects\\Moly-Viet",
+  "sources": [
+    {
+      "name": "taomee-server-leak-full",
+      "checkout": "3778de747a8a100c1ed4b1adfe22b5c3315f1d83",
+      "origin": "3778de747a8a100c1ed4b1adfe22b5c3315f1d83"
+    },
+    {
+      "name": "MoleRuffle",
+      "checkout": "4049280c878528731020e0c10ff0ca0e1e05c040",
+      "origin": "4049280c878528731020e0c10ff0ca0e1e05c040"
+    }
+  ],
+  "clients": [
+    {
+      "region": "china",
+      "sourceUrl": "http://mole.61.com/Client.swf",
+      "relativePath": "clients/china/Client.swf",
+      "bytes": 20695,
+      "sha256": "d371936cd83ac721441fb5e0c3073bfc634a20523a56c80af65144c092c0ae44"
+    },
+    {
+      "region": "taiwan",
+      "sourceUrl": "https://mole.61.com.tw/Client.swf",
+      "relativePath": "clients/taiwan/Client.swf",
+      "bytes": 20673,
+      "sha256": "180b5e1988465d78fb692f5f8d580012df0d4dca1a1a98d1718d27e5cc0b3698"
+    }
+  ],
+  "note": "Entrypoint SWFs only; no authenticated resources, no full playable game, no deployment."
+}

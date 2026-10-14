@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+		
+		
+	</NpcList>
+	
+	<Triggers>
+		
+		<Trigger ResName="go_120" Layer="topLevel" Ex="55" Ey="370" Cmd="alt_map" Param="120" Tips="Cầu Mây Bí Ẩn" />
+		<Trigger ResName="cardgamebtn" Layer="controlLevel" Ex="800" Ey="315" Cmd="act" Param="onHit" Tips="Vào Huyễn Cảnh Rồng" />
+		<Trigger ResName="goto_map" Layer="controlLevel" Ex="465" Ey="145" Cmd="act" Param="fireAction_select" Tips="Đến Bãi Huấn luyện Rừng" />
+		<Trigger ResName="intro" Layer="depthLevel" Ex="571" Ey="409" Cmd="act" Param="callFire" Tips="Đánh thức Mộc Thần" />	
+		<Trigger ResName="pos" Layer="controlLevel" Ex="685" Ey="338" Cmd="act" Param="pos" Tips="Kính bái Mộc Thần" />		
+	</Triggers>
+	
+	<Talks>
+		
+		<Talk ID="2" NpcID="10002" Face="正常" Msg="你好！" Option="Nhận đồng phục đội " Cmd="act" Param="startTask" AddTaskOption="1" />
+	</Talks>
+</Map>

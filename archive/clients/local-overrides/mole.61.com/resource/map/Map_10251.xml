@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+	
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10015" Face="正常" Msg="什么时候我要去采访一下天使，天使真是太厉害了，我亲眼见过天使把暗黑势力给打败了。" Option="我Biết rồi nha!" Cmd="none" Param="1" AddTaskOption="1" />
+	</Talks>
+</Map>

@@ -1,0 +1,12 @@
+[
+xmin 21
+ymin -6
+xmax 871
+ymax 306
+][
+font 356
+height 300
+letterspacing 67
+color #996600
+y 260
+]下一页

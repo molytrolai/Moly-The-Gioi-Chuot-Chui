@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10047" Layer="depthLevel" Name="Locke" Ex="725" Ey="260" Cmd="s" Param="1" AddTaskOption="1" />
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="room_btn" Layer="controlLevel" Ex="196" Ey="328" Cmd="alt_map" Param="1" Tips="Lâu đài Moly" />
+		<Trigger ResName="underRoom_mask" Layer="controlLevel" Ex="202" Ey="357" Cmd="alt_map" Param="14" Tips="Tầng hầm Lâu đài" />
+		<Trigger ResName="soneRoom_btn" Layer="controlLevel" Ex="628" Ey="223" Cmd="alt_map" Param="16" Tips="Tầng hai Lâu đài" />
+	</Triggers>
+	<Talks>
+		<Talk ID="999" NpcID="10047" Face="正常" Msg="Cảm ơn bạn! Gần đây trang viên có nhiều chuyện lạ, hãy cẩn thận nhé." Option="Tôi biết rồi" Cmd="act" Param="fatherDayOver" AddTaskOption="1" />
+		<Talk ID="1" NpcID="10047" Face="正常" Msg="Tôi là quan hành chính Locke. Mọi cư dân Moly đều đăng ký thông tin công dân tại đây." Option="Đăng ký thông tin công dân$Không có việc gì" Cmd="act$none" Param="peopleResign$2" AddTaskOption="1" />
+		<Talk ID="10" NpcID="10047" Face="正常" Msg="Đừng lo, tôi nhớ mình còn một thư mời dư và có thể tặng bạn!" Option="Thật vậy sao?" Cmd="s" Param="11" />
+		<Talk ID="11" NpcID="10047" Face="正常" Msg="Để tôi tìm xem… Tôi quên mất đã để nó ở đâu. {$username}, bạn giúp tôi tìm quanh đại sảnh lâu đài nhé; tìm thấy thì nó là của bạn." Option="Được, để tôi thử!" Cmd="act" Param="getInvitation" />
+		<Talk ID="12" NpcID="10047" Face="正常" Msg="" Option="" Cmd="s" Param="11" />
+	</Talks>
+</Map>

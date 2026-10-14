@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+
+		<Npc ID="10012" Layer="depthLevel" Name="Lili" Ex="560" Ey="390" Cmd="s" Param="1" />
+		<Npc ID="10018" Layer="depthLevel" Name="Bé Ngoan" Ex="608" Ey="409" Cmd="s" Param="2" />
+	</NpcList>
+	
+	<Triggers>
+
+
+		
+		<Trigger ResName="mail_mc" Layer="controlLevel" Ex="162" Ey="392" Cmd="act" Param="openMail" />
+		<Trigger ResName="bql_btn" Layer="controlLevel" Ex="700" Ey="376" Cmd="act" Param="openBQL" />
+		
+		<Trigger ResName="go_15" Layer="controlLevel" Ex="460" Ey="342" Cmd="alt_map" Param="15" Tips="Đại sảnh Lâu đài" />
+		<Trigger ResName="go_32" Layer="controlLevel" Ex="503" Ey="140" Cmd="alt_map" Param="32" Tips="Thư viện Lâu đài" />
+		
+		<Trigger ResName="go_4" Layer="controlLevel" Ex="122" Ey="357" Cmd="alt_map" Param="4" Tips="Chân núi Molylaya" />
+		<Trigger ResName="go_2" Layer="controlLevel" Ex="90" Ey="419" Cmd="alt_map" Param="2" Tips="Quảng trường Ái Tâm" />
+		<Trigger ResName="go_17" Layer="controlLevel" Ex="682" Ey="333" Cmd="alt_map" Param="17" Tips="Nhà hàng Moly" />
+		<Trigger ResName="go_3" Layer="controlLevel" Ex="892" Ey="432" Cmd="alt_map" Param="3" Tips="Phố mua sắm Taotao" />
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10012" Face="正常" Msg="Xin chào! Mình là Lili, rất vui được làm quen với bạn~" Option="淘乐节4399奖励$淘乐节7k7k奖励$Bảo mật tài khoản$Mình cũng rất vui được làm quen với bạn" Cmd="act$act$p$none" Param="get4399reward$get7k7kreward$reward$AccountSecurityPanel$1" />
+		<Talk ID="11" NpcID="10227" Face="正常" Msg="寻找地图上的摩摩兔就可以获得哦，另外，19日至21日三天，每天13点和19点只要在线就可直接获得，每次都会持续发1小时呢！" Option="Bánh trung thu may mắn dùng để làm gì vậy?" Cmd="s" Param="12" />
+		<Talk ID="12" NpcID="10227" Face="正常" Msg="月饼可以直接使用，也可以送给庄园明星，说不定他们会送你一些额外惊喜哦！" Option="Bất ngờ gì vậy?" Cmd="s" Param="13" />
+		<Talk ID="13" NpcID="10227" Face="正常" Msg="这个留给你自行发觉吧~~，不过我可以告诉你，Moly Lele，Yali，Bác Bồ Đề，Công chúa Momo，Pháp sư Nierla，Yurick，Hoàng tử Jack王子以及Buduoduo，Bushaoshao他们都为Cư dân Moly们准备了礼物哦！" Option="Vậy làm sao tìm được họ?" Cmd="s" Param="14" />
+		<Talk ID="14" NpcID="10227" Face="正常" Msg="点击左下角的世界地图，在庄园的大地图上可以看到每个地方的庄园明星具体名字，你想找谁去对应的地图就能找到啦！" Option="Tuyệt quá! Mình đi ngay đây!" Cmd="none" Param="" />
+		
+		<Talk ID="2" NpcID="10018" Face="正常" Msg="听说庄园里来了一位珠宝商人，他正在淘淘乐街招募优秀的珠宝师哦！Cư dân Moly，你也赶快过去瞧瞧吧！" Option="Được rồi, mình qua đó ngay!" Cmd="none" Param="2" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="3" NpcID="10012" Face="正常" Msg="热情火焰队的主场在爱心广场，领队是Yali哦；Moly Lele带领的竞速疾风队，主场就在米勒大道呢！" Option="Đã rõ" Cmd="s" Param="4" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="4" NpcID="10012" Face="正常" Msg="勇气激流队在遗忘田园，领队是Công chúa Momo哦；Bác Bồ Đề带领的希望大地队在尼尔拉塔呢！" Option="Đã rõ" Cmd="s" Param="5" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="5" NpcID="10012" Face="正常" Msg="如果你没有加入队伍，那么就赶紧去找你喜欢的队长报名吧！" Option="Được, mình đi ngay đây." Cmd="none" Param="5" AddTaskOption="1" IsHideClose="1" />
+		
+		<Talk ID="3333" NpcID="10287" Face="正常" Msg="Sao bạn lại tìm ra mình được vậy? (┬＿┬)" Option="Vì chúng mình tâm đầu ý hợp mà (*^__^*)" Cmd="act" Param="xiaocfind" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="100" NpcID="10308" Face="正常" Msg="Ghét ghê, bạn tìm thấy mình rồi meo~ o(︶︿︶)o" Option="Mình biết bạn nhường mình mà~ Xoa đầu nào~" Cmd="act" Param="overGame" />
+	</Talks>
+</Map>

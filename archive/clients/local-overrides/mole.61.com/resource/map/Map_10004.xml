@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="doorto143" Layer="controlLevel" Ex="626" Ey="318" Cmd="alt_map" Param="143" Tips="Đến Sở Xây dựng" />
+		<Trigger ResName="go_47" Layer="controlLevel" Ex="98" Ey="497" Cmd="alt_map" Param="38" Tips="Đến Sân bóng đá Moly" />
+		<Trigger ResName="go_5" Layer="controlLevel" Ex="933" Ey="204" Cmd="alt_map" Param="5" Tips="Đến Sân trượt băng Molylaya" />
+		<Trigger ResName="go_61" Layer="controlLevel" Ex="357" Ey="222" Cmd="alt_map" Param="61" Tips="Đến Tiền đồn Kỵ sĩ" />
+		<Trigger ResName="go_75" Layer="controlLevel" Ex="188" Ey="327" Cmd="alt_map" Param="75" Tips="Đến Sở Cứu hỏa" />
+		<Trigger ResName="go_1" Layer="controlLevel" Ex="852" Ey="463" Cmd="alt_map" Param="1" Tips="Đến Lâu đài Moly" />
+		<Trigger ResName="jialin_mc" Layer="controlLevel" Ex="336" Ey="206" Cmd="act" Param="goMap51" />
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="422" NpcID="10249" Face="开心" Msg="这~可不是我干的哦~~~~" Option="Ừm, tôi tin bạn rồi!" Cmd="act" Param="dandanAct" AddTaskOption="1" />
+		<Talk ID="423" NpcID="10249" Face="开心" Msg="这~可不是我干的哦~~~~" Option="Giả vờ dễ thương cũng vô ích thôi! Lần này bị bắt quả tang rồi nhé!" Cmd="act" Param="dandanAct" AddTaskOption="1" />
+	</Talks>
+</Map>

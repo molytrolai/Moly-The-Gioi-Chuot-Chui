@@ -1,0 +1,22 @@
+======================================================================
+               MOLY - THẾ GIỚI CHUỘT CHŨI (BẢN MÁY TÍNH)
+======================================================================
+
+1. CÁCH KHỞI ĐỘNG GAME:
+   - Nhấp đúp chuột vào tệp "Choi-Game.bat" để vào thế giới Moly.
+   - Trình điều khiển sẽ tự động chạy máy chủ game và mở cửa sổ Ruffle mượt mà.
+
+2. TÀI KHOẢN TRẢI NGHIỆM ĐẶC QUYỀN:
+   - ID Chuột Chũi: 10000001
+   - Mật khẩu: (Nhập tùy ý, ví dụ: 123456)
+   - Đặc quyền có sẵn: VIP 8, 999.999 Đậu Vàng, Super Lamu vĩnh viễn,
+     mở khóa toàn bộ nghề nghiệp Hiệp Sĩ SMC, đồ cưỡi Rồng và nhà bay.
+
+3. ƯU ĐIỂM CỦA BẢN MÁY TÍNH:
+   - Tải sẵn toàn bộ 257 bản đồ offline, chuyển map tức thì 0 giây.
+   - Hoạt động mượt mà 60 FPS, không giật lag ngay cả khi mất mạng.
+   - 100% nội dung tiếng Việt văn minh, đã chuẩn hóa 252 câu hỏi Minigame.
+   - Tuyệt đối không chứa quảng cáo gây phiền toái.
+
+Chúc các bạn có những giây phút thư giãn tuyệt vời tại Thế Giới Chuột Chũi!
+======================================================================

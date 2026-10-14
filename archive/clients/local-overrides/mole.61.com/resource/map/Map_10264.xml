@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go260_btn" Layer="controlLevel" Ex="120" Ey="357" Cmd="alt_map" Param="260" Tips="Hang Quái Ngư" />
+		
+
+		
+
+		<Trigger ResName="swap2_mc" Layer="controlLevel" Ex="714" Ey="424" Cmd="p" Param="HappySummerSwapPanel" Tips="" />
+		
+	</Triggers>
+	
+	<Talks>
+	
+	</Talks>
+</Map>

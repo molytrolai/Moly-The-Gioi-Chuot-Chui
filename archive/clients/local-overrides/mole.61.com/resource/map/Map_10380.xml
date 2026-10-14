@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_377" Layer="depthLevel" Ex="152" Ey="416" Cmd="alt_map" Param="377" Tips="Mê động Cát Vàng" />
+		<Trigger ResName="go_372" Layer="depthLevel" Ex="813" Ey="422" Cmd="alt_map" Param="372" Tips="Đồng Cỏ Tầm Nhìn" />
+	</Triggers>
+
+	<Talks>
+	</Talks>
+</Map>

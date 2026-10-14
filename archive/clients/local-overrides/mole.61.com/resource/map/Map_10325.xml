@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="join98Mc" Layer="controlLevel" Ex="850" Ey="352" Cmd="gm" Param="324" Tips="Mật thất Nhà Bí Ngô" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

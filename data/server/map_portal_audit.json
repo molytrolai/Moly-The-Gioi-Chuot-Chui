@@ -1,0 +1,4957 @@
+{
+  "total_maps": 257,
+  "missing_assets_count": 0,
+  "missing_assets": [],
+  "maps": {
+    "1": {
+      "map_id": 1,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10001.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10001.swf",
+      "portals": [
+        {
+          "target": 15,
+          "res": "go_15",
+          "tips": "Đại sảnh lâu đài",
+          "has_return": true
+        },
+        {
+          "target": 32,
+          "res": "go_32",
+          "tips": "Thư viện lâu đài",
+          "has_return": true
+        },
+        {
+          "target": 4,
+          "res": "go_4",
+          "tips": "Chân núi Molyra",
+          "has_return": true
+        },
+        {
+          "target": 2,
+          "res": "go_2",
+          "tips": "Quảng trường Tình Yêu",
+          "has_return": true
+        },
+        {
+          "target": 17,
+          "res": "go_17",
+          "tips": "Nhà hàng Moly",
+          "has_return": true
+        },
+        {
+          "target": 3,
+          "res": "go_3",
+          "tips": "Phố mua sắm",
+          "has_return": true
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10012",
+          "name": "Lili"
+        },
+        {
+          "id": "10018",
+          "name": "Bé Ngoan"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "2": {
+      "map_id": 2,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10002.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10002.swf",
+      "portals": [
+        {
+          "target": 1,
+          "res": "go_1",
+          "tips": "Lâu đài Moly",
+          "has_return": true
+        },
+        {
+          "target": 9,
+          "res": "go_9",
+          "tips": "Trang trại Ánh Dương",
+          "has_return": true
+        },
+        {
+          "target": 18,
+          "res": "go_18",
+          "tips": "Bên trong Nhà thờ Tình Yêu",
+          "has_return": true
+        },
+        {
+          "target": 70,
+          "res": "go_70",
+          "tips": "Phòng cứu chữa",
+          "has_return": false
+        },
+        {
+          "target": 69,
+          "res": "go_69",
+          "tips": "Ngân hàng Moly",
+          "has_return": true
+        },
+        {
+          "target": 45,
+          "res": "go_45",
+          "tips": "Tòa soạn Moly",
+          "has_return": false
+        },
+        {
+          "target": 46,
+          "res": "go_46",
+          "tips": "Hội hướng dẫn viên",
+          "has_return": false
+        },
+        {
+          "target": 222,
+          "res": "go_222",
+          "tips": "Tường truyền hình",
+          "has_return": false
+        },
+        {
+          "target": 44,
+          "res": "go_44",
+          "tips": "Sở cảnh sát Moly",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "3": {
+      "map_id": 3,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10003.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10003.swf",
+      "portals": [
+        {
+          "target": 76,
+          "res": "go_76",
+          "tips": "Cửa hàng quà tặng",
+          "has_return": true
+        },
+        {
+          "target": 19,
+          "res": "go_19",
+          "tips": "Cửa hàng vật phẩm",
+          "has_return": true
+        },
+        {
+          "target": 20,
+          "res": "go_20",
+          "tips": "Cửa hàng thời trang",
+          "has_return": true
+        },
+        {
+          "target": 21,
+          "res": "go_21",
+          "tips": "Cửa hàng thú cưng",
+          "has_return": true
+        },
+        {
+          "target": 1,
+          "res": "go_1",
+          "tips": "Lâu đài Moly",
+          "has_return": true
+        },
+        {
+          "target": 28,
+          "res": "go_28",
+          "tips": "Học viện Đậu Đậu",
+          "has_return": true
+        },
+        {
+          "target": 60,
+          "res": "go_59",
+          "tips": "Nhà hát ngoài trời",
+          "has_return": true
+        },
+        {
+          "target": 142,
+          "res": "go_142",
+          "tips": "Đại lộ Miller",
+          "has_return": true
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10013",
+          "name": "Cô Hoa"
+        },
+        {
+          "id": "10155",
+          "name": "Thương nhân trang sức"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "4": {
+      "map_id": 4,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10004.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10004.swf",
+      "portals": [
+        {
+          "target": 143,
+          "res": "doorto143",
+          "tips": "Vào Sở Xây dựng",
+          "has_return": true
+        },
+        {
+          "target": 38,
+          "res": "go_47",
+          "tips": "Vào sân bóng Moly",
+          "has_return": true
+        },
+        {
+          "target": 5,
+          "res": "go_5",
+          "tips": "Vào sân trượt băng Molyra",
+          "has_return": true
+        },
+        {
+          "target": 61,
+          "res": "go_61",
+          "tips": "Vào Tiền đồn",
+          "has_return": true
+        },
+        {
+          "target": 75,
+          "res": "go_75",
+          "tips": "Vào Sở Cứu hỏa",
+          "has_return": true
+        },
+        {
+          "target": 1,
+          "res": "go_1",
+          "tips": "Vào lâu đài Moly",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "5": {
+      "map_id": 5,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10005.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10005.swf",
+      "portals": [
+        {
+          "target": 4,
+          "res": "go_4",
+          "tips": "Chân núi Moly Raya",
+          "has_return": true
+        },
+        {
+          "target": 40,
+          "res": "go_40",
+          "tips": "Đường hầm Quả Mọng",
+          "has_return": false
+        },
+        {
+          "target": 37,
+          "res": "go_37",
+          "tips": "Đỉnh núi Moly Raya",
+          "has_return": false
+        },
+        {
+          "target": 34,
+          "res": "go_34",
+          "tips": "Nhà thợ săn",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "6": {
+      "map_id": 6,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10006.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10006.swf",
+      "portals": [
+        {
+          "target": 80,
+          "res": "go_80",
+          "tips": "尼尔拉塔",
+          "has_return": true
+        },
+        {
+          "target": 36,
+          "res": "go_36",
+          "tips": "摩摩赛车场",
+          "has_return": false
+        },
+        {
+          "target": 7,
+          "res": "go_7",
+          "tips": "东部游乐场",
+          "has_return": true
+        },
+        {
+          "target": 22,
+          "res": "gameRomm",
+          "tips": "游戏小屋",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "7": {
+      "map_id": 7,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10007.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10007.swf",
+      "portals": [
+        {
+          "target": 6,
+          "res": "go_6",
+          "tips": "西部游乐场",
+          "has_return": true
+        },
+        {
+          "target": 47,
+          "res": "go_47",
+          "tips": "粒粒小广场",
+          "has_return": true
+        },
+        {
+          "target": 24,
+          "res": "horse_car",
+          "tips": "魔法马车",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "8": {
+      "map_id": 8,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10008.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10008.swf",
+      "portals": [
+        {
+          "target": 9,
+          "res": "go_9",
+          "tips": "进入阳光牧场",
+          "has_return": true
+        },
+        {
+          "target": 176,
+          "res": "go_176",
+          "tips": "进入神秘湖码头",
+          "has_return": false
+        },
+        {
+          "target": 31,
+          "res": "go_31",
+          "tips": "进入SMC基地",
+          "has_return": false
+        },
+        {
+          "target": 50,
+          "res": "go_50",
+          "tips": "进入摩罗地海海底",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "9": {
+      "map_id": 9,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10009.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10009.swf",
+      "portals": [
+        {
+          "target": 8,
+          "res": "river_mc",
+          "tips": "进入神秘湖",
+          "has_return": true
+        },
+        {
+          "target": 79,
+          "res": "map_79",
+          "tips": "进入阳光草舍",
+          "has_return": false
+        },
+        {
+          "target": 107,
+          "res": "map_107",
+          "tips": "进入阳光培育室",
+          "has_return": false
+        },
+        {
+          "target": 2,
+          "res": "btn",
+          "tips": "进入爱心广场",
+          "has_return": true
+        },
+        {
+          "target": 10,
+          "res": "footBtn",
+          "tips": "进入开心农场",
+          "has_return": true
+        },
+        {
+          "target": 106,
+          "res": "map_mason",
+          "tips": "进入尤尤小屋",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "10": {
+      "map_id": 10,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10010.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10010.swf",
+      "portals": [
+        {
+          "target": 60,
+          "res": "go_60",
+          "tips": "进入露天剧场",
+          "has_return": true
+        },
+        {
+          "target": 9,
+          "res": "football_btn",
+          "tips": "进入阳光牧场",
+          "has_return": true
+        },
+        {
+          "target": 83,
+          "res": "map_zz",
+          "tips": "进入交通署",
+          "has_return": true
+        },
+        {
+          "target": 105,
+          "res": "football_btn105",
+          "tips": "进入三兄弟小屋",
+          "has_return": false
+        },
+        {
+          "target": 27,
+          "res": "fmw_btn",
+          "tips": "进入农场发明屋",
+          "has_return": false
+        },
+        {
+          "target": 56,
+          "res": "map_mason",
+          "tips": "进入梅森小屋",
+          "has_return": false
+        },
+        {
+          "target": 355,
+          "res": "go_355",
+          "tips": "进入东部沙滩码头",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10022",
+          "name": "阿七"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "14": {
+      "map_id": 14,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10014.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10014.swf",
+      "portals": [
+        {
+          "target": 15,
+          "res": "goBigHall_mc",
+          "tips": "城堡大厅",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "15": {
+      "map_id": 15,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10015.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10015.swf",
+      "portals": [
+        {
+          "target": 1,
+          "res": "room_btn",
+          "tips": "Lâu đài Moly",
+          "has_return": true
+        },
+        {
+          "target": 14,
+          "res": "underRoom_mask",
+          "tips": "Tầng hầm lâu đài",
+          "has_return": true
+        },
+        {
+          "target": 16,
+          "res": "soneRoom_btn",
+          "tips": "Tầng hai lâu đài",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10047",
+          "name": "Locke"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "16": {
+      "map_id": 16,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10016.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10016.swf",
+      "portals": [
+        {
+          "target": 32,
+          "res": "go_32",
+          "tips": "城堡书房",
+          "has_return": false
+        },
+        {
+          "target": 33,
+          "res": "go_33",
+          "tips": "城堡露台",
+          "has_return": false
+        },
+        {
+          "target": 108,
+          "res": "go_108",
+          "tips": "长廊",
+          "has_return": false
+        },
+        {
+          "target": 15,
+          "res": "go_15",
+          "tips": "城堡大厅",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "17": {
+      "map_id": 17,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10017.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10017.swf",
+      "portals": [
+        {
+          "target": 1,
+          "res": "door_1",
+          "tips": "Trở về Đại sảnh lâu đài",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10042",
+          "name": "Nick"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "18": {
+      "map_id": 18,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10018.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10018.swf",
+      "portals": [
+        {
+          "target": 2,
+          "res": "door_mc",
+          "tips": "Quảng trường Tình Yêu",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10026",
+          "name": "Thầy Claus"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "19": {
+      "map_id": 19,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10019.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\19.swf",
+      "portals": [
+        {
+          "target": 3,
+          "res": "door_1",
+          "tips": "Trở về Phố mua sắm",
+          "has_return": true
+        },
+        {
+          "target": 3,
+          "res": "room_btn",
+          "tips": "Trở về Phố mua sắm",
+          "has_return": true
+        },
+        {
+          "target": 76,
+          "res": "map_76",
+          "tips": "Vào Cửa hàng quà tặng",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "20": {
+      "map_id": 20,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10020.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\20.swf",
+      "portals": [
+        {
+          "target": 3,
+          "res": "door_1",
+          "tips": "Trở về Phố mua sắm",
+          "has_return": true
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10051",
+          "name": "Cậu Nhóc"
+        },
+        {
+          "id": "10133",
+          "name": "Sao Nhí"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "21": {
+      "map_id": 21,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10021.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\21.swf",
+      "portals": [
+        {
+          "target": 3,
+          "res": "door_mc",
+          "tips": "Trở về Phố mua sắm",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10052",
+          "name": "Chị Cầu Vồng"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "24": {
+      "map_id": 24,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10024.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\24.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10033",
+          "name": "哈哈魔法师"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "27": {
+      "map_id": 27,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10027.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\27.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10016",
+          "name": "大卫"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "28": {
+      "map_id": 28,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10028.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10028.swf",
+      "portals": [
+        {
+          "target": 83,
+          "res": "go_68",
+          "tips": "Vào Sở Giao thông",
+          "has_return": true
+        },
+        {
+          "target": 3,
+          "res": "go_3",
+          "tips": "Đến phố Taotao",
+          "has_return": true
+        },
+        {
+          "target": 77,
+          "res": "go_77",
+          "tips": "Vào Đại học Moly",
+          "has_return": true
+        },
+        {
+          "target": 68,
+          "res": "go_2",
+          "tips": "Vào sân vận động Ram",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "32": {
+      "map_id": 32,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10032.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\32.swf",
+      "portals": [
+        {
+          "target": 1,
+          "res": "door_1",
+          "tips": "Trở về Đại sảnh lâu đài",
+          "has_return": true
+        },
+        {
+          "target": 26,
+          "res": "go_26",
+          "tips": "Hành lang bí mật",
+          "has_return": false
+        },
+        {
+          "target": 350,
+          "res": "go_350",
+          "tips": "Chợ đêm Mèo",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10036",
+          "name": "Hoàng tử Jack"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "34": {
+      "map_id": 34,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10034.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\34.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10053",
+          "name": "猎人M"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "35": {
+      "map_id": 35,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10035.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\35.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "37": {
+      "map_id": 37,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10037.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\37.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "38": {
+      "map_id": 38,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10038.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10038.swf",
+      "portals": [
+        {
+          "target": 47,
+          "res": "go_47",
+          "tips": "Quảng trường Lili",
+          "has_return": true
+        },
+        {
+          "target": 4,
+          "res": "go_4",
+          "tips": "Chân núi Moly Raya",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "39": {
+      "map_id": 39,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10039.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10039.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "41": {
+      "map_id": 41,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10041.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\41.swf",
+      "portals": [
+        {
+          "target": 42,
+          "res": "go_42",
+          "tips": "彩虹瀑布",
+          "has_return": false
+        },
+        {
+          "target": 40,
+          "res": "mapBtn",
+          "tips": "浆果密道",
+          "has_return": false
+        },
+        {
+          "target": 204,
+          "res": "mapBtn204",
+          "tips": "天空树",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "42": {
+      "map_id": 42,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10042.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\42.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "43": {
+      "map_id": 43,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10043.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\43.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "44": {
+      "map_id": 44,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10044.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\44.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10019",
+          "name": "艾尔"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "45": {
+      "map_id": 45,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10045.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\45.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10021",
+          "name": "艾米"
+        },
+        {
+          "id": "10015",
+          "name": "兔兔主编"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "46": {
+      "map_id": 46,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10046.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\46.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10037",
+          "name": "杰西"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "47": {
+      "map_id": 47,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10047.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10047.swf",
+      "portals": [
+        {
+          "target": 7,
+          "res": "go_7",
+          "tips": "进入东部游乐场",
+          "has_return": true
+        },
+        {
+          "target": 38,
+          "res": "go_4",
+          "tips": "进入摩尔足球场",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "51": {
+      "map_id": 51,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10051.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\51.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "52": {
+      "map_id": 52,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10052.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\52.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10038",
+          "name": "凯文"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "53": {
+      "map_id": 53,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10053.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\53.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10007",
+          "name": "菩提大伯"
+        },
+        {
+          "id": "10008",
+          "name": "葡萄"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "54": {
+      "map_id": 54,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10054.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\54.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "55": {
+      "map_id": 55,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10055.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\55.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "56": {
+      "map_id": 56,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10056.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\56.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "57": {
+      "map_id": 57,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10057.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\57.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "58": {
+      "map_id": 58,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10058.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\58.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "59": {
+      "map_id": 59,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10059.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\59.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "60": {
+      "map_id": 60,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10060.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10060.swf",
+      "portals": [
+        {
+          "target": 3,
+          "res": "go_3",
+          "tips": "淘淘乐街",
+          "has_return": true
+        },
+        {
+          "target": 10,
+          "res": "go_10",
+          "tips": "开心农场",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "61": {
+      "map_id": 61,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10061.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10061.swf",
+      "portals": [
+        {
+          "target": 4,
+          "res": "go_4",
+          "tips": "Chân núi Molyra",
+          "has_return": true
+        },
+        {
+          "target": 120,
+          "res": "go_120",
+          "tips": "Cầu Mây Bí Ẩn",
+          "has_return": true
+        },
+        {
+          "target": 62,
+          "res": "go_62",
+          "tips": "Sân huấn luyện Kỵ sĩ",
+          "has_return": true
+        },
+        {
+          "target": 63,
+          "res": "go_63",
+          "tips": "Đỉnh tháp Pháo đài Kỵ sĩ",
+          "has_return": true
+        },
+        {
+          "target": 64,
+          "res": "go_64",
+          "tips": "Căn cứ bí mật Kỵ sĩ",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "62": {
+      "map_id": 62,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10062.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\62.swf",
+      "portals": [
+        {
+          "target": 61,
+          "res": "door_1",
+          "tips": "Trở về Tiền đồn",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10029",
+          "name": "Frank"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "63": {
+      "map_id": 63,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10063.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\63.swf",
+      "portals": [
+        {
+          "target": 61,
+          "res": "door_1",
+          "tips": "Trở về Tiền đồn",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "64": {
+      "map_id": 64,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10064.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\64.swf",
+      "portals": [
+        {
+          "target": 61,
+          "res": "door_1",
+          "tips": "Trở về Tiền đồn",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "65": {
+      "map_id": 65,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10065.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\65.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "66": {
+      "map_id": 66,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10066.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\66.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10034",
+          "name": "汉青"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "67": {
+      "map_id": 67,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10067.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\67.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10034",
+          "name": "汉青"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "68": {
+      "map_id": 68,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10068.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10068.swf",
+      "portals": [
+        {
+          "target": 28,
+          "res": "go_28",
+          "tips": "进入拉姆学院",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "69": {
+      "map_id": 69,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10069.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\69.swf",
+      "portals": [
+        {
+          "target": 2,
+          "res": "mapBtn_2",
+          "tips": "爱心广场",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "70": {
+      "map_id": 70,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10070.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\70.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10020",
+          "name": "安迪"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "72": {
+      "map_id": 72,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10072.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\72.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "74": {
+      "map_id": 74,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10074.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\74.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "75": {
+      "map_id": 75,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10075.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\75.swf",
+      "portals": [
+        {
+          "target": 4,
+          "res": "mapBtn_4",
+          "tips": "Trở về Núi Moly",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10039",
+          "name": "Kulo"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "76": {
+      "map_id": 76,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10076.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\76.swf",
+      "portals": [
+        {
+          "target": 3,
+          "res": "mapBtn_3",
+          "tips": "Trở về Phố mua sắm",
+          "has_return": true
+        },
+        {
+          "target": 3,
+          "res": "doorBrn_mc",
+          "tips": "Trở về Phố mua sắm",
+          "has_return": true
+        },
+        {
+          "target": 19,
+          "res": "mapBtn_19",
+          "tips": "Vào Cửa hàng vật phẩm",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "77": {
+      "map_id": 77,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10077.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10077.swf",
+      "portals": [
+        {
+          "target": 28,
+          "res": "go_28",
+          "tips": "进入拉姆学院",
+          "has_return": true
+        },
+        {
+          "target": 78,
+          "res": "go_78",
+          "tips": "进入摩尔大学大厅",
+          "has_return": false
+        },
+        {
+          "target": 65,
+          "res": "go_65",
+          "tips": "进入涂鸦馆",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "78": {
+      "map_id": 78,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10078.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\78.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10055",
+          "name": "丝尔特"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "79": {
+      "map_id": 79,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10079.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\79.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10050",
+          "name": "尤尤"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "80": {
+      "map_id": 80,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10080.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10080.swf",
+      "portals": [
+        {
+          "target": 6,
+          "res": "go_6",
+          "tips": "进入西部游乐场",
+          "has_return": true
+        },
+        {
+          "target": 84,
+          "res": "go_84",
+          "tips": "进入尼尔拉塔第一层",
+          "has_return": false
+        },
+        {
+          "target": 112,
+          "res": "go_112",
+          "tips": "进入虫虫谷",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "81": {
+      "map_id": 81,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10081.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\81.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "82": {
+      "map_id": 82,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10082.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\82.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10184",
+          "name": "许愿星"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "83": {
+      "map_id": 83,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10083.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10083.swf",
+      "portals": [
+        {
+          "target": 10,
+          "res": "go_10",
+          "tips": "开心农场",
+          "has_return": true
+        },
+        {
+          "target": 28,
+          "res": "go_28",
+          "tips": "拉姆学院",
+          "has_return": true
+        },
+        {
+          "target": 85,
+          "res": "go_85",
+          "tips": "交通署大厅",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10100",
+          "name": "蒋诚信"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "84": {
+      "map_id": 84,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10084.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\84.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10161",
+          "name": "尼尔拉法师"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "85": {
+      "map_id": 85,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10085.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\85.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10062",
+          "name": "贝塔"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "93": {
+      "map_id": 93,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10093.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\93.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "94": {
+      "map_id": 94,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10094.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\94.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "95": {
+      "map_id": 95,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10095.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\95.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "96": {
+      "map_id": 96,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10096.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\96.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "97": {
+      "map_id": 97,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10097.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\97.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "102": {
+      "map_id": 102,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10102.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\102.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "103": {
+      "map_id": 103,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10103.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\103.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "104": {
+      "map_id": 104,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10104.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\104.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "105": {
+      "map_id": 105,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10105.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\105.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "106": {
+      "map_id": 106,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10106.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\106.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "107": {
+      "map_id": 107,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10107.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\107.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10056",
+          "name": "臭臭二号"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "108": {
+      "map_id": 108,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10108.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\108.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "109": {
+      "map_id": 109,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10109.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10109.swf",
+      "portals": [
+        {
+          "target": 108,
+          "res": "go_108",
+          "tips": "长廊",
+          "has_return": false
+        },
+        {
+          "target": 110,
+          "res": "go_110",
+          "tips": "么么的卧室",
+          "has_return": false
+        },
+        {
+          "target": 111,
+          "res": "go_111",
+          "tips": "么么的密室",
+          "has_return": false
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10002",
+          "name": "么么公主"
+        },
+        {
+          "id": "10057",
+          "name": "玛丽"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "110": {
+      "map_id": 110,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10110.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\110.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "111": {
+      "map_id": 111,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10111.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\111.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "112": {
+      "map_id": 112,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10112.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\112.swf",
+      "portals": [
+        {
+          "target": 80,
+          "res": "go_80",
+          "tips": "尼尔拉塔",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10015",
+          "name": "兔兔主编"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "113": {
+      "map_id": 113,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10113.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\113.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10084",
+          "name": "神秘蜗牛先生"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "120": {
+      "map_id": 120,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10120.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10120.swf",
+      "portals": [
+        {
+          "target": 336,
+          "res": "go_336",
+          "tips": "Điện Thời Gian",
+          "has_return": true
+        },
+        {
+          "target": 121,
+          "res": "go_121",
+          "tips": "Rừng Thế giới Ram",
+          "has_return": false
+        },
+        {
+          "target": 61,
+          "res": "go_61",
+          "tips": "Tiền đồn",
+          "has_return": true
+        },
+        {
+          "target": 151,
+          "res": "go_151",
+          "tips": "Rừng Dây Leo",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "121": {
+      "map_id": 121,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10121.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\121.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "122": {
+      "map_id": 122,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10122.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\122.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "123": {
+      "map_id": 123,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10123.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\123.swf",
+      "portals": [
+        {
+          "target": 335,
+          "res": "go_335",
+          "tips": "元素骑士训练营",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "124": {
+      "map_id": 124,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10124.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\124.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "125": {
+      "map_id": 125,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10125.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\125.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10073",
+          "name": "小火花"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "126": {
+      "map_id": 126,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10126.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\126.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10074",
+          "name": "小火烛"
+        },
+        {
+          "id": "10075",
+          "name": "小火星"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "127": {
+      "map_id": 127,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10127.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\127.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "128": {
+      "map_id": 128,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10128.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\128.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10079",
+          "name": "小树枝"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "129": {
+      "map_id": 129,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10129.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\129.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "130": {
+      "map_id": 130,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10130.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\130.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10077",
+          "name": "小树叶"
+        },
+        {
+          "id": "10078",
+          "name": "小树根"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "131": {
+      "map_id": 131,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10131.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\131.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "132": {
+      "map_id": 132,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10132.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\132.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "133": {
+      "map_id": 133,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10133.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\133.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10080",
+          "name": "小水珠"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "134": {
+      "map_id": 134,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10134.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\134.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10081",
+          "name": "小水滴"
+        },
+        {
+          "id": "10082",
+          "name": "小水柱"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "135": {
+      "map_id": 135,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10135.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\135.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "136": {
+      "map_id": 136,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10136.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\136.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "137": {
+      "map_id": 137,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10137.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10137.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "138": {
+      "map_id": 138,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10138.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\138.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "139": {
+      "map_id": 139,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10139.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\139.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "140": {
+      "map_id": 140,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10140.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\140.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "141": {
+      "map_id": 141,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10141.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\141.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "142": {
+      "map_id": 142,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10142.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\142.swf",
+      "portals": [
+        {
+          "target": 3,
+          "res": "door_btn",
+          "tips": "Trở về Phố mua sắm",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": true
+    },
+    "143": {
+      "map_id": 143,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\local-overrides\\mole.61.com\\resource\\map\\Map_10143.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\143.swf",
+      "portals": [
+        {
+          "target": 4,
+          "res": "door_mc",
+          "tips": "Trở về Núi Moly",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10063",
+          "name": "Tommy"
+        }
+      ],
+      "is_vietnamese": true
+    },
+    "147": {
+      "map_id": 147,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10147.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\147.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "148": {
+      "map_id": 148,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10148.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\148.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "149": {
+      "map_id": 149,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10149.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\149.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10058",
+          "name": "伊莲"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "150": {
+      "map_id": 150,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10150.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\150.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "151": {
+      "map_id": 151,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10151.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10151.swf",
+      "portals": [
+        {
+          "target": 120,
+          "res": "go_120",
+          "tips": "云雾谜桥",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "152": {
+      "map_id": 152,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10152.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\152.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10059",
+          "name": "老脑袋"
+        },
+        {
+          "id": "10060",
+          "name": "土林长老"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "153": {
+      "map_id": 153,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10153.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\153.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "161": {
+      "map_id": 161,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10161.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\161.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "171": {
+      "map_id": 171,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10171.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\171.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "175": {
+      "map_id": 175,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10175.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10175.swf",
+      "portals": [
+        {
+          "target": 38,
+          "res": "go_38",
+          "tips": "回到摩尔足球场",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "176": {
+      "map_id": 176,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10176.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\176.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "178": {
+      "map_id": 178,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10178.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\178.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "179": {
+      "map_id": 179,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10179.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\179.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "180": {
+      "map_id": 180,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10180.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\180.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "181": {
+      "map_id": 181,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10181.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\181.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "182": {
+      "map_id": 182,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10182.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\182.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "183": {
+      "map_id": 183,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10183.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\183.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "184": {
+      "map_id": 184,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10184.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\184.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "185": {
+      "map_id": 185,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10185.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\185.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "186": {
+      "map_id": 186,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10186.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\186.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "187": {
+      "map_id": 187,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10187.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\187.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "188": {
+      "map_id": 188,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10188.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\188.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "189": {
+      "map_id": 189,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10189.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\189.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "190": {
+      "map_id": 190,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10190.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\190.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "191": {
+      "map_id": 191,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10191.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\191.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "192": {
+      "map_id": 192,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10192.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\192.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "193": {
+      "map_id": 193,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10193.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\193.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "194": {
+      "map_id": 194,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10194.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\194.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "195": {
+      "map_id": 195,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10195.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\195.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "196": {
+      "map_id": 196,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10196.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\196.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "197": {
+      "map_id": 197,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10197.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\197.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "198": {
+      "map_id": 198,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10198.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\198.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "199": {
+      "map_id": 199,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10199.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\199.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "200": {
+      "map_id": 200,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10200.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\200.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "201": {
+      "map_id": 201,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10201.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\201.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "202": {
+      "map_id": 202,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10202.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\202.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "203": {
+      "map_id": 203,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10203.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\203.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10043",
+          "name": "奇奇"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "204": {
+      "map_id": 204,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10204.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\204.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10001",
+          "name": "拉仔"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "222": {
+      "map_id": 222,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10222.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\222.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "223": {
+      "map_id": 223,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10223.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\223.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "228": {
+      "map_id": 228,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10228.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\228.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10032",
+          "name": "吉娜"
+        },
+        {
+          "id": "10071",
+          "name": "小小亚撒"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "229": {
+      "map_id": 229,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10229.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\229.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "236": {
+      "map_id": 236,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10236.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\236.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10025",
+          "name": "臭臭"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "237": {
+      "map_id": 237,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10237.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\237.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10010",
+          "name": "布多多"
+        },
+        {
+          "id": "10011",
+          "name": "布少少"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "238": {
+      "map_id": 238,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10238.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\238.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "239": {
+      "map_id": 239,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10239.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\239.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10000",
+          "name": "摩乐乐"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "240": {
+      "map_id": 240,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10240.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\240.swf",
+      "portals": [
+        {
+          "target": 326,
+          "res": "go_326",
+          "tips": "库拉城堡大厅",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "241": {
+      "map_id": 241,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10241.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\241.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "242": {
+      "map_id": 242,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10242.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\242.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "251": {
+      "map_id": 251,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10251.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\251.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "252": {
+      "map_id": 252,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10252.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\252.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "253": {
+      "map_id": 253,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10253.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\253.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "254": {
+      "map_id": 254,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10254.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\254.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "255": {
+      "map_id": 255,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10255.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\255.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10097",
+          "name": "龙大侠"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "256": {
+      "map_id": 256,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10256.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\256.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10101",
+          "name": ""
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "257": {
+      "map_id": 257,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10257.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\257.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10105",
+          "name": "帕帕囧"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "258": {
+      "map_id": 258,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10258.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10258.swf",
+      "portals": [
+        {
+          "target": 255,
+          "res": "go255_btn",
+          "tips": "龙王丸一号车厢",
+          "has_return": false
+        },
+        {
+          "target": 260,
+          "res": "go260_btn",
+          "tips": "海妖巢穴",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "259": {
+      "map_id": 259,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10259.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\259.swf",
+      "portals": [],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10105",
+          "name": "帕帕囧"
+        },
+        {
+          "id": "10098",
+          "name": "小海妖"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "260": {
+      "map_id": 260,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10260.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10260.swf",
+      "portals": [
+        {
+          "target": 258,
+          "res": "go258_btn",
+          "tips": "海妖巢穴",
+          "has_return": true
+        },
+        {
+          "target": 264,
+          "res": "go_264",
+          "tips": "海妖王宝藏",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "264": {
+      "map_id": 264,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10264.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10264.swf",
+      "portals": [
+        {
+          "target": 260,
+          "res": "go260_btn",
+          "tips": "海妖巢穴",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "271": {
+      "map_id": 271,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10271.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10271.swf",
+      "portals": [
+        {
+          "target": 151,
+          "res": "go_151",
+          "tips": "藤蔓森林",
+          "has_return": false
+        },
+        {
+          "target": 272,
+          "res": "go_272",
+          "tips": "实战训练营",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "272": {
+      "map_id": 272,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10272.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10272.swf",
+      "portals": [
+        {
+          "target": 271,
+          "res": "go_271",
+          "tips": "骑士训练营",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10107",
+          "name": "宝罗"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "317": {
+      "map_id": 317,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10317.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10317.swf",
+      "portals": [
+        {
+          "target": 318,
+          "res": "go_318",
+          "tips": "仙堡大厅",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10122",
+          "name": "爱丽莎"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "318": {
+      "map_id": 318,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10318.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10318.swf",
+      "portals": [
+        {
+          "target": 317,
+          "res": "go_317",
+          "tips": "仙堡前院",
+          "has_return": true
+        },
+        {
+          "target": 319,
+          "res": "go_319",
+          "tips": "仙堡后庭",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "319": {
+      "map_id": 319,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10319.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10319.swf",
+      "portals": [
+        {
+          "target": 318,
+          "res": "go_318",
+          "tips": "仙堡大厅",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10129",
+          "name": "神秘占星师"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "320": {
+      "map_id": 320,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10320.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10320.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "321": {
+      "map_id": 321,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10321.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10321.swf",
+      "portals": [
+        {
+          "target": 78,
+          "res": "go_78",
+          "tips": "摩尔大学大厅",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "323": {
+      "map_id": 323,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10323.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10323.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "324": {
+      "map_id": 324,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10324.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10324.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "325": {
+      "map_id": 325,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10325.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10325.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "326": {
+      "map_id": 326,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10326.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10326.swf",
+      "portals": [
+        {
+          "target": 240,
+          "res": "go_240",
+          "tips": "库拉城堡",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "328": {
+      "map_id": 328,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10328.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10328.swf",
+      "portals": [
+        {
+          "target": 203,
+          "res": "go_203",
+          "tips": "KFC餐厅",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "329": {
+      "map_id": 329,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10329.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10329.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10063",
+          "name": "汤米"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "330": {
+      "map_id": 330,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10330.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10330.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "331": {
+      "map_id": 331,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10331.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10331.swf",
+      "portals": [],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10192",
+          "name": "尤瑞克"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "332": {
+      "map_id": 332,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10332.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10332.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "333": {
+      "map_id": 333,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10333.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10333.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "334": {
+      "map_id": 334,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10334.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10334.swf",
+      "portals": [
+        {
+          "target": 47,
+          "res": "go_47",
+          "tips": "粒粒小广场",
+          "has_return": false
+        }
+      ],
+      "npc_count": 5,
+      "npcs": [
+        {
+          "id": "10202",
+          "name": "零零"
+        },
+        {
+          "id": "10206",
+          "name": "么么公主"
+        },
+        {
+          "id": "10207",
+          "name": "丫丽"
+        },
+        {
+          "id": "10208",
+          "name": "摩乐乐"
+        },
+        {
+          "id": "10209",
+          "name": "菩提大伯"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "335": {
+      "map_id": 335,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10335.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10335.swf",
+      "portals": [
+        {
+          "target": 123,
+          "res": "go_123",
+          "tips": "拉姆神秘世界",
+          "has_return": true
+        },
+        {
+          "target": 336,
+          "res": "go_336",
+          "tips": "时光圣殿",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "336": {
+      "map_id": 336,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10336.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10336.swf",
+      "portals": [
+        {
+          "target": 335,
+          "res": "go_335",
+          "tips": "元素骑士训练营",
+          "has_return": true
+        },
+        {
+          "target": 120,
+          "res": "go_120",
+          "tips": "云雾谜桥",
+          "has_return": true
+        },
+        {
+          "target": 337,
+          "res": "go_337",
+          "tips": "蘑菇森林",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10204",
+          "name": "时之女神石像"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "337": {
+      "map_id": 337,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10337.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10337.swf",
+      "portals": [
+        {
+          "target": 336,
+          "res": "go_336",
+          "tips": "时光圣殿",
+          "has_return": true
+        },
+        {
+          "target": 339,
+          "res": "go_339",
+          "tips": "龙巢迷宫",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "338": {
+      "map_id": 338,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10338.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10338.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "339": {
+      "map_id": 339,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10339.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10339.swf",
+      "portals": [
+        {
+          "target": 337,
+          "res": "go_337",
+          "tips": "蘑菇森林",
+          "has_return": true
+        },
+        {
+          "target": 342,
+          "res": "go_342",
+          "tips": "永夜哨站",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10219",
+          "name": "摩摩兔"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "340": {
+      "map_id": 340,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10340.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10340.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "341": {
+      "map_id": 341,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10341.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10341.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "342": {
+      "map_id": 342,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10342.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10342.swf",
+      "portals": [
+        {
+          "target": 339,
+          "res": "go_339",
+          "tips": "龙巢迷宫",
+          "has_return": true
+        },
+        {
+          "target": 343,
+          "res": "go_343",
+          "tips": "摩利亚王城",
+          "has_return": true
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10213",
+          "name": "巴图鲁"
+        },
+        {
+          "id": "10216",
+          "name": "艾莲娜"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "343": {
+      "map_id": 343,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10343.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10343.swf",
+      "portals": [
+        {
+          "target": 342,
+          "res": "go_342",
+          "tips": "永夜哨站",
+          "has_return": true
+        },
+        {
+          "target": 345,
+          "res": "go_345",
+          "tips": "王者大厅",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "344": {
+      "map_id": 344,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10344.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10344.swf",
+      "portals": [
+        {
+          "target": 68,
+          "res": "go_68",
+          "tips": "拉姆运动场",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "345": {
+      "map_id": 345,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10345.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10345.swf",
+      "portals": [
+        {
+          "target": 343,
+          "res": "go_343",
+          "tips": "摩利亚王城",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "346": {
+      "map_id": 346,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10346.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10346.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "347": {
+      "map_id": 347,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10347.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10347.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "348": {
+      "map_id": 348,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10348.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10348.swf",
+      "portals": [
+        {
+          "target": 109,
+          "res": "go_109",
+          "tips": "城堡露天花园",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10223",
+          "name": "摩尔王灵魂"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "349": {
+      "map_id": 349,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10349.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10349.swf",
+      "portals": [
+        {
+          "target": 32,
+          "res": "go_32",
+          "tips": "城堡书房",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10231",
+          "name": "莎士比亚"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "350": {
+      "map_id": 350,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10350.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10350.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "353": {
+      "map_id": 353,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10353.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10353.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "354": {
+      "map_id": 354,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10354.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10354.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "355": {
+      "map_id": 355,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10355.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10355.swf",
+      "portals": [
+        {
+          "target": 10,
+          "res": "go_10",
+          "tips": "进入开心农场",
+          "has_return": true
+        },
+        {
+          "target": 356,
+          "res": "go_356",
+          "tips": "进入浮冰岛海湾",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "356": {
+      "map_id": 356,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10356.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10356.swf",
+      "portals": [
+        {
+          "target": 355,
+          "res": "go_355",
+          "tips": "进入东部沙滩码头",
+          "has_return": true
+        },
+        {
+          "target": 357,
+          "res": "go_357",
+          "tips": "进入积雪镇",
+          "has_return": true
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10240",
+          "name": "肖恩"
+        },
+        {
+          "id": "10241",
+          "name": "杰西"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "357": {
+      "map_id": 357,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10357.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10357.swf",
+      "portals": [
+        {
+          "target": 356,
+          "res": "go_356",
+          "tips": "进入浮冰岛海湾",
+          "has_return": true
+        },
+        {
+          "target": 360,
+          "res": "go_360",
+          "tips": "进入神殿彩虹桥",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10244",
+          "name": "老超"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "358": {
+      "map_id": 358,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10358.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10358.swf",
+      "portals": [
+        {
+          "target": 142,
+          "res": "go_142",
+          "tips": "米勒大道",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10246",
+          "name": "健达宝宝"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "359": {
+      "map_id": 359,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10359.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10359.swf",
+      "portals": [
+        {
+          "target": 356,
+          "res": "go_356",
+          "tips": "浮冰岛海湾",
+          "has_return": false
+        }
+      ],
+      "npc_count": 4,
+      "npcs": [
+        {
+          "id": "10254",
+          "name": "扣扣"
+        },
+        {
+          "id": "10257",
+          "name": "海贼小兵"
+        },
+        {
+          "id": "10249",
+          "name": "蛋蛋"
+        },
+        {
+          "id": "10259",
+          "name": "扣扣"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "360": {
+      "map_id": 360,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10360.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10360.swf",
+      "portals": [
+        {
+          "target": 357,
+          "res": "goto_357",
+          "tips": "进入积雪镇",
+          "has_return": true
+        },
+        {
+          "target": 361,
+          "res": "goto_361",
+          "tips": "进入积雪神殿",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10260",
+          "name": "库拉"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "361": {
+      "map_id": 361,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10361.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10361.swf",
+      "portals": [
+        {
+          "target": 360,
+          "res": "go_360",
+          "tips": "进入神殿彩虹桥",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "362": {
+      "map_id": 362,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10362.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10362.swf",
+      "portals": [
+        {
+          "target": 112,
+          "res": "go_112",
+          "tips": "进入虫虫谷",
+          "has_return": false
+        },
+        {
+          "target": 113,
+          "res": "go_113",
+          "tips": "进入神秘花蕊",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "363": {
+      "map_id": 363,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10363.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10363.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "364": {
+      "map_id": 364,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10364.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10364.swf",
+      "portals": [
+        {
+          "target": 365,
+          "res": "go_365",
+          "tips": "吉普豆村",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "365": {
+      "map_id": 365,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10365.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10365.swf",
+      "portals": [
+        {
+          "target": 364,
+          "res": "go_364",
+          "tips": "地下洞穴",
+          "has_return": true
+        },
+        {
+          "target": 367,
+          "res": "go_367",
+          "tips": "格历尔平原",
+          "has_return": true
+        },
+        {
+          "target": 368,
+          "res": "go_368",
+          "tips": "奇普力村长家",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "366": {
+      "map_id": 366,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10366.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10366.swf",
+      "portals": [
+        {
+          "target": 369,
+          "res": "go_369",
+          "tips": "麦田村",
+          "has_return": true
+        },
+        {
+          "target": 371,
+          "res": "go_371",
+          "tips": "草木树海",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "367": {
+      "map_id": 367,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10367.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10367.swf",
+      "portals": [
+        {
+          "target": 365,
+          "res": "go_365",
+          "tips": "吉普豆村",
+          "has_return": true
+        },
+        {
+          "target": 366,
+          "res": "go_366",
+          "tips": "世界树",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "368": {
+      "map_id": 368,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10368.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10368.swf",
+      "portals": [
+        {
+          "target": 365,
+          "res": "go_365",
+          "tips": "吉普豆村",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "369": {
+      "map_id": 369,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10369.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10369.swf",
+      "portals": [
+        {
+          "target": 365,
+          "res": "go_365",
+          "tips": "吉普豆村",
+          "has_return": false
+        },
+        {
+          "target": 366,
+          "res": "go_366",
+          "tips": "世界树",
+          "has_return": true
+        },
+        {
+          "target": 370,
+          "res": "go_370",
+          "tips": "时光井底",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "370": {
+      "map_id": 370,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10370.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10370.swf",
+      "portals": [
+        {
+          "target": 369,
+          "res": "go_369",
+          "tips": "麦田村",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "371": {
+      "map_id": 371,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10371.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10371.swf",
+      "portals": [
+        {
+          "target": 366,
+          "res": "go_366",
+          "tips": "世界树",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10278",
+          "name": "老超"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "372": {
+      "map_id": 372,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10372.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10372.swf",
+      "portals": [
+        {
+          "target": 380,
+          "res": "go_380",
+          "tips": "目灵祭台",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "373": {
+      "map_id": 373,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10373.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10373.swf",
+      "portals": [
+        {
+          "target": 375,
+          "res": "go_375",
+          "tips": "灰烬深渊",
+          "has_return": false
+        },
+        {
+          "target": 377,
+          "res": "go_377",
+          "tips": "沙之迷穴",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "374": {
+      "map_id": 374,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10374.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10374.swf",
+      "portals": [
+        {
+          "target": 373,
+          "res": "go_373",
+          "tips": "信奉广场",
+          "has_return": false
+        },
+        {
+          "target": 376,
+          "res": "go_376",
+          "tips": "黑岩旋梯",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "375": {
+      "map_id": 375,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10375.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10375.swf",
+      "portals": [
+        {
+          "target": 377,
+          "res": "go_377",
+          "tips": "沙之秘穴",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "376": {
+      "map_id": 376,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10376.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10376.swf",
+      "portals": [
+        {
+          "target": 378,
+          "res": "go_378",
+          "tips": "冰脊之巅",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "377": {
+      "map_id": 377,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10377.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10377.swf",
+      "portals": [
+        {
+          "target": 374,
+          "res": "go_374",
+          "tips": "深水之城",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "378": {
+      "map_id": 378,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10378.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10378.swf",
+      "portals": [
+        {
+          "target": 376,
+          "res": "go_376",
+          "tips": "黑岩旋梯",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "379": {
+      "map_id": 379,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10379.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10379.swf",
+      "portals": [
+        {
+          "target": 378,
+          "res": "go_378",
+          "tips": "冰脊之巅",
+          "has_return": false
+        },
+        {
+          "target": 380,
+          "res": "go_380",
+          "tips": "目灵祭台",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "380": {
+      "map_id": 380,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10380.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10380.swf",
+      "portals": [
+        {
+          "target": 377,
+          "res": "go_377",
+          "tips": "沙之迷穴",
+          "has_return": false
+        },
+        {
+          "target": 372,
+          "res": "go_372",
+          "tips": "视界原",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "381": {
+      "map_id": 381,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10381.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10381.swf",
+      "portals": [
+        {
+          "target": 382,
+          "res": "go_380",
+          "tips": "雨昙秘境",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "382": {
+      "map_id": 382,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10382.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10382.swf",
+      "portals": [
+        {
+          "target": 383,
+          "res": "go_383",
+          "tips": "月灵之森",
+          "has_return": true
+        },
+        {
+          "target": 384,
+          "res": "go_384",
+          "tips": "国家花园",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "383": {
+      "map_id": 383,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10383.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10383.swf",
+      "portals": [
+        {
+          "target": 382,
+          "res": "go_382",
+          "tips": "雨昙秘境",
+          "has_return": true
+        },
+        {
+          "target": 384,
+          "res": "go_384",
+          "tips": "国家花园",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "384": {
+      "map_id": 384,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10384.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10384.swf",
+      "portals": [
+        {
+          "target": 383,
+          "res": "go_383",
+          "tips": "月灵之森",
+          "has_return": true
+        },
+        {
+          "target": 381,
+          "res": "go_381",
+          "tips": "春暖花开",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "385": {
+      "map_id": 385,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10385.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10385.swf",
+      "portals": [
+        {
+          "target": 60,
+          "res": "go_60",
+          "tips": "进入露天剧场",
+          "has_return": false
+        },
+        {
+          "target": 9,
+          "res": "football_btn",
+          "tips": "进入阳光牧场",
+          "has_return": false
+        },
+        {
+          "target": 83,
+          "res": "go_83",
+          "tips": "进入交通署",
+          "has_return": false
+        },
+        {
+          "target": 105,
+          "res": "football_btn105",
+          "tips": "进入三兄弟小屋",
+          "has_return": false
+        },
+        {
+          "target": 27,
+          "res": "fmw_btn",
+          "tips": "进入农场发明屋",
+          "has_return": false
+        },
+        {
+          "target": 56,
+          "res": "map_mason",
+          "tips": "进入梅森小屋",
+          "has_return": false
+        },
+        {
+          "target": 355,
+          "res": "go_355",
+          "tips": "进入东部沙滩码头",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10022",
+          "name": "阿七"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "386": {
+      "map_id": 386,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10386.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10386.swf",
+      "portals": [
+        {
+          "target": 15,
+          "res": "go_15",
+          "tips": "城堡大厅",
+          "has_return": false
+        },
+        {
+          "target": 32,
+          "res": "go_32",
+          "tips": "城堡书房",
+          "has_return": false
+        },
+        {
+          "target": 4,
+          "res": "go_4",
+          "tips": "摩尔拉雅山脚",
+          "has_return": false
+        },
+        {
+          "target": 2,
+          "res": "go_2",
+          "tips": "爱心广场",
+          "has_return": false
+        },
+        {
+          "target": 17,
+          "res": "go_17",
+          "tips": "摩尔餐厅",
+          "has_return": false
+        },
+        {
+          "target": 3,
+          "res": "go_3",
+          "tips": "淘淘乐街",
+          "has_return": false
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10012",
+          "name": "粒粒"
+        },
+        {
+          "id": "10018",
+          "name": "小乖"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "387": {
+      "map_id": 387,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10387.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10387.swf",
+      "portals": [
+        {
+          "target": 76,
+          "res": "go_76",
+          "tips": "礼物小屋",
+          "has_return": false
+        },
+        {
+          "target": 19,
+          "res": "go_19",
+          "tips": "道具店",
+          "has_return": false
+        },
+        {
+          "target": 20,
+          "res": "go_20",
+          "tips": "服装店",
+          "has_return": false
+        },
+        {
+          "target": 21,
+          "res": "go_21",
+          "tips": "宠物店",
+          "has_return": false
+        },
+        {
+          "target": 1,
+          "res": "go_1",
+          "tips": "摩尔城堡",
+          "has_return": false
+        },
+        {
+          "target": 28,
+          "res": "go_28",
+          "tips": "拉姆学院",
+          "has_return": false
+        },
+        {
+          "target": 60,
+          "res": "go_59",
+          "tips": "露天剧场",
+          "has_return": false
+        },
+        {
+          "target": 142,
+          "res": "go_142",
+          "tips": "米勒大道",
+          "has_return": false
+        }
+      ],
+      "npc_count": 2,
+      "npcs": [
+        {
+          "id": "10013",
+          "name": "花婶"
+        },
+        {
+          "id": "10155",
+          "name": "珠宝商人"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "388": {
+      "map_id": 388,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10388.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10388.swf",
+      "portals": [
+        {
+          "target": 1,
+          "res": "go_1",
+          "tips": "摩尔城堡",
+          "has_return": false
+        },
+        {
+          "target": 9,
+          "res": "go_9",
+          "tips": "阳光牧场",
+          "has_return": false
+        },
+        {
+          "target": 18,
+          "res": "go_18",
+          "tips": "爱心教堂内",
+          "has_return": false
+        },
+        {
+          "target": 70,
+          "res": "go_70",
+          "tips": "爱心救治室",
+          "has_return": false
+        },
+        {
+          "target": 69,
+          "res": "go_69",
+          "tips": "摩尔银行",
+          "has_return": false
+        },
+        {
+          "target": 45,
+          "res": "go_45",
+          "tips": "摩尔报社",
+          "has_return": false
+        },
+        {
+          "target": 46,
+          "res": "go_46",
+          "tips": "爱心向导社",
+          "has_return": false
+        },
+        {
+          "target": 222,
+          "res": "go_222",
+          "tips": "电视墙",
+          "has_return": false
+        },
+        {
+          "target": 44,
+          "res": "go_44",
+          "tips": "摩尔庄园警署",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "389": {
+      "map_id": 389,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10389.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10389.swf",
+      "portals": [
+        {
+          "target": 390,
+          "res": "go_390",
+          "tips": "食人花园",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "390": {
+      "map_id": 390,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10390.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10390.swf",
+      "portals": [
+        {
+          "target": 391,
+          "res": "go_391",
+          "tips": "珊瑚平原",
+          "has_return": true
+        },
+        {
+          "target": 389,
+          "res": "go_389",
+          "tips": "摩界之门",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "391": {
+      "map_id": 391,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10391.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10391.swf",
+      "portals": [
+        {
+          "target": 390,
+          "res": "go_390",
+          "tips": "食人花园",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "392": {
+      "map_id": 392,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10392.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10392.swf",
+      "portals": [
+        {
+          "target": 391,
+          "res": "go_391",
+          "tips": "珊瑚平原",
+          "has_return": false
+        },
+        {
+          "target": 393,
+          "res": "go_393",
+          "tips": "曜石迷宫",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "393": {
+      "map_id": 393,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10393.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10393.swf",
+      "portals": [
+        {
+          "target": 391,
+          "res": "go_391",
+          "tips": "珊瑚平原",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10294",
+          "name": "大长老泰尼"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "394": {
+      "map_id": 394,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10394.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10394.swf",
+      "portals": [
+        {
+          "target": 395,
+          "res": "go_395",
+          "tips": "封印之地",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "395": {
+      "map_id": 395,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10395.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10395.swf",
+      "portals": [
+        {
+          "target": 396,
+          "res": "go_396",
+          "tips": "寒心水牢",
+          "has_return": true
+        },
+        {
+          "target": 394,
+          "res": "go_394",
+          "tips": "风岩沙漠",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "396": {
+      "map_id": 396,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10396.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10396.swf",
+      "portals": [
+        {
+          "target": 395,
+          "res": "go_395",
+          "tips": "封印之地",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "397": {
+      "map_id": 397,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10397.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10397.swf",
+      "portals": [
+        {
+          "target": 394,
+          "res": "go_394",
+          "tips": "风岩沙漠",
+          "has_return": false
+        },
+        {
+          "target": 398,
+          "res": "go_398",
+          "tips": "荆棘桥",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "398": {
+      "map_id": 398,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10398.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10398.swf",
+      "portals": [
+        {
+          "target": 397,
+          "res": "go_397",
+          "tips": "镜花水月",
+          "has_return": true
+        },
+        {
+          "target": 400,
+          "res": "go_400",
+          "tips": "摩灵宫殿",
+          "has_return": true
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10299",
+          "name": "花荆藤"
+        }
+      ],
+      "is_vietnamese": false
+    },
+    "400": {
+      "map_id": 400,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10400.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10400.swf",
+      "portals": [
+        {
+          "target": 398,
+          "res": "go_398",
+          "tips": "荆棘桥",
+          "has_return": true
+        },
+        {
+          "target": 401,
+          "res": "go_401",
+          "tips": "璨之花园",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "401": {
+      "map_id": 401,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10401.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10401.swf",
+      "portals": [
+        {
+          "target": 400,
+          "res": "go_400",
+          "tips": "摩灵宫殿",
+          "has_return": true
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "403": {
+      "map_id": 403,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10403.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10403.swf",
+      "portals": [
+        {
+          "target": 38,
+          "res": "go_38",
+          "tips": "摩尔足球场",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "404": {
+      "map_id": 404,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10404.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10404.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "405": {
+      "map_id": 405,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10405.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10405.swf",
+      "portals": [
+        {
+          "target": 229,
+          "res": "go_229",
+          "tips": "超级拉姆俱乐部",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "406": {
+      "map_id": 406,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10406.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10406.swf",
+      "portals": [
+        {
+          "target": 350,
+          "res": "go_350",
+          "tips": "猫的夜市",
+          "has_return": false
+        }
+      ],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "407": {
+      "map_id": 407,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10407.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10407.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "408": {
+      "map_id": 408,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10408.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10408.swf",
+      "portals": [],
+      "npc_count": 0,
+      "npcs": [],
+      "is_vietnamese": false
+    },
+    "409": {
+      "map_id": 409,
+      "has_xml": true,
+      "has_swf": true,
+      "xml_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10409.xml",
+      "swf_path": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10409.swf",
+      "portals": [
+        {
+          "target": 37,
+          "res": "roomMC",
+          "tips": "进入摩尔拉雅山顶",
+          "has_return": false
+        }
+      ],
+      "npc_count": 1,
+      "npcs": [
+        {
+          "id": "10034",
+          "name": "汉青"
+        }
+      ],
+      "is_vietnamese": false
+    }
+  }
+}

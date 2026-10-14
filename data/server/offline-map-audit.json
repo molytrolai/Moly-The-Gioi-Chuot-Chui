@@ -1,0 +1,13 @@
+{
+  "generated_at": "2026-10-10T04:23:13.587064+00:00",
+  "graph": "E:\\Codex\\Projects\\Moly-Viet\\archive\\community\\moleworld.net\\mole2016\\current\\mo-mapgraph.json",
+  "asset_count": 765,
+  "local_count": 765,
+  "failed_count": 0,
+  "sources": {
+    "override": 20,
+    "mirror": 745,
+    "": 0
+  },
+  "failures": []
+}

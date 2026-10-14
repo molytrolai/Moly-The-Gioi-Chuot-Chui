@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="intro_btn" Layer="depthLevel" Ex="624" Ey="309" Cmd="pm" Param="resource/newTask/task10005/movie_10005_1.swf" Tips="" />
+		
+		<Trigger ResName="go_317" Layer="controlLevel" Ex="813" Ey="408" Cmd="alt_map" Param="317" Tips="Tiền viện Lâu đài Tiên" />
+		<Trigger ResName="go_319" Layer="controlLevel" Ex="236" Ey="271" Cmd="alt_map" Param="319" Tips="Hậu viện Lâu đài Tiên" />
+		
+		<Trigger ResName="sit_1" Layer="controlLevel" Ex="485" Ey="160" Cmd="sit" Param="0" Tips="" />
+		<Trigger ResName="sit_2" Layer="controlLevel" Ex="393" Ey="177" Cmd="sit" Param="0" Tips="" />
+		<Trigger ResName="sit_3" Layer="controlLevel" Ex="575" Ey="176" Cmd="sit" Param="0" Tips="" />
+		
+		<Trigger ResName="swap_btn" Layer="controlLevel" Ex="600" Ey="311" Cmd="p" Param="IrisWeddingSwap2Panel" Tips="" />
+		<Trigger ResName="iris_btn" Layer="controlLevel" Ex="258" Ey="527" Cmd="p" Param="IrisWeddingPanel" Tips="" />
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10107" Face="正常" Msg="我将成为世界上最幸福的海妖！" Option="祝福你！" Cmd="none" Param="2" AddTaskOption="1" />
+		
+	</Talks>
+</Map>

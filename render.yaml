@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: moly-viet-game
+    runtime: docker
+    plan: starter
+    region: singapore # Closest region to Vietnam for minimal latency
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false # Set in Render dashboard from Neon PostgreSQL
+      - key: PYTHONUNBUFFERED
+        value: "1"
+    healthCheckPath: /

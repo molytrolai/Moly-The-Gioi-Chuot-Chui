@@ -1,0 +1,18 @@
+[
+xmin -40
+ymin -40
+xmax 9639
+ymax 1067
+wordwrap 1
+multiline 1
+readonly 1
+noselect 1
+font 22
+height 280
+color #ff000000
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]    摩尔商城里面流通的是摩尔金豆，不再使用米币购买了。所以想要购买商品首先要把米币兑换成摩尔金豆才可以哟！

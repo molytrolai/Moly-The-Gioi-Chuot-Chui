@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		
+	<Trigger ResName="door_mc" Layer="controlLevel" Ex="150" Ey="350" Cmd="alt_map" Param="61" Tips="Đến Tiền đồn Kỵ sĩ" /></Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

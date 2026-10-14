@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+		<Npc ID="10015" Layer="depthLevel" Name="Tổng biên tập Thỏ Momo" Ex="124" Ey="339" Cmd="act" Param="bugbugEvent" />
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_80" Layer="controlLevel" Ex="165" Ey="303" Cmd="alt_map" Param="80" Tips="Tháp Nierla" />
+		
+	</Triggers>
+	
+	<Talks>
+		
+		
+	</Talks>
+</Map>

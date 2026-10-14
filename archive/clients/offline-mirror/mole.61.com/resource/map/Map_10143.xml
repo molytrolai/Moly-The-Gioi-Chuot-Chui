@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList />
+	<Triggers />
+	<Talks>
+		<Talk ID="1" NpcID="10063" Face="正常" Msg="Chào mừng đến Sở Xây dựng! Đây là nơi các kiến trúc sư giỏi tạo nên những công trình tuyệt vời. Bạn tìm tôi có việc gì?" Option="Tôi muốn mở cửa hàng$Không có việc gì" Cmd="act$none" Param="tommy_checkHasCard$6" />
+		<Talk ID="4" NpcID="10063" Face="正常" Msg="Bạn có năng khiếu đọc bản vẽ đấy, nhưng kiến trúc sư không thể chỉ học lý thuyết. Hãy đi thang máy xuống công trường mô phỏng và hoàn thành bốn căn nhà." Option="Tôi muốn mở cửa hàng$Tôi đi ngay" Cmd="act$none" Param="tommy_checkHasCard$0" />
+		<Talk ID="12" NpcID="10063" Face="正常" Msg="Bạn chưa có thẻ đất Momo. Hãy đến Thương hội Momo nhận thẻ rồi quay lại nhé." Option="Đi ngay$Để sau" Cmd="gm$none" Param="149$" />
+		<Talk ID="13" NpcID="10063" Face="正常" Msg="Bạn đã xây cửa hàng rồi. Khi muốn đổi kiểu nhà hoặc nội thất, hãy gọi đội xây dựng của tôi nhé." Option="Tôi hiểu rồi" Cmd="none" Param="" />
+		<Talk ID="14" NpcID="10063" Face="正常" Msg="Tôi sẽ cử đội xây dựng tới ngay. Bạn xác nhận trả 3.000 Đậu Moly cho chi phí xây dựng chứ?" Option="Đồng ý$Để tôi xem lại" Cmd="act$none" Param="tommy_hasYXB" />
+		<Talk ID="15" NpcID="10063" Face="正常" Msg="Đội xây dựng đã hoàn thành. Bạn có thể đến Đại lộ Miller xem nhà hàng của mình." Option="Đi ngay$Tôi biết rồi" Cmd="act$none" Param="tommy_gotoMyShop$0" />
+		<Talk ID="16" NpcID="10063" Face="正常" Msg="Vậy gọi là Nhà hàng Momo nhé. Công trình đã xong, bạn có thể đến Đại lộ Miller xem ngay." Option="Đi ngay$Tôi biết rồi" Cmd="act$none" Param="tommy_gotoMyShop$0" />
+		<Talk ID="18" NpcID="10063" Face="正常" Msg="Nhà hàng Momo là một cái tên hay. Công trình đã hoàn thành rồi!" Option="Đi ngay$Tôi biết rồi" Cmd="act$none" Param="tommy_gotoMyShop$0" />
+		<Talk ID="19" NpcID="10063" Face="正常" Msg="Bạn chưa đủ Đậu Moly. Hãy chơi trò nhỏ để kiếm thêm rồi quay lại nhé." Option="Tôi hiểu rồi" Cmd="none" Param="" />
+		<Talk ID="20" NpcID="10063" Face="正常" Msg="Tôi sẽ xây cho thành viên Super Ram một kiểu nhà đặc biệt. Bạn xác nhận trả 3.000 Đậu Moly chứ?" Option="Đồng ý$Để tôi xem lại" Cmd="act$none" Param="tommy_hasYXB" />
+		<Talk ID="21" NpcID="10063" Face="正常" Msg="Đội xây dựng đã tới nơi. Bây giờ hãy đặt cho nhà hàng một cái tên bạn thích." Option="Được$Cứ gọi là Nhà hàng Momo" Cmd="act$act" Param="tommy_createShop$tommy_createShopAndSetName" />
+		<Talk ID="22" NpcID="10063" Face="正常" Msg="Nhà hàng của bạn đã xây xong. Yilian đã chuẩn bị quà tân thủ tại Thương hội Momo." Option="Đi ngay$Về nhà hàng của tôi$Tôi biết rồi" Cmd="gm$act$none" Param="149$tommy_gotoMyShop$" />
+		<Talk ID="1001" NpcID="10063" Face="正常" Msg="Muốn trở thành học việc kiến trúc sư, trước tiên hãy hoàn thành các câu hỏi trên cuộn giấy da." Option="Tôi muốn thi$Không có việc gì" Cmd="act$none" Param="tommy_task221_ingame1$6" />
+		<Talk ID="1002" NpcID="10063" Face="正常" Msg="Chúc mừng bạn đã vượt thử thách đầu! Hãy xem kỹ năm bản thảo trên bàn rồi mang chúng lại cho tôi." Option="Tôi đi ngay$Không có việc gì" Cmd="act$none" Param="tommy_task221_ingame2$6" />
+		<Talk ID="1003" NpcID="10063" Face="正常" Msg="Bạn có năng khiếu vẽ bản thiết kế. Bây giờ hãy xuống công trường mô phỏng để thực hành." Option="Tôi đi ngay$Không có việc gì" Cmd="act$none" Param="tommy_task221_ingame3$6" />
+	</Talks>
+</Map>

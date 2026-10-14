@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	 	
+	</NpcList>
+	<Triggers>
+		
+		<Trigger ResName="go_364" Layer="controlLevel" Ex="70" Ey="408" Cmd="alt_map" Param="364" Tips="Hang động Ngầm" />
+		<Trigger ResName="go_367" Layer="controlLevel" Ex="860" Ey="322" Cmd="alt_map" Param="367" Tips="Bình nguyên Grier" />
+		<Trigger ResName="go_368" Layer="controlLevel" Ex="480" Ey="213" Cmd="alt_map" Param="368" Tips="Nhà Trưởng thôn Qipuli" />
+		
+	</Triggers>
+
+</Map>

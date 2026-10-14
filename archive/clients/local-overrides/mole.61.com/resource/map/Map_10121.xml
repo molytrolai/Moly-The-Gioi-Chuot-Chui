@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		
+	</Triggers>
+	
+	<Talks>
+		
+		<Talk ID="99" NpcID="10148" Face="正常" Msg="谢谢你，{$username}，又找到了一颗黑暗种子，送你一些礼物以表谢意！我们一定要阻止零的阴谋！" Option="Đúng vậy! Tuyệt đối không để hắn đạt được mục đích!" Cmd="act" Param="getItemFour" AddTaskOption="1" />
+	</Talks>
+</Map>

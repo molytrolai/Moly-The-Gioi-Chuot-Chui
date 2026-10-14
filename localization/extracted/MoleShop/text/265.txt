@@ -1,0 +1,19 @@
+[
+xmin -80
+ymin -40
+xmax 645
+ymax 365
+multiline 1
+readonly 1
+noselect 1
+wasstatic 1
+html 1
+font 161
+height 280
+color #ff663300
+align center
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]<p align="center"><font face="宋体" size="14" color="#663300" letterSpacing="0.000000" kerning="0"><b>金豆</b></font></p>

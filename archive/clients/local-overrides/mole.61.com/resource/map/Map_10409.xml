@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10034" Layer="depthLevel" Name="Hán Thanh" Ex="485" Ey="333" Cmd="s" Param="1" />
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="roomMC" Layer="depthLevel" Ex="482" Ey="193" Cmd="alt_map" Param="37" Tips="Đến Đỉnh núi Molylaya" />
+		
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10034" Face="正常" Msg="哈哈，又要过年啦，Cư dân Moly我们又见面了，看看今年我给你们打来了什么礼物！" Option="谢谢Hán Thanh大伯$我不感兴趣" Cmd="p$none" Param="SpringFestivalGiftPanel$null" />
+	</Talks>
+</Map>

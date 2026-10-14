@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_390" Layer="depthLevel" Ex="395" Ey="290" Cmd="alt_map" Param="390" Tips="Vườn hoa Ăn thịt" />
+		
+		<Trigger ResName="interact_2" Layer="controlLevel" Ex="648" Ey="310" Cmd="act" Param="openBQL" Tips="Nấm Lamu" />
+		
+	</Triggers>
+
+	<Talks>
+	</Talks>
+</Map>

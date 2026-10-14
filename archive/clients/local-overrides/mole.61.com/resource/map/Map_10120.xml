@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		
+		<Trigger ResName="go_336" Layer="controlLevel" Ex="580" Ey="145" Cmd="alt_map" Param="336" Tips="Điện thờ Thời Gian" />
+		<Trigger ResName="go_121" Layer="controlLevel" Ex="80" Ey="310" Cmd="alt_map" Param="121" Tips="Rừng rậm Thế giới Lamu" />
+		<Trigger ResName="go_61" Layer="controlLevel" Ex="120" Ey="450" Cmd="alt_map" Param="61" Tips="Tiền đồn Kỵ sĩ" />
+		<Trigger ResName="go_151" Layer="controlLevel" Ex="760" Ey="360" Cmd="alt_map" Param="151" Tips="Rừng Dây Leo" />
+	</Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

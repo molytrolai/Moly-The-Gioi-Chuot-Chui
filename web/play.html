@@ -1,0 +1,2114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moly - Thế Giới Chuột Chũi | Khung Chơi Game Chuyên Nghiệp</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <script src="/static/ruffle/ruffle.js"></script>
+  <style>
+    :root {
+      --primary: #ff7e1b;
+      --primary-hover: #ea580c;
+      --secondary: #3b82f6;
+      --dark-bg: #090d16;
+      --card-bg: #1e293b;
+      --border-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--dark-bg);
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation Toolbar */
+    .top-bar {
+      background: #111827;
+      border-bottom: 1px solid #1f2937;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-area a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .brand-area img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .server-status-pill {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.85); }
+    }
+
+    .controls-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-ctrl {
+      background: #1f2937;
+      color: #e2e8f0;
+      border: 1px solid #374151;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-ctrl:hover {
+      background: #374151;
+      color: #fff;
+      border-color: #4b5563;
+    }
+
+    .btn-ctrl-primary {
+      background: #ff7e1b;
+      border-color: #ea580c;
+      color: #fff;
+    }
+    .btn-ctrl-primary:hover {
+      background: #ea580c;
+    }
+
+    .btn-ctrl-purple {
+      background: #7c3aed;
+      border-color: #6d28d9;
+      color: #fff;
+    }
+    .btn-ctrl-purple:hover {
+      background: #6d28d9;
+    }
+
+    .btn-ctrl-pink {
+      background: #db2777;
+      border-color: #be185d;
+      color: #fff;
+    }
+    .btn-ctrl-pink:hover {
+      background: #be185d;
+    }
+
+    .btn-ctrl-green {
+      background: #059669;
+      border-color: #047857;
+      color: #fff;
+    }
+    .btn-ctrl-green:hover {
+      background: #047857;
+    }
+
+    .btn-ctrl-blue {
+      background: #2563eb;
+      border-color: #1d4ed8;
+      color: #fff;
+    }
+    .btn-ctrl-blue:hover {
+      background: #1d4ed8;
+    }
+
+    /* SSO Bar */
+    .sso-bar {
+      width: 960px;
+      max-width: 100%;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .sso-content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .sso-status-text {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: #cbd5e1;
+      flex-wrap: wrap;
+    }
+    .status-dot-green {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+    .status-dot-grey {
+      width: 8px;
+      height: 8px;
+      background: #64748b;
+      border-radius: 50%;
+    }
+    .sso-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Main Theater Game Stage */
+    .game-viewport {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 10px;
+      position: relative;
+    }
+
+    .stage-container {
+      width: 960px;
+      height: 560px;
+      max-width: 100%;
+      background: #000000;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px #334155;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    /* Fullscreen Mode: fills 100% of screen */
+    .stage-container:fullscreen,
+    .stage-container:-webkit-full-screen {
+      width: 100vw !important;
+      height: 100vh !important;
+      max-width: 100vw !important;
+      max-height: 100vh !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: #000 !important;
+    }
+
+    #moly-ruffle-player {
+      width: 100% !important;
+      height: 100% !important;
+      display: block !important;
+      background: #000 !important;
+    }
+
+    .stage-container:fullscreen #moly-ruffle-player,
+    .stage-container:-webkit-full-screen #moly-ruffle-player {
+      width: 100vw !important;
+      height: 100vh !important;
+    }
+
+    /* Loading Overlay */
+    .loading-overlay {
+      position: absolute;
+      inset: 0;
+      background: #111827;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      z-index: 10;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-overlay img {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      animation: bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .loading-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #334155;
+      border-top-color: #ff7e1b;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: #94a3b8;
+    }
+
+    /* Quick hints footer */
+    .quick-hint-bar {
+      margin-top: 10px;
+      color: #64748b;
+      font-size: 12px;
+      text-align: center;
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Modal dialog styling */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 15px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+      animation: modalFadeIn 0.25s ease-out;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 10px;
+    }
+
+    .modal-header h3 {
+      font-size: 17px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .modal-close:hover {
+      color: #fff;
+      background: #334155;
+    }
+
+    .modal-input {
+      width: 100%;
+      padding: 9px 12px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .modal-input:focus {
+      border-color: #3b82f6;
+    }
+    .modal-input[readonly] {
+      background: #1e293b;
+      color: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    .modal-label {
+      display: block;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .modal-hint {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: -6px;
+      margin-bottom: 8px;
+    }
+
+    .tab-btn-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 14px;
+      background: #0f172a;
+      padding: 4px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 6px 8px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .tab-btn.active {
+      background: #3b82f6;
+      color: #fff;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1000px) {
+      .stage-container {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 960 / 560;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Toolbar -->
+  <header class="top-bar">
+    <div class="brand-area">
+      <a href="/" title="Về Trang Chủ Moly - Thế Giới Chuột Chũi VN">
+        <img src="/assets/logo-horizontal.png" alt="Moly - Thế Giới Chuột Chũi VN">
+      </a>
+      <div class="server-status-pill">
+        <div class="pulse-dot"></div>
+        <span>Máy chủ Moly - Thế Giới Chuột Chũi VN: Online</span>
+      </div>
+    </div>
+    
+    <div class="controls-area">
+      <a href="/" class="btn-ctrl">🏠 Trang Chủ</a>
+      <button id="nav-btn-account" class="btn-ctrl btn-ctrl-primary" onclick="openAccountModal()">👤 Tài Khoản</button>
+      <button class="btn-ctrl btn-ctrl-purple" onclick="openGiftcodeModal()">🎁 Giftcode</button>
+      <button class="btn-ctrl btn-ctrl-pink" onclick="openSuperLamuModal()">🐾 Đậu Đậu Siêu Cấp</button>
+      <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="btn-ctrl btn-ctrl-green" download="Moly Thế Giới Chuột chũi.apk">📱 Tải Android</a>
+      <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="btn-ctrl btn-ctrl-blue" download="Moly Thế Giới Chuột chũi.zip">💻 Tải Bản PC</a>
+      <button id="btn-scale-toggle" class="btn-ctrl" onclick="toggleScaleMode()">📐 Tỷ Lệ: Chuẩn (12:7)</button>
+      <button id="btn-fullscreen" class="btn-ctrl" style="background: #0284c7;">⛶ Toàn Màn Hình</button>
+    </div>
+  </header>
+
+  <!-- Focused Game Viewport -->
+  <main class="game-viewport">
+    
+    <!-- Web SSO & Game Authorization Bar -->
+    <div id="web-sso-bar" class="sso-bar">
+      <!-- Guest view -->
+      <div id="sso-guest-view" class="sso-content">
+        <div class="sso-status-text">
+          <span class="status-dot-grey"></span>
+          <span>Chưa đăng nhập Web. Đăng nhập để lưu hồ sơ cư dân và <strong>Ủy quyền vào game 1-Click</strong>.</span>
+        </div>
+        <div class="sso-actions">
+          <button class="btn-ctrl btn-ctrl-primary" onclick="openLoginTab()">Đăng Nhập</button>
+          <button class="btn-ctrl" onclick="openRegisterTab()">Đăng Ký Cư Dân Mới</button>
+        </div>
+      </div>
+
+      <!-- Logged in view -->
+      <div id="sso-logged-view" class="sso-content" style="display: none;">
+        <div class="sso-status-text">
+          <span class="status-dot-green"></span>
+          <span>Cư dân: <strong id="sso-user-fullname" style="color: #38bdf8;">-</strong> (@<span id="sso-user-username">-</span>)</span>
+          <span class="badge" id="sso-user-id-badge" style="background: #334155; color: #fff; padding: 2px 7px; border-radius: 4px;">ID: -</span>
+          <span class="badge" id="sso-user-vip-badge" style="background: #7c3aed; color: #fff; padding: 2px 7px; border-radius: 4px;">VIP 1</span>
+          <span class="badge" id="sso-user-beans-badge" style="background: #eab308; color: #000; padding: 2px 7px; border-radius: 4px; font-weight: bold;">0 Đậu</span>
+        </div>
+        <div class="sso-actions">
+          <label style="font-size: 12px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 4px; cursor: pointer;">
+            <input type="checkbox" id="chk-auto-sso" onchange="toggleAutoSso(this.checked)"> Tự ủy quyền
+          </label>
+          <button id="btn-sso-auth" class="btn-ctrl btn-ctrl-green" onclick="authorizeGameLogin()">⚡ Vào Game Bằng Nick Này</button>
+          <button class="btn-ctrl" onclick="copyMyCredentials()">📋 Copy ID</button>
+          <button class="btn-ctrl" onclick="openDashboardTab()">👤 Hồ Sơ</button>
+          <button class="btn-ctrl" style="background: #dc2626;" onclick="handleWebLogout()">🚪 Đăng Xuất</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flash Game Stage Container -->
+    <div id="game-stage" class="stage-container">
+      <div id="loading-overlay" class="loading-overlay">
+        <img src="/assets/logo-square.png" alt="Moly Logo">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Đang tải Flash Player và kết nối máy chủ Moly - Thế Giới Chuột Chũi VN...</div>
+      </div>
+    </div>
+
+    <!-- Minimal Hint Bar below Canvas -->
+    <div class="quick-hint-bar">
+      <div>
+        👑 <strong>Cư dân Moly:</strong> Đăng nhập hoặc tạo tài khoản trên web để dùng tính năng <strong>Ủy Quyền 1-Click</strong> vào thẳng game!
+      </div>
+      <div>
+        Phím tắt: Bấm <strong>⛶ Toàn Màn Hình</strong> hoặc phím <strong>F11</strong> để mở rộng khung chơi toàn bộ màn hình.
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= MODAL: TÀI KHOẢN & ĐĂNG KÝ / ĐỔI MẬT KHẨU ================= -->
+  <div id="modal-account" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-ctrl" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeAccountModal()">← Trở lại</button>
+          <h3 id="modal-account-title">👤 Quản Lý Tài Khoản Cư Dân</h3>
+        </div>
+        <button class="modal-close" onclick="closeAccountModal()" title="Đóng cửa sổ (ESC)">&times;</button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="tab-btn-row">
+        <button id="tab-btn-login" class="tab-btn active" onclick="switchAccountTab('login')">Đăng Nhập</button>
+        <button id="tab-btn-reg" class="tab-btn" onclick="switchAccountTab('reg')">Đăng Ký Mới</button>
+        <button id="tab-btn-forgot" class="tab-btn" onclick="switchAccountTab('forgot')">Quên / Đổi Pass</button>
+        <button id="tab-btn-dashboard" class="tab-btn" style="display: none;" onclick="switchAccountTab('dashboard')">👤 Hồ Sơ Cư Dân</button>
+        <button id="tab-btn-recharge" class="tab-btn" onclick="switchAccountTab('recharge')">💎 Mua Đậu &amp; Hội Viên</button>
+      </div>
+
+      <!-- Tab 1: Đăng Nhập -->
+      <div id="tab-content-login">
+        <form onsubmit="handleWebLogin(event)">
+          <label class="modal-label">Tên Đăng Nhập, Mole ID hoặc Email</label>
+          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly, 64298193 hoặc 00000000" required>
+          <label class="modal-label">Mật Khẩu</label>
+          <input type="password" id="login-password" class="modal-input" placeholder="Nhập mật khẩu..." required>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 12px; color: #94a3b8;">
+            <label style="display: flex; align-items: center; gap: 4px; cursor: pointer;">
+              <input type="checkbox" id="login-remember" checked> Ghi nhớ đăng nhập
+            </label>
+            <a href="javascript:void(0)" onclick="openForgotTab()" style="color: #38bdf8; text-decoration: none;">Quên mật khẩu?</a>
+          </div>
+
+          <div id="login-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="javascript:void(0)" onclick="openRegisterTab()" style="color: #ff7e1b; font-size: 13px; text-decoration: none; font-weight: 600;">👉 Chưa có tài khoản? Đăng ký ngay</a>
+            <button type="submit" id="btn-submit-login" class="btn-ctrl btn-ctrl-primary">Đăng Nhập</button>
+          </div>
+
+          <!-- Cổng Quản Trị Viên (Ẩn mờ kín đáo, có xác thực mã PIN) -->
+          <div style="text-align: center; margin-top: 18px; padding-top: 10px; border-top: 1px dashed rgba(255, 255, 255, 0.1);">
+            <a href="/admin.html" style="color: #64748b; font-size: 11px; text-decoration: none; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">🔒 Cổng Quản Trị Hệ Thống</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 2: Đăng Ký Tài Khoản Mới -->
+      <div id="tab-content-reg" style="display: none;">
+        <form onsubmit="handleWebRegister(event)">
+          <label class="modal-label">Họ và Tên</label>
+          <input type="text" id="reg-fullname" class="modal-input" placeholder="VD: Nguyễn Văn An" required maxlength="50">
+
+          <label class="modal-label">Tên Đăng Nhập (Username)</label>
+          <input type="text" id="reg-username" class="modal-input" placeholder="VD: an_moly2026 (4-30 ký tự, a-z, 0-9, _)" required pattern="[a-zA-Z0-9_]{4,30}">
+          <div class="modal-hint">⚠️ Tên đăng nhập là định danh cố định, không thể thay đổi sau khi tạo. Không chứa dấu hay ký tự đặc biệt.</div>
+
+          <label class="modal-label">Biệt Danh Trong Game (Nickname)</label>
+          <input type="text" id="reg-nickname" class="modal-input" placeholder="VD: Bé Chuột Chũi Dũng Cảm" required maxlength="16">
+
+          <label class="modal-label">Email / Gmail</label>
+          <input type="email" id="reg-email" class="modal-input" placeholder="VD: annguyen@gmail.com" required>
+          <div class="modal-hint">Dùng để xác thực và khôi phục mật khẩu khi cần.</div>
+
+          <label class="modal-label">Ngày Tháng Năm Sinh</label>
+          <input type="date" id="reg-birthday" class="modal-input" required value="2008-01-01">
+
+          <label class="modal-label">Mật Khẩu (Tối thiểu 6 ký tự)</label>
+          <input type="password" id="reg-password" class="modal-input" placeholder="Nhập mật khẩu..." required minlength="6">
+
+          <label class="modal-label">Xác Nhận Mật Khẩu</label>
+          <input type="password" id="reg-password-confirm" class="modal-input" placeholder="Nhập lại mật khẩu..." required minlength="6">
+
+          <div id="reg-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+            <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #38bdf8; font-size: 13px; text-decoration: none;">👉 Đã có tài khoản? Đăng nhập ngay</a>
+            <button type="submit" id="btn-submit-reg" class="btn-ctrl btn-ctrl-primary">Tạo Tài Khoản Ngay</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 3: Quên / Đặt Lại Mật Khẩu Trước Khi Đăng Nhập -->
+      <div id="tab-content-forgot" style="display: none;">
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
+          Nhập Tên đăng nhập (hoặc Mole ID) cùng Email và Ngày sinh đã đăng ký để đặt lại mật khẩu mới:
+        </p>
+        <form onsubmit="handleResetPassword(event)">
+          <label class="modal-label">Tên Đăng Nhập hoặc ID Mole</label>
+          <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: an_moly2026 hoặc ID" required>
+
+          <label class="modal-label">Email Đã Đăng Ký</label>
+          <input type="email" id="forgot-email" class="modal-input" placeholder="VD: annguyen@gmail.com" required>
+
+          <label class="modal-label">Ngày Sinh Đã Đăng Ký</label>
+          <input type="date" id="forgot-birthday" class="modal-input" required>
+
+          <label class="modal-label">Mật Khẩu Mới</label>
+          <input type="password" id="forgot-new-pwd" class="modal-input" placeholder="Mật khẩu mới (tối thiểu 6 ký tự)" required minlength="6">
+
+          <label class="modal-label">Xác Nhận Mật Khẩu Mới</label>
+          <input type="password" id="forgot-new-pwd-confirm" class="modal-input" placeholder="Nhập lại mật khẩu mới..." required minlength="6">
+
+          <div id="forgot-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #94a3b8; font-size: 13px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
+            <button type="submit" id="btn-submit-forgot" class="btn-ctrl btn-ctrl-purple">Đặt Lại Mật Khẩu</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 4: Bảng Quản Lý Hồ Sơ Cư Dân (Hiển thị khi ĐÃ đăng nhập) -->
+      <div id="tab-content-dashboard" style="display: none;">
+        <!-- Card tổng quan -->
+        <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <div>
+              <strong id="dash-fullname" style="color: #38bdf8; font-size: 16px;">-</strong>
+              <div style="font-size: 12px; color: #94a3b8;">Tên tài khoản: <span id="dash-username" style="color: #fff; font-weight: bold;">-</span> <span class="badge" style="background: #334155; color: #94a3b8; padding: 1px 5px; border-radius: 3px; font-size: 10px;">Cố định</span></div>
+            </div>
+            <span id="dash-vip-badge" class="badge" style="background: #7c3aed; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 12px;">VIP 1</span>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #cbd5e1; border-top: 1px solid #1e293b; padding-top: 8px;">
+            <div>ID Mole: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: none; border: none; color: #38bdf8; cursor: pointer; font-size: 11px;">[Copy]</button></div>
+            <div>Đậu Vàng: <strong id="dash-beans" style="color: #fde047;">0</strong> Đậu</div>
+            <div>Điểm VIP: <strong id="dash-points" style="color: #10b981;">0</strong> (Max VIP 19)</div>
+            <div>Thú Cưng: <span id="dash-lamu" style="color: #ec4899;">-</span></div>
+          </div>
+        </div>
+
+        <!-- Form sửa thông tin cơ bản -->
+        <form onsubmit="handleUpdateProfile(event)" style="margin-bottom: 14px;">
+          <h4 style="font-size: 13px; color: #e2e8f0; margin-bottom: 8px; border-bottom: 1px solid #334155; padding-bottom: 4px;">Cập Nhật Thông Tin Cơ Bản</h4>
+          
+          <label class="modal-label">Họ và Tên</label>
+          <input type="text" id="dash-edit-fullname" class="modal-input" required maxlength="50">
+
+          <label class="modal-label">Biệt Danh Trong Game</label>
+          <input type="text" id="dash-edit-nickname" class="modal-input" required maxlength="16">
+
+          <label class="modal-label">Email / Gmail</label>
+          <input type="email" id="dash-edit-email" class="modal-input" required>
+
+          <label class="modal-label">Ngày Sinh</label>
+          <input type="date" id="dash-edit-birthday" class="modal-input" required>
+
+          <div id="dash-update-msg" style="font-size: 12px; margin-bottom: 8px; display: none;"></div>
+          <div style="display: flex; justify-content: flex-end;">
+            <button type="submit" class="btn-ctrl btn-ctrl-blue" style="font-size: 12px; padding: 5px 12px;">Lưu Thay Đổi</button>
+          </div>
+        </form>
+
+        <!-- Form đổi mật khẩu -->
+        <form onsubmit="handleDashboardPasswordChange(event)" style="border-top: 1px solid #334155; padding-top: 12px;">
+          <h4 style="font-size: 13px; color: #e2e8f0; margin-bottom: 8px;">Đổi Mật Khẩu Tài Khoản</h4>
+          <input type="password" id="dash-old-pwd" class="modal-input" placeholder="Mật khẩu hiện tại..." required>
+          <input type="password" id="dash-new-pwd" class="modal-input" placeholder="Mật khẩu mới (tối thiểu 6 ký tự)" required minlength="6">
+          <input type="password" id="dash-new-pwd-confirm" class="modal-input" placeholder="Xác nhận mật khẩu mới..." required minlength="6">
+          <div id="dash-pwd-msg" style="font-size: 12px; margin-bottom: 8px; display: none;"></div>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn-ctrl" style="background: #dc2626;" onclick="handleWebLogout()">🚪 Đăng Xuất</button>
+            <button type="submit" class="btn-ctrl btn-ctrl-green" style="font-size: 12px; padding: 5px 12px;">Đổi Mật Khẩu</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 5: Mua Đậu & Trở Thành Hội Viên Siêu Cấp -->
+      <div id="tab-content-recharge" style="display: none;">
+        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
+          Kích hoạt quyền lợi chỉ từ <strong>10.000đ</strong> để nhận <strong>100 Đậu Vàng</strong> và đạt cấp <strong>Hội Viên Siêu Cấp VIP 2 (100 điểm)</strong>. Điểm tích lũy được <strong>bảo lưu vĩnh viễn</strong>, cấp bậc tối đa lên đến <strong>VIP 19 Thần Thoại</strong>!
+        </p>
+
+        <!-- Trạng Thái Xác Thực Nhân Vật Nhận Đậu -->
+        <div id="recharge-character-area">
+          <!-- Khi ĐÃ đăng nhập trên web -->
+          <div id="rc-logged-view" style="display: none; background: rgba(16, 185, 129, 0.12); border: 1px solid #059669; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+            <div style="font-size: 11px; color: #34d399; font-weight: bold; text-transform: uppercase;">✅ Nhân Vật Của Bạn (Đang Đăng Nhập):</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <div>
+                <strong id="rc-logged-nickname" style="font-size: 14px; color: #fff;">-</strong>
+                <div style="font-size: 12px; color: #cbd5e1;">Tài khoản: <span id="rc-logged-username">-</span> &bull; ID: <strong id="rc-logged-uid" style="color: #fde047;">-</strong></div>
+              </div>
+              <div style="text-align: right;">
+                <span id="rc-logged-vip" class="badge" style="background: #7c3aed; color: #fff; padding: 3px 8px; border-radius: 4px;">VIP 1</span>
+                <div style="font-size: 11px; color: #fde047; margin-top: 2px;"><span id="rc-logged-beans">0</span> Đậu</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Khi CHƯA đăng nhập: Bắt buộc tra cứu & xác thực đúng nhân vật trước khi mua -->
+          <div id="rc-guest-view" style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
+            <label class="modal-label">Nhập Mole ID của nhân vật cần mua:</label>
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <input type="text" id="recharge-uid-input" class="modal-input" placeholder="VD: 64298193 hoặc 00000000" style="margin-bottom: 0;">
+              <button type="button" class="btn-ctrl btn-ctrl-primary" onclick="verifyRechargeCharacter()">🔍 Xác Thực Nhân Vật</button>
+            </div>
+            
+            <div id="rc-target-card" style="display: none; background: rgba(30, 41, 59, 0.95); border: 1px solid #3b82f6; border-radius: 8px; padding: 10px; margin-top: 8px;">
+              <div style="font-size: 11px; color: #38bdf8; font-weight: bold;">✅ Đã Tìm Thấy Nhân Vật:</div>
+              <div style="display: flex; justify-content: space-between; align-items: center; margin: 4px 0;">
+                <strong id="rc-target-nickname" style="font-size: 14px; color: #fde047;">-</strong>
+                <span id="rc-target-vip" class="badge" style="background: #7c3aed; color: #fff; padding: 2px 7px; border-radius: 4px;">VIP 1</span>
+              </div>
+              <div style="font-size: 11px; color: #cbd5e1;">Tài khoản: <span id="rc-target-uname">-</span> &bull; Số Đậu hiện có: <span id="rc-target-beans">0</span></div>
+              
+              <label style="display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; color: #a7f3d0; cursor: pointer;">
+                <input type="checkbox" id="rc-confirm-checkbox" onchange="handleTargetConfirmChange(this.checked)"> Tôi xác nhận mua Đậu cho đúng nhân vật này
+              </label>
+            </div>
+            <div id="rc-verify-err" style="display: none; font-size: 12px; color: #ef4444; margin-top: 6px;"></div>
+          </div>
+        </div>
+
+        <!-- CHỌN 2 PHƯƠNG THỨC MUA ĐẬU -->
+        <div style="margin-bottom: 14px;">
+          <label class="modal-label" style="font-size: 13px; font-weight: bold; color: #fde047;">Chọn Phương Thức Mua Đậu &amp; Hội Viên:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px;">
+            <button type="button" id="rc-method-btn-card" class="btn-ctrl" style="background: #ff7e1b; color: #fff; padding: 10px 8px; font-size: 13px; font-weight: bold; border: 2px solid #ea580c; border-radius: 8px;" onclick="switchRechargeMethod('card')">
+              💳 Thẻ Cào Điện Thoại
+            </button>
+            <button type="button" id="rc-method-btn-qr" class="btn-ctrl" style="background: #1e293b; color: #94a3b8; padding: 10px 8px; font-size: 13px; font-weight: bold; border: 2px solid #334155; border-radius: 8px;" onclick="switchRechargeMethod('qr')">
+              📱 Chuyển Khoản Mã QR
+            </button>
+          </div>
+        </div>
+
+        <!-- PHƯƠNG THỨC 1: THẺ CÀO -->
+        <div id="rc-method-card-view">
+          <form onsubmit="handleRechargeCardSubmit(event)">
+            <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
+              <label class="modal-label">Loại Thẻ Nạp</label>
+              <select id="rc-card-telco" class="modal-input" style="cursor: pointer;" required>
+                <option value="Viettel">Viettel</option>
+                <option value="Vinaphone">Vinaphone</option>
+                <option value="Mobifone">Mobifone</option>
+                <option value="Zing">Thẻ Zing Card</option>
+                <option value="Gate">Thẻ FPT Gate</option>
+                <option value="Vcoin">Thẻ Vcoin (VTC)</option>
+              </select>
+
+              <label class="modal-label">Mệnh Giá Thẻ</label>
+              <select id="rc-card-amount" class="modal-input" style="cursor: pointer;" required>
+                <option value="10000">10.000đ &bull; Nhận 100 Đậu Vàng + VIP 2</option>
+                <option value="20000">20.000đ &bull; Nhận 200 Đậu Vàng + VIP 2</option>
+                <option value="50000">50.000đ &bull; Nhận 500 Đậu Vàng + VIP 3</option>
+                <option value="100000">100.000đ &bull; Nhận 1.000 Đậu Vàng + VIP 5</option>
+                <option value="200000">200.000đ &bull; Nhận 2.000 Đậu Vàng + VIP 6</option>
+                <option value="500000">500.000đ &bull; Nhận 5.000 Đậu Vàng + VIP 9</option>
+                <option value="1000000">1.000.000đ &bull; Nhận 10.000 Đậu Vàng + VIP 13</option>
+              </select>
+
+              <label class="modal-label">Số Seri Thẻ</label>
+              <input type="text" id="rc-card-serial" class="modal-input" placeholder="Nhập số seri in trên thẻ..." required minlength="6">
+
+              <label class="modal-label">Mã Thẻ (Mã Cào / Mã PIN)</label>
+              <input type="text" id="rc-card-code" class="modal-input" placeholder="Nhập mã thẻ cào bí mật..." required minlength="6">
+            </div>
+
+            <div id="rc-card-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn-ctrl" style="background: #334155; color: #fff;" onclick="closeAccountModal()">← Trở lại</button>
+              <button type="submit" id="btn-submit-card" class="btn-ctrl btn-ctrl-primary" style="padding: 9px 18px;">🚀 Nạp Thẻ Cào Ngay</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- PHƯƠNG THỨC 2: QUÉT MÃ QR & CHUYỂN KHOẢN -->
+        <div id="rc-method-qr-view" style="display: none;">
+          <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
+            <label class="modal-label">Chọn Mệnh Giá Nạp</label>
+            <select id="rc-qr-amount-select" class="modal-input" onchange="updateQrAmountDisplay(this.value)" style="cursor: pointer;">
+              <option value="10000">10.000đ &bull; Nhận 100 Đậu Vàng + Kích hoạt VIP 2</option>
+              <option value="20000">20.000đ &bull; Nhận 200 Đậu Vàng + VIP 2</option>
+              <option value="50000" selected>50.000đ &bull; Nhận 500 Đậu Vàng + Thăng Cấp VIP 3</option>
+              <option value="100000">100.000đ &bull; Nhận 1.000 Đậu Vàng + Thăng Cấp VIP 5</option>
+              <option value="200000">200.000đ &bull; Nhận 2.000 Đậu Vàng + Thăng Cấp VIP 6</option>
+              <option value="500000">500.000đ &bull; Nhận 5.000 Đậu Vàng + Thăng Cấp VIP 9</option>
+              <option value="1000000">1.000.000đ &bull; Nhận 10.000 Đậu Vàng + VIP 13</option>
+              <option value="custom">Số tiền khác (Tự nhập tối thiểu 10.000đ)...</option>
+            </select>
+
+            <div id="rc-qr-custom-amount-box" style="display: none; margin-bottom: 10px;">
+              <label class="modal-label">Nhập Số Tiền Cần Nạp (VNĐ):</label>
+              <input type="number" id="rc-qr-custom-amount" class="modal-input" placeholder="Tối thiểu 10.000" min="10000" step="10000" oninput="updateQrCustomAmount(this.value)">
+            </div>
+
+            <!-- Khung Chi Tiết Chuyển Khoản & Mã QR -->
+            <div style="display: grid; grid-template-columns: 140px 1fr; gap: 14px; background: rgba(30, 41, 59, 0.8); border: 1px solid #475569; border-radius: 8px; padding: 12px; margin-top: 10px; align-items: center;">
+              <div style="text-align: center;">
+                <img id="rc-qr-image" src="/assets/payment_qr_placeholder.png" alt="Mã QR Thanh Toán" style="width: 130px; height: 130px; border-radius: 6px; border: 2px solid #ff7e1b; background: #fff; object-fit: contain;">
+                <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">Quét Bằng App Ngân Hàng</div>
+              </div>
+              <div style="font-size: 12px; color: #e2e8f0; line-height: 1.6;">
+                <div>Ngân Hàng: <strong id="rc-qr-bank" style="color: #60a5fa;">MB Bank</strong></div>
+                <div>Số Tài Khoản: <strong id="rc-qr-stk" style="color: #fde047; font-size: 13px;">0888888888</strong> <button type="button" onclick="copyText(document.getElementById('rc-qr-stk').textContent, 'Đã sao chép STK!')" style="background: none; border: none; color: #38bdf8; cursor: pointer; font-size: 11px;">[Copy]</button></div>
+                <div>Chủ Tài Khoản: <strong id="rc-qr-holder" style="color: #fff;">ADMIN MOLY</strong></div>
+                <div>Số Tiền: <strong id="rc-qr-amt-disp" style="color: #34d399; font-size: 13px;">50.000đ</strong></div>
+                <div style="background: rgba(234, 88, 12, 0.15); border: 1px dashed #ea580c; border-radius: 6px; padding: 6px; margin-top: 4px;">
+                  <div style="font-size: 11px; color: #fdba74;">Nội Dung Chuyển Khoản (Bắt buộc):</div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+                    <strong id="rc-qr-code" style="color: #fde047; font-size: 14px; letter-spacing: 1px;">MOLY-LOAD</strong>
+                    <button type="button" class="btn-ctrl btn-ctrl-primary" style="padding: 2px 8px; font-size: 11px;" onclick="copyTransferCode()">Sao Chép</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="rc-qr-note" style="font-size: 11px; color: #94a3b8; margin-top: 8px; line-height: 1.4;">
+              ⚠️ Quét mã QR hoặc chuyển khoản với đúng Nội Dung Chuyển Khoản ở trên. Sau khi chuyển xong, bấm "Tôi Đã Chuyển Khoản Xong" để hệ thống kiểm tra và duyệt trong vòng 5 - 15 phút.
+            </div>
+          </div>
+
+          <div id="rc-qr-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button type="button" class="btn-ctrl" style="background: #334155; color: #fff;" onclick="closeAccountModal()">← Trở lại</button>
+            <button type="button" id="btn-submit-qr" class="btn-ctrl btn-ctrl-green" style="padding: 9px 18px;" onclick="handleRechargeQrSubmit()">✅ Tôi Đã Chuyển Khoản Xong</button>
+          </div>
+        </div>
+
+        <!-- LỊCH SỬ GIAO DỊCH GẦN ĐÂY CỦA CƯ DÂN -->
+        <div style="margin-top: 18px; border-top: 1px solid #334155; padding-top: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h4 style="font-size: 12px; color: #94a3b8; text-transform: uppercase;">📋 Đơn Nạp Gần Đây Của Bạn:</h4>
+            <button type="button" onclick="loadMyRechargeHistory()" style="background: none; border: none; color: #38bdf8; font-size: 11px; cursor: pointer;">🔄 Cập Nhật</button>
+          </div>
+          <div id="rc-my-orders-list" style="font-size: 11px; max-height: 120px; overflow-y: auto;">
+            <div style="color: #64748b; text-align: center; padding: 6px;">Chưa có giao dịch nào được ghi nhận.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: NHẬP GIFTCODE ================= -->
+  <div id="modal-gc" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-ctrl" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeGiftcodeModal()">← Trở lại</button>
+          <h3>🎁 Nhập Mã Quà Tặng / Giftcode</h3>
+        </div>
+        <button class="modal-close" onclick="closeGiftcodeModal()" title="Đóng cửa sổ (ESC)">&times;</button>
+      </div>
+      <p style="color: #94a3b8; font-size: 12px; margin-bottom: 12px;">
+        Nhập ID Mole của bạn và Mã quà tặng (Mã tân thủ: <strong style="color: #fde047;">TANTHU2026</strong> (+100 Đậu, VIP 3 ngày), <strong style="color: #fde047;">MOLYVIET</strong> (+200 Đậu, VIP 7 ngày)):
+      </p>
+      <form id="play-gc-form" onsubmit="handlePlayRedeem(event)">
+        <label class="modal-label">ID Mole Của Bạn</label>
+        <input type="text" id="play-gc-uid" class="modal-input" placeholder="VD: 64298193 hoặc 00000000" required>
+        <label class="modal-label">Mã Giftcode</label>
+        <input type="text" id="play-gc-code" class="modal-input" placeholder="VD: TANTHU2026" style="text-transform: uppercase;" required>
+        <div id="play-gc-msg" style="font-size: 13px; margin-bottom: 12px; display: none;"></div>
+        <div style="display: flex; gap: 8px; justify-content: flex-end;">
+          <button type="button" class="btn-ctrl" onclick="closeGiftcodeModal()">← Trở lại</button>
+          <button type="submit" class="btn-ctrl btn-ctrl-green" id="btn-submit-play-gc">Kích Hoạt Ngay</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: ĐẬU ĐẬU SIÊU CẤP ĐA CHỦNG LOÀI ================= -->
+  <div id="modal-lamu" class="modal-overlay">
+    <div class="modal-box" style="max-width: 600px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-ctrl" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeSuperLamuModal()">← Trở lại</button>
+          <h3>🐾 Viện Nghiên Cứu Đậu Đậu Siêu Cấp</h3>
+        </div>
+        <button class="modal-close" onclick="closeSuperLamuModal()" title="Đóng cửa sổ (ESC)">&times;</button>
+      </div>
+
+      <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; border: 1px solid #475569;">
+        <img src="/assets/super_lamu_species.jpg" alt="Đậu Đậu Siêu Cấp" style="width: 100%; height: auto; display: block;">
+      </div>
+
+      <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+        <input type="text" id="lamu-uid-input" class="modal-input" placeholder="Nhập ID Mole (VD: 64298193 hoặc 00000000)" style="margin-bottom: 0;">
+        <button type="button" class="btn-ctrl btn-ctrl-blue" onclick="fetchLamuSpeciesStatus()">Kiểm Tra</button>
+      </div>
+
+      <div id="lamu-status-card" style="display: none; background: #0f172a; border-radius: 8px; padding: 12px; margin-bottom: 12px; border: 1px solid #334155;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <div>
+            <span style="color: #94a3b8; font-size: 12px;">Đang đồng hành:</span>
+            <strong id="lamu-cur-name" style="color: #fde047; font-size: 14px; margin-left: 6px;">-</strong>
+          </div>
+          <div>
+            <span class="badge" id="lamu-vip-badge" style="background: #7c3aed; color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 11px;">VIP -</span>
+          </div>
+        </div>
+        <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 6px;">
+          Cấp phát triển: <strong id="lamu-cur-level" style="color: #38bdf8;">Lv.1</strong> &bull;
+          Kinh nghiệm: <span id="lamu-cur-exp">0</span>/<span id="lamu-cur-maxexp">100</span> EXP
+        </div>
+        <div style="width: 100%; height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; margin-bottom: 8px;">
+          <div id="lamu-exp-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #10b981, #3b82f6); transition: width 0.3s;"></div>
+        </div>
+        <button type="button" class="btn-ctrl btn-ctrl-green" style="font-size: 11px; padding: 5px 12px;" onclick="trainCurrentLamu()">🌱 Nuôi Dưỡng (+50 EXP)</button>
+      </div>
+
+      <div style="color: #94a3b8; font-size: 11px; margin-bottom: 6px;">
+        Chọn chủng loại Đậu Đậu Siêu Cấp đồng hành (Mỗi loài có tiến trình cày cấp riêng, bảo lưu khi đổi lại):
+      </div>
+
+      <div id="lamu-species-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; max-height: 170px; overflow-y: auto; margin-bottom: 12px;">
+        <!-- Species items injected here -->
+      </div>
+
+      <div id="lamu-action-msg" style="font-size: 12px; margin-bottom: 8px; display: none;"></div>
+
+      <div style="display: flex; justify-content: flex-end;">
+        <button type="button" class="btn-ctrl" onclick="closeSuperLamuModal()">← Trở lại</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Scale Mode state (12:7 standard vs Stretch) ---
+    let isStretchMode = false;
+
+    function toggleScaleMode() {
+      const player = document.getElementById("moly-ruffle-player");
+      const btn = document.getElementById("btn-scale-toggle");
+      isStretchMode = !isStretchMode;
+      if (isStretchMode) {
+        if (player && player.setScale) player.setScale("exactfit");
+        btn.textContent = "↔️ Tỷ Lệ: Kéo Dãn (Fit)";
+        btn.style.color = "#38bdf8";
+      } else {
+        if (player && player.setScale) player.setScale("showall");
+        btn.textContent = "📐 Tỷ Lệ: Chuẩn (12:7)";
+        btn.style.color = "#e2e8f0";
+      }
+    }
+
+    // --- Modal Helpers ---
+    function openAccountModal() {
+      const u = getSavedUser();
+      if (u) {
+        openDashboardTab();
+      } else {
+        openLoginTab();
+      }
+      document.getElementById("modal-account").classList.add("open");
+    }
+    function closeAccountModal() { document.getElementById("modal-account").classList.remove("open"); }
+    function openGiftcodeModal() {
+      const u = getSavedUser();
+      if (u) { document.getElementById("play-gc-uid").value = u.display_id || u.user_id; }
+      document.getElementById("modal-gc").classList.add("open");
+    }
+    function closeGiftcodeModal() { document.getElementById("modal-gc").classList.remove("open"); }
+    function openSuperLamuModal() {
+      const u = getSavedUser();
+      if (u) {
+        document.getElementById("lamu-uid-input").value = u.display_id || u.user_id;
+        fetchLamuSpeciesStatus();
+      }
+      document.getElementById("modal-lamu").classList.add("open");
+    }
+    function closeSuperLamuModal() { document.getElementById("modal-lamu").classList.remove("open"); }
+
+    function switchAccountTab(tab) {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("tab-content-login").style.display = tab === "login" ? "block" : "none";
+      document.getElementById("tab-content-reg").style.display = tab === "reg" ? "block" : "none";
+      document.getElementById("tab-content-forgot").style.display = tab === "forgot" ? "block" : "none";
+      document.getElementById("tab-content-dashboard").style.display = tab === "dashboard" ? "block" : "none";
+      document.getElementById("tab-content-recharge").style.display = tab === "recharge" ? "block" : "none";
+      const btn = document.getElementById(`tab-btn-${tab}`);
+      if (btn) btn.classList.add("active");
+      if (tab === "recharge") {
+        prepareRechargeUI();
+      }
+    }
+
+    function openLoginTab() {
+      switchAccountTab('login');
+      document.getElementById("modal-account").classList.add("open");
+    }
+    function openRegisterTab() {
+      switchAccountTab('reg');
+      document.getElementById("modal-account").classList.add("open");
+    }
+    function openForgotTab() {
+      switchAccountTab('forgot');
+      document.getElementById("modal-account").classList.add("open");
+    }
+    function openDashboardTab() {
+      const u = getSavedUser();
+      if (!u) { openLoginTab(); return; }
+      populateDashboardUI(u);
+      switchAccountTab('dashboard');
+      document.getElementById("modal-account").classList.add("open");
+    }
+
+    // --- User Session Management via localStorage ---
+    function getSavedUser() {
+      try {
+        const raw = localStorage.getItem("moly_current_user");
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function saveUser(user) {
+      localStorage.setItem("moly_current_user", JSON.stringify(user));
+      refreshUIWithUser(user);
+    }
+
+    function clearUser() {
+      localStorage.removeItem("moly_current_user");
+      window.sso_authorized = false;
+      refreshUIWithUser(null);
+    }
+
+    function refreshUIWithUser(user) {
+      const guestView = document.getElementById("sso-guest-view");
+      const loggedView = document.getElementById("sso-logged-view");
+      const tabDash = document.getElementById("tab-btn-dashboard");
+      const navBtn = document.getElementById("nav-btn-account");
+
+      if (user) {
+        guestView.style.display = "none";
+        loggedView.style.display = "flex";
+        tabDash.style.display = "inline-block";
+
+        const dispId = user.display_id || (user.user_id === 0 ? "00000000" : String(user.user_id));
+        document.getElementById("sso-user-fullname").textContent = user.fullname || user.nickname || "Cư Dân";
+        document.getElementById("sso-user-username").textContent = user.username || dispId;
+        document.getElementById("sso-user-id-badge").textContent = `ID: ${dispId}`;
+        document.getElementById("sso-user-vip-badge").textContent = user.is_vip ? `VIP ${user.vip_level}` : "VIP 0";
+        document.getElementById("sso-user-beans-badge").textContent = `${(user.gold_beans || 0).toLocaleString()} Đậu`;
+        navBtn.innerHTML = `👤 ${user.username || dispId}`;
+
+        // Auto fill into input fields
+        document.getElementById("recharge-uid").value = dispId;
+        document.getElementById("play-gc-uid").value = dispId;
+        document.getElementById("lamu-uid-input").value = dispId;
+
+        // Checkbox auto SSO
+        const auto = localStorage.getItem("moly_auto_sso") === "true";
+        document.getElementById("chk-auto-sso").checked = auto;
+        if (auto) {
+          window.sso_authorized = true;
+          document.getElementById("btn-sso-auth").style.background = "#047857";
+          document.getElementById("btn-sso-auth").innerHTML = "✓ Đã Tự Ủy Quyền Vào Game";
+        }
+      } else {
+        guestView.style.display = "flex";
+        loggedView.style.display = "none";
+        tabDash.style.display = "none";
+        navBtn.innerHTML = `👤 Tài Khoản`;
+      }
+    }
+
+    function populateDashboardUI(u) {
+      const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
+      document.getElementById("dash-fullname").textContent = u.fullname || u.nickname || "Cư Dân";
+      document.getElementById("dash-username").textContent = u.username || dispId;
+      document.getElementById("dash-uid").textContent = dispId;
+      document.getElementById("dash-vip-badge").textContent = u.is_vip ? `VIP ${u.vip_level}` : "Chưa VIP";
+      document.getElementById("dash-beans").textContent = (u.gold_beans || 0).toLocaleString();
+      document.getElementById("dash-points").textContent = (u.vip_value || 0).toLocaleString();
+      document.getElementById("dash-lamu").textContent = (u.lamu && u.lamu.current_species) ? u.lamu.current_species.name : "Đậu Đậu";
+
+      document.getElementById("dash-edit-fullname").value = u.fullname || "";
+      document.getElementById("dash-edit-nickname").value = u.nickname || "";
+      document.getElementById("dash-edit-email").value = u.email || "";
+      document.getElementById("dash-edit-birthday").value = u.birthday || "2008-01-01";
+    }
+
+    function toggleAutoSso(enabled) {
+      localStorage.setItem("moly_auto_sso", enabled ? "true" : "false");
+      if (enabled) {
+        window.sso_authorized = true;
+        document.getElementById("btn-sso-auth").style.background = "#047857";
+        document.getElementById("btn-sso-auth").innerHTML = "✓ Đã Tự Ủy Quyền Vào Game";
+      } else {
+        window.sso_authorized = false;
+        document.getElementById("btn-sso-auth").style.background = "#059669";
+        document.getElementById("btn-sso-auth").innerHTML = "⚡ Vào Game Bằng Nick Này";
+      }
+    }
+
+    function authorizeGameLogin() {
+      const u = getSavedUser();
+      if (!u) { openLoginTab(); return; }
+      window.sso_authorized = true;
+      const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
+      const btn = document.getElementById("btn-sso-auth");
+      btn.style.background = "#047857";
+      btn.innerHTML = "✓ Đã Ủy Quyền Vào Game!";
+      alert(`🎉 Đã ủy quyền thành công cho cư dân "${u.fullname || u.username}" (ID: ${dispId})!\n\nClient game Flash sẽ tự động nhận diện và vào thẳng game mà không cần gõ lại mật khẩu.`);
+    }
+
+    function copyMyCredentials() {
+      const u = getSavedUser();
+      if (!u) return;
+      const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
+      navigator.clipboard.writeText(dispId);
+      alert(`📋 Đã sao chép ID Mole: ${dispId} vào bộ nhớ tạm!`);
+    }
+
+    function handleWebLogout() {
+      if (confirm("Bạn có chắc chắn muốn đăng xuất tài khoản web?")) {
+        clearUser();
+        closeAccountModal();
+        alert("Đã đăng xuất thành công!");
+      }
+    }
+
+    // --- Web Login Handler ---
+    async function handleWebLogin(e) {
+      e.preventDefault();
+      const identifier = document.getElementById("login-identifier").value.trim();
+      const pwd = document.getElementById("login-password").value;
+      const msgBox = document.getElementById("login-msg");
+      const btn = document.getElementById("btn-submit-login");
+
+      btn.disabled = true;
+      btn.textContent = "Đang đăng nhập...";
+      msgBox.style.display = "none";
+
+      try {
+        const resp = await fetch("/api/user/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ identifier: identifier, password: pwd })
+        });
+        const data = await resp.json();
+        if (data.ok && data.account) {
+          saveUser(data.account);
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "🎉 Đăng nhập thành công!";
+          msgBox.style.display = "block";
+          setTimeout(() => {
+            closeAccountModal();
+            btn.disabled = false;
+            btn.textContent = "Đăng Nhập";
+          }, 800);
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + (data.message || "Đăng nhập thất bại!");
+          msgBox.style.display = "block";
+          btn.disabled = false;
+          btn.textContent = "Đăng Nhập";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Đăng Nhập";
+      }
+    }
+
+    // --- Web Register Handler ---
+    async function handleWebRegister(e) {
+      e.preventDefault();
+      const fname = document.getElementById("reg-fullname").value.trim();
+      const uname = document.getElementById("reg-username").value.trim();
+      const nick = document.getElementById("reg-nickname").value.trim();
+      const em = document.getElementById("reg-email").value.trim();
+      const bday = document.getElementById("reg-birthday").value;
+      const p1 = document.getElementById("reg-password").value;
+      const p2 = document.getElementById("reg-password-confirm").value;
+      const msgBox = document.getElementById("reg-msg");
+      const btn = document.getElementById("btn-submit-reg");
+
+      if (p1 !== p2) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Mật khẩu xác nhận không khớp!";
+        msgBox.style.display = "block";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Đang tạo tài khoản...";
+      msgBox.style.display = "none";
+
+      try {
+        const resp = await fetch("/api/user/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username: uname,
+            fullname: fname,
+            nickname: nick,
+            email: em,
+            birthday: bday,
+            password: p1
+          })
+        });
+        const data = await resp.json();
+        if (data.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.innerHTML = `🎉 <strong>${data.message}</strong><br>Tên đăng nhập: <strong>${data.username}</strong><br>Quà tân thủ: 1.000 Đậu Vàng & 3 ngày VIP 1 dùng thử!`;
+          msgBox.style.display = "block";
+          
+          // Construct user object and auto log in
+          const userObj = {
+            user_id: data.user_id,
+            display_id: data.display_id,
+            username: data.username,
+            fullname: data.fullname,
+            nickname: data.nickname,
+            email: data.email,
+            birthday: data.birthday,
+            vip_level: data.vip_level,
+            is_vip: true,
+            vip_value: 0,
+            gold_beans: data.gold_beans,
+            sso_session: data.sso_session
+          };
+          saveUser(userObj);
+          btn.textContent = "Đã Tạo Thành Công!";
+          setTimeout(() => {
+            openDashboardTab();
+          }, 1800);
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + (data.message || "Tạo tài khoản thất bại!");
+          msgBox.style.display = "block";
+          btn.disabled = false;
+          btn.textContent = "Tạo Tài Khoản Ngay";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Tạo Tài Khoản Ngay";
+      }
+    }
+
+    // --- Reset Password Before Login Handler ---
+    async function handleResetPassword(e) {
+      e.preventDefault();
+      const identifier = document.getElementById("forgot-identifier").value.trim();
+      const em = document.getElementById("forgot-email").value.trim();
+      const bday = document.getElementById("forgot-birthday").value;
+      const p1 = document.getElementById("forgot-new-pwd").value;
+      const p2 = document.getElementById("forgot-new-pwd-confirm").value;
+      const msgBox = document.getElementById("forgot-msg");
+      const btn = document.getElementById("btn-submit-forgot");
+
+      if (p1 !== p2) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Mật khẩu xác nhận không khớp!";
+        msgBox.style.display = "block";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Đang xác thực...";
+      msgBox.style.display = "none";
+
+      try {
+        const resp = await fetch("/api/user/reset_password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            identifier: identifier,
+            email: em,
+            birthday: bday,
+            new_password: p1
+          })
+        });
+        const data = await resp.json();
+        msgBox.style.display = "block";
+        if (data.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "✅ " + data.message;
+          btn.textContent = "Thành Công!";
+          setTimeout(() => {
+            openLoginTab();
+            document.getElementById("login-identifier").value = identifier;
+            btn.disabled = false;
+            btn.textContent = "Đặt Lại Mật Khẩu";
+          }, 1800);
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + data.message;
+          btn.disabled = false;
+          btn.textContent = "Đặt Lại Mật Khẩu";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Đặt Lại Mật Khẩu";
+      }
+    }
+
+    // --- Update Profile Handler ---
+    async function handleUpdateProfile(e) {
+      e.preventDefault();
+      const u = getSavedUser();
+      if (!u) return;
+
+      const fname = document.getElementById("dash-edit-fullname").value.trim();
+      const nick = document.getElementById("dash-edit-nickname").value.trim();
+      const em = document.getElementById("dash-edit-email").value.trim();
+      const bday = document.getElementById("dash-edit-birthday").value;
+      const msgBox = document.getElementById("dash-update-msg");
+
+      try {
+        const resp = await fetch("/api/user/update_profile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: u.user_id,
+            fullname: fname,
+            nickname: nick,
+            email: em,
+            birthday: bday
+          })
+        });
+        const data = await resp.json();
+        msgBox.style.display = "block";
+        if (data.ok && data.account) {
+          saveUser(data.account);
+          populateDashboardUI(data.account);
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "✅ " + data.message;
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + data.message;
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+      }
+    }
+
+    // --- Change Password Inside Dashboard Handler ---
+    async function handleDashboardPasswordChange(e) {
+      e.preventDefault();
+      const u = getSavedUser();
+      if (!u) return;
+
+      const oldPwd = document.getElementById("dash-old-pwd").value;
+      const newPwd = document.getElementById("dash-new-pwd").value;
+      const confPwd = document.getElementById("dash-new-pwd-confirm").value;
+      const msgBox = document.getElementById("dash-pwd-msg");
+
+      if (newPwd !== confPwd) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Mật khẩu mới xác nhận không khớp!";
+        msgBox.style.display = "block";
+        return;
+      }
+
+      try {
+        const resp = await fetch("/api/user/change_password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: u.user_id,
+            old_password: oldPwd,
+            new_password: newPwd
+          })
+        });
+        const data = await resp.json();
+        msgBox.style.display = "block";
+        if (data.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "✅ " + data.message;
+          document.getElementById("dash-old-pwd").value = "";
+          document.getElementById("dash-new-pwd").value = "";
+          document.getElementById("dash-new-pwd-confirm").value = "";
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + data.message;
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+      }
+    }
+
+    // --- Recharge Target Verification & 2-Method Payment Logic ---
+    let verifiedTargetUser = null;
+    let currentTransferCode = '';
+    let currentPaymentConfig = null;
+
+    function switchRechargeMethod(method) {
+      const isCard = method === 'card';
+      document.getElementById("rc-method-card-view").style.display = isCard ? "block" : "none";
+      document.getElementById("rc-method-qr-view").style.display = isCard ? "none" : "block";
+      
+      const btnCard = document.getElementById("rc-method-btn-card");
+      const btnQr = document.getElementById("rc-method-btn-qr");
+      
+      if (isCard) {
+        btnCard.style.background = "#ff7e1b";
+        btnCard.style.color = "#fff";
+        btnCard.style.border = "2px solid #ea580c";
+        btnQr.style.background = "#1e293b";
+        btnQr.style.color = "#94a3b8";
+        btnQr.style.border = "2px solid #334155";
+      } else {
+        btnQr.style.background = "#ff7e1b";
+        btnQr.style.color = "#fff";
+        btnQr.style.border = "2px solid #ea580c";
+        btnCard.style.background = "#1e293b";
+        btnCard.style.color = "#94a3b8";
+        btnCard.style.border = "2px solid #334155";
+        ensureQrCodeGenerated();
+      }
+    }
+
+    function updateQrAmountDisplay(val) {
+      const customBox = document.getElementById("rc-qr-custom-amount-box");
+      const amtDisp = document.getElementById("rc-qr-amt-disp");
+      if (val === "custom") {
+        customBox.style.display = "block";
+        const customVal = parseInt(document.getElementById("rc-qr-custom-amount").value) || 0;
+        amtDisp.textContent = customVal.toLocaleString() + "đ";
+      } else {
+        customBox.style.display = "none";
+        amtDisp.textContent = Number(val).toLocaleString() + "đ";
+      }
+    }
+
+    function updateQrCustomAmount(val) {
+      const num = parseInt(val) || 0;
+      document.getElementById("rc-qr-amt-disp").textContent = num.toLocaleString() + "đ";
+    }
+
+    function copyTransferCode() {
+      if (currentTransferCode) {
+        copyText(currentTransferCode, "Đã sao chép Mã Giao Dịch!");
+      }
+    }
+
+    function copyText(txt, successMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(() => {
+          alert(successMsg || "Đã sao chép vào bộ nhớ tạm!");
+        }).catch(() => {
+          prompt("Vui lòng sao chép thủ công:", txt);
+        });
+      } else {
+        prompt("Vui lòng sao chép thủ công:", txt);
+      }
+    }
+
+    async function ensureQrCodeGenerated() {
+      if (!currentTransferCode) {
+        try {
+          const resp = await fetch("/api/payment/generate_code");
+          const data = await resp.json();
+          if (data.ok && data.code) {
+            currentTransferCode = data.code;
+            document.getElementById("rc-qr-code").textContent = currentTransferCode;
+          }
+        } catch (e) {
+          currentTransferCode = "MOLY" + Math.floor(10000 + Math.random() * 90000);
+          document.getElementById("rc-qr-code").textContent = currentTransferCode;
+        }
+      }
+    }
+
+    async function loadPaymentConfig() {
+      try {
+        const resp = await fetch("/api/payment/config");
+        const data = await resp.json();
+        if (data.ok && data.config) {
+          currentPaymentConfig = data.config;
+          document.getElementById("rc-qr-bank").textContent = data.config.bank_name || "MB Bank";
+          document.getElementById("rc-qr-stk").textContent = data.config.account_number || "0888888888";
+          document.getElementById("rc-qr-holder").textContent = data.config.account_name || "ADMIN MOLY";
+          if (data.config.qr_image_url) {
+            document.getElementById("rc-qr-image").src = data.config.qr_image_url;
+          }
+          if (data.config.note) {
+            document.getElementById("rc-qr-note").textContent = "⚠️ " + data.config.note;
+          }
+        }
+      } catch (e) {
+        console.warn("Could not load payment config:", e);
+      }
+    }
+
+    async function loadMyRechargeHistory() {
+      const listContainer = document.getElementById("rc-my-orders-list");
+      if (!listContainer) return;
+      const verifiedUid = document.getElementById("recharge-verified-uid").value.trim();
+      const u = getSavedUser();
+      const targetUid = verifiedUid || (u ? u.user_id : null);
+      if (!targetUid) {
+        listContainer.innerHTML = '<div style="color: #64748b; text-align: center; padding: 6px;">Vui lòng xác thực nhân vật để xem lịch sử nạp.</div>';
+        return;
+      }
+      try {
+        const resp = await fetch(`/api/recharge/orders?user_id=${targetUid}`);
+        const data = await resp.json();
+        if (data.ok && data.orders && data.orders.length > 0) {
+          listContainer.innerHTML = data.orders.map(o => {
+            let statusBadge = '';
+            if (o.status === 'approved') {
+              statusBadge = '<span class="badge" style="background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px;">✅ Đã duyệt</span>';
+            } else if (o.status === 'rejected') {
+              statusBadge = `<span class="badge" style="background: #ef4444; color: #fff; padding: 2px 6px; border-radius: 4px;" title="${o.reject_reason || ''}">❌ Từ chối</span>`;
+            } else {
+              statusBadge = '<span class="badge" style="background: #f59e0b; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold;">🕒 Chờ duyệt (5-15p)</span>';
+            }
+            const methodText = o.method === 'card' ? `Thẻ ${o.card_telco}` : `CK Mã ${o.transfer_code || o.order_id}`;
+            const timeStr = o.created_at ? new Date(o.created_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) : '';
+            return `
+              <div style="background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 6px 10px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <strong>${Number(o.amount).toLocaleString()}đ</strong> &bull; <span style="color: #cbd5e1;">${methodText}</span>
+                  <div style="color: #64748b; font-size: 10px;">${timeStr} &bull; Mã: ${o.order_id}</div>
+                </div>
+                <div>${statusBadge}</div>
+              </div>
+            `;
+          }).join("");
+        } else {
+          listContainer.innerHTML = '<div style="color: #64748b; text-align: center; padding: 6px;">Chưa có đơn nạp nào gần đây.</div>';
+        }
+      } catch (e) {
+        listContainer.innerHTML = '<div style="color: #ef4444; text-align: center; padding: 6px;">Không thể tải lịch sử đơn.</div>';
+      }
+    }
+
+    function prepareRechargeUI() {
+      const u = getSavedUser();
+      const loggedBox = document.getElementById("rc-logged-view");
+      const guestBox = document.getElementById("rc-guest-view");
+      const targetCard = document.getElementById("rc-target-card");
+      const confirmChk = document.getElementById("rc-confirm-checkbox");
+      const verifiedInput = document.getElementById("recharge-verified-uid");
+      const verifyErr = document.getElementById("rc-verify-err");
+
+      if (verifyErr) verifyErr.style.display = "none";
+      if (confirmChk) confirmChk.checked = false;
+
+      loadPaymentConfig();
+      ensureQrCodeGenerated();
+
+      if (u) {
+        if (loggedBox) loggedBox.style.display = "block";
+        if (guestBox) guestBox.style.display = "none";
+        
+        const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
+        document.getElementById("rc-logged-nickname").textContent = u.nickname || u.fullname || "Cư Dân";
+        document.getElementById("rc-logged-username").textContent = u.username || dispId;
+        document.getElementById("rc-logged-uid").textContent = dispId;
+        document.getElementById("rc-logged-vip").textContent = u.is_vip ? `VIP ${u.vip_level}` : "Chưa VIP";
+        document.getElementById("rc-logged-beans").textContent = (u.gold_beans || 0).toLocaleString();
+        
+        verifiedInput.value = u.user_id;
+        loadMyRechargeHistory();
+      } else {
+        if (loggedBox) loggedBox.style.display = "none";
+        if (guestBox) guestBox.style.display = "block";
+        if (targetCard) targetCard.style.display = "none";
+        verifiedInput.value = "";
+        verifiedTargetUser = null;
+      }
+    }
+
+    async function verifyRechargeCharacter() {
+      const input = document.getElementById("recharge-uid-input").value.trim();
+      const errBox = document.getElementById("rc-verify-err");
+      const card = document.getElementById("rc-target-card");
+      const confirmChk = document.getElementById("rc-confirm-checkbox");
+
+      if (!input) {
+        errBox.textContent = "Vui lòng nhập Mole ID hoặc tên tài khoản!";
+        errBox.style.display = "block";
+        return;
+      }
+      errBox.style.display = "none";
+
+      try {
+        const resp = await fetch("/api/user/verify_target", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ identifier: input })
+        });
+        const data = await resp.json();
+        if (data.ok && data.character) {
+          verifiedTargetUser = data.character;
+          document.getElementById("rc-target-nickname").textContent = data.character.nickname || "Cư Dân";
+          document.getElementById("rc-target-uname").textContent = data.character.username || data.character.display_id;
+          document.getElementById("rc-target-vip").textContent = data.character.is_vip ? `VIP ${data.character.vip_level}` : "Chưa VIP";
+          document.getElementById("rc-target-beans").textContent = (data.character.gold_beans || 0).toLocaleString();
+          card.style.display = "block";
+          confirmChk.checked = false;
+          document.getElementById("recharge-verified-uid").value = "";
+        } else {
+          card.style.display = "none";
+          errBox.textContent = "❌ " + (data.message || "Không tìm thấy nhân vật này trong hệ thống Moly - Thế Giới Chuột Chũi VN!");
+          errBox.style.display = "block";
+        }
+      } catch (err) {
+        errBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        errBox.style.display = "block";
+      }
+    }
+
+    function handleTargetConfirmChange(checked) {
+      const verifiedInput = document.getElementById("recharge-verified-uid");
+      if (checked && verifiedTargetUser) {
+        verifiedInput.value = verifiedTargetUser.user_id;
+        loadMyRechargeHistory();
+      } else {
+        verifiedInput.value = "";
+      }
+    }
+
+    // --- Submit Handler for Scratch Card ---
+    async function handleRechargeCardSubmit(e) {
+      e.preventDefault();
+      const verifiedUid = document.getElementById("recharge-verified-uid").value.trim();
+      const msgBox = document.getElementById("rc-card-msg");
+      const btn = document.getElementById("btn-submit-card");
+
+      if (!verifiedUid) {
+        alert("Vui lòng xác thực và đánh dấu xác nhận đúng nhân vật trước khi nạp thẻ!");
+        return;
+      }
+
+      const telco = document.getElementById("rc-card-telco").value;
+      const amount = parseInt(document.getElementById("rc-card-amount").value);
+      const serial = document.getElementById("rc-card-serial").value.trim();
+      const code = document.getElementById("rc-card-code").value.trim();
+
+      if (!serial || serial.length < 6) {
+        alert("Số Seri thẻ không hợp lệ!");
+        return;
+      }
+      if (!code || code.length < 6) {
+        alert("Mã thẻ không hợp lệ!");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Đang gửi thẻ lên hệ thống...";
+
+      try {
+        const resp = await fetch("/api/recharge/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: verifiedUid,
+            method: "card",
+            card_telco: telco,
+            amount: amount,
+            card_serial: serial,
+            card_code: code
+          })
+        });
+        const data = await resp.json();
+        msgBox.style.display = "block";
+        if (data.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "🎉 " + data.message;
+          document.getElementById("rc-card-serial").value = "";
+          document.getElementById("rc-card-code").value = "";
+          btn.textContent = "Đã Gửi Thành Công!";
+          loadMyRechargeHistory();
+          setTimeout(() => { btn.disabled = false; btn.textContent = "🚀 Nạp Thẻ Cào Ngay"; }, 3000);
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + (data.message || "Lỗi khi gửi thẻ!");
+          btn.disabled = false;
+          btn.textContent = "🚀 Nạp Thẻ Cào Ngay";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "🚀 Nạp Thẻ Cào Ngay";
+      }
+    }
+
+    // --- Submit Handler for QR Transfer ---
+    async function handleRechargeQrSubmit() {
+      const verifiedUid = document.getElementById("recharge-verified-uid").value.trim();
+      const msgBox = document.getElementById("rc-qr-msg");
+      const btn = document.getElementById("btn-submit-qr");
+
+      if (!verifiedUid) {
+        alert("Vui lòng xác thực và đánh dấu xác nhận đúng nhân vật trước khi xác nhận chuyển khoản!");
+        return;
+      }
+
+      let amount = 50000;
+      const amtSelect = document.getElementById("rc-qr-amount-select").value;
+      if (amtSelect === "custom") {
+        amount = parseInt(document.getElementById("rc-qr-custom-amount").value) || 0;
+      } else {
+        amount = parseInt(amtSelect) || 50000;
+      }
+
+      if (amount < 10000) {
+        alert("Số tiền nạp tối thiểu là 10.000đ!");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Đang ghi nhận giao dịch...";
+
+      try {
+        const resp = await fetch("/api/recharge/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: verifiedUid,
+            method: "qr",
+            amount: amount,
+            transfer_code: currentTransferCode
+          })
+        });
+        const data = await resp.json();
+        msgBox.style.display = "block";
+        if (data.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "🎉 " + data.message;
+          btn.textContent = "Đã Ghi Nhận Thành Công!";
+          loadMyRechargeHistory();
+          // Generate next code for next transaction
+          currentTransferCode = '';
+          ensureQrCodeGenerated();
+          setTimeout(() => { btn.disabled = false; btn.textContent = "✅ Tôi Đã Chuyển Khoản Xong"; }, 3000);
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + (data.message || "Lỗi khi ghi nhận giao dịch!");
+          btn.disabled = false;
+          btn.textContent = "✅ Tôi Đã Chuyển Khoản Xong";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "✅ Tôi Đã Chuyển Khoản Xong";
+      }
+    }
+
+    // --- Refresh Live User Info ---
+    async function refreshLiveUserInfo(userId) {
+      try {
+        const resp = await fetch("/api/user/get_info", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: userId })
+        });
+        const data = await resp.json();
+        if (data.ok && data.account) {
+          saveUser(data.account);
+        }
+      } catch (e) {
+        console.warn("Could not refresh user info:", e);
+      }
+    }
+
+    // --- Giftcode Redeem ---
+    async function handlePlayRedeem(e) {
+      e.preventDefault();
+      const uidInput = document.getElementById("play-gc-uid").value.trim();
+      const code = document.getElementById("play-gc-code").value.trim().toUpperCase();
+      const btn = document.getElementById("btn-submit-play-gc");
+      const msgBox = document.getElementById("play-gc-msg");
+
+      if (!uidInput || !code) return;
+      btn.disabled = true;
+      btn.textContent = "Đang kiểm tra...";
+
+      try {
+        const resp = await fetch("/api/giftcode/redeem", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: uidInput, code: code })
+        });
+        const data = await resp.json();
+
+        if (data.ok) {
+          const rw = data.rewards || {};
+          let details = [];
+          if (rw.beans) details.push(`+${rw.beans.toLocaleString()} Đậu`);
+          if (rw.trial_days) details.push(`VIP ${rw.vip_level || 1} dùng thử (${rw.trial_days} ngày)`);
+          else if (rw.vip_level) details.push(`VIP ${rw.vip_level}`);
+          if (rw.super_lamu) details.push("Siêu LaMu");
+          if (rw.items && rw.items.length) details.push(`+${rw.items.length} Vật phẩm`);
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = `🎉 Kích hoạt thành công! Nhận: ${details.join(", ")}`;
+          msgBox.style.display = "block";
+          btn.textContent = "Thành công!";
+          setTimeout(closeGiftcodeModal, 2500);
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + (data.message || "Mã không hợp lệ!");
+          msgBox.style.display = "block";
+          btn.disabled = false;
+          btn.textContent = "Kích Hoạt Ngay";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Kích Hoạt Ngay";
+      }
+    }
+
+    // --- Super Lamu Status & Progression ---
+    async function fetchLamuSpeciesStatus() {
+      const uidInput = document.getElementById("lamu-uid-input").value.trim();
+      if (!uidInput) { alert("Vui lòng nhập ID Mole!"); return; }
+
+      try {
+        const resp = await fetch(`/api/user/lamu/status?user_id=${uidInput}`);
+        const data = await resp.json();
+        if (data.ok && data.status) {
+          renderLamuStatus(data.status, uidInput);
+        } else {
+          alert("Không thể lấy thông tin: " + (data.message || "Lỗi máy chủ"));
+        }
+      } catch (err) {
+        alert("Lỗi kết nối: " + err.message);
+      }
+    }
+
+    function renderLamuStatus(st, uid) {
+      document.getElementById("lamu-status-card").style.display = "block";
+      const cur = st.current_species || {};
+      document.getElementById("lamu-cur-name").textContent = cur.name || "Đậu Đậu";
+      document.getElementById("lamu-vip-badge").textContent = st.is_vip ? `VIP ${st.vip_level}` : "Chưa kích hoạt VIP";
+
+      const curSpec = (st.species_list || []).find(s => s.is_current) || {};
+      const lvl = curSpec.level || 1;
+      const exp = curSpec.exp || 0;
+      const maxExp = curSpec.max_exp || 100;
+      document.getElementById("lamu-cur-level").textContent = `Lv.${lvl}`;
+      document.getElementById("lamu-cur-exp").textContent = exp;
+      document.getElementById("lamu-cur-maxexp").textContent = maxExp;
+      const pct = Math.min(100, Math.round((exp / maxExp) * 100));
+      document.getElementById("lamu-exp-bar").style.width = `${pct}%`;
+
+      const grid = document.getElementById("lamu-species-grid");
+      grid.innerHTML = (st.species_list || []).map(s => `
+        <div style="background: ${s.is_current ? 'rgba(59, 130, 246, 0.25)' : '#0f172a'}; border: 1px solid ${s.is_current ? '#3b82f6' : '#334155'}; border-radius: 8px; padding: 8px; text-align: center;">
+          <div style="font-weight: bold; color: ${s.is_current ? '#60a5fa' : '#f1f5f9'}; font-size: 12px; margin-bottom: 2px;">
+            ${s.name.replace('Đậu Đậu Siêu Cấp ', '')}
+          </div>
+          <div style="font-size: 10px; color: #fde047; margin-bottom: 3px;">
+            ${s.title || ''}
+          </div>
+          <div style="font-size: 10px; color: #cbd5e1; margin-bottom: 5px;">
+            Tiến trình: <strong style="color: #10b981;">Lv.${s.level}</strong> (${s.exp} EXP)
+          </div>
+          <button type="button" class="btn-ctrl" style="width: 100%; font-size: 10px; padding: 4px; background: ${s.is_current ? '#10b981' : '#334155'};"
+                  onclick="selectLamuSpecies('${s.id}', '${uid}')" ${s.is_current ? 'disabled' : ''}>
+            ${s.is_current ? '✓ Đang Đồng Hành' : 'Chọn Loài Này'}
+          </button>
+        </div>
+      `).join("");
+    }
+
+    async function selectLamuSpecies(speciesId, uid) {
+      if (!confirm(`Bạn có chắc muốn chuyển sang loài này? Lưu ý: Nếu loài mới chưa từng nuôi dưỡng sẽ bắt đầu lại từ Lv.1!`)) return;
+      try {
+        const resp = await fetch("/api/user/lamu/species", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: uid, species: speciesId })
+        });
+        const data = await resp.json();
+        const msgBox = document.getElementById("lamu-action-msg");
+        msgBox.style.display = "block";
+        if (data.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "✅ " + data.message;
+          fetchLamuSpeciesStatus();
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + data.message;
+        }
+      } catch (e) {
+        alert("Lỗi kết nối: " + e.message);
+      }
+    }
+
+    async function trainCurrentLamu() {
+      const uidInput = document.getElementById("lamu-uid-input").value.trim();
+      if (!uidInput) return;
+      try {
+        const resp = await fetch("/api/user/lamu/train", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: uidInput, exp_gain: 50 })
+        });
+        const data = await resp.json();
+        const msgBox = document.getElementById("lamu-action-msg");
+        msgBox.style.display = "block";
+        if (data.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "✅ " + data.message;
+          fetchLamuSpeciesStatus();
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + data.message;
+        }
+      } catch (e) {
+        alert("Lỗi kết nối: " + e.message);
+      }
+    }
+
+    // --- Global Flash Bridge Callbacks (ExternalInterface) ---
+    window.get_uid = function() {
+      const user = getSavedUser();
+      if (user) {
+        return user.display_id || (user.user_id === 0 ? "00000000" : String(user.user_id));
+      }
+      return "";
+    };
+
+    window.get_sid = function() {
+      const user = getSavedUser();
+      const isAuto = localStorage.getItem("moly_auto_sso") === "true";
+      if (user && (window.sso_authorized || isAuto)) {
+        return user.sso_session || "";
+      }
+      return "";
+    };
+
+    window.getUrlParams = function() {
+      return {};
+    };
+
+    // --- Configure Ruffle Player with WebSocket Bridge & Responsive Scaling ---
+    window.RufflePlayer = window.RufflePlayer || {};
+    const isHttps = window.location.protocol === "https:";
+    const wsProto = isHttps ? "wss:" : "ws:";
+    const wsHost = window.location.host;
+
+    window.RufflePlayer.config = {
+      letterbox: "on",
+      allowScriptAccess: true,
+      scale: "showAll",
+      forceScale: true,
+      allowFullscreen: true,
+      quality: "high",
+      socketProxy: [
+        { host: "127.0.0.1", port: 1863, proxyUrl: `${wsProto}//${wsHost}/ws/1863` },
+        { host: "127.0.0.1", port: 3200, proxyUrl: `${wsProto}//${wsHost}/ws/3200` },
+        { host: "123.206.131.236", port: 1863, proxyUrl: `${wsProto}//${wsHost}/ws/1863` },
+        { host: "123.206.131.63", port: 3200, proxyUrl: `${wsProto}//${wsHost}/ws/3200` }
+      ]
+    };
+
+    window.addEventListener("DOMContentLoaded", () => {
+      // Restore user session if saved
+      const saved = getSavedUser();
+      refreshUIWithUser(saved);
+      if (saved) {
+        refreshLiveUserInfo(saved.user_id);
+      }
+
+      const stage = document.getElementById("game-stage");
+      const overlay = document.getElementById("loading-overlay");
+      const btnFs = document.getElementById("btn-fullscreen");
+      let activePlayer = null;
+
+      // Fullscreen handling: Native Ruffle Fullscreen + Stage Fullscreen fallback
+      btnFs.addEventListener("click", () => {
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          if (activePlayer && typeof activePlayer.enterFullscreen === "function") {
+            try {
+              activePlayer.enterFullscreen();
+              return;
+            } catch (e) {
+              console.warn("enterFullscreen fallback:", e);
+            }
+          }
+          if (stage.requestFullscreen) {
+            stage.requestFullscreen();
+          } else if (stage.webkitRequestFullscreen) {
+            stage.webkitRequestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          }
+        }
+      });
+
+      // Window resize triggers player re-layout
+      window.addEventListener("resize", () => {
+        window.dispatchEvent(new Event("resize"));
+      });
+
+      try {
+        const ruffle = window.RufflePlayer.newest();
+        activePlayer = ruffle.createPlayer();
+        activePlayer.id = "moly-ruffle-player";
+        stage.appendChild(activePlayer);
+
+        activePlayer.load({
+          url: "/Client.swf",
+          parameters: {}
+        }).then(() => {
+          setTimeout(() => {
+            overlay.style.opacity = "0";
+            setTimeout(() => overlay.remove(), 500);
+          }, 800);
+        }).catch(err => {
+          console.error("Lỗi nạp SWF:", err);
+          document.querySelector(".loading-text").innerText = "Lỗi khi tải Client.swf: " + err;
+        });
+      } catch (err) {
+        console.error("Lỗi khởi tạo Ruffle:", err);
+        document.querySelector(".loading-text").innerText = "Lỗi khởi tạo Ruffle: " + err;
+      }
+
+      // Modal Backdrop Click & Escape Key Listeners
+      document.querySelectorAll(".modal-overlay").forEach(overlay => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove("open");
+          }
+        });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          document.querySelectorAll(".modal-overlay").forEach(overlay => {
+            overlay.classList.remove("open");
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

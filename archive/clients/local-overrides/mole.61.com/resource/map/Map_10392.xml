@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+
+	</NpcList>
+	<Triggers> 
+		<Trigger ResName="go_391" Layer="controlLevel" Ex="620" Ey="470" Cmd="alt_map" Param="391" Tips="Bình nguyên San Hô" />  
+		<Trigger ResName="go_393" Layer="controlLevel" Ex="420" Ey="290" Cmd="alt_map" Param="393" Tips="Mê cung Hắc Diệu Thạch" />  
+		<Trigger ResName="bossBtn" Layer="controlLevel" Ex="0" Ey="0" Cmd="act" Param="clickBoss" Tips="" />  
+
+	</Triggers>
+
+	<Talks>
+
+	</Talks>
+</Map>

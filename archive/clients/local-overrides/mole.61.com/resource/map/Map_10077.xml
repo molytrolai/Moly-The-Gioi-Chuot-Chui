@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="tip_1Btn" Layer="depthLevel" Ex="128" Ey="245" Cmd="p" Param="Map77HelpPanel" Tips="Bảng tin Đại học Moly" /> 
+		<Trigger ResName="tip_2Btn" Layer="depthLevel" Ex="838" Ey="232" Cmd="p" Param="Map77MottoPanel" Tips="Lời răn Đại học Moly" /> 
+		
+		<Trigger ResName="go_28" Layer="controlLevel" Ex="874" Ey="293" Cmd="alt_map" Param="28" Tips="Đến Học viện Lamu" /> 
+		<Trigger ResName="go_78" Layer="controlLevel" Ex="485" Ey="238" Cmd="alt_map" Param="78" Tips="Vào Đại sảnh Đại học Moly" /> 
+		<Trigger ResName="go_65" Layer="controlLevel" Ex="618" Ey="200" Cmd="alt_map" Param="65" Tips="Vào Phòng vẽ Tranh" />
+		<Trigger ResName="candyNotMc" Layer="depthLevel" Ex="301" Ey="304" Cmd="act" Param="CandyNotEvent" Tips="" />
+	</Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

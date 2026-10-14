@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		
+		<Trigger ResName="kfcGameBtn" Layer="depthLevel" Ex="814" Ey="424" Cmd="act" Param="openKFCGPresentame" Tips="Bắt Quà Sinh Nhật" /> 
+	</Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

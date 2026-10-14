@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="mapBtn_2" Layer="controlLevel" Ex="300" Ey="328" Cmd="alt_map" Param="2" Tips="Quảng trường Ái Tâm" /> 
+	</Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

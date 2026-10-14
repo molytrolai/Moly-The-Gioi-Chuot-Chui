@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10231" Layer="depthLevel" Name="莎士比亚" Ex="495" Ey="495" Cmd="none" Param="1" AddTaskOption="1" />
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_32" Layer="controlLevel" Ex="208" Ey="489" Cmd="alt_map" Param="32" Tips="Thư viện Lâu đài" />
+		<Trigger ResName="bookMc" Layer="depthLevel" Ex="513" Ey="398" Cmd="p" Param="BookStartPanel" Tips="Phục hồi Sách cổ" />
+		<Trigger ResName="npc_10231" Layer="depthLevel" Ex="460" Ey="410" Cmd="act" Param="openTollgate" Tips="Thử thách Shasmoa" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

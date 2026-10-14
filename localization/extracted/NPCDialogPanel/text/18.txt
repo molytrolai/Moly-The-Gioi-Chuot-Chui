@@ -1,0 +1,16 @@
+[
+xmin -40
+ymin -40
+xmax 3080
+ymax 320
+readonly 1
+noselect 1
+font 8
+height 280
+color #ff330000
+align center
+leftmargin 0
+rightmargin 0
+indent 0
+leading 40
+]

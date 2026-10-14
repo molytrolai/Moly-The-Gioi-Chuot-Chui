@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_38" Layer="controlLevel" Ex="652" Ey="312" Cmd="alt_map" Param="38" Tips="Trở lại Sân bóng đá" />
+		<Trigger ResName="rabbit" Layer="controlLevel" Ex="420" Ey="252" Cmd="p" Param="HitRiceCakeStartPanel" Tips="" /> 
+		<Trigger ResName="tree" Layer="controlLevel" Ex="257" Ey="398" Cmd="p" Param="CutTreeEnterGamePanel" Tips="" /> 
+	</Triggers>
+		
+	
+	<Talks>
+
+	
+	
+	</Talks>
+</Map>

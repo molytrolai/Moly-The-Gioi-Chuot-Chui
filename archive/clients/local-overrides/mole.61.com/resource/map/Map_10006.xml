@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_80" Layer="controlLevel" Ex="123" Ey="511" Cmd="alt_map" Param="80" Tips="Tháp Nierla" />
+		<Trigger ResName="go_36" Layer="controlLevel" Ex="276" Ey="207" Cmd="alt_map" Param="36" Tips="Trường đua xe Momo" />
+		<Trigger ResName="go_7" Layer="controlLevel" Ex="908" Ey="385" Cmd="alt_map" Param="7" Tips="Khu vui chơi Phía Đông" />
+		<Trigger ResName="gameRomm" Layer="controlLevel" Ex="159" Ey="280" Cmd="alt_map" Param="22" Tips="Ngôi nhà Trò chơi" />
+		<Trigger ResName="slide_btn" Layer="controlLevel" Ex="730" Ey="275" Cmd="act" Param="Sliding" Tips="Biến hình Moly" />
+		<Trigger ResName="intro" Layer="controlLevel" Ex="313" Ey="465" Cmd="act" Param="nomoplayIntro" Tips="Hướng dẫn Cờ Tỷ Phú" />	
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10308" Face="正常" Msg="你发现喵了(┬＿┬)" Option="Vì chúng mình tâm đầu ý hợp mà (*^__^*)" Cmd="act" Param="overGame" />
+		
+		<Talk ID="99" NpcID="10148" Face="正常" Msg="谢谢你，{$username}，又找到了一颗黑暗种子，送你一些礼物以表谢意！我们一定要阻止零的阴谋！" Option="Đúng vậy! Tuyệt đối không để hắn đạt được mục đích!" Cmd="act" Param="getItemFive" AddTaskOption="1" />
+		
+		<Talk ID="422" NpcID="10249" Face="开心" Msg="这~可不是我干的哦~~~~" Option="Ừm, tôi tin bạn rồi!" Cmd="act" Param="dandanAct" AddTaskOption="1" />
+		<Talk ID="423" NpcID="10249" Face="开心" Msg="这~可不是我干的哦~~~~" Option="Giả vờ dễ thương cũng vô ích thôi! Lần này bị bắt quả tang rồi nhé!" Cmd="act" Param="dandanAct" AddTaskOption="1" />
+	</Talks>
+</Map>

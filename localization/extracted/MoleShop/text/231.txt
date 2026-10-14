@@ -1,0 +1,19 @@
+[
+xmin -40
+ymin -40
+xmax 10848
+ymax 1265
+multiline 1
+readonly 1
+noselect 1
+wasstatic 1
+html 1
+font 22
+height 280
+color #ff000000
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]<p align="left"><font face="SimSun" size="14" color="#000000" letterSpacing="0.000000" kerning="0"> &nbsp;&nbsp;&nbsp;当你在商城每花费1个金豆，就可以积1分商城积分，通过商城积分可以兑<sbr />换超级点点豆哟！在“最新活动”分类里面有专门的积分兑换，看看你的积分<sbr />能换多少超级点点吧！当然商城还会不定期的推出其他活动，敬请关注吧！</font></p>

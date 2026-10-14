@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	<Triggers>
+		  <Trigger ResName="seat" Layer="controlLevel" Ex="640" Ey="235" Cmd="act" Param="beginMovie" Tips="Bấm vào tôi" /> 
+	</Triggers>
+	<Talks>
+	</Talks> 
+</Map>

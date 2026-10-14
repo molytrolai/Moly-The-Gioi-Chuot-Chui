@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_335" Layer="controlLevel" Ex="669" Ey="195" Cmd="alt_map" Param="335" Tips="Trại Kỵ sĩ Nguyên tố" />
+	</Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

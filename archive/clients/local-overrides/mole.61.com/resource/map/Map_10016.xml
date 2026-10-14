@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	 
+
+	   
+		
+		
+
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_32" Layer="controlLevel" Ex="485" Ey="151" Cmd="alt_map" Param="32" Tips="Thư viện Lâu đài" />
+		<Trigger ResName="go_33" Layer="controlLevel" Ex="79" Ey="277" Cmd="alt_map" Param="33" Tips="Ban công Lâu đài" />
+		<Trigger ResName="go_108" Layer="controlLevel" Ex="860" Ey="318" Cmd="alt_map" Param="108" Tips="Hành lang Kỷ niệm" />
+		<Trigger ResName="go_15" Layer="controlLevel" Ex="855" Ey="465" Cmd="alt_map" Param="15" Tips="Đại sảnh Lâu đài" />
+
+
+
+
+
+
+		
+
+		
+
+
+
+
+
+
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="100" NpcID="10277" Face="正常" Msg="摩尔王国永远不会缺少真正的勇士，摩尔王国的精神永远不会消失！我说得对吗？" Option="嗯，我举双手赞成！" Cmd="s" Param="101" />
+		<Talk ID="101" NpcID="10277" Face="正常" Msg="哈哈，看来你也是一个勇士，勇士接受我的礼物吧！" Option="非常感谢！" Cmd="act" Param="WorshipNPC_over" />
+		
+	</Talks>
+</Map>

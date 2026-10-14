@@ -1,0 +1,18 @@
+[
+xmin -40
+ymin -40
+xmax 9639
+ymax 1156
+wordwrap 1
+multiline 1
+readonly 1
+noselect 1
+font 22
+height 280
+color #ff000000
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]    点击商城左边的“兑换金豆”按钮就可以进行米币兑换金豆了，不过首先确保你的账户里面要有米币才行哟，没有米币的话就点击商城左下角的“充值米币”按钮进行米币充值哟！

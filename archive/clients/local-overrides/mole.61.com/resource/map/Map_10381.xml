@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	 	
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_380" Layer="depthLevel" Ex="799" Ey="399" Cmd="alt_map" Param="382" Tips="Bí cảnh Mưa Hoa" />
+		
+	</Triggers>
+</Map>

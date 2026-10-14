@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_151" Layer="controlLevel" Ex="240" Ey="240" Cmd="alt_map" Param="151" Tips="Rừng Dây Leo" />
+		<Trigger ResName="go_272" Layer="controlLevel" Ex="785" Ey="291" Cmd="alt_map" Param="272" Tips="实战训练营" />
+		
+		<Trigger ResName="cloth_mc" Layer="controlLevel" Ex="167" Ey="350" Cmd="p" Param="SirenKnightGetClothPanel" Tips="Trang phục Kỵ sĩ Hải Yêu" />
+		<Trigger ResName="train_mc" Layer="controlLevel" Ex="167" Ey="350" Cmd="p" Param="SirenKnightTrainPanel" Tips="技巧训练营" />
+		<Trigger ResName="show_mc" Layer="depthLevel" Ex="682" Ey="400" Cmd="p" Param="SirenKnightAwardShowPanel" Tips="Phần thưởng Huấn luyện" />
+		
+		<Trigger ResName="agile_mc" Layer="topLevel" Ex="247" Ey="416" Cmd="act" Param="openAgile" Tips="" />
+		<Trigger ResName="fly_mc" Layer="depthLevel" Ex="790" Ey="370" Cmd="act" Param="openFly" Tips="" />
+		
+		<Trigger ResName="shuriken_mc" Layer="controlLevel" Ex="620" Ey="260" Cmd="act" Param="openShuriken" Tips="Huấn luyện Phi tiêu" />
+		<Trigger ResName="bow_mc" Layer="controlLevel" Ex="418" Ey="260" Cmd="act" Param="openBow" Tips="Huấn luyện Cung tên" />
+		
+		<Trigger ResName="siren_mc" Layer="topLevel" Ex="770" Ey="390" Cmd="act" Param="openSiren" Tips="Huấn luyện Thám hiểm Hải Yêu" />
+	</Triggers>
+	
+	<Talks>
+	
+	</Talks>
+</Map>

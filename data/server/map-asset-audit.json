@@ -1,0 +1,51 @@
+[
+  {
+    "map": 17,
+    "kind": "xml-map",
+    "status": 200,
+    "bytes": 1656,
+    "url": "http://mole.61.com/resource/map/Map_10017.xml?moly-archive=current"
+  },
+  {
+    "map": 17,
+    "kind": "swf-map",
+    "status": 404,
+    "bytes": 480,
+    "url": "http://mole.61.com/resource/map/Map_10017.swf?moly-archive=current"
+  },
+  {
+    "map": 17,
+    "kind": "swf-short",
+    "status": 404,
+    "bytes": 473,
+    "url": "http://mole.61.com/resource/map/17.swf?moly-archive=current"
+  },
+  {
+    "map": 19,
+    "kind": "xml-map",
+    "status": 404,
+    "bytes": 480,
+    "url": "http://mole.61.com/resource/map/Map_10019.xml?moly-archive=current"
+  },
+  {
+    "map": 19,
+    "kind": "xml-short",
+    "status": 404,
+    "bytes": 473,
+    "url": "http://mole.61.com/resource/map/19.xml?moly-archive=current"
+  },
+  {
+    "map": 19,
+    "kind": "swf-map",
+    "status": 404,
+    "bytes": 476,
+    "url": "http://mole.61.com/resource/map/Map_10019.swf?moly-archive=current"
+  },
+  {
+    "map": 19,
+    "kind": "swf-short",
+    "status": 200,
+    "bytes": 329185,
+    "url": "http://mole.61.com/resource/map/19.swf?moly-archive=current"
+  }
+]

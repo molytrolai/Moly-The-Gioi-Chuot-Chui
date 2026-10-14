@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	 	
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_365" Layer="depthLevel" Ex="155" Ey="204" Cmd="alt_map" Param="365" Tips="Làng Đậu Jipu" />
+		<Trigger ResName="go_366" Layer="depthLevel" Ex="857" Ey="38" Cmd="alt_map" Param="366" Tips="Cây Thế Giới" />
+		<Trigger ResName="go_370" Layer="depthLevel" Ex="542" Ey="338" Cmd="alt_map" Param="370" Tips="Đáy Giếng Thời Gian" />
+	</Triggers>
+
+</Map>

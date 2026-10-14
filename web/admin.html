@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Điều Khiển Quản Trị - Moly - Thế Giới Chuột Chũi VN</title>
+  <link rel="icon" type="image/png" href="/assets/logo_square.png">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Login Modal */
+    #login-overlay {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95);
+      display: flex; align-items: center; justify-content: center; z-index: 999;
+      backdrop-filter: blur(8px);
+    }
+    .login-box {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 40px; width: 100%; max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5); text-align: center;
+    }
+    .login-box img { width: 80px; height: 80px; border-radius: 16px; margin-bottom: 16px; }
+    .login-box h2 { font-size: 22px; margin-bottom: 8px; color: #fff; }
+    .login-box p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
+    .input-group { margin-bottom: 16px; text-align: left; }
+    .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    .input-group input {
+      width: 100%; padding: 12px 14px; background: #0f172a; border: 1px solid var(--card-border);
+      border-radius: 8px; color: #fff; font-size: 15px; outline: none; transition: 0.2s;
+    }
+    .input-group input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(59,130,246,0.2); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 20px; font-size: 14px; font-weight: 600; border-radius: 8px;
+      border: none; cursor: pointer; transition: 0.2s; text-decoration: none;
+    }
+    .btn-primary { background: var(--primary); color: #fff; width: 100%; }
+    .btn-primary:hover { background: var(--primary-hover); }
+    .btn-sm { padding: 6px 12px; font-size: 12px; border-radius: 6px; }
+    .btn-success { background: #059669; color: #fff; }
+    .btn-success:hover { background: #047857; }
+    .btn-warning { background: #d97706; color: #fff; }
+    .btn-warning:hover { background: #b45309; }
+    .btn-danger { background: #dc2626; color: #fff; }
+    .btn-danger:hover { background: #b91c1c; }
+
+    /* Top Navigation */
+    header {
+      background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border); padding: 14px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 50;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; }
+    .brand img { width: 36px; height: 36px; border-radius: 8px; }
+    .brand span { background: linear-gradient(135deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .user-pill {
+      display: flex; align-items: center; gap: 12px; background: #0f172a;
+      border: 1px solid var(--card-border); padding: 6px 16px; border-radius: 999px; font-size: 13px;
+    }
+    .btn-logout { background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 13px; margin-left: 8px; }
+
+    /* Layout */
+    .container { flex: 1; padding: 28px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+    /* Stats Grid */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 28px; }
+    .stat-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .stat-title { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+    .stat-value { font-size: 32px; font-weight: 700; margin: 10px 0 4px; }
+    .stat-desc { font-size: 12px; color: var(--success); display: flex; align-items: center; gap: 4px; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px; }
+    .tab-btn {
+      padding: 10px 20px; background: transparent; border: none; border-radius: 8px;
+      color: var(--text-muted); font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s;
+    }
+    .tab-btn.active { background: var(--card-bg); color: var(--primary); border: 1px solid var(--card-border); }
+
+    /* Content Cards */
+    .card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 12px; padding: 24px; margin-bottom: 24px;
+    }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--card-border);
+    }
+    .card-title { font-size: 17px; font-weight: 700; color: #fff; }
+
+    /* Table */
+    .table-container { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+    th { padding: 12px 16px; background: #0f172a; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--card-border); }
+    td { padding: 14px 16px; border-bottom: 1px solid rgba(51, 65, 85, 0.5); vertical-align: middle; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge {
+      display: inline-block; padding: 4px 10px; border-radius: 999px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+    }
+    .badge-admin { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .badge-vip { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+    .badge-normal { background: rgba(100, 116, 139, 0.2); color: #cbd5e1; }
+
+    /* Search & Filter Bar */
+    .filter-bar { display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .search-input {
+      flex: 1; min-width: 260px; padding: 10px 14px; background: #0f172a;
+      border: 1px solid var(--card-border); border-radius: 8px; color: #fff; font-size: 14px; outline: none;
+    }
+
+    /* Action Modals */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85);
+      display: none; align-items: center; justify-content: center; z-index: 100;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 28px; width: 100%; max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .modal-close { background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+  </style>
+</head>
+<body>
+
+  <!-- Login Modal (2-Factor: Password + PIN) -->
+  <div id="login-overlay">
+    <div class="login-box" style="max-width: 440px;">
+      <img src="/assets/logo-square.png" alt="Moly Viet Logo">
+      <h2>Trung Tâm Quản Trị Moly</h2>
+      <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+        Xác thực bảo mật 2 lớp: <strong>Mật Khẩu Quản Trị</strong> &amp; <strong>Mã PIN Cấp Cao</strong>
+      </p>
+
+      <!-- View 1: Form Đăng Nhập Quản Trị -->
+      <form id="login-form">
+        <div class="input-group">
+          <label>Tài Khoản / ID Quản Trị Viên</label>
+          <input type="text" id="login-username" value="00000000" placeholder="00000000 hoặc admin" required>
+        </div>
+        <div class="input-group">
+          <label>Mật Khẩu Quản Trị</label>
+          <input type="password" id="login-password" placeholder="Nhập mật khẩu quản trị..." required autofocus>
+        </div>
+        <div class="input-group">
+          <label>Mã PIN Bảo Mật Hệ Thống (6 số bí mật)</label>
+          <input type="password" id="login-pin" placeholder="Nhập mã PIN 6 số (mặc định: 888888)" maxlength="6" pattern="[0-9]{6}" required>
+          <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">Lớp bảo mật thứ 2 bắt buộc để kích hoạt quyền điều khiển máy chủ.</div>
+        </div>
+
+        <div style="text-align: right; margin-bottom: 14px;">
+          <a href="javascript:void(0)" onclick="toggleAdminResetView(true)" style="color: #38bdf8; font-size: 12px; text-decoration: none;">🔒 Quên Mật Khẩu / Mã PIN?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="btn-submit-login">Xác Thực &amp; Vào Bảng Quản Trị</button>
+        <div id="login-error" style="color: #ef4444; font-size: 13px; margin-top: 14px; display: none;"></div>
+      </form>
+
+      <!-- View 2: Form Khôi Phục & Đặt Lại Thông Tin Quản Trị -->
+      <form id="admin-reset-form" style="display: none; text-align: left;" onsubmit="handleAdminReset(event)">
+        <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 10px; margin-bottom: 14px; font-size: 12px; color: #93c5fd;">
+          Nhập Email và Ngày sinh bảo mật của Quản trị viên để đặt lại Mật khẩu và Mã PIN mới.
+        </div>
+        <div class="input-group">
+          <label>Email Quản Trị Viên Đã Đăng Ký</label>
+          <input type="email" id="reset-email" placeholder="VD: admin@moly.viet" required>
+        </div>
+        <div class="input-group">
+          <label>Ngày Sinh Bảo Mật</label>
+          <input type="date" id="reset-birthday" value="2008-04-28" required>
+        </div>
+        <div class="input-group">
+          <label>Mật Khẩu Mới (Tối thiểu 6 ký tự)</label>
+          <input type="password" id="reset-new-pwd" placeholder="Mật khẩu mới..." minlength="6" required>
+        </div>
+        <div class="input-group">
+          <label>Mã PIN Mới (Đúng 6 chữ số)</label>
+          <input type="password" id="reset-new-pin" placeholder="Mã PIN 6 số mới..." maxlength="6" pattern="[0-9]{6}" required>
+        </div>
+        <div id="reset-msg" style="font-size: 13px; margin-bottom: 12px; display: none;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+          <a href="javascript:void(0)" onclick="toggleAdminResetView(false)" style="color: #94a3b8; font-size: 12px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
+          <button type="submit" class="btn btn-warning" id="btn-submit-reset" style="padding: 10px 16px; font-size: 13px;">Đặt Lại Thông Tin</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <img src="/assets/logo-square.png" alt="Logo">
+      <span>Moly - Thế Giới Chuột Chũi VN • Bảng Quản Trị Tối Cao</span>
+    </div>
+    <div class="user-pill">
+      <span>🟢 Quản Trị Viên: <strong id="admin-user-display">00000000</strong> (VIP 19)</span>
+      <button class="btn btn-sm btn-warning" id="btn-open-pwd-modal" style="padding: 4px 10px; font-size: 12px; margin-left: 6px;" onclick="openPasswordModal()">🔒 Đổi Mật Khẩu &amp; PIN</button>
+      <a href="/" class="btn btn-sm" style="background: #334155; color: #fff; text-decoration: none; padding: 4px 10px; font-size: 12px; margin-left: 4px;">🌐 Về Trang Chủ</a>
+      <button class="btn-logout" id="btn-logout">Đăng Xuất</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-title">Tổng Cư Dân Moly</span>
+        <div class="stat-value" id="stat-total-users" style="color: #60a5fa;">--</div>
+        <span class="stat-desc">Đã đăng ký trong cơ sở dữ liệu</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-title">Người Chơi Trực Tuyến (CCU)</span>
+        <div class="stat-value" id="stat-online-ccu" style="color: #34d399;">--</div>
+        <span class="stat-desc">Đồng bộ thời gian thực trong Map</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-title">Thời Gian Hoạt Động (Uptime)</span>
+        <div class="stat-value" id="stat-uptime" style="color: #fbbf24;">--</div>
+        <span class="stat-desc">Cụm máy chủ World & Proxy</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-title">Trạng Thái Cụm Máy Chủ</span>
+        <div class="stat-value" style="font-size: 20px; color: #a78bfa; margin-top: 16px;">
+          World: <strong style="color: #34d399;">OK</strong> • DB: <strong style="color: #34d399;">OK</strong>
+        </div>
+        <span class="stat-desc">Kiến trúc Tri-Play (Web / APK / PC)</span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-residents">Quản Lý Cư Dân</button>
+      <button class="tab-btn" data-tab="tab-recharge">💳 Quản Lý Nạp Tiền &amp; QR</button>
+      <button class="tab-btn" data-tab="tab-giftcodes">🎁 Quản Lý Mã Quà Tặng (Giftcodes)</button>
+      <button class="tab-btn" data-tab="tab-broadcast">Thông Báo Toàn Server</button>
+      <button class="tab-btn" data-tab="tab-system">Hạ Tầng & Triển Khai</button>
+    </div>
+
+    <!-- Tab 1: Residents -->
+    <div id="tab-residents">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Danh Sách Cư Dân Vương Quốc Chuột Chũi</span>
+          <button class="btn btn-sm btn-primary" onclick="loadUsers()">Làm Mới Danh Sách</button>
+        </div>
+
+        <div class="filter-bar">
+          <input type="text" id="search-input" class="search-input" placeholder="Tìm theo ID cư dân hoặc biệt danh..." oninput="filterUsers()">
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID Moly</th>
+                <th>Biệt Danh</th>
+                <th>Cấp VIP</th>
+                <th>Đậu Vàng</th>
+                <th>Hiệp Sĩ SMC</th>
+                <th>Bé LaMu</th>
+                <th>Thao Tác Nhanh</th>
+              </tr>
+            </thead>
+            <tbody id="user-table-body">
+              <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Đang tải dữ liệu cư dân...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Quản Lý Nạp Tiền & Cấu Hình QR -->
+    <div id="tab-recharge" style="display: none;">
+      <!-- Khung Cấu Hình Thanh Toán & QR -->
+      <div class="card" style="margin-bottom: 24px;">
+        <div class="card-header">
+          <span class="card-title">⚙️ Cấu Hình Thông Tin Chuyển Khoản &amp; Mã QR Thanh Toán</span>
+          <button class="btn btn-sm btn-primary" onclick="loadAdminPaymentConfig()">Làm Mới Cấu Hình</button>
+        </div>
+        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">
+          Cấu hình thông tin tài khoản ngân hàng và mã QR thanh toán hiển thị cho người chơi khi nạp tiền. Bạn có thể tự dán link ảnh mã QR của mình vào bên dưới.
+        </p>
+        <form onsubmit="handleSavePaymentConfig(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; align-items: end;">
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>Tên Ngân Hàng</label>
+            <input type="text" id="admin-bank-name" placeholder="VD: MB Bank (Ngân Hàng Quân Đội)" required>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>Số Tài Khoản</label>
+            <input type="text" id="admin-bank-stk" placeholder="VD: 0888888888" required>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>Chủ Tài Khoản (In hoa)</label>
+            <input type="text" id="admin-bank-holder" placeholder="VD: NGUYEN VAN ADMIN" required>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>URL / Link Ảnh Mã QR (Admin tự điền link ảnh QR)</label>
+            <input type="text" id="admin-bank-qr-url" placeholder="VD: /assets/payment_qr_placeholder.png hoặc https://..." oninput="updateAdminQrPreview(this.value)">
+          </div>
+          <div class="input-group" style="margin-bottom: 0; grid-column: 1 / -1;">
+            <label>Ghi Chú / Hướng Dẫn Nạp Tiền Cho Cư Dân</label>
+            <input type="text" id="admin-bank-note" placeholder="VD: Bắt buộc nhập chính xác Mã Giao Dịch vào phần Nội Dung Chuyển Khoản để hệ thống và Admin kiểm tra duyệt trong vòng 5 - 15 phút.">
+          </div>
+          <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img id="admin-qr-preview-img" src="/assets/payment_qr_placeholder.png" alt="Preview QR" style="width: 50px; height: 50px; border-radius: 4px; border: 1px solid #334155; object-fit: contain; background: #fff;">
+              <span style="font-size: 12px; color: var(--text-muted);">Xem trước ảnh mã QR hiển thị ở trang web</span>
+            </div>
+            <button type="submit" class="btn btn-warning" id="btn-save-payment-config">💾 Lưu Cấu Hình Thanh Toán</button>
+          </div>
+        </form>
+        <div id="admin-payment-config-msg" style="font-size: 13px; margin-top: 10px; display: none;"></div>
+      </div>
+
+      <!-- Danh Sách Đơn Nạp Tiền -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📋 Danh Sách Đơn Nạp Tiền Cư Dân (Thẻ Cào &amp; Chuyển Khoản QR)</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-primary" onclick="loadRechargeOrders()">🔄 Làm Mới Đơn</button>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; gap: 6px;">
+            <button class="btn btn-sm rc-filter-btn active" onclick="filterRechargeOrders('all', this)" style="background: #3b82f6; color: #fff;">Tất Cả</button>
+            <button class="btn btn-sm rc-filter-btn" onclick="filterRechargeOrders('pending', this)" style="background: #334155; color: #fde047;">🕒 Chờ Duyệt (5-15p)</button>
+            <button class="btn btn-sm rc-filter-btn" onclick="filterRechargeOrders('approved', this)" style="background: #334155; color: #34d399;">✅ Đã Duyệt</button>
+            <button class="btn btn-sm rc-filter-btn" onclick="filterRechargeOrders('rejected', this)" style="background: #334155; color: #ef4444;">❌ Đã Từ Chối</button>
+          </div>
+          <input type="text" id="recharge-search-input" class="search-input" placeholder="Tìm theo Mã Đơn, ID Moly, Seri, Mã Thẻ hoặc Mã GD..." oninput="searchRechargeOrders()" style="max-width: 380px;">
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Mã Đơn / Mã GD</th>
+                <th>Cư Dân Nạp</th>
+                <th>Phương Thức &amp; Chi Tiết</th>
+                <th>Số Tiền (VNĐ)</th>
+                <th>Thời Gian &amp; Hẹn Duyệt (15p)</th>
+                <th>Trạng Thái</th>
+                <th>Thao Tác Duyệt Thủ Công</th>
+              </tr>
+            </thead>
+            <tbody id="recharge-table-body">
+              <tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Đang tải danh sách đơn nạp...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Giftcodes -->
+    <div id="tab-giftcodes" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">🎁 Quản Lý Mã Quà Tặng (Giftcode) & Nạp VIP</span>
+          <button class="btn btn-sm btn-primary" onclick="loadGiftcodes()">Làm Mới Mã</button>
+        </div>
+
+        <!-- Form Tạo Mã Mới -->
+        <div style="background: #0f172a; border: 1px solid var(--card-border); border-radius: 10px; padding: 18px; margin-bottom: 24px;">
+          <h4 style="color: #60a5fa; margin-bottom: 12px; font-size: 15px;">➕ Tạo Mã Quà Tặng Mới</h4>
+          <form id="create-giftcode-form" onsubmit="handleCreateGiftcode(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; align-items: end;">
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Mã Quà Tặng (Code)</label>
+              <input type="text" id="gc-code" placeholder="VD: VIP2026..." style="text-transform: uppercase;" required>
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Mô Tả</label>
+              <input type="text" id="gc-desc" placeholder="VD: Quà khai mở..." required>
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Đậu Vàng</label>
+              <input type="number" id="gc-beans" value="100" min="0">
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>VIP Dùng Thử (Ngày)</label>
+              <input type="number" id="gc-trial-days" value="3" min="0" max="30">
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Thẻ Tháng VIP (Tháng)</label>
+              <input type="number" id="gc-months" value="0" min="0" max="120">
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Điểm VIP Tích Lũy</label>
+              <input type="number" id="gc-vip-val" value="0" min="0">
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Lượt Dùng Tối Đa</label>
+              <input type="number" id="gc-uses" value="1000" min="1">
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Kèm Đậu Đậu Siêu Cấp</label>
+              <select id="gc-super-lamu-species" style="width: 100%; padding: 10px; background: #0f172a; border: 1px solid var(--card-border); border-radius: 8px; color: #fff; font-size: 13px;">
+                <option value="">Không kèm</option>
+                <option value="classic">Hoàng Kim (classic)</option>
+                <option value="dark">Hắc Ám (dark)</option>
+                <option value="cosmic">Vũ Trụ (cosmic)</option>
+                <option value="mythic">Thần Thoại (mythic)</option>
+                <option value="ice">Băng Tuyết (ice)</option>
+                <option value="flame">Lửa Thiêng (flame)</option>
+              </select>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-success" style="width: 100%; padding: 12px;">✨ Tạo Mã Ngay</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Bảng danh sách Giftcode -->
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Mã Giftcode</th>
+                <th>Mô Tả</th>
+                <th>Đậu Vàng</th>
+                <th>Cấp VIP</th>
+                <th>Siêu Lamu</th>
+                <th>Đã Dùng / Tối Đa</th>
+                <th>Trạng Thái</th>
+                <th>Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="giftcode-table-body">
+              <tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Đang tải danh sách mã quà tặng...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Broadcast -->
+    <div id="tab-broadcast" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Phát Sóng Thông Báo Toàn Cõi Moly</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">
+          Gửi thông báo chạy chữ trên màn hình tất cả người chơi đang kết nối trong game.
+        </p>
+        <div class="input-group">
+          <label>Nội dung thông báo (Broadcast Message)</label>
+          <input type="text" id="broadcast-input" placeholder="Ví dụ: Sự kiện Đêm Lửa Trại bắt đầu lúc 20:00 tối nay!">
+        </div>
+        <button class="btn btn-primary" style="max-width: 240px;" onclick="sendBroadcast()">Phát Sóng Ngay</button>
+      </div>
+    </div>
+
+    <!-- Tab 3: System -->
+    <div id="tab-system" style="display: none;">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Trạng Thái Hạ Tầng & Triển Khai Cloud</span>
+        </div>
+        <div style="font-size: 14px; line-height: 1.8; color: var(--text-muted);">
+          <p>• <strong>Cơ sở dữ liệu:</strong> Neon PostgreSQL Cloud (hoặc dự phòng accounts.json độc lập)</p>
+          <p>• <strong>Máy chủ Ứng dụng:</strong> Render Web Service (Chạy container Docker tối ưu hóa)</p>
+          <p>• <strong>CDN & Tên miền:</strong> Cloudflare (Bật WebSockets, TLS Full/Strict, Cache tĩnh)</p>
+          <p>• <strong>Hỗ trợ Tri-Play:</strong> Web Browser Ruffle, Android APK (13MB), Desktop Portable (150MB)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Action Modal -->
+  <div id="action-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-title" style="color: #fff;">Điều Chỉnh Cư Dân</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div id="modal-body"></div>
+      <div class="modal-actions">
+        <button class="btn btn-sm" style="background: #334155; color: #fff;" onclick="closeModal()">← Trở lại</button>
+        <button class="btn btn-sm btn-primary" id="btn-modal-confirm">Xác Nhận</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Đổi Mật Khẩu & Mã PIN Admin -->
+  <div id="pwd-modal" class="modal-overlay">
+    <div class="modal" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 style="color: #fff;">🔒 Bảo Mật Quản Trị Viên</h3>
+        <button class="modal-close" onclick="closePasswordModal()">&times;</button>
+      </div>
+
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; background: #0f172a; padding: 4px; border-radius: 8px;">
+        <button id="admin-tab-pwd-btn" class="btn btn-sm" style="flex: 1; background: var(--primary); color: #fff;" onclick="switchAdminSecTab('pwd')">Đổi Mật Khẩu</button>
+        <button id="admin-tab-pin-btn" class="btn btn-sm" style="flex: 1; background: transparent; color: var(--text-muted);" onclick="switchAdminSecTab('pin')">Đổi Mã PIN (6 Số)</button>
+      </div>
+
+      <!-- Tab 1: Đổi Mật Khẩu -->
+      <form id="change-pwd-form" onsubmit="handleChangePassword(event)">
+        <div class="input-group">
+          <label>Mật Khẩu Hiện Tại</label>
+          <input type="password" id="old-admin-pwd" placeholder="Nhập mật khẩu hiện tại..." required>
+        </div>
+        <div class="input-group">
+          <label>Mật Khẩu Mới (Tối thiểu 6 ký tự)</label>
+          <input type="password" id="new-admin-pwd" placeholder="Nhập mật khẩu mới an toàn..." minlength="6" required>
+        </div>
+        <div class="input-group">
+          <label>Xác Nhận Mật Khẩu Mới</label>
+          <input type="password" id="confirm-admin-pwd" placeholder="Nhập lại mật khẩu mới..." minlength="6" required>
+        </div>
+        <div class="input-group">
+          <label>Mã PIN Bảo Mật Hiện Tại (6 số)</label>
+          <input type="password" id="admin-sec-pin-for-pwd" placeholder="Nhập mã PIN 6 số..." maxlength="6" pattern="[0-9]{6}" required>
+        </div>
+        <div id="pwd-error" style="color: #ef4444; font-size: 13px; margin-bottom: 12px; display: none;"></div>
+        <div id="pwd-success" style="color: #10b981; font-size: 13px; margin-bottom: 12px; display: none;"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-sm" style="background: #334155; color: #fff;" onclick="closePasswordModal()">← Trở lại</button>
+          <button type="submit" class="btn btn-sm btn-primary">Lưu Mật Khẩu</button>
+        </div>
+      </form>
+
+      <!-- Tab 2: Đổi Mã PIN -->
+      <form id="change-pin-form" style="display: none;" onsubmit="handleChangePin(event)">
+        <div class="input-group">
+          <label>Mã PIN Hiện Tại (6 số)</label>
+          <input type="password" id="old-admin-pin" placeholder="Nhập mã PIN cũ..." maxlength="6" pattern="[0-9]{6}" required>
+        </div>
+        <div class="input-group">
+          <label>Mã PIN Mới (Đúng 6 số)</label>
+          <input type="password" id="new-admin-pin" placeholder="Nhập mã PIN 6 số mới..." maxlength="6" pattern="[0-9]{6}" required>
+        </div>
+        <div class="input-group">
+          <label>Xác Nhận Mã PIN Mới</label>
+          <input type="password" id="confirm-admin-pin" placeholder="Nhập lại mã PIN 6 số mới..." maxlength="6" pattern="[0-9]{6}" required>
+        </div>
+        <div id="pin-error" style="color: #ef4444; font-size: 13px; margin-bottom: 12px; display: none;"></div>
+        <div id="pin-success" style="color: #10b981; font-size: 13px; margin-bottom: 12px; display: none;"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-sm" style="background: #334155; color: #fff;" onclick="closePasswordModal()">← Trở lại</button>
+          <button type="submit" class="btn btn-sm btn-warning">Lưu Mã PIN Mới</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let token = localStorage.getItem("moly_admin_token") || "";
+    let allUsers = [];
+
+    function toggleAdminResetView(isReset) {
+      document.getElementById("login-form").style.display = isReset ? "none" : "block";
+      document.getElementById("admin-reset-form").style.display = isReset ? "block" : "none";
+      document.getElementById("login-error").style.display = "none";
+      document.getElementById("reset-msg").style.display = "none";
+    }
+
+    async function handleAdminReset(e) {
+      e.preventDefault();
+      const em = document.getElementById("reset-email").value.trim();
+      const bday = document.getElementById("reset-birthday").value;
+      const pwd = document.getElementById("reset-new-pwd").value;
+      const pin = document.getElementById("reset-new-pin").value.trim();
+      const msgBox = document.getElementById("reset-msg");
+      const btn = document.getElementById("btn-submit-reset");
+
+      btn.disabled = true;
+      btn.textContent = "Đang khôi phục...";
+
+      try {
+        const resp = await fetch("/api/admin/reset_credentials", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: em, birthday: bday, new_password: pwd, new_pin: pin })
+        });
+        const data = await resp.json();
+        msgBox.style.display = "block";
+        if (data.ok) {
+          msgBox.style.color = "#10b981";
+          msgBox.textContent = "🎉 " + data.message;
+          btn.textContent = "Thành Công!";
+          setTimeout(() => {
+            toggleAdminResetView(false);
+            btn.disabled = false;
+            btn.textContent = "Đặt Lại Thông Tin";
+          }, 2000);
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + (data.error || data.message || "Đặt lại thất bại!");
+          btn.disabled = false;
+          btn.textContent = "Đặt Lại Thông Tin";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Đặt Lại Thông Tin";
+      }
+    }
+
+    // Check Login State
+    function checkLogin() {
+      if (token) {
+        document.getElementById("login-overlay").style.display = "none";
+        loadStats();
+        loadUsers();
+        loadGiftcodes();
+        loadAdminPaymentConfig();
+        loadRechargeOrders();
+      } else {
+        document.getElementById("login-overlay").style.display = "flex";
+      }
+    }
+
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const user = document.getElementById("login-username").value.trim();
+      const pass = document.getElementById("login-password").value.trim();
+      const pin = document.getElementById("login-pin").value.trim();
+      const errBox = document.getElementById("login-error");
+      const btn = document.getElementById("btn-submit-login");
+      errBox.style.display = "none";
+      btn.disabled = true;
+      btn.textContent = "Đang xác thực...";
+
+      try {
+        const resp = await fetch("/api/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: user, password: pass, pin: pin })
+        });
+        const data = await resp.json();
+        if (data.ok && data.token) {
+          token = data.token;
+          localStorage.setItem("moly_admin_token", token);
+          checkLogin();
+        } else {
+          errBox.textContent = "❌ " + (data.error || "Mật khẩu hoặc mã PIN quản trị không chính xác!");
+          errBox.style.display = "block";
+          btn.disabled = false;
+          btn.textContent = "Xác Thực & Vào Bảng Quản Trị";
+        }
+      } catch (err) {
+        errBox.textContent = "❌ Không thể kết nối máy chủ quản trị: " + err.message;
+        errBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Xác Thực & Vào Bảng Quản Trị";
+      }
+    });
+
+    document.getElementById("btn-logout").addEventListener("click", async () => {
+      await fetch("/api/admin/logout", {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+      token = "";
+      localStorage.removeItem("moly_admin_token");
+      checkLogin();
+    });
+
+    // Tab Navigation
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const tab = btn.dataset.tab;
+        document.getElementById("tab-residents").style.display = tab === "tab-residents" ? "block" : "none";
+        document.getElementById("tab-recharge").style.display = tab === "tab-recharge" ? "block" : "none";
+        document.getElementById("tab-giftcodes").style.display = tab === "tab-giftcodes" ? "block" : "none";
+        document.getElementById("tab-broadcast").style.display = tab === "tab-broadcast" ? "block" : "none";
+        document.getElementById("tab-system").style.display = tab === "tab-system" ? "block" : "none";
+        if (tab === "tab-giftcodes") loadGiftcodes();
+        if (tab === "tab-recharge") { loadAdminPaymentConfig(); loadRechargeOrders(); }
+      });
+    });
+
+    // Stats
+    async function loadStats() {
+      try {
+        const resp = await fetch("/api/admin/stats", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        const data = await resp.json();
+        document.getElementById("stat-total-users").textContent = (data.total_accounts || 0).toLocaleString();
+        document.getElementById("stat-online-ccu").textContent = (data.online_ccu || 0) + " cư dân";
+        const uptime = data.uptime_seconds || 0;
+        const h = Math.floor(uptime / 3600);
+        const m = Math.floor((uptime % 3600) / 60);
+        document.getElementById("stat-uptime").textContent = `${h}h ${m}m`;
+      } catch (e) {
+        console.error("Stats error", e);
+      }
+    }
+
+    // Users
+    async function loadUsers() {
+      try {
+        const resp = await fetch("/api/admin/users", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        allUsers = await resp.json();
+        renderUsers(allUsers);
+      } catch (e) {
+        console.error("Users error", e);
+      }
+    }
+
+    function renderUsers(users) {
+      const tbody = document.getElementById("user-table-body");
+      if (!users.length) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted);">Không tìm thấy cư dân nào</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = users.map(u => `
+        <tr>
+          <td><strong style="color: #60a5fa;">${u.user_id}</strong></td>
+          <td>${u.nickname || "Moly"}</td>
+          <td>
+            ${u.is_admin ? '<span class="badge badge-admin">ADMIN (VIP 19)</span>' :
+              u.vip_level > 0 ? `<span class="badge badge-vip">VIP ${u.vip_level}</span>` :
+              '<span class="badge badge-normal">Thường</span>'}
+          </td>
+          <td><strong style="color: #f59e0b;">${(u.gold_beans || 0).toLocaleString()}</strong></td>
+          <td>${u.element_knight_type > 0 ? '🏆 Hiệp Sĩ Cấp ' + u.element_knight_talent : 'Chưa có'}</td>
+          <td>
+            ${(() => {
+              if (!u.lamu) return '<span style="color: var(--text-muted);">Chưa có</span>';
+              if (u.lamu.is_super_lamu) {
+                const speciesMap = {
+                  classic: 'Hoàng Kim',
+                  dark: 'Hắc Ám',
+                  cosmic: 'Vũ Trụ',
+                  mythic: 'Thần Thoại',
+                  ice: 'Băng Tuyết',
+                  flame: 'Lửa Thiêng'
+                };
+                const sName = speciesMap[u.lamu.super_type] || 'Siêu Cấp';
+                return `<span class="badge" style="background: rgba(168, 85, 247, 0.25); color: #c084fc; font-weight: bold;">⭐ ${sName} (Lv.${u.lamu.level || 1})</span>`;
+              }
+              return `<span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #93c5fd;">Bé Lamu</span>`;
+            })()}
+          </td>
+          <td style="display: flex; gap: 4px; flex-wrap: wrap;">
+            <button class="btn btn-sm btn-warning" onclick="quickAddBeans(${u.user_id})" title="+500 Đậu Vàng">+500 Đậu</button>
+            <button class="btn btn-sm btn-success" onclick="quickAddMonthVIP(${u.user_id})" title="Cấp 1 Tháng Thẻ VIP (+100 điểm thăng cấp)">+1T VIP</button>
+            <button class="btn btn-sm btn-info" onclick="quickSetVipLevel(${u.user_id})" title="Thiết lập cấp VIP (1 đến 19)">Cấp VIP</button>
+            <button class="btn btn-sm" style="background: #8b5cf6; color: white;" onclick="quickSetSuperLamu(${u.user_id})" title="Cấp Đậu Đậu Siêu Cấp theo chủng loại">🐾 Siêu Lamu</button>
+            <button class="btn btn-sm btn-primary" onclick="quickMaxSMC(${u.user_id})" title="Cấp Full SMC">SMC</button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function filterUsers() {
+      const q = document.getElementById("search-input").value.toLowerCase().trim();
+      if (!q) { renderUsers(allUsers); return; }
+      const filtered = allUsers.filter(u =>
+        String(u.user_id).includes(q) || (u.nickname && u.nickname.toLowerCase().includes(q))
+      );
+      renderUsers(filtered);
+    }
+
+    // Quick Actions
+    async function quickAddBeans(uid) {
+      if (!confirm(`Cộng 500 Đậu Vàng cho cư dân ${uid}?`)) return;
+      await fetch("/api/admin/user/beans", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid, amount: 500 })
+      });
+      loadUsers();
+    }
+
+    async function quickTrialVIP(uid) {
+      if (!confirm(`Cấp VIP 1 dùng thử 3 ngày cho cư dân ${uid}?`)) return;
+      await fetch("/api/admin/user/vip_trial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid, days: 3 })
+      });
+      loadUsers();
+    }
+
+    async function quickAddMonthVIP(uid) {
+      if (!confirm(`Kích hoạt 1 Tháng Thẻ Thành Viên (+100 điểm thăng cấp) cho cư dân ${uid}?`)) return;
+      await fetch("/api/admin/user/vip_membership", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid, months: 1, vip_value_add: 100 })
+      });
+      loadUsers();
+    }
+
+    async function quickSetVipLevel(uid) {
+      const val = prompt(`Nhập cấp VIP muốn cấp cho cư dân ${uid} (từ 1 đến 19):`, "1");
+      if (!val) return;
+      const lvl = parseInt(val, 10);
+      if (isNaN(lvl) || lvl < 1 || lvl > 19) {
+        alert("Cấp VIP không hợp lệ! Vui lòng nhập từ 1 đến 19.");
+        return;
+      }
+      const resp = await fetch("/api/admin/user/vip", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid, vip_level: lvl, months: 12 })
+      });
+      const res = await resp.json();
+      if (res.ok) {
+        alert(`Đã cấp thành công VIP ${lvl} (thời hạn 12 tháng) cho cư dân ${uid}!`);
+        loadUsers();
+      }
+    }
+
+    async function quickSetSuperLamu(uid) {
+      const sp = prompt(
+        `Chọn chủng loại Đậu Đậu Siêu Cấp cho cư dân ${uid}:\n` +
+        "1: classic (Hoàng Kim)\n" +
+        "2: dark (Hắc Ám)\n" +
+        "3: cosmic (Vũ Trụ)\n" +
+        "4: mythic (Thần Thoại)\n" +
+        "5: ice (Băng Tuyết)\n" +
+        "6: flame (Lửa Thiêng)\n" +
+        "Nhập tên loại (classic, dark, cosmic, mythic, ice, flame):",
+        "dark"
+      );
+      if (!sp) return;
+      const valid = ["classic", "dark", "cosmic", "mythic", "ice", "flame"];
+      const chosen = sp.trim().toLowerCase();
+      if (!valid.includes(chosen)) {
+        alert(`Chủng loại không hợp lệ: ${chosen}`);
+        return;
+      }
+      const resp = await fetch("/api/admin/user/super_lamu", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid, species: chosen })
+      });
+      const res = await resp.json();
+      if (res.ok) {
+        alert(`Đã kích hoạt Đậu Đậu Siêu Cấp (${chosen}) thành công cho cư dân ${uid}!`);
+        loadUsers();
+      }
+    }
+
+    async function quickMaxSMC(uid) {
+      if (!confirm(`Cấp trọn bộ nghề nghiệp SMC (Hiệp sĩ, Cảnh sát, HDV, Nhà báo) cho cư dân ${uid}?`)) return;
+      await fetch("/api/admin/user/smc", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid })
+      });
+      loadUsers();
+    }
+
+    // Broadcast
+    async function sendBroadcast() {
+      const msg = document.getElementById("broadcast-input").value.trim();
+      if (!msg) return;
+      const resp = await fetch("/api/admin/broadcast", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ message: msg })
+      });
+      const res = await resp.json();
+      if (res.ok) {
+        alert("Thông báo đã được phát sóng tới toàn bộ người chơi!");
+        document.getElementById("broadcast-input").value = "";
+      }
+    }
+
+    function closeModal() {
+      document.getElementById("action-modal").classList.remove("open");
+    }
+
+    // Giftcode Management
+    let allGiftcodes = [];
+
+    async function loadGiftcodes() {
+      try {
+        const resp = await fetch("/api/admin/giftcodes", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        allGiftcodes = await resp.json();
+        renderGiftcodes(allGiftcodes);
+      } catch (e) {
+        console.error("Giftcodes error", e);
+      }
+    }
+
+    function renderGiftcodes(codes) {
+      const tbody = document.getElementById("giftcode-table-body");
+      if (!codes || !codes.length) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; color: var(--text-muted);">Chưa có mã quà tặng nào</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = codes.map(gc => {
+        const used = gc.used_count || 0;
+        const max = gc.max_uses || 1;
+        const isExpired = used >= max;
+        return `
+          <tr>
+            <td><strong style="color: #fbbf24; letter-spacing: 1px;">${gc.code}</strong></td>
+            <td>${gc.description || "-"}</td>
+            <td><strong style="color: #f59e0b;">+${(gc.beans || 0).toLocaleString()}</strong></td>
+            <td>
+              ${gc.trial_days > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level || 1} Thử (${gc.trial_days}N)</span>` :
+                gc.vip_months > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level || 2} (${gc.vip_months}T, +${gc.vip_value_add || 100}đ)</span>` :
+                gc.vip_level > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level}</span>` : "Không"}
+            </td>
+            <td>
+              ${(() => {
+                if (gc.super_lamu_species) {
+                  const speciesMap = {
+                    classic: 'Hoàng Kim',
+                    dark: 'Hắc Ám',
+                    cosmic: 'Vũ Trụ',
+                    mythic: 'Thần Thoại',
+                    ice: 'Băng Tuyết',
+                    flame: 'Lửa Thiêng'
+                  };
+                  const sName = speciesMap[gc.super_lamu_species] || gc.super_lamu_species;
+                  return `<span style="color: #c084fc; font-weight: bold;">🐾 ${sName}</span>`;
+                }
+                return gc.super_lamu ? '<span style="color: #a78bfa; font-weight: bold;">⭐ Siêu LaMu</span>' : "Không";
+              })()}
+            </td>
+            <td><strong>${used}</strong> / ${max}</td>
+            <td>
+              ${isExpired ? '<span class="badge badge-admin">Hết Lượt</span>' :
+                gc.active ? '<span class="badge badge-normal" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">Khả Dụng</span>' :
+                '<span class="badge badge-admin">Bị Khóa</span>'}
+            </td>
+            <td>
+              <button class="btn btn-sm btn-danger" onclick="deleteGiftcode('${gc.code}')" title="Xóa mã quà tặng">Xóa</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    async function handleCreateGiftcode(e) {
+      e.preventDefault();
+      const code = document.getElementById("gc-code").value.trim().toUpperCase();
+      const desc = document.getElementById("gc-desc").value.trim();
+      const beans = parseInt(document.getElementById("gc-beans").value) || 0;
+      const trialDays = parseInt(document.getElementById("gc-trial-days").value) || 0;
+      const months = parseInt(document.getElementById("gc-months").value) || 0;
+      const vipVal = parseInt(document.getElementById("gc-vip-val").value) || 0;
+      const uses = parseInt(document.getElementById("gc-uses").value) || 1000;
+      const species = document.getElementById("gc-super-lamu-species").value || null;
+      const superLamu = !!species;
+
+      if (!code) return;
+
+      try {
+        const resp = await fetch("/api/admin/giftcodes/create", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({
+            code: code,
+            description: desc,
+            beans: beans,
+            trial_days: trialDays,
+            vip_months: months,
+            vip_value_add: vipVal,
+            vip_level: trialDays > 0 ? 1 : (months > 0 ? 2 : 0),
+            max_uses: uses,
+            super_lamu: superLamu,
+            super_lamu_species: species
+          })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          alert(`Đã khởi tạo thành công mã quà tặng [${code}]!`);
+          document.getElementById("create-giftcode-form").reset();
+          loadGiftcodes();
+        } else {
+          alert(res.error || "Không thể tạo mã quà tặng!");
+        }
+      } catch (err) {
+        alert("Lỗi kết nối máy chủ: " + err.message);
+      }
+    }
+
+    async function deleteGiftcode(code) {
+      if (!confirm(`Bạn có chắc chắn muốn xóa mã quà tặng [${code}]?`)) return;
+      try {
+        const resp = await fetch("/api/admin/giftcodes/delete", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ code: code })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          loadGiftcodes();
+        } else {
+          alert("Không thể xóa mã quà tặng!");
+        }
+      } catch (err) {
+        alert("Lỗi kết nối máy chủ: " + err.message);
+      }
+    }
+
+    // Admin Security Settings (Password & PIN)
+    function switchAdminSecTab(tab) {
+      const isPwd = tab === 'pwd';
+      document.getElementById("change-pwd-form").style.display = isPwd ? "block" : "none";
+      document.getElementById("change-pin-form").style.display = isPwd ? "none" : "block";
+      document.getElementById("admin-tab-pwd-btn").style.background = isPwd ? "var(--primary)" : "transparent";
+      document.getElementById("admin-tab-pwd-btn").style.color = isPwd ? "#fff" : "var(--text-muted)";
+      document.getElementById("admin-tab-pin-btn").style.background = isPwd ? "transparent" : "var(--primary)";
+      document.getElementById("admin-tab-pin-btn").style.color = isPwd ? "var(--text-muted)" : "#fff";
+    }
+
+    function openPasswordModal() {
+      document.getElementById("pwd-error").style.display = "none";
+      document.getElementById("pwd-success").style.display = "none";
+      document.getElementById("pin-error").style.display = "none";
+      document.getElementById("pin-success").style.display = "none";
+      document.getElementById("change-pwd-form").reset();
+      document.getElementById("change-pin-form").reset();
+      switchAdminSecTab('pwd');
+      document.getElementById("pwd-modal").classList.add("open");
+    }
+
+    function closePasswordModal() {
+      document.getElementById("pwd-modal").classList.remove("open");
+    }
+
+    async function handleChangePassword(e) {
+      e.preventDefault();
+      const oldPwd = document.getElementById("old-admin-pwd").value;
+      const newPwd = document.getElementById("new-admin-pwd").value;
+      const confPwd = document.getElementById("confirm-admin-pwd").value;
+      const pin = document.getElementById("admin-sec-pin-for-pwd").value.trim();
+      const errBox = document.getElementById("pwd-error");
+      const succBox = document.getElementById("pwd-success");
+
+      errBox.style.display = "none";
+      succBox.style.display = "none";
+
+      if (newPwd !== confPwd) {
+        errBox.textContent = "Mật khẩu mới và mật khẩu xác nhận không khớp!";
+        errBox.style.display = "block";
+        return;
+      }
+
+      try {
+        const resp = await fetch("/api/admin/change_password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ old_password: oldPwd, new_password: newPwd, pin: pin })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          succBox.textContent = "✅ Đổi mật khẩu quản trị viên thành công!";
+          succBox.style.display = "block";
+          setTimeout(closePasswordModal, 1500);
+        } else {
+          errBox.textContent = "❌ " + (res.message || res.error || "Không thể đổi mật khẩu!");
+          errBox.style.display = "block";
+        }
+      } catch (err) {
+        errBox.textContent = "❌ Lỗi kết nối máy chủ: " + err.message;
+        errBox.style.display = "block";
+      }
+    }
+
+    async function handleChangePin(e) {
+      e.preventDefault();
+      const oldPin = document.getElementById("old-admin-pin").value.trim();
+      const newPin = document.getElementById("new-admin-pin").value.trim();
+      const confPin = document.getElementById("confirm-admin-pin").value.trim();
+      const errBox = document.getElementById("pin-error");
+      const succBox = document.getElementById("pin-success");
+
+      errBox.style.display = "none";
+      succBox.style.display = "none";
+
+      if (newPin !== confPin) {
+        errBox.textContent = "Mã PIN mới xác nhận không khớp!";
+        errBox.style.display = "block";
+        return;
+      }
+
+      try {
+        const resp = await fetch("/api/admin/change_pin", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ old_pin: oldPin, new_pin: newPin })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          succBox.textContent = "✅ Đổi mã PIN bảo mật quản trị thành công!";
+          succBox.style.display = "block";
+          setTimeout(closePasswordModal, 1500);
+        } else {
+          errBox.textContent = "❌ " + (res.message || res.error || "Không thể đổi mã PIN!");
+          errBox.style.display = "block";
+        }
+      } catch (err) {
+        errBox.textContent = "❌ Lỗi kết nối máy chủ: " + err.message;
+        errBox.style.display = "block";
+      }
+    // ==========================================
+    // RECHARGE ORDERS & PAYMENT CONFIG (ADMIN)
+    // ==========================================
+    let allRechargeOrders = [];
+    let currentRechargeFilter = 'all';
+
+    async function loadAdminPaymentConfig() {
+      try {
+        const resp = await fetch("/api/payment/config");
+        if (!resp.ok) return;
+        const res = await resp.json();
+        const cfg = res.config || res;
+        document.getElementById("admin-bank-name").value = cfg.bank_name || "";
+        document.getElementById("admin-bank-stk").value = cfg.account_number || "";
+        document.getElementById("admin-bank-holder").value = cfg.account_holder || "";
+        document.getElementById("admin-bank-qr-url").value = cfg.qr_image_url || "";
+        document.getElementById("admin-bank-note").value = cfg.note || "";
+        updateAdminQrPreview(cfg.qr_image_url || "/assets/payment_qr_placeholder.png");
+      } catch (err) {
+        console.error("Error loading payment config:", err);
+      }
+    }
+
+    function updateAdminQrPreview(url) {
+      const img = document.getElementById("admin-qr-preview-img");
+      if (img) {
+        img.src = url || "/assets/payment_qr_placeholder.png";
+        img.onerror = () => { img.src = "/assets/payment_qr_placeholder.png"; };
+      }
+    }
+
+    async function handleSavePaymentConfig(e) {
+      e.preventDefault();
+      const btn = document.getElementById("btn-save-payment-config");
+      const msg = document.getElementById("admin-payment-config-msg");
+      btn.disabled = true;
+      btn.textContent = "⏳ Đang Lưu...";
+      msg.style.display = "none";
+
+      const payload = {
+        bank_name: document.getElementById("admin-bank-name").value.trim(),
+        account_number: document.getElementById("admin-bank-stk").value.trim(),
+        account_holder: document.getElementById("admin-bank-holder").value.trim(),
+        qr_image_url: document.getElementById("admin-bank-qr-url").value.trim() || "/assets/payment_qr_placeholder.png",
+        note: document.getElementById("admin-bank-note").value.trim()
+      };
+
+      try {
+        const resp = await fetch("/api/admin/payment/config", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify(payload)
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          msg.textContent = "✅ Đã lưu cấu hình tài khoản và mã QR thanh toán thành công!";
+          msg.style.color = "#34d399";
+          msg.style.display = "block";
+          updateAdminQrPreview(payload.qr_image_url);
+        } else {
+          msg.textContent = "❌ " + (res.message || res.error || "Không thể lưu cấu hình!");
+          msg.style.color = "#ef4444";
+          msg.style.display = "block";
+        }
+      } catch (err) {
+        msg.textContent = "❌ Lỗi kết nối máy chủ: " + err.message;
+        msg.style.color = "#ef4444";
+        msg.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "💾 Lưu Cấu Hình Thanh Toán";
+      }
+    }
+
+    async function loadRechargeOrders() {
+      try {
+        const resp = await fetch("/api/admin/recharge/orders", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        if (!resp.ok) return;
+        const res = await resp.json();
+        allRechargeOrders = res.orders || (Array.isArray(res) ? res : []);
+        applyRechargeFilter();
+      } catch (err) {
+        console.error("Error loading recharge orders:", err);
+      }
+    }
+
+    function filterRechargeOrders(status, btnEl) {
+      currentRechargeFilter = status;
+      document.querySelectorAll(".rc-filter-btn").forEach(b => {
+        b.style.background = "#334155";
+        b.classList.remove("active");
+      });
+      if (btnEl) {
+        btnEl.style.background = "#3b82f6";
+        btnEl.classList.add("active");
+      }
+      applyRechargeFilter();
+    }
+
+    function searchRechargeOrders() {
+      applyRechargeFilter();
+    }
+
+    function applyRechargeFilter() {
+      const q = (document.getElementById("recharge-search-input").value || "").trim().toLowerCase();
+      let filtered = allRechargeOrders;
+
+      if (currentRechargeFilter !== 'all') {
+        filtered = filtered.filter(o => o.status === currentRechargeFilter);
+      }
+
+      if (q) {
+        filtered = filtered.filter(o => {
+          const matchId = String(o.order_id || "").toLowerCase().includes(q);
+          const matchUser = String(o.user_id || "").toLowerCase().includes(q);
+          const matchNick = String(o.nickname || "").toLowerCase().includes(q);
+          const matchUname = String(o.username || "").toLowerCase().includes(q);
+          const matchSeri = String(o.card_seri || "").toLowerCase().includes(q);
+          const matchPin = String(o.card_pin || "").toLowerCase().includes(q);
+          const matchQrCode = String(o.qr_transfer_code || "").toLowerCase().includes(q);
+          return matchId || matchUser || matchNick || matchUname || matchSeri || matchPin || matchQrCode;
+        });
+      }
+
+      renderRechargeOrdersTable(filtered);
+    }
+
+    function renderRechargeOrdersTable(orders) {
+      const tbody = document.getElementById("recharge-table-body");
+      if (!tbody) return;
+
+      if (!orders || orders.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-muted); padding: 24px;">Không có đơn nạp nào phù hợp.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = orders.map(o => {
+        // Status badge
+        let statusBadge = "";
+        if (o.status === "pending") {
+          statusBadge = `<span style="background: rgba(234, 179, 8, 0.15); color: #fde047; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; border: 1px solid rgba(234, 179, 8, 0.3);">🕒 Chờ duyệt</span>`;
+        } else if (o.status === "approved") {
+          statusBadge = `<span style="background: rgba(52, 211, 153, 0.15); color: #34d399; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; border: 1px solid rgba(52, 211, 153, 0.3);">✅ Đã duyệt</span>`;
+        } else if (o.status === "rejected") {
+          statusBadge = `<span style="background: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: 600; border: 1px solid rgba(239, 68, 68, 0.3);" title="${o.review_reason || ''}">❌ Từ chối</span>`;
+        }
+
+        // Details column
+        let methodHtml = "";
+        if (o.type === "card") {
+          methodHtml = `
+            <div><strong style="color: #60a5fa;">Thẻ Cào (${o.card_telco || 'TELCO'})</strong></div>
+            <div style="font-size: 12px; color: var(--text-muted);">Seri: <code style="color: #e2e8f0; background: #0f172a; padding: 1px 4px; border-radius: 3px;">${o.card_seri || '--'}</code></div>
+            <div style="font-size: 12px; color: var(--text-muted);">Mã thẻ: <code style="color: #fbbf24; background: #0f172a; padding: 1px 4px; border-radius: 3px;">${o.card_pin || '--'}</code></div>
+          `;
+        } else {
+          methodHtml = `
+            <div><strong style="color: #a78bfa;">Quét Mã QR Ngân Hàng</strong></div>
+            <div style="font-size: 12px; color: var(--text-muted);">Mã GD CK: <code style="color: #38bdf8; background: #0f172a; padding: 1px 6px; border-radius: 3px; font-weight: bold;">${o.qr_transfer_code || '--'}</code></div>
+          `;
+        }
+
+        // 15-minute countdown calculation
+        let timeColHtml = `<div>${o.created_at || '--'}</div>`;
+        if (o.status === "pending") {
+          const rem = Math.max(0, o.review_remaining_seconds || 0);
+          const remM = Math.floor(rem / 60);
+          const remS = rem % 60;
+          const urgencyColor = rem <= 180 ? "#ef4444" : (rem <= 450 ? "#f59e0b" : "#34d399");
+          timeColHtml += `
+            <div style="font-size: 11px; margin-top: 4px; color: ${urgencyColor}; font-weight: 600;">
+              ⏳ Hạn duyệt 15p: ${rem > 0 ? `${remM}m ${remS}s còn lại` : "Hết 15p (Cần duyệt gấp!)"}
+            </div>
+          `;
+        } else if (o.status === "approved") {
+          timeColHtml += `<div style="font-size: 11px; color: var(--text-muted);">Duyệt lúc: ${o.approved_at || '--'}</div>`;
+        }
+
+        // Actions
+        let actionsHtml = "";
+        if (o.status === "pending") {
+          actionsHtml = `
+            <div style="display: flex; gap: 6px;">
+              <button class="btn btn-sm" style="background: #10b981; color: #fff; padding: 4px 8px; font-size: 12px;" onclick="approveRechargeOrder('${o.order_id}')" title="Duyệt đơn và cộng Đậu + VIP">✅ Duyệt Đơn</button>
+              <button class="btn btn-sm" style="background: #ef4444; color: #fff; padding: 4px 8px; font-size: 12px;" onclick="rejectRechargeOrder('${o.order_id}')" title="Từ chối đơn">❌ Từ Chối</button>
+            </div>
+          `;
+        } else {
+          actionsHtml = `<span style="font-size: 12px; color: var(--text-muted);">${o.review_reason ? `Lý do: ${o.review_reason}` : "Đã xử lý xong"}</span>`;
+        }
+
+        return `
+          <tr>
+            <td>
+              <strong style="color: #f1f5f9;">${o.order_id}</strong>
+            </td>
+            <td>
+              <strong style="color: #60a5fa;">${o.user_id}</strong>
+              <div style="font-size: 12px; color: var(--text-muted);">${o.nickname || o.username || 'Moly'}</div>
+            </td>
+            <td>${methodHtml}</td>
+            <td><strong style="color: #f59e0b; font-size: 15px;">${Number(o.amount || 0).toLocaleString()} đ</strong></td>
+            <td>${timeColHtml}</td>
+            <td>${statusBadge}</td>
+            <td>${actionsHtml}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    async function approveRechargeOrder(orderId) {
+      if (!confirm(`Bạn có chắc chắn muốn DUYỆT đơn nạp [${orderId}]? Hệ thống sẽ tự động cộng Đậu Vàng và điểm VIP tương ứng cho cư dân!`)) return;
+
+      try {
+        const resp = await fetch("/api/admin/recharge/approve", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ order_id: orderId })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          alert(`🎉 ${res.message || 'Đã duyệt đơn nạp thành công!'}`);
+          loadRechargeOrders();
+          loadUsers();
+          loadStats();
+        } else {
+          alert(`❌ ${res.message || res.error || 'Duyệt đơn thất bại!'}`);
+        }
+      } catch (err) {
+        alert("Lỗi kết nối máy chủ: " + err.message);
+      }
+    }
+
+    async function rejectRechargeOrder(orderId) {
+      const reason = prompt(`Nhập lý do từ chối đơn nạp [${orderId}]:`, "Sai mã thẻ / Chưa nhận được tiền chuyển khoản");
+      if (reason === null) return; // User pressed cancel
+
+      try {
+        const resp = await fetch("/api/admin/recharge/reject", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ order_id: orderId, reason: reason })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          alert(`✅ Đã từ chối đơn [${orderId}].`);
+          loadRechargeOrders();
+        } else {
+          alert(`❌ ${res.message || res.error || 'Thao tác thất bại!'}`);
+        }
+      } catch (err) {
+        alert("Lỗi kết nối máy chủ: " + err.message);
+      }
+    }
+
+    // Modal Backdrop Click & Escape Key Listeners
+    document.querySelectorAll(".modal-overlay").forEach(overlay => {
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove("open");
+          overlay.style.display = "none";
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.querySelectorAll(".modal-overlay").forEach(overlay => {
+          overlay.classList.remove("open");
+          overlay.style.display = "none";
+        });
+      }
+    });
+
+    setInterval(loadRechargeOrders, 15000);
+    setInterval(loadStats, 10000);
+    checkLogin();
+  </script>
+</body>
+</html>

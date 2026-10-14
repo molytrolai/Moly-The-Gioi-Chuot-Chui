@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10042" Layer="depthLevel" Name="Nick" Ex="314" Ey="268" Cmd="s" Param="1" AddTaskOption="1" />
+	</NpcList>
+	<Triggers><Trigger ResName="door_mc" Layer="controlLevel" Ex="150" Ey="350" Cmd="alt_map" Param="1" Tips="Đến Lâu đài Moly" /></Triggers>
+	<Talks>
+		<Talk ID="1" NpcID="10042" Face="正常" Msg="Nhà hàng Momo đã mở cửa! Bạn đã có nhà hàng của riêng mình chưa? Mọi người đều đang rất bận. Bạn tìm tôi có việc gì?" Option="Làm việc giúp Nick$Học phép lịch sự trong nhà hàng" Cmd="act$act" Param="nicWork$nicLearn" AddTaskOption="1" />
+		<Talk ID="30" NpcID="10042" Face="正常" Msg="Ồ, thư mời lễ kỷ niệm! Tôi mong nó đã lâu rồi." Option="Làm sao để mời anh?" Cmd="s" Param="31" />
+		<Talk ID="31" NpcID="10042" Face="正常" Msg="Là đầu bếp của nhà hàng Moly nên tôi bận lắm. Bạn giúp tôi điều hành nhà hàng và vượt qua màn đầu nhé!" Option="Được, anh nhớ nhận thư mời nhé." Cmd="act" Param="beginGame" />
+		<Talk ID="32" NpcID="10042" Face="正常" Msg="Ơ, hình như thư mời này không dành cho tôi rồi…" Option="Xin lỗi, tôi nhầm mất rồi." Cmd="null" Param="none" />
+		<Talk ID="101" NpcID="10042" Face="正常" Msg="Bạn có phải người đáng tin và luôn giữ lời không?" Option="Không hẳn$Tất nhiên rồi$Lúc quan trọng thì chưa chắc" Cmd="s$s$s" Param="102$102$102" />
+		<Talk ID="102" NpcID="10042" Face="正常" Msg="Ngày trước tôi cũng chỉ là một đầu bếp nhỏ. Điều giúp tôi trở thành bếp trưởng chính là luôn chăm chỉ và vững vàng." Option="Tôi hiểu rồi." Cmd="act" Param="loveTestMap" />
+	</Talks>
+</Map>

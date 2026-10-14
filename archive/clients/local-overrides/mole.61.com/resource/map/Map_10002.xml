@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList />
+	<Triggers>
+		<Trigger ResName="go_1" Layer="controlLevel" Ex="884" Ey="384" Cmd="alt_map" Param="1" Tips="Lâu đài Moly" />
+		<Trigger ResName="go_9" Layer="controlLevel" Ex="153" Ey="347" Cmd="alt_map" Param="9" Tips="Đồng cỏ Ánh Dương" />
+		<Trigger ResName="go_18" Layer="controlLevel" Ex="680" Ey="300" Cmd="alt_map" Param="18" Tips="Bên trong Nhà thờ Ái Tâm" />
+		<Trigger ResName="go_70" Layer="controlLevel" Ex="600" Ey="338" Cmd="alt_map" Param="70" Tips="Phòng Cứu chữa Ái Tâm" />
+		<Trigger ResName="go_69" Layer="controlLevel" Ex="482" Ey="303" Cmd="alt_map" Param="69" Tips="Ngân hàng Moly" />
+		<Trigger ResName="go_45" Layer="controlLevel" Ex="265" Ey="161" Cmd="alt_map" Param="45" Tips="Tòa soạn Báo Moly" />
+		<Trigger ResName="go_46" Layer="controlLevel" Ex="191" Ey="276" Cmd="alt_map" Param="46" Tips="Hội Hướng dẫn viên Ái Tâm" />
+		<Trigger ResName="go_222" Layer="controlLevel" Ex="177" Ey="151" Cmd="alt_map" Param="222" Tips="Tường Truyền hình" />
+		<Trigger ResName="go_44" Layer="controlLevel" Ex="119" Ey="284" Cmd="alt_map" Param="44" Tips="Đồn Cảnh sát Moly" />
+		<Trigger ResName="wishBtn" Layer="controlLevel" Ex="374" Ey="439" Cmd="act" Param="openWish" Tips="Cây ước nguyện" />
+		<Trigger ResName="wish1_btn" Layer="controlLevel" Ex="374" Ey="439" Cmd="act" Param="openWish" Tips="Cây ước nguyện" />
+		<Trigger ResName="mogu2_mc" Layer="depthLevel" Ex="494" Ey="325" Cmd="p" Param="MushRoomPanel" Tips="Ngôi nhà Nấm" />
+	</Triggers>
+	<Talks>
+		<Talk ID="1" NpcID="10013" Face="正常" Msg="Lại đây xem kho báu của Cô Hoa nào! Bên trong có rất nhiều món hay đấy, đừng bỏ lỡ nhé!" Option="Tôi muốn mua bán đồ$Để lần sau" Cmd="null" Param="2" />
+	</Talks>
+</Map>

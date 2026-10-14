@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_400" Layer="controlLevel" Ex="510" Ey="520" Cmd="alt_map" Param="400" Tips="Cung điện Moling" /> 
+		<Trigger ResName="boss_mc" Layer="controlLevel" Ex="0" Ey="0" Cmd="p" Param="ChoseMoGameLevelPanel" Tips="" /> 
+	</Triggers>
+	<Talks>
+	</Talks> 
+</Map>

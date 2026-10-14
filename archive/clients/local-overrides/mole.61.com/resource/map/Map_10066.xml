@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10034" Layer="controlLevel" Name="Hán Thanh" Ex="146" Ey="306" Cmd="s" Param="1" />
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="afuShop" Layer="controlLevel" Ex="292" Ey="312" Cmd="p" Param="AfuSmallShopPanel" Tips="Tiệm nhỏ A Phúc" /> 
+		
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10034" Face="正常" Msg="我刚从东方回来，我来给你讲讲关于东方的奇闻异事吧" Option="Không có việc gì đâu" Cmd="none" Param="null" AddTaskOption="1" />
+	</Talks>
+</Map>

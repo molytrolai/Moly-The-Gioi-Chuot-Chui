@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Tasks ID="644" Name="Món Quà To Lớn" AwardMsg="Chúc mừng bạn nhận được 1 Cây Kẹo Mút, 2 Hạt Giống Đỗ Quyên Đỏ và 10.000 Đậu Moly." AwardBean="">
+	<Step ID="1" TarMapID="4">
+		<EnterMap MapID="4">
+			<Action Cmd="PLAY_MOVIE" Param="1" Name="movie_1" IsBg="1" IsFullScreen="1"/>
+			<Action Cmd="SAY">
+				<Talk NpcID="10222" Face="正常" Msg="{$username}, mau đến giúp mình với!" Option="Ơ? Sao bạn biết tên mình thế? ( ⊙o⊙ ) Oa! Chiếc rương to quá!"/>
+				<Talk NpcID="10222" Face="正常" Msg="Bạn là cư dân Moly rất nổi tiếng mà, dĩ nhiên mình nhận ra bạn rồi! Mau giúp mình khiêng chiếc rương này gửi tặng Công chúa Meme nhé!" Option="Bạn chắc chứ? Rương to thế này sao không kiếm chiếc xe thồ đi!"/>
+				<Talk NpcID="10222" Face="正常" Msg="Hi hi, mình muốn tự tay khiêng đến để bày tỏ tấm lòng đối với Vương quốc, nhưng mà nặng quá không nhấc nổi nữa rồi..." Option="À, ra là vậy, để mình khiêng cùng bạn nhé!"/>
+			</Action>
+			<Action Cmd="DELETE_MOVIE" Param="movie_1"/>
+			<Action Cmd="PLAY_MOVIE" Param="2" Name="movie_2" IsBg="1" IsFullScreen="1"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_2"/>
+			<Action Cmd="PLAY_MOVIE" Param="100" Name="movie_100" IsBg="1" IsFullScreen="1" IsStopSound="0"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_100" />
+			<Action Cmd="JUMP_TASK_UI" Param="   Tự dưng bị người áo đen bỏ lại chiếc rương này, nặng thật đấy, chẳng biết bên trong chứa thứ gì. Mau khiêng đến cho Công chúa thôi! Đi nào!"/>
+			<Action Cmd="SET_BUFFER" Panel="2" Step="2"/>
+			<Action Cmd="GO_MAP" MapID="109" MapType="0"/>
+		</EnterMap>
+	</Step>
+	<Step ID="2" TarMapID="109">
+		<EnterMap MapID="109">
+			<Action Cmd="PLAY_MOVIE" Param="3" Name="movie_3" IsBg="1" IsFullScreen="1"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_3"/>
+			<Action Cmd="PLAY_MOVIE" Param="101" Name="movie_101" IsBg="1" IsFullScreen="1" IsStopSound="0"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_101" />
+			<Action Cmd="PLAY_MOVIE" Param="4" Name="movie_4" IsBg="1" IsFullScreen="1"/>
+			<Action Cmd="SAY">
+				<Talk NpcID="10002" Face="正常" Msg="Để mình thử mở xem sao nhé?" Option="Kỳ lạ thật, sao lại không mở được nhỉ?"/>
+			</Action>
+			<Action Cmd="DELETE_MOVIE" Param="movie_4"/>
+			<Action Cmd="PLAY_MOVIE" Param="102" Name="movie_102" IsBg="1" IsFullScreen="1" IsStopSound="0"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_102" />
+			<Action Cmd="PLAY_MOVIE" Param="103" Name="movie_103" IsBg="1" IsFullScreen="1" IsStopSound="0"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_103"/>
+			<Action Cmd="PLAY_MOVIE" Param="104" Name="movie_104" IsBg="1" IsFullScreen="1" IsStopSound="0"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_104"/>
+			<Action Cmd="PLAY_MOVIE" Param="105" Name="movie_105" IsBg="1" IsFullScreen="1" IsStopSound="0"/>
+			<Action Cmd="DELETE_MOVIE" Param="movie_105"/>
+			<Action Cmd="OVER"/>
+		</EnterMap>
+	</Step>
+</Tasks>

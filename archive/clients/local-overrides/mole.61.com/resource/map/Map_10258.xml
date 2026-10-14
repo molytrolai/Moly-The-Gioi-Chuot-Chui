@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go255_btn" Layer="topLevel" Ex="197" Ey="450" Cmd="alt_map" Param="255" Tips="Toa số 1 Long Vương Hoàn" />
+		<Trigger ResName="go260_btn" Layer="controlLevel" Ex="838" Ey="344" Cmd="alt_map" Param="260" Tips="Hang Quái Ngư" />
+	</Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

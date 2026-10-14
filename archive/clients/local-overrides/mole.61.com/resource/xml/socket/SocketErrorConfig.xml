@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+	Cấu hình mã lỗi Socket Moly Việt
+		Error: Cấu hình mã lỗi theo CmdID
+		ErrorCode: Chi tiết thông báo lỗi hiển thị cho người chơi (Type: 1=InfoBox, 2=Alert, 3=Loa thông báo)
+-->
+<Errors>
+	<Error CmdID="0">
+		<ErrorCode Code="0" Msg="Mã lỗi hệ thống" Type="2" />
+	</Error>
+	<Error CmdID="1242">
+		<ErrorCode Code="-10001" Msg="Số lượt quay thưởng hôm nay đã hết, mai quay lại nhé!" Type="2" />
+	</Error>
+	<Error CmdID="1123">
+		<ErrorCode Code="-12734" Msg="Bạn đã sở hữu vật phẩm này rồi!" Type="2" />
+	</Error>
+	<Error CmdID="4103">
+		<ErrorCode Code="-100254" Msg="Thời gian nhận quà chưa đúng" Type="2" />
+		<ErrorCode Code="-100255" Msg="Bạn đã nhận trứng màu hôm nay rồi, 20:00 sẽ mở thưởng, sau 20:30 có thể nhận trước trứng ngày mai nhé!" Type="2" />
+	</Error>
+	<Error CmdID="302">
+		<ErrorCode Code="-10027" Msg="Nói chuyện quá nhanh, nghỉ tay chút xíu nhé!" Type="3" />
+		<ErrorCode Code="-10028" Msg="Nói chuyện quá 10 lần trong 1 phút bị tạm khóa chat!" Type="3" />
+		<ErrorCode Code="-10029" Msg="Hôm nay đã nói quá nhiều rồi, hãy nghỉ ngơi 5 phút nhé!" Type="3" />
+	</Error>
+	<Error CmdID="8078">
+		<ErrorCode Code="-12793" Msg="Hôm nay bạn đã nhận kẹo rồi, mai hãy quay lại nhé!" Type="2" />
+	</Error>
+	<Error CmdID="1243">
+		<ErrorCode Code="-12734" Msg="Số lượng vật phẩm này đã đạt tối đa, không thể đổi thêm!" Type="2" />
+		<ErrorCode Code="-100316" Msg="Chưa có vé xe!" Type="2" />
+		<ErrorCode Code="-100318" Msg="Mỗi cư dân chỉ được nhận thú cưỡi một lần duy nhất!" Type="2" />
+		<ErrorCode Code="-100320" Msg="Bạn đã nhận đồng phục học viện rồi, không thể nhận thêm!" Type="2" />
+	</Error>
+	<Error CmdID="8500">
+		<ErrorCode Code="-100289" Msg="Bạn đã gửi lời chúc tình bạn tới người này rồi, hãy thử với bạn khác nhé!" Type="2" />
+	</Error>
+	<Error CmdID="8527">
+		<ErrorCode Code="-100296" Msg="Mỗi ngày chỉ được bình chọn cho một bạn nhỏ mừng sinh nhật!" Type="2" />
+	</Error>
+	<Error CmdID="8525">
+		<ErrorCode Code="-100297" Msg="Hôm nay không phải sinh nhật bạn! Chỉ chủ tiệc mới có thể lưu tiệc sinh nhật!" Type="2" />
+	</Error>
+	<Error CmdID="7094">
+		<ErrorCode Code="-100304" Msg="Đội đã giải tán, hãy chọn đội khác nhé!" Type="2" />
+		<ErrorCode Code="-100303" Msg="Đội này đã đủ thành viên rồi, hãy chọn đội khác nhé!" Type="2" />
+	</Error>
+	<Error CmdID="8545">
+		<ErrorCode Code="-100311" Msg="Hôm nay đã đạt giới hạn nhận thưởng!" Type="2" />
+	</Error>
+	<Error CmdID="8816">
+		<ErrorCode Code="-100315" Msg="Lỗi nhận thưởng, vui lòng thử lại!" Type="2" />
+	</Error>
+	<Error CmdID="8617">
+		<ErrorCode Code="-100319" Msg="Thứ 6, Thứ 7, Chủ Nhật từ 14:00-14:30 hoặc 19:00-19:30, nhớ quay lại tham gia nhé!" Type="2" />
+	</Error>
+	<Error CmdID="8616">
+		<ErrorCode Code="-100319" Msg="Thứ 6, Thứ 7, Chủ Nhật từ 14:00-14:30 hoặc 19:00-19:30, nhớ quay lại tham gia nhé!" Type="2" />
+	</Error>
+	<Error CmdID="504">
+		<ErrorCode Code="-100321" Msg="Không thể biến thân liên tục! Chuột Chũi hãy nghỉ ngơi chút nhé ^_^" Type="2" />
+	</Error>
+</Errors>

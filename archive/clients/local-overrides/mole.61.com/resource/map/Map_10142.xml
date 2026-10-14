@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	
+	<Triggers>
+		
+		 <Trigger ResName="eggDoor_mc" Layer="depthLevel" Ex="314" Ey="547" Cmd="act" Param="qiehuan" Tips="Ngôi nhà Trứng" />
+	<Trigger ResName="door_mc" Layer="controlLevel" Ex="150" Ey="350" Cmd="alt_map" Param="3" Tips="Đến Phố mua sắm Taotao" /></Triggers>
+	
+	<Talks>
+
+		
+
+	</Talks>
+</Map>

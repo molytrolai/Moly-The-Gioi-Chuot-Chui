@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	 <NpcList>
+	 	
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="openGame" Layer="controlLevel" Ex="510" Ey="300" Cmd="p" Param="BlackAngelTwoPanel" Tips="Mùa Săn Bắn Người Rừng" />
+		<Trigger ResName="go_365" Layer="depthLevel" Ex="83" Ey="300" Cmd="alt_map" Param="365" Tips="Làng Đậu Jipu" />
+		<Trigger ResName="go_366" Layer="depthLevel" Ex="857" Ey="458" Cmd="alt_map" Param="366" Tips="Cây Thế Giới" />
+	</Triggers>
+
+</Map>

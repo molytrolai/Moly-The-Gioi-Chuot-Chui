@@ -1,0 +1,32 @@
+<statistics>
+    <name id="256" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="开始加载" />
+    <name id="257" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载成功" />
+    <name id="258" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载失败" />
+    <name id="259" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[0,1)s" />
+    <name id="260" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[1,2)s" />
+    <name id="261" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[2,3)s" />
+    <name id="262" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[3,4)s" />
+    <name id="263" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[4,5)s" />
+    <name id="264" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[5,6)s" />
+    <name id="265" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[6,7)s" />
+    <name id="266" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[7,8)s" />
+    <name id="267" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[8,9)s" />
+    <name id="268" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在[9,10)s" />
+    <name id="269" mainName="基本数据" partName="首页素材加载" key="name" staticsKey="加载时长在10s及以上" />
+    <name id="270" mainName="基本数据" partName="首页按钮点击" key="name" staticsKey="开始按钮点击" />
+    <name id="271" mainName="基本数据" partName="首页按钮点击" key="name" staticsKey="注册账号点击" />
+    <name id="272" mainName="基本数据" partName="首页按钮点击" key="name" staticsKey="官方论坛点击" />
+    <name id="273" mainName="基本数据" partName="首页按钮点击" key="name" staticsKey="收藏游戏点击" />
+    <name id="274" mainName="基本数据" partName="首页按钮点击" key="name" staticsKey="联系客服点击" />
+    <name id="275" mainName="基本数据" partName="首页按钮点击" key="name" staticsKey="淘米游戏LOGO点击" />
+    <name id="276" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="1号广告位点击" />
+    <name id="277" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="2号广告位点击" />
+    <name id="278" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="3号广告位点击" />
+    <name id="279" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="4号广告位点击" />
+    <name id="280" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="5号广告位点击" />
+    <name id="281" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="6号广告位点击" />
+    <name id="282" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="7号广告位点击" />
+    <name id="283" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="8号广告位点击" />
+    <name id="284" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="9号广告位点击" />
+    <name id="285" mainName="基本数据" partName="首页广告点击" key="name" staticsKey="10号广告位点击" />
+</statistics>

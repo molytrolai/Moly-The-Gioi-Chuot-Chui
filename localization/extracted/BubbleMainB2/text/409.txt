@@ -1,0 +1,6 @@
+[
+xmin 40
+ymin 70
+xmax 200
+ymax 310
+]

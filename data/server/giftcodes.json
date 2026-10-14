@@ -1,0 +1,125 @@
+{
+  "TANTHU2026": {
+    "code": "TANTHU2026",
+    "description": "Quà Tân Thủ: 100 Đậu Vàng, VIP 1 dùng thử 3 ngày, Áo Tân Thủ Moly",
+    "beans": 100,
+    "trial_days": 3,
+    "vip_level": 1,
+    "vip_months": 0,
+    "vip_value_add": 0,
+    "super_lamu": false,
+    "items": [
+      12001
+    ],
+    "max_uses": 10000,
+    "used_count": 4,
+    "redeemed_users": [
+      10000085,
+      10000086,
+      10000094,
+      10000109
+    ],
+    "active": true,
+    "created_at": "2026-10-13T00:00:00Z"
+  },
+  "MOLYVIET": {
+    "code": "MOLYVIET",
+    "description": "Quà Tri Ân Khai Mở: 200 Đậu Vàng, VIP 1 dùng thử 7 ngày, Bàn Học Gỗ",
+    "beans": 200,
+    "trial_days": 7,
+    "vip_level": 1,
+    "vip_months": 0,
+    "vip_value_add": 0,
+    "super_lamu": false,
+    "items": [
+      12001,
+      160002
+    ],
+    "max_uses": 5000,
+    "used_count": 0,
+    "redeemed_users": [],
+    "active": true,
+    "created_at": "2026-10-13T00:00:00Z"
+  },
+  "THETHANGVIP": {
+    "code": "THETHANGVIP",
+    "description": "Thẻ Tháng Trải Nghiệm: 300 Đậu Vàng, 30 ngày VIP (+100 điểm VIP 2), Bé Siêu Lamu Hoàng Kim",
+    "beans": 300,
+    "trial_days": 0,
+    "vip_months": 1,
+    "vip_value_add": 100,
+    "vip_level": 2,
+    "super_lamu": true,
+    "species": "classic",
+    "items": [
+      160002,
+      160003
+    ],
+    "max_uses": 1000,
+    "used_count": 0,
+    "redeemed_users": [],
+    "active": true,
+    "created_at": "2026-10-13T00:00:00Z"
+  },
+  "THETHANGHACAM": {
+    "code": "THETHANGHACAM",
+    "description": "Thẻ Tháng Hắc Ám: 300 Đậu Vàng, 30 ngày VIP (+100 điểm VIP 2), Đậu Đậu Siêu Cấp Hắc Ám",
+    "beans": 300,
+    "trial_days": 0,
+    "vip_months": 1,
+    "vip_value_add": 100,
+    "vip_level": 2,
+    "super_lamu": true,
+    "species": "dark",
+    "items": [
+      12001,
+      160002
+    ],
+    "max_uses": 1000,
+    "used_count": 0,
+    "redeemed_users": [],
+    "active": true,
+    "created_at": "2026-10-14T00:00:00Z"
+  },
+  "THETHANGVUTRU": {
+    "code": "THETHANGVUTRU",
+    "description": "Thẻ Tháng Vũ Trụ: 300 Đậu Vàng, 30 ngày VIP (+100 điểm VIP 2), Đậu Đậu Siêu Cấp Vũ Trụ",
+    "beans": 300,
+    "trial_days": 0,
+    "vip_months": 1,
+    "vip_value_add": 100,
+    "vip_level": 2,
+    "super_lamu": true,
+    "species": "cosmic",
+    "items": [
+      160002,
+      160003
+    ],
+    "max_uses": 1000,
+    "used_count": 0,
+    "redeemed_users": [],
+    "active": true,
+    "created_at": "2026-10-14T00:00:00Z"
+  },
+  "THETHANGTHANTHOAI": {
+    "code": "THETHANGTHANTHOAI",
+    "description": "Thẻ Tháng Thần Thoại: 500 Đậu Vàng, 30 ngày VIP (+100 điểm VIP 2), Đậu Đậu Siêu Cấp Thần Thoại",
+    "beans": 500,
+    "trial_days": 0,
+    "vip_months": 1,
+    "vip_value_add": 100,
+    "vip_level": 2,
+    "super_lamu": true,
+    "species": "mythic",
+    "items": [
+      12001,
+      160002,
+      160003
+    ],
+    "max_uses": 500,
+    "used_count": 0,
+    "redeemed_users": [],
+    "active": true,
+    "created_at": "2026-10-14T00:00:00Z"
+  }
+}

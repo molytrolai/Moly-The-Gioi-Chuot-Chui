@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_7" Layer="buttonLevel" Ex="53" Ey="403" Cmd="alt_map" Param="7" Tips="Đến Khu vui chơi Phía Đông" />
+		<Trigger ResName="go_4" Layer="buttonLevel" Ex="839" Ey="299" Cmd="alt_map" Param="38" Tips="Đến Sân bóng đá Moly" />
+		
+	</Triggers>
+	
+	<Talks>
+
+	
+	
+	</Talks>
+</Map>

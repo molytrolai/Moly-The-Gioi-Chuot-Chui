@@ -1,0 +1,19 @@
+[
+xmin -40
+ymin -40
+xmax 1314
+ymax 365
+multiline 1
+readonly 1
+noselect 1
+wasstatic 1
+html 1
+font 22
+height 280
+color #ff663300
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]<p align="left"><font face="SimSun" size="14" color="#663300" letterSpacing="0.000000" kerning="0">家园背景</font></p>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList />
+	<Triggers><Trigger ResName="door_mc" Layer="controlLevel" Ex="150" Ey="350" Cmd="alt_map" Param="3" Tips="Đến Phố mua sắm Taotao" /></Triggers>
+	<Talks />
+</Map>

@@ -1,0 +1,151 @@
+=== SAMPLE NATIONAL / HOLIDAYS / CHINA SPECIFIC QUESTIONS ===
+
+[1] File: questions.xml | ID: 7
+Content: 我国每年3月12日的植树节是为纪念谁而定的呢？
+A: 屈原 | B: 孙中山 | C: 白求恩 | D: 雷锋
+Ans: 2
+
+[2] File: questions.xml | ID: 10
+Content: 海南岛是我国的第几大岛？
+A: 第一 | B: 第二 | C: 第三 | D: 第四
+Ans: 2
+
+[3] File: questions.xml | ID: 27
+Content: 我国面积最大的湖泊是?
+A: 青海湖 | B: 鄱阳湖 | C: 洞庭湖 | D: 太湖
+Ans: 1
+
+[4] File: questions.xml | ID: 29
+Content: 下列哪项不属于我国地震预报的政策？
+A: 预测、预防与政府行政决策相结合 | B: 鼓励预报研究与严格管理预报发布相结合 | C: 专家的科学判断与政府行政决策相结合 | D: 预测、预防与预报相结合
+Ans: 1
+
+[5] File: questions.xml | ID: 30
+Content: 我国上世纪第五个地震活跃期开始于何年？
+A: 1987年 | B: 1988年 | C: 1989年 | D: 1998年
+Ans: 2
+
+[6] File: questions.xml | ID: 47
+Content: 打糕是我国哪一民族的风味食品？
+A: 彝族 | B: 傣族 | C: 朝鲜族 | D: 壮族
+Ans: 3
+
+[7] File: questions.xml | ID: 52
+Content: 我国第一座国家森林公园是？
+A: 武夷山 | B: 长白山 | C: 张家界 | D: 九寨沟
+Ans: 3
+
+[8] File: questions.xml | ID: 53
+Content: 我国卫星火箭发射基地“西昌”位于哪里？
+A: 西藏 | B: 新疆 | C: 四川 | D: 青海
+Ans: 3
+
+[9] File: questions.xml | ID: 68
+Content: 《家》《春》《秋》是我国作家巴金的代表作品，合称什么？
+A: 激流三部曲 | B: 革命三部曲 | C: 乡村三部曲 | D: 人间三部曲
+Ans: 1
+
+[10] File: questions.xml | ID: 77
+Content: 体操比赛中有些动作以我国运动员的名字命名,其中鞍马是谁？
+A: 李月久 | B: 童非 | C: 李宁 | D: 李小双
+Ans: 2
+
+[11] File: questions.xml | ID: 80
+Content: “山城”是我国哪座城市的雅号？
+A: 洛阳 | B: 西安 | C: 重庆 | D: 福州
+Ans: 3
+
+[12] File: questions.xml | ID: 81
+Content: 下列哪项不属于我国抗震救灾的基本策略？
+A: 实行以预防为主的救灾体制 | B: 实行以行政区域为主的组织指挥 | C: 发挥军队、民兵和各专业救灾队伍的作用 | D: 实行以军队、民兵为主的组织指挥
+Ans: 4
+
+[13] File: questions.xml | ID: 86
+Content: 黄果树瀑布是我国第一大瀑布，它位于哪个省？
+A: 贵州 | B: 云南 | C: 西藏 | D: 广西
+Ans: 1
+
+[14] File: questions.xml | ID: 88
+Content: 我国被称为“泉城”的是哪个城市？
+A: 济南 | B: 苏州 | C: 合肥 | D: 柳州
+Ans: 1
+
+[15] File: questions.xml | ID: 89
+Content: 我国有一个专门进行核试验的“原子城”，它位于哪里？
+A: 新疆 | B: 内蒙古 | C: 青海 | D: 四川
+Ans: 1
+
+[16] File: questions.xml | ID: 90
+Content: 我国最早的神话小说是？
+A: 《山海经》 | B: 《古镜记》 | C: 《搜神记》 | D: 《世说新语》
+Ans: 3
+
+[17] File: questions.xml | ID: 108
+Content: 我国少数民族分布最多的省份是？
+A: 广西 | B: 西藏 | C: 云南 | D: 四川
+Ans: 3
+
+[18] File: questions.xml | ID: 126
+Content: 泼水节是我国哪个少数民族的传统节日？
+A: 彝族 | B: 回族 | C: 壮族 | D: 傣族
+Ans: 4
+
+[19] File: questions.xml | ID: 132
+Content: 我国第一个南极考察基地“长城站”是什么时候落成的？
+A: 1980 | B: 1981 | C: 1985 | D: 1986
+Ans: 3
+
+[20] File: questions.xml | ID: 136
+Content: 我国最早在奥运会上夺金牌的是哪位运动员？ 
+A: 李宁 | B: 许海峰 | C: 高凤莲 | D: 吴佳怩
+Ans: 2
+
+[21] File: questions.xml | ID: 139
+Content: 三国时期，吴国首都建业是今天的哪里？
+A: 北京 | B: 无锡 | C: 苏州 | D: 南京
+Ans: 4
+
+[22] File: questions.xml | ID: 151
+Content: 我国境内最早的人类是？
+A: 北京人 | B: 元谋人 | C: 山顶洞人 | D: 丁村人
+Ans: 2
+
+[23] File: questions.xml | ID: 154
+Content: 我国鸟类中，消灭森林害虫最多的是谁？
+A: 喜鹊 | B: 啄木鸟 | C: 燕子 | D: 杜鹃
+Ans: 4
+
+[24] File: questions.xml | ID: 167
+Content: 我国被称为哪一类体育运动的体育王国？
+A: 羽毛球王国 | B: 乒乓球王国 | C: 排球王国 | D: 举重王国
+Ans: 2
+
+[25] File: questions.xml | ID: 168
+Content: “发展体育运动,增强人民体质”是我国哪位领导人的题词？
+A: 毛泽东 | B: 周恩来 | C: 邓小平 | D: 贺龙
+Ans: 1
+
+[26] File: questions.xml | ID: 179
+Content: 跳竹杆是我国哪个少数民族的传统体育运动？
+A: 壮族 | B: 苗族 | C: 白族 | D: 黎族
+Ans: 4
+
+[27] File: questions.xml | ID: 183
+Content: 我国最早的一部医学理论著作是？
+A: 《本草纲目》 | B: 《黄帝内经》 | C: 《千金方》 | D: 《伤寒杂病论》
+Ans: 2
+
+[28] File: questions.xml | ID: 209
+Content: 阿诗玛是我国云南哪个民族塑造的艺术形象？
+A: 彝族 | B: 瑶族 | C: 白族 | D: 苗族
+Ans: 1
+
+[29] File: questions.xml | ID: 211
+Content: 我国最著名的热水湖是哪一个？
+A: 西藏羊八井 | B: 新疆罗布泊 | C: 内蒙古呼伦湖 | D: 
+Ans: 1
+
+[30] File: questions.xml | ID: 216
+Content: 我国的“冰城”是指哪个城市？
+A: 吉林市 | B: 哈尔滨 | C: 辽阳市 | D: 牡丹江
+Ans: 2

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="river_mc" Layer="controlLevel" Ex="93" Ey="350" Cmd="alt_map" Param="8" Tips="Đến Hồ Thần Bí" />
+		<Trigger ResName="map_79" Layer="controlLevel" Ex="113" Ey="287" Cmd="alt_map" Param="79" Tips="Đến Nhà cỏ Ánh Dương" />
+		<Trigger ResName="map_107" Layer="controlLevel" Ex="207" Ey="307" Cmd="alt_map" Param="107" Tips="Đến Phòng nuôi cấy Ánh Dương" />
+		<Trigger ResName="btn" Layer="controlLevel" Ex="733" Ey="184" Cmd="alt_map" Param="2" Tips="Đến Quảng trường Ái Tâm" />
+		<Trigger ResName="footBtn" Layer="controlLevel" Ex="896" Ey="307" Cmd="alt_map" Param="10" Tips="Đến Nông trại Vui vẻ" />
+		<Trigger ResName="map_mason" Layer="controlLevel" Ex="429" Ey="262" Cmd="alt_map" Param="106" Tips="Đến Túp lều Yoyo" />		
+		<Trigger ResName="snakeSingle" Layer="controlLevel" Ex="697" Ey="502" Cmd="act" Param="snakeGame" Tips="Rắn Săn Mồi Đơn" />	
+		<Trigger ResName="intro" Layer="controlLevel" Ex="313" Ey="465" Cmd="act" Param="snakeGameIntro" Tips="Hướng dẫn Trò chơi Thu Phục Rắn" />			
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10148" Face="正常" Msg="谢谢你，{$username}，又找到了一颗黑暗种子，送你一些礼物以表谢意！我们一定要阻止零的阴谋！" Option="Đúng vậy! Tuyệt đối không để hắn đạt được mục đích!" Cmd="act" Param="getItemTwo" AddTaskOption="1" />
+		<Talk ID="2" NpcID="10014" Face="正常" Msg="海的歌声也抚平不了我的忧伤，寂寞的心事填满我的心房……" Option="了解美人鱼的故事$制造心形五彩珍珠项链$Không có việc gì đâu" Cmd="none" Param="1" AddTaskOption="1" />
+		
+		<Talk ID="3" NpcID="10013" Face="正常" Msg="快来看看Cô Hoa的压箱宝呀！压箱宝里有宝贝哟！不看不知道，一看吓一跳呀！走过路过千万别错过！" Option="我要买卖东西$Lần sau lại đến nhé！" Cmd="act$none" Param="openAgicalGoods$1" AddTaskOption="1" />
+		<Talk ID="422" NpcID="10249" Face="开心" Msg="这~可不是我干的哦~~~~" Option="Ừm, tôi tin bạn rồi!" Cmd="act" Param="dandanAct" AddTaskOption="1" />
+		<Talk ID="423" NpcID="10249" Face="开心" Msg="这~可不是我干的哦~~~~" Option="Giả vờ dễ thương cũng vô ích thôi! Lần này bị bắt quả tang rồi nhé!" Cmd="act" Param="dandanAct" AddTaskOption="1" />
+		
+		<Talk ID="3333" NpcID="10287" Face="正常" Msg="又被你找到了……不理你了(╰_╯)#" Option="么么哒，小C那么好，怎么舍得不理人家(╯3╰)" Cmd="act" Param="xiaocfind" AddTaskOption="1" IsHideClose="1" />
+		
+	</Talks>
+</Map>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="qiqiu_mc" Layer="controlLevel" Ex="444" Ey="475" Cmd="act" Param="boFangPaoPao" Tips="Mở Hành Lang Kỷ Niệm" /> 
+	</Triggers>
+	
+	<Talks>
+		
+	</Talks>
+</Map>

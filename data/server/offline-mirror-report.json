@@ -1,0 +1,1192 @@
+[
+  {
+    "host": "mole.61.com",
+    "path": "/config/Server.xml",
+    "status": "ready",
+    "bytes": 469,
+    "source_bytes": 249,
+    "source_sha256": "d1eaff3b8ce0fbfbf6f4323b328980bfb51ad2a4ed88a56578802f9fc7879366",
+    "sha256": "320ad4b726f068f6869f758d500f61b158b4eca1077b49299c6d1e00d41618c4",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\config\\Server.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/dll/ClientAppDLL.swf",
+    "status": "ready",
+    "bytes": 1252419,
+    "source_bytes": 1252419,
+    "source_sha256": "817fcd695473c6be63cfd4ff79f30068c458a48ad7eb57c9a72ef84f8d5abb62",
+    "sha256": "817fcd695473c6be63cfd4ff79f30068c458a48ad7eb57c9a72ef84f8d5abb62",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\dll\\ClientAppDLL.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/dll/ClientCommonDLL.swf",
+    "status": "ready",
+    "bytes": 429461,
+    "source_bytes": 429461,
+    "source_sha256": "b591dae180542892c5b04664662a48ac53d1643657040988d7af456cc23f6a2d",
+    "sha256": "b591dae180542892c5b04664662a48ac53d1643657040988d7af456cc23f6a2d",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\dll\\ClientCommonDLL.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/dll/ClientConfigDLL.swf",
+    "status": "ready",
+    "bytes": 799655,
+    "source_bytes": 799655,
+    "source_sha256": "e1a302274f7674aae355221f9ac984a52bcce2068f7dde95c2ebfcf15b7657e3",
+    "sha256": "e1a302274f7674aae355221f9ac984a52bcce2068f7dde95c2ebfcf15b7657e3",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\dll\\ClientConfigDLL.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/dll/ClientSocketDLL.swf",
+    "status": "ready",
+    "bytes": 523182,
+    "source_bytes": 523182,
+    "source_sha256": "03eb5e0ae6eb3f2b86f369ab7fe67c9ec9363123d81897b151337108728bec70",
+    "sha256": "03eb5e0ae6eb3f2b86f369ab7fe67c9ec9363123d81897b151337108728bec70",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\dll\\ClientSocketDLL.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/dll/TaomeeCoreDLL.swf",
+    "status": "ready",
+    "bytes": 1133615,
+    "source_bytes": 1133615,
+    "source_sha256": "b8deb651b68e09bcbea5741cd0773b443e5178d66d7125b6064ff9811bc4c297",
+    "sha256": "b8deb651b68e09bcbea5741cd0773b443e5178d66d7125b6064ff9811bc4c297",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\dll\\TaomeeCoreDLL.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/angelFight/AngelFight.swf",
+    "status": "ready",
+    "bytes": 13826,
+    "source_bytes": 13826,
+    "source_sha256": "77b9ec103efb8c6b26cb0c9b41ea0e236d982060369ff4ea18b836fc2915406d",
+    "sha256": "77b9ec103efb8c6b26cb0c9b41ea0e236d982060369ff4ea18b836fc2915406d",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\angelFight\\AngelFight.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/AfuSmallShopPanel.swf",
+    "status": "ready",
+    "bytes": 118650,
+    "source_bytes": 118650,
+    "source_sha256": "69457478d1f4fe812e5debaae67bab03a92910aa1bba4cf5ab20a5c641d5ad9a",
+    "sha256": "69457478d1f4fe812e5debaae67bab03a92910aa1bba4cf5ab20a5c641d5ad9a",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\AfuSmallShopPanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/BubbleMainB2.swf",
+    "status": "ready",
+    "bytes": 1188440,
+    "source_bytes": 1188440,
+    "source_sha256": "6ab3334b82fdb056ebc97dae2be2fd37fcccc9ba2f197383186a0a58da809bf3",
+    "sha256": "6ab3334b82fdb056ebc97dae2be2fd37fcccc9ba2f197383186a0a58da809bf3",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\BubbleMainB2.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/ElementKnightTransferPanel.swf",
+    "status": "ready",
+    "bytes": 237376,
+    "source_bytes": 237376,
+    "source_sha256": "f705aa2c1c4ad085bda9cf4c479de355837cc9189f4e147969f3d90c198afb64",
+    "sha256": "f705aa2c1c4ad085bda9cf4c479de355837cc9189f4e147969f3d90c198afb64",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\ElementKnightTransferPanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/MagicSpiritMainPanel.swf",
+    "status": "ready",
+    "bytes": 521241,
+    "source_bytes": 521241,
+    "source_sha256": "8272ef49f948466c99cb96268c923bb0c9e33d5a2b1cc3ed981dbb181f6d6691",
+    "sha256": "8272ef49f948466c99cb96268c923bb0c9e33d5a2b1cc3ed981dbb181f6d6691",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\MagicSpiritMainPanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/MoleShop.swf",
+    "status": "ready",
+    "bytes": 206320,
+    "source_bytes": 206320,
+    "source_sha256": "45baef8cef961b1ab98dcb051aec86cdb09b5a1bf427bee872517cb4897e20ee",
+    "sha256": "45baef8cef961b1ab98dcb051aec86cdb09b5a1bf427bee872517cb4897e20ee",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\MoleShop.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/NPCDialogPanel.swf",
+    "status": "ready",
+    "bytes": 1303828,
+    "source_bytes": 1303828,
+    "source_sha256": "7a7dcff266230fd4a82d1f73d9896843eb86e0bca02c0d436494ec4a84b75efa",
+    "sha256": "7a7dcff266230fd4a82d1f73d9896843eb86e0bca02c0d436494ec4a84b75efa",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\NPCDialogPanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/NeverDisposePanel.swf",
+    "status": "ready",
+    "bytes": 3444,
+    "source_bytes": 3444,
+    "source_sha256": "65ce5a150d6b56dfa73196fae986967911bd18282fa5996e7fa7fedb1cebcc67",
+    "sha256": "65ce5a150d6b56dfa73196fae986967911bd18282fa5996e7fa7fedb1cebcc67",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\NeverDisposePanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/OnlineAwardPanel.swf",
+    "status": "ready",
+    "bytes": 310845,
+    "source_bytes": 310845,
+    "source_sha256": "10e04962c63e3f3beba696dec1314be33232baa87c5a84d25eab4f2c7e3af7c5",
+    "sha256": "10e04962c63e3f3beba696dec1314be33232baa87c5a84d25eab4f2c7e3af7c5",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\OnlineAwardPanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/SetQualityPanel.swf",
+    "status": "ready",
+    "bytes": 12341,
+    "source_bytes": 12341,
+    "source_sha256": "5d7600dea75e11155481d6f504932c623e859cdb9a0fb564842f167a71c447fa",
+    "sha256": "5d7600dea75e11155481d6f504932c623e859cdb9a0fb564842f167a71c447fa",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\SetQualityPanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/Speaker.swf",
+    "status": "ready",
+    "bytes": 2027,
+    "source_bytes": 2027,
+    "source_sha256": "5dff5e116eaa9d7f3d1532687dbfcc1085ac4132e1f6455d34743fb86a793184",
+    "sha256": "5dff5e116eaa9d7f3d1532687dbfcc1085ac4132e1f6455d34743fb86a793184",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\Speaker.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/SuperLahmIntroPanel.swf",
+    "status": "ready",
+    "bytes": 1771873,
+    "source_bytes": 1771873,
+    "source_sha256": "dd3ce211de07e06ea75d101442cfb8cedc7bdebd17dced56d79141a103fc5af8",
+    "sha256": "dd3ce211de07e06ea75d101442cfb8cedc7bdebd17dced56d79141a103fc5af8",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\SuperLahmIntroPanel.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/SuperLamuGiftMain.swf",
+    "status": "ready",
+    "bytes": 2007356,
+    "source_bytes": 2007356,
+    "source_sha256": "29b96730e8d6c8bd6160ef21216d7b89b47f03dbd018e4ccd93d0814fce4e967",
+    "sha256": "29b96730e8d6c8bd6160ef21216d7b89b47f03dbd018e4ccd93d0814fce4e967",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\SuperLamuGiftMain.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/logo/51moleInfo0.swf",
+    "status": "ready",
+    "bytes": 738581,
+    "source_bytes": 738581,
+    "source_sha256": "f3cb2b4bb2dc41a5a6f2df3b8327e1f21bd6cf02593ce26ee4086c04d5c0870a",
+    "sha256": "f3cb2b4bb2dc41a5a6f2df3b8327e1f21bd6cf02593ce26ee4086c04d5c0870a",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\logo\\51moleInfo0.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/logo/Logo.swf",
+    "status": "ready",
+    "bytes": 19752,
+    "source_bytes": 19752,
+    "source_sha256": "5511feba18c4dfddadda08149b06a986f6fe22380461573032143f54f1559e69",
+    "sha256": "5511feba18c4dfddadda08149b06a986f6fe22380461573032143f54f1559e69",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\logo\\Logo.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/logo/loadlerMC.swf",
+    "status": "ready",
+    "bytes": 29632,
+    "source_bytes": 29632,
+    "source_sha256": "dfdaf50118390d42f1cfefe03136433bb40c3e7cf379652eac82fe4d180dbe10",
+    "sha256": "dfdaf50118390d42f1cfefe03136433bb40c3e7cf379652eac82fe4d180dbe10",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\logo\\loadlerMC.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/external/logo/randomMC.swf",
+    "status": "ready",
+    "bytes": 471883,
+    "source_bytes": 471883,
+    "source_sha256": "ebec9f660396f5b6c5f009ae324e92dfc056df2b446b6deaa4b0ed0dc3eb2aaa",
+    "sha256": "ebec9f660396f5b6c5f009ae324e92dfc056df2b446b6deaa4b0ed0dc3eb2aaa",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\external\\logo\\randomMC.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/module/lamuPKSys/AnimalSkillControler.swf",
+    "status": "ready",
+    "bytes": 7974,
+    "source_bytes": 7974,
+    "source_sha256": "6e6534f38f0431127bb276212463bf63c5d395bbced6f6ba505ceb7306c976ef",
+    "sha256": "6e6534f38f0431127bb276212463bf63c5d395bbced6f6ba505ceb7306c976ef",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\module\\lamuPKSys\\AnimalSkillControler.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/NPC/new_face/npc_10029_1.swf",
+    "status": "ready",
+    "bytes": 8599,
+    "source_bytes": 8599,
+    "source_sha256": "c65cbfd225bbf8141b9facb6fdf0b707fdb05f7d2f279342c66eb8f4376817ab",
+    "sha256": "c65cbfd225bbf8141b9facb6fdf0b707fdb05f7d2f279342c66eb8f4376817ab",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\NPC\\new_face\\npc_10029_1.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/NPC/new_face/npc_10155_1.swf",
+    "status": "ready",
+    "bytes": 12119,
+    "source_bytes": 12119,
+    "source_sha256": "7d699fbcd6c9d9eed35d0568b2f6160c7689fa4383c10faa7df85cbe89b4b36e",
+    "sha256": "7d699fbcd6c9d9eed35d0568b2f6160c7689fa4383c10faa7df85cbe89b4b36e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\NPC\\new_face\\npc_10155_1.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/alertIco/smile.swf",
+    "status": "ready",
+    "bytes": 914,
+    "source_bytes": 914,
+    "source_sha256": "f953761cd8e1fe694625a957328f7533db1dfda3bc1ea166fce02de167cdcd7d",
+    "sha256": "f953761cd8e1fe694625a957328f7533db1dfda3bc1ea166fce02de167cdcd7d",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\alertIco\\smile.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/besmearBook/glory.swf",
+    "status": "ready",
+    "bytes": 328539,
+    "source_bytes": 328539,
+    "source_sha256": "2464d2cc8268c4b7caa66573763aef70900c9482d31bd64a373df08118134337",
+    "sha256": "2464d2cc8268c4b7caa66573763aef70900c9482d31bd64a373df08118134337",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\besmearBook\\glory.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/bgSounds/BGM_001g.mp3",
+    "status": "ready",
+    "bytes": 368665,
+    "source_bytes": 368665,
+    "source_sha256": "80afce61de22230d5feaeac266ec376b04c50453aa06b01dc583620c0b10ced5",
+    "sha256": "80afce61de22230d5feaeac266ec376b04c50453aa06b01dc583620c0b10ced5",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\bgSounds\\BGM_001g.mp3"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/bgSounds/BGM_012.mp3",
+    "status": "ready",
+    "bytes": 284839,
+    "source_bytes": 284839,
+    "source_sha256": "dfce3fd2307fd25e5040f6548b73e78dfae315ada5615d11cd2097889ccde16e",
+    "sha256": "dfce3fd2307fd25e5040f6548b73e78dfae315ada5615d11cd2097889ccde16e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\bgSounds\\BGM_012.mp3"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/bgSounds/BGM_040.mp3",
+    "status": "ready",
+    "bytes": 320366,
+    "source_bytes": 320366,
+    "source_sha256": "0bcdd2d143e54d1cd15f6e2a3135ecddedbe635106827ab18d837cdaf526701e",
+    "sha256": "0bcdd2d143e54d1cd15f6e2a3135ecddedbe635106827ab18d837cdaf526701e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\bgSounds\\BGM_040.mp3"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/bgSounds/BGM_084.mp3",
+    "status": "ready",
+    "bytes": 357191,
+    "source_bytes": 357191,
+    "source_sha256": "42bf68f9235bd2edef1317f3a6d4bb44507ff48f03fef1e1fa71743e2b785028",
+    "sha256": "42bf68f9235bd2edef1317f3a6d4bb44507ff48f03fef1e1fa71743e2b785028",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\bgSounds\\BGM_084.mp3"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/bgSounds/FX_002.mp3",
+    "status": "ready",
+    "bytes": 119352,
+    "source_bytes": 119352,
+    "source_sha256": "8ec52107d925c68265d09e6cc939b93f566ba6af6c7e37972048a26d8656c736",
+    "sha256": "8ec52107d925c68265d09e6cc939b93f566ba6af6c7e37972048a26d8656c736",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\bgSounds\\FX_002.mp3"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/bmpswf/1001/1.swf",
+    "status": "ready",
+    "bytes": 28527,
+    "source_bytes": 28527,
+    "source_sha256": "8212cd9bf294817ea2a60ce6df5fe68664b2aa00f82e4b73e451bc10078e1205",
+    "sha256": "8212cd9bf294817ea2a60ce6df5fe68664b2aa00f82e4b73e451bc10078e1205",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\bmpswf\\1001\\1.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/bmpswf/1001/2.swf",
+    "status": "ready",
+    "bytes": 19104,
+    "source_bytes": 19104,
+    "source_sha256": "079dba9fb012e3d985d47f36364ea3cb968c2b4a37807a3d3ab359124489d8d3",
+    "sha256": "079dba9fb012e3d985d47f36364ea3cb968c2b4a37807a3d3ab359124489d8d3",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\bmpswf\\1001\\2.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/bmpswf/1003/1.swf",
+    "status": "ready",
+    "bytes": 49012,
+    "source_bytes": 49012,
+    "source_sha256": "ce34d0feceaa8e9304ceef25d131488589bc4322871c3fec96b7ec56980ba89a",
+    "sha256": "ce34d0feceaa8e9304ceef25d131488589bc4322871c3fec96b7ec56980ba89a",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\bmpswf\\1003\\1.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/bmpswf/1003/2.swf",
+    "status": "ready",
+    "bytes": 43218,
+    "source_bytes": 43218,
+    "source_sha256": "d2e1ceed2144851f6c3ea488f8faf4d00d9109fdffd3e19d79692e5ad5a8451f",
+    "sha256": "d2e1ceed2144851f6c3ea488f8faf4d00d9109fdffd3e19d79692e5ad5a8451f",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\bmpswf\\1003\\2.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12077.swf",
+    "status": "ready",
+    "bytes": 603,
+    "source_bytes": 603,
+    "source_sha256": "54e90853e667d8f707915483bd70cedbfb0af3c3c54d4ae93dd6f2d7a7ded52f",
+    "sha256": "54e90853e667d8f707915483bd70cedbfb0af3c3c54d4ae93dd6f2d7a7ded52f",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12077.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12105.swf",
+    "status": "ready",
+    "bytes": 2110,
+    "source_bytes": 2110,
+    "source_sha256": "0d8376c8b0e5f0e6d29f3b7584bbed2081b925330dcb119275d2e5b57ce40b54",
+    "sha256": "0d8376c8b0e5f0e6d29f3b7584bbed2081b925330dcb119275d2e5b57ce40b54",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12105.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12106.swf",
+    "status": "ready",
+    "bytes": 2142,
+    "source_bytes": 2142,
+    "source_sha256": "05920d168d5ab5315b85f2af123fae01ece993a184f40324499320d6ab5ac940",
+    "sha256": "05920d168d5ab5315b85f2af123fae01ece993a184f40324499320d6ab5ac940",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12106.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12107.swf",
+    "status": "ready",
+    "bytes": 2175,
+    "source_bytes": 2175,
+    "source_sha256": "0daf50bc0d66a6b58ba4678ed3a166320db46e424d098d22046f9221299fcb63",
+    "sha256": "0daf50bc0d66a6b58ba4678ed3a166320db46e424d098d22046f9221299fcb63",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12107.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12176.swf",
+    "status": "ready",
+    "bytes": 1402,
+    "source_bytes": 1402,
+    "source_sha256": "6dd0eb089d0efbb79f241e0c323390985c8d909955873d90a46b4c5a8cf65efa",
+    "sha256": "6dd0eb089d0efbb79f241e0c323390985c8d909955873d90a46b4c5a8cf65efa",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12176.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12206.swf",
+    "status": "ready",
+    "bytes": 537,
+    "source_bytes": 537,
+    "source_sha256": "e01bac1b8ebf9e3dd9d84315d1196eb99a96ab6f65f6c4ec1823bc2d991c7228",
+    "sha256": "e01bac1b8ebf9e3dd9d84315d1196eb99a96ab6f65f6c4ec1823bc2d991c7228",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12206.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12441.swf",
+    "status": "ready",
+    "bytes": 1484,
+    "source_bytes": 1484,
+    "source_sha256": "f0c327c1cba4d21202f366f6edb73dfab4218fdf65e4b9b173ff101194c04f5e",
+    "sha256": "f0c327c1cba4d21202f366f6edb73dfab4218fdf65e4b9b173ff101194c04f5e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12441.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/12495.swf",
+    "status": "ready",
+    "bytes": 919,
+    "source_bytes": 919,
+    "source_sha256": "e2ad3af7af62250e3331219fe1e96b8303feb1f5a976826c5da61b32fad4561f",
+    "sha256": "e2ad3af7af62250e3331219fe1e96b8303feb1f5a976826c5da61b32fad4561f",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\12495.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/13696.swf",
+    "status": "ready",
+    "bytes": 1676,
+    "source_bytes": 1676,
+    "source_sha256": "33035c5a52d6f877470be1043baf0228f357dad498e562b2ef9a517b779741f7",
+    "sha256": "33035c5a52d6f877470be1043baf0228f357dad498e562b2ef9a517b779741f7",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\13696.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/cloth/icon/13875.swf",
+    "status": "ready",
+    "bytes": 2043,
+    "source_bytes": 2043,
+    "source_sha256": "26084ad9da3d95c5ce2ccf013a16c9a11f93ff39ba7bef0a60db5a78bdc78c00",
+    "sha256": "26084ad9da3d95c5ce2ccf013a16c9a11f93ff39ba7bef0a60db5a78bdc78c00",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\cloth\\icon\\13875.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/login/2021ment.swf",
+    "status": "ready",
+    "bytes": 0,
+    "source_bytes": 0,
+    "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\login\\2021ment.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/login/2022ment.swf",
+    "status": "ready",
+    "bytes": 864441,
+    "source_bytes": 864441,
+    "source_sha256": "f7a0dd0183d7351379dbbf4ce2c292e3b1058d46fb6ce7601af2080c50f4ef11",
+    "sha256": "f7a0dd0183d7351379dbbf4ce2c292e3b1058d46fb6ce7601af2080c50f4ef11",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\login\\2022ment.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/login/Login.swf",
+    "status": "ready",
+    "bytes": 489881,
+    "source_bytes": 489881,
+    "source_sha256": "52b932edeabfb572f487fe9c8a9841fbb649f3fe9aaaa4ee14e09bbf25525cf6",
+    "sha256": "52b932edeabfb572f487fe9c8a9841fbb649f3fe9aaaa4ee14e09bbf25525cf6",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\login\\Login.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/login/LoginHome.swf",
+    "status": "ready",
+    "bytes": 175856,
+    "source_bytes": 175856,
+    "source_sha256": "92d24d9db240b6404f9d87088d39e4e1bfbfc6f057751fdd0fdc56c91e9e66da",
+    "sha256": "92d24d9db240b6404f9d87088d39e4e1bfbfc6f057751fdd0fdc56c91e9e66da",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\login\\LoginHome.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/142.swf",
+    "status": "ready",
+    "bytes": 427837,
+    "source_bytes": 427837,
+    "source_sha256": "928f2ee89c838455da6931c5cf2f0f542d7b8c573f37af752fc0ca4d69a78ce2",
+    "sha256": "928f2ee89c838455da6931c5cf2f0f542d7b8c573f37af752fc0ca4d69a78ce2",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\142.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/143.swf",
+    "status": "ready",
+    "bytes": 219724,
+    "source_bytes": 219724,
+    "source_sha256": "27270d28443aba4cedb80d174665a610836a4b3328f4dce506956369301eca66",
+    "sha256": "27270d28443aba4cedb80d174665a610836a4b3328f4dce506956369301eca66",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\143.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/17.swf",
+    "status": "ready",
+    "bytes": 247192,
+    "source_bytes": 247192,
+    "source_sha256": "1a0321b642585f45604cb643c2b3f9fe1b798680b5d511a32d5c06ea824d70c2",
+    "sha256": "1a0321b642585f45604cb643c2b3f9fe1b798680b5d511a32d5c06ea824d70c2",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\17.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/19.swf",
+    "status": "ready",
+    "bytes": 329185,
+    "source_bytes": 329185,
+    "source_sha256": "5e55ae5c3cdb876d4a3794610c47ed2a0e1c7505d5e3bd3e2c3578317384b3be",
+    "sha256": "5e55ae5c3cdb876d4a3794610c47ed2a0e1c7505d5e3bd3e2c3578317384b3be",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\19.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/20.swf",
+    "status": "ready",
+    "bytes": 419373,
+    "source_bytes": 419373,
+    "source_sha256": "e2788fe6d6b8ebd70d55e0897c21cd4120463b17496ae1bf701a0d8eceed08ce",
+    "sha256": "e2788fe6d6b8ebd70d55e0897c21cd4120463b17496ae1bf701a0d8eceed08ce",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\20.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/21.swf",
+    "status": "ready",
+    "bytes": 368421,
+    "source_bytes": 368421,
+    "source_sha256": "f383c13870eed209c729556d40910e71cfe4d61c8ae034e7da9c640f97c27f43",
+    "sha256": "f383c13870eed209c729556d40910e71cfe4d61c8ae034e7da9c640f97c27f43",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\21.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/62.swf",
+    "status": "ready",
+    "bytes": 306041,
+    "source_bytes": 306041,
+    "source_sha256": "1fe7367aee6d7475e492630747c7ba52c3b9373271e2311e6d72cf5c7a525991",
+    "sha256": "1fe7367aee6d7475e492630747c7ba52c3b9373271e2311e6d72cf5c7a525991",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\62.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/63.swf",
+    "status": "ready",
+    "bytes": 51863,
+    "source_bytes": 51863,
+    "source_sha256": "ee5cf51a5d4fb2ca8718929499b3721f492bcc7f650f2dbc29afa7f2666a694f",
+    "sha256": "ee5cf51a5d4fb2ca8718929499b3721f492bcc7f650f2dbc29afa7f2666a694f",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\63.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/64.swf",
+    "status": "ready",
+    "bytes": 150564,
+    "source_bytes": 150564,
+    "source_sha256": "9b3341e7274513ddeb7e1304ad24ac937d6c7618d706798ebc1b9b292497c619",
+    "sha256": "9b3341e7274513ddeb7e1304ad24ac937d6c7618d706798ebc1b9b292497c619",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\64.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/75.swf",
+    "status": "ready",
+    "bytes": 128533,
+    "source_bytes": 128533,
+    "source_sha256": "acd143af0152e6186c8edb9e50190d46adac5972bfac76e8a5a90b72ce404f22",
+    "sha256": "acd143af0152e6186c8edb9e50190d46adac5972bfac76e8a5a90b72ce404f22",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\75.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/76.swf",
+    "status": "ready",
+    "bytes": 255231,
+    "source_bytes": 255231,
+    "source_sha256": "936deea12d7adbdc00bd256929e516aac6de0215027eeb5cb27d9fe22eb87a28",
+    "sha256": "936deea12d7adbdc00bd256929e516aac6de0215027eeb5cb27d9fe22eb87a28",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\76.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10001.swf",
+    "status": "ready",
+    "bytes": 501965,
+    "source_bytes": 501965,
+    "source_sha256": "a5b329115f78c6a5ee25cbe9447975ca7222f325cc6307766368fcfc7fd19991",
+    "sha256": "a5b329115f78c6a5ee25cbe9447975ca7222f325cc6307766368fcfc7fd19991",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10001.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10001.xml",
+    "status": "ready",
+    "bytes": 4360,
+    "source_bytes": 4360,
+    "source_sha256": "e62cac83bfce9161b8e8245e213d9469154065e361bd0e7bd14147ecf4a196d9",
+    "sha256": "e62cac83bfce9161b8e8245e213d9469154065e361bd0e7bd14147ecf4a196d9",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10001.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10002.swf",
+    "status": "ready",
+    "bytes": 903582,
+    "source_bytes": 903582,
+    "source_sha256": "52922e7dea819f193647505d2ceccde1a9ae464ac148af321b8ce0cb4b200146",
+    "sha256": "52922e7dea819f193647505d2ceccde1a9ae464ac148af321b8ce0cb4b200146",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10002.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10002.xml",
+    "status": "ready",
+    "bytes": 1836,
+    "source_bytes": 1836,
+    "source_sha256": "2e8fedbf8991c8eade95b8ba7f2dcd6afb04f4b964676f13d35c8f86f2add525",
+    "sha256": "2e8fedbf8991c8eade95b8ba7f2dcd6afb04f4b964676f13d35c8f86f2add525",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10002.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10003.swf",
+    "status": "ready",
+    "bytes": 693873,
+    "source_bytes": 693873,
+    "source_sha256": "07f84f68236bd53fb8979b4a4f318ef00e54bedc5fb382161c7c36ce8567ce19",
+    "sha256": "07f84f68236bd53fb8979b4a4f318ef00e54bedc5fb382161c7c36ce8567ce19",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10003.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10003.xml",
+    "status": "ready",
+    "bytes": 4301,
+    "source_bytes": 4301,
+    "source_sha256": "8c351a0ebe68cdf23f50f54fd78173185d3b95562ff0453e308dbc4b2567a835",
+    "sha256": "8c351a0ebe68cdf23f50f54fd78173185d3b95562ff0453e308dbc4b2567a835",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10003.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10004.swf",
+    "status": "ready",
+    "bytes": 702618,
+    "source_bytes": 702618,
+    "source_sha256": "b099efaa71209597e6187adf2a0a8d7fa9f99a8c8f59f64bd6ac2aa1aa3dc5f8",
+    "sha256": "b099efaa71209597e6187adf2a0a8d7fa9f99a8c8f59f64bd6ac2aa1aa3dc5f8",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10004.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10004.xml",
+    "status": "ready",
+    "bytes": 1269,
+    "source_bytes": 1269,
+    "source_sha256": "b636b707e0ddca1ed84110a31db6de196ae000234d75104388c79793614bb383",
+    "sha256": "b636b707e0ddca1ed84110a31db6de196ae000234d75104388c79793614bb383",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10004.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10005.swf",
+    "status": "ready",
+    "bytes": 303691,
+    "source_bytes": 303691,
+    "source_sha256": "692d2bb86e22ee24b02c0a6746ca7307af81c5a00eec7f1b988d4093ea355668",
+    "sha256": "692d2bb86e22ee24b02c0a6746ca7307af81c5a00eec7f1b988d4093ea355668",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10005.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10005.xml",
+    "status": "ready",
+    "bytes": 567,
+    "source_bytes": 267,
+    "source_sha256": "9d4a2b4fe8bdd53d502e48fae9c452f32b2a3b50516b5c35798d43880c0986bd",
+    "sha256": "fd9900d83a860dc8b0e42d75eb9287a8d35107869eec5e8db23080dac6eb33ea",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10005.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10015.swf",
+    "status": "ready",
+    "bytes": 326939,
+    "source_bytes": 326939,
+    "source_sha256": "1975aa15aec5d17a2932e20a68ca698b887c1edb94266d780f2423915fc81929",
+    "sha256": "1975aa15aec5d17a2932e20a68ca698b887c1edb94266d780f2423915fc81929",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10015.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10015.xml",
+    "status": "ready",
+    "bytes": 1674,
+    "source_bytes": 1674,
+    "source_sha256": "a989e168abbd53719b251495e89b6d74b4017bec54c76cb9d13ee9d80f0b4ce0",
+    "sha256": "a989e168abbd53719b251495e89b6d74b4017bec54c76cb9d13ee9d80f0b4ce0",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10015.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10017.swf",
+    "status": "ready",
+    "bytes": 247192,
+    "source_bytes": 247192,
+    "source_sha256": "1a0321b642585f45604cb643c2b3f9fe1b798680b5d511a32d5c06ea824d70c2",
+    "sha256": "1a0321b642585f45604cb643c2b3f9fe1b798680b5d511a32d5c06ea824d70c2",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10017.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10017.xml",
+    "status": "ready",
+    "bytes": 1681,
+    "source_bytes": 1681,
+    "source_sha256": "630e08eaabe83611266abc2a39384f7a723aaf29cef71797d9181c008f934361",
+    "sha256": "630e08eaabe83611266abc2a39384f7a723aaf29cef71797d9181c008f934361",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10017.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10019.xml",
+    "status": "ready",
+    "bytes": 90,
+    "source_bytes": 90,
+    "source_sha256": "19b153e8ceed975c5e30d0f3871cd46dcf8553b323a831d5b25177fa7c80e7e7",
+    "sha256": "19b153e8ceed975c5e30d0f3871cd46dcf8553b323a831d5b25177fa7c80e7e7",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10019.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10020.xml",
+    "status": "ready",
+    "bytes": 4340,
+    "source_bytes": 2005,
+    "source_sha256": "acfa58c9ed3a10fe06fc88979a3ee239ae7863336c813e1d7f0ad66eca6ca0dc",
+    "sha256": "9ac6d6168886f917c0fbf0eb59f726f41cbd9184fcb72fc833de2c69d7c6a729",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10020.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10021.xml",
+    "status": "ready",
+    "bytes": 1535,
+    "source_bytes": 888,
+    "source_sha256": "7c937b7d4ddcc460d700a44f720a1403ebf5f6aaa0a6cdec9345e63b10e7b387",
+    "sha256": "4e91b1282b674cd26226cf883bedf2d23e85106a9a103d4c3b3cd9b7099d2d7e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10021.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10028.swf",
+    "status": "ready",
+    "bytes": 631229,
+    "source_bytes": 631229,
+    "source_sha256": "641e6a697cfe39c2092eccf8390d898fd6f5e37e2c2ed6e95b2d3cbf9d9f359f",
+    "sha256": "641e6a697cfe39c2092eccf8390d898fd6f5e37e2c2ed6e95b2d3cbf9d9f359f",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10028.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10028.xml",
+    "status": "ready",
+    "bytes": 1427,
+    "source_bytes": 562,
+    "source_sha256": "197ae537c1468175ff9076f5fc720717ae9e9fc3cbb37a0e0c36215bf71623fb",
+    "sha256": "9e03d67b94bd07ce1bedbe9c6aa9da61ed2740872019fbfdc24ad32759f532c7",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10028.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10038.swf",
+    "status": "ready",
+    "bytes": 3526481,
+    "source_bytes": 3526481,
+    "source_sha256": "c7d7049b2762a4cfe5588f37832b45f0018980076765eec1b3ecd7a9a7acbe56",
+    "sha256": "c7d7049b2762a4cfe5588f37832b45f0018980076765eec1b3ecd7a9a7acbe56",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10038.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10038.xml",
+    "status": "ready",
+    "bytes": 2739,
+    "source_bytes": 858,
+    "source_sha256": "a8c2c4d5187e41b654aabbe0ed3ea285f159427fa2acc622fa80a759c05be251",
+    "sha256": "ae37a73734d569e999faff3be0620b4583c32985fe5e3f7bb19112a60ddc9332",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10038.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10061.swf",
+    "status": "ready",
+    "bytes": 319215,
+    "source_bytes": 319215,
+    "source_sha256": "2b724ea5a49daa3522010f042835959650675d865df1b28cdad427829692ce3c",
+    "sha256": "2b724ea5a49daa3522010f042835959650675d865df1b28cdad427829692ce3c",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10061.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10061.xml",
+    "status": "ready",
+    "bytes": 1609,
+    "source_bytes": 1609,
+    "source_sha256": "a665425d6babd69a1d991bced4152ff6f7d8d39e434c637d733c0d452c2871e5",
+    "sha256": "a665425d6babd69a1d991bced4152ff6f7d8d39e434c637d733c0d452c2871e5",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10061.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10062.xml",
+    "status": "ready",
+    "bytes": 3951,
+    "source_bytes": 3951,
+    "source_sha256": "ec98fea528f1a8071b7e93ec8f582d74a93474fc43493023c9dfdff7ddc0e270",
+    "sha256": "ec98fea528f1a8071b7e93ec8f582d74a93474fc43493023c9dfdff7ddc0e270",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10062.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10063.xml",
+    "status": "ready",
+    "bytes": 514,
+    "source_bytes": 360,
+    "source_sha256": "ee7e1cea8a376320c1d434ef3959d1c22701b8facbb491d22e2e6eb02c701a50",
+    "sha256": "b77483140e99bc77bf5c501a9b2fca3e94304447959ea4e512712d5695ee7aec",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10063.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10064.xml",
+    "status": "ready",
+    "bytes": 514,
+    "source_bytes": 360,
+    "source_sha256": "ee7e1cea8a376320c1d434ef3959d1c22701b8facbb491d22e2e6eb02c701a50",
+    "sha256": "b77483140e99bc77bf5c501a9b2fca3e94304447959ea4e512712d5695ee7aec",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10064.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10075.xml",
+    "status": "ready",
+    "bytes": 1032,
+    "source_bytes": 587,
+    "source_sha256": "aa73414b1e1d7a59031ad826d0d9a0e980214cdfe5f40dd5a3b8e8ee8424bcc0",
+    "sha256": "e4b3b03ea924c622928b62a526880e5aed070da1518b4bf6b20111027f7e47e3",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10075.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10076.xml",
+    "status": "ready",
+    "bytes": 514,
+    "source_bytes": 360,
+    "source_sha256": "ee7e1cea8a376320c1d434ef3959d1c22701b8facbb491d22e2e6eb02c701a50",
+    "sha256": "b77483140e99bc77bf5c501a9b2fca3e94304447959ea4e512712d5695ee7aec",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10076.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10120.swf",
+    "status": "ready",
+    "bytes": 429255,
+    "source_bytes": 429255,
+    "source_sha256": "997f2153287a12ef3a5a474902e053febbd791e412a5d1643693e558567da036",
+    "sha256": "997f2153287a12ef3a5a474902e053febbd791e412a5d1643693e558567da036",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10120.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10120.xml",
+    "status": "ready",
+    "bytes": 982,
+    "source_bytes": 499,
+    "source_sha256": "d360da2e0a8c2793fb4fd139240d67118c35743b901e0ea6b9f7a48f1fe21a0a",
+    "sha256": "b9dc024e9d2c8e61540914fa203cc2e7ade52aa3caaffb7120c4c58a9ae53474",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10120.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10142.xml",
+    "status": "ready",
+    "bytes": 1312,
+    "source_bytes": 684,
+    "source_sha256": "af279bacc41db831f652540bed7e4ec8eb5d5988a0ce8404ff6209b38744aeed",
+    "sha256": "9dc287730dda1199933c882e9e2f4b34ccb033f24c0b0ef32b1c2c3d09549c1e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10142.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/map/Map_10143.xml",
+    "status": "ready",
+    "bytes": 3964,
+    "source_bytes": 3964,
+    "source_sha256": "88591aabea3c6ca4eeeec829677ded12ab816e30bd383cfe9609509b39b59851",
+    "sha256": "88591aabea3c6ca4eeeec829677ded12ab816e30bd383cfe9609509b39b59851",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\map\\Map_10143.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/soundLib/lib1.swf",
+    "status": "ready",
+    "bytes": 154665,
+    "source_bytes": 154665,
+    "source_sha256": "d93e633b849cb02e28eceef6f2108bb67ccc46d3dc39a2318205bff4ba1cd275",
+    "sha256": "d93e633b849cb02e28eceef6f2108bb67ccc46d3dc39a2318205bff4ba1cd275",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\soundLib\\lib1.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/task/TaskMagicSprite/step_1.swf",
+    "status": "ready",
+    "bytes": 53541,
+    "source_bytes": 53541,
+    "source_sha256": "3ca6c7714cdc2c5e0d6b45af0f3b1a6cbe78cf29f25bf37f5d8a39daccd88198",
+    "sha256": "3ca6c7714cdc2c5e0d6b45af0f3b1a6cbe78cf29f25bf37f5d8a39daccd88198",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\task\\TaskMagicSprite\\step_1.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/ui/index.swf",
+    "status": "ready",
+    "bytes": 486427,
+    "source_bytes": 486427,
+    "source_sha256": "6fbd024db662ac660a93f3691bbcb2e55e5938074796fdac348748071a228f3a",
+    "sha256": "6fbd024db662ac660a93f3691bbcb2e55e5938074796fdac348748071a228f3a",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\ui\\index.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/ui/main_resource.swf",
+    "status": "ready",
+    "bytes": 1065203,
+    "source_bytes": 1065203,
+    "source_sha256": "83acd54c1b98d3bd79326fc5938d33ca8c1506a28dfb640eaf253846d7ac9341",
+    "sha256": "83acd54c1b98d3bd79326fc5938d33ca8c1506a28dfb640eaf253846d7ac9341",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\ui\\main_resource.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/ui/topUI.swf",
+    "status": "ready",
+    "bytes": 702168,
+    "source_bytes": 702168,
+    "source_sha256": "9d5539f9487bab5fe63d9b74c42a917e5d19bfe86d073dff908b9acea1516ffe",
+    "sha256": "9d5539f9487bab5fe63d9b74c42a917e5d19bfe86d073dff908b9acea1516ffe",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\ui\\topUI.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/ui/ui.swf",
+    "status": "ready",
+    "bytes": 2768779,
+    "source_bytes": 2768779,
+    "source_sha256": "ee86bfb2216a07943bccd7dabd161049548dbaf7758797c68c9e5e85fdfcbb4b",
+    "sha256": "ee86bfb2216a07943bccd7dabd161049548dbaf7758797c68c9e5e85fdfcbb4b",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\ui\\ui.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/BoardcastMessage.xml",
+    "status": "ready",
+    "bytes": 136,
+    "source_bytes": 136,
+    "source_sha256": "35ca337192145730645665a2e164f8134185aff5c5797aecabdced33840ba867",
+    "sha256": "35ca337192145730645665a2e164f8134185aff5c5797aecabdced33840ba867",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\BoardcastMessage.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/ModuleInfoList.xml",
+    "status": "ready",
+    "bytes": 8488,
+    "source_bytes": 8488,
+    "source_sha256": "73a998a5cfbed0d3783829a3f4a60e3fdd0d01f0242342db43457d909d5f9134",
+    "sha256": "73a998a5cfbed0d3783829a3f4a60e3fdd0d01f0242342db43457d909d5f9134",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\ModuleInfoList.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/NPC/NPCJoblist1.xml",
+    "status": "ready",
+    "bytes": 54,
+    "source_bytes": 54,
+    "source_sha256": "6d595ba2954969a1297917f68da4d8542f82ca80093818555c2334cd4995033e",
+    "sha256": "6d595ba2954969a1297917f68da4d8542f82ca80093818555c2334cd4995033e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\NPC\\NPCJoblist1.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/NPC/NPCJoblist62.xml",
+    "status": "ready",
+    "bytes": 54,
+    "source_bytes": 54,
+    "source_sha256": "6d595ba2954969a1297917f68da4d8542f82ca80093818555c2334cd4995033e",
+    "sha256": "6d595ba2954969a1297917f68da4d8542f82ca80093818555c2334cd4995033e",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\NPC\\NPCJoblist62.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/NPCInfoList.xml",
+    "status": "ready",
+    "bytes": 23318,
+    "source_bytes": 23318,
+    "source_sha256": "981593abbdaf0e686433ab6781d28f395ecdbe083556276696462cf6f3e22cba",
+    "sha256": "981593abbdaf0e686433ab6781d28f395ecdbe083556276696462cf6f3e22cba",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\NPCInfoList.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/SuitSwap.xml",
+    "status": "ready",
+    "bytes": 3744,
+    "source_bytes": 3744,
+    "source_sha256": "90fbc0b1923a1c52a15ead32df718ff626a23f24ddb2c47d59e5040be47a8b87",
+    "sha256": "90fbc0b1923a1c52a15ead32df718ff626a23f24ddb2c47d59e5040be47a8b87",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\SuitSwap.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/activity0508/system_alert.xml",
+    "status": "ready",
+    "bytes": 191,
+    "source_bytes": 191,
+    "source_sha256": "70d8f9819f42dcf44fea8ccb5edde6842bbb19ff7d482bf9323eca70777c34d3",
+    "sha256": "70d8f9819f42dcf44fea8ccb5edde6842bbb19ff7d482bf9323eca70777c34d3",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\activity0508\\system_alert.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/angelFight/af_skills.xml",
+    "status": "ready",
+    "bytes": 78202,
+    "source_bytes": 78202,
+    "source_sha256": "dfd9ec49b27c87449e26221d77ba24da3ff364f4bc783c17e384ac05c5e317df",
+    "sha256": "dfd9ec49b27c87449e26221d77ba24da3ff364f4bc783c17e384ac05c5e317df",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\angelFight\\af_skills.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/angelFight/collectChangel.xml",
+    "status": "ready",
+    "bytes": 9446,
+    "source_bytes": 9446,
+    "source_sha256": "c6d82d7a24a53c7dd983ebf74aa7aed4adc755ecd268ec89bc63b54e9a16a832",
+    "sha256": "c6d82d7a24a53c7dd983ebf74aa7aed4adc755ecd268ec89bc63b54e9a16a832",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\angelFight\\collectChangel.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/ext.xml",
+    "status": "ready",
+    "bytes": 1024,
+    "source_bytes": 1024,
+    "source_sha256": "d6ac801e61372b420b3314e113ecad8068829b3088ab8e2df9ab72b9b05767f2",
+    "sha256": "d6ac801e61372b420b3314e113ecad8068829b3088ab8e2df9ab72b9b05767f2",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\ext.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/footPrint/footPrint2013.xml",
+    "status": "ready",
+    "bytes": 5153,
+    "source_bytes": 5153,
+    "source_sha256": "d5c430da1c70b9c2cce7cf565e4a064df5a765062af2d8ccff20fe86b073ddf8",
+    "sha256": "d5c430da1c70b9c2cce7cf565e4a064df5a765062af2d8ccff20fe86b073ddf8",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\footPrint\\footPrint2013.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/logo/loadingWord.xml",
+    "status": "ready",
+    "bytes": 163,
+    "source_bytes": 163,
+    "source_sha256": "29c9a9d6df57fc847fa197325a7af98f310e11f39debc4baf43109028068580c",
+    "sha256": "29c9a9d6df57fc847fa197325a7af98f310e11f39debc4baf43109028068580c",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\logo\\loadingWord.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/messages.xml",
+    "status": "ready",
+    "bytes": 2518,
+    "source_bytes": 2518,
+    "source_sha256": "0d3bd4630d084327ea8c794f0a86e46bb9b3788bfdf55a40d2a3ff0e23573d6b",
+    "sha256": "0d3bd4630d084327ea8c794f0a86e46bb9b3788bfdf55a40d2a3ff0e23573d6b",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\messages.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/socket/SocketErrorConfig.xml",
+    "status": "ready",
+    "bytes": 3019,
+    "source_bytes": 3019,
+    "source_sha256": "842e67e5594666ab3bee946dbea251adb99344892dce57e29978cf03a31b989c",
+    "sha256": "842e67e5594666ab3bee946dbea251adb99344892dce57e29978cf03a31b989c",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\socket\\SocketErrorConfig.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/swap/LuAFuSHop.xml",
+    "status": "ready",
+    "bytes": 5368,
+    "source_bytes": 5368,
+    "source_sha256": "419ffe733907697bc29bb748d2b8788f958cab7c00048c6d32cdaf9865cedceb",
+    "sha256": "419ffe733907697bc29bb748d2b8788f958cab7c00048c6d32cdaf9865cedceb",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\swap\\LuAFuSHop.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/task/Task644.xml",
+    "status": "ready",
+    "bytes": 2842,
+    "source_bytes": 2842,
+    "source_sha256": "27313b9691ee4f799fa0e764636edcec1909b641b6bca74175ed282ba735534b",
+    "sha256": "27313b9691ee4f799fa0e764636edcec1909b641b6bca74175ed282ba735534b",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\task\\Task644.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/resource/xml/task/TaskSummary.xml",
+    "status": "ready",
+    "bytes": 49822,
+    "source_bytes": 49822,
+    "source_sha256": "af26af9b661b94f2dea14871a959d774aac95b4d9f91850fc5cfff636b94e3c9",
+    "sha256": "af26af9b661b94f2dea14871a959d774aac95b4d9f91850fc5cfff636b94e3c9",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\resource\\xml\\task\\TaskSummary.xml"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/version/version1452075536.swf",
+    "status": "ready",
+    "bytes": 322143,
+    "source_bytes": 322143,
+    "source_sha256": "28f4db33b163b1cf48c3105b41ecc7af73e629499f10c16914afd675b29a97d6",
+    "sha256": "28f4db33b163b1cf48c3105b41ecc7af73e629499f10c16914afd675b29a97d6",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\version\\version1452075536.swf"
+  },
+  {
+    "host": "mole.61.com",
+    "path": "/version/zzz_config.txt",
+    "status": "ready",
+    "bytes": 10,
+    "source_bytes": 10,
+    "source_sha256": "c12f49ed22e9dfa5b951ca53eacb22d82245289d619a7b353ddb2309b185943f",
+    "sha256": "c12f49ed22e9dfa5b951ca53eacb22d82245289d619a7b353ddb2309b185943f",
+    "destination": "E:\\Codex\\Projects\\Moly-Viet\\archive\\clients\\offline-mirror\\mole.61.com\\version\\zzz_config.txt"
+  }
+]

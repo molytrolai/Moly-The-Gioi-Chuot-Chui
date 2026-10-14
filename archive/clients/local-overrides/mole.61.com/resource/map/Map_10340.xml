@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="door_5" Layer="depthLevel" Ex="800" Ey="171" Cmd="gm" Param="5" Tips="Sân trượt băng Molylaya" />
+		<Trigger ResName="start_btn" Layer="controlLevel" Ex="915" Ey="342" Cmd="act" Param="start_game" Tips="Bắt đầu Trò chơi" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

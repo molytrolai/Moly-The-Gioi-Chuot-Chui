@@ -1,0 +1,31 @@
+{
+  "observed_command_count": 56,
+  "handled_observed_count": 52,
+  "known_one_way": [
+    {
+      "command": 303,
+      "name": "walking",
+      "requests": 19,
+      "reason": "walking broadcast (the server does not echo it to the sender)"
+    },
+    {
+      "command": 305,
+      "name": "actions",
+      "requests": 2,
+      "reason": "avatar action broadcast (the server does not echo it to the sender)"
+    },
+    {
+      "command": 9245,
+      "name": "NEW_STATICS_PLANT",
+      "requests": 4,
+      "reason": "client statistics upload (no response parser is registered)"
+    },
+    {
+      "command": 12053,
+      "name": "CLI_PROTO_GET_OTHER_NICK",
+      "requests": 1,
+      "reason": "legacy magic-spirit tutorial notification (no response listener is registered)"
+    }
+  ],
+  "missing": []
+}

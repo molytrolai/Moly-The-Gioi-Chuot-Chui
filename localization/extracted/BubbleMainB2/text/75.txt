@@ -1,0 +1,17 @@
+[
+xmin 494
+ymin -40
+xmax 2478
+ymax 474
+readonly 1
+noselect 1
+html 1
+font 74
+height 360
+color #ffffcc00
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 40
+]<p align="left"><font face="Tahoma" size="18" color="#ffcc00" letterSpacing="0.000000" kerning="1"><b>1234456</b></font></p>

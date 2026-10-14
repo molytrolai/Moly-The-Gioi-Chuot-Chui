@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10039" Layer="controlLevel" Name="Kulo" Ex="331" Ey="289" Cmd="s" Param="1" AddTaskOption="1" />
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="mapBtn_4" Layer="controlLevel" Ex="575" Ey="200" Cmd="alt_map" Param="4" Tips="Trở về Núi Moly" />
+	</Triggers>
+	<Talks>
+		<Talk ID="999" NpcID="10039" Face="正常" Msg="Lại đến Ngày của Cha rồi. Bạn nhớ tặng quà cho bố nhé!" Option="Vâng!" Cmd="act" Param="fatherDayOver" AddTaskOption="1" />
+		<Talk ID="1" NpcID="10039" Face="正常" Msg="Xin chào! Tôi là Kulo, trưởng đội cứu hỏa SMC và phụ trách an toàn cháy nổ của trang viên. Tôi có thể giúp gì cho bạn?" Option="Kỵ sĩ Hỏa linh$Không có việc gì" Cmd="act$none" Param="fireKnight$6" AddTaskOption="1" />
+		<Talk ID="2" NpcID="10039" Face="正常" Msg="Làm tốt lắm! Đây là chứng nhận Kỵ sĩ Hỏa linh của bạn. Hãy tiếp tục cố gắng nhé!" Option="Tôi hiểu rồi" Cmd="none" Param="1" AddTaskOption="1" />
+		<Talk ID="3" NpcID="10039" Face="正常" Msg="Bạn chưa có Tinh linh Lửa. Hãy quay lại khi đã tìm được một bạn đồng hành nhé." Option="Tôi hiểu rồi" Cmd="none" Param="2" AddTaskOption="1" />
+	</Talks>
+</Map>

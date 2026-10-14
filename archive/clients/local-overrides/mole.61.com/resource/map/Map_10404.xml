@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="killRank_mc" Layer="depthLevel" Ex="242" Ey="308" Cmd="p" Param="MolingPVPKillPanel" Tips="Bảng Diệt Quái" />  
+		<Trigger ResName="conWinRank_mc" Layer="depthLevel" Ex="724" Ey="290" Cmd="p" Param="MolingPVPContinuousWinPanel" Tips="Bảng Chiến Thắng" />  
+	</Triggers>
+	<Talks>
+	</Talks> 
+</Map>

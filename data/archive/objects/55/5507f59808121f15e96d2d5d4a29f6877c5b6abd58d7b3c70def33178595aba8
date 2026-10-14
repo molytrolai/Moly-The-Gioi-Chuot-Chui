@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		<Npc ID="10052" Layer="controlLevel" Name="Chị Cầu Vồng" Ex="400" Ey="330" Cmd="s" Param="2" />
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="door_mc" Layer="controlLevel" Ex="385" Ey="200" Cmd="alt_map" Param="3" Tips="Trở về Phố mua sắm" />
+	</Triggers>
+	<Talks>
+		<Talk ID="2" NpcID="10052" Face="正常" Msg="Hôm nay Ram của bạn có vui không? Hãy chia sẻ niềm vui với người bạn thân thiết nhất nhé!" Option="Giúp làm việc$Gửi Ram chăm sóc$Không có việc gì" Cmd="act$act$none" Param="rainbow_Work$rainbow_joinRainbowSMC$1" AddTaskOption="1" />
+		<Talk ID="3" NpcID="10052" Face="正常" Msg="Ngày càng có nhiều Ram được gửi chăm sóc nên thức ăn dự trữ sắp thiếu rồi. Làm sao tìm thêm thức ăn ngon đây?" Option="Để tôi giúp$Tôi phải đi rồi" Cmd="s$none" Param="5$1" />
+		<Talk ID="5" NpcID="10052" Face="正常" Msg="Cảm ơn bạn! Trước tiên hãy đến Thương hội Momo nhận thẻ đất từ Yilian, rồi tới Sở Xây dựng nhờ Tommy xây nhà hàng của riêng bạn." Option="Đi tìm Yilian$Để sau" Cmd="gm$none" Param="149$1" />
+		<Talk ID="6" NpcID="10183" Face="正常" Msg="Đây không phải cửa hàng thú cưng sao? Những cục thạch này còn cử động nữa!" Option="Đó là Ram mà!" Cmd="s" Param="7" />
+		<Talk ID="7" NpcID="10052" Face="正常" Msg="Đây là những thú cưng Ram đáng yêu của các Moly. Chúng tròn trịa và mềm như thạch, dễ thương phải không?" Option="Đúng là rất đáng yêu!" Cmd="act" Param="rainbowTalkOver" />
+	</Talks>
+</Map>

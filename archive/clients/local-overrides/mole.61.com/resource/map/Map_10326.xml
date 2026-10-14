@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_240" Layer="controlLevel" Ex="166" Ey="413" Cmd="alt_map" Param="240" Tips="Lâu đài Kula" />
+		
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+		
+	</NpcList>
+	
+	<Triggers>
+	</Triggers>
+	
+	<Talks>
+		
+		<Talk ID="2" NpcID="10097" Face="正常" Msg="年轻人动作就是快啊，下次老夫再有什么体力活，一定找你们帮忙，哈哈哈！我去去就来！" Option="感觉是把我们当壮丁啊~囧rz" Cmd="act" Param="transTaskOver" AddTaskOption="1" />
+		
+		
+	</Talks>
+</Map>

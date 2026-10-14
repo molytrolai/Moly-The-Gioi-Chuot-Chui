@@ -1,0 +1,19 @@
+[
+xmin -40
+ymin -40
+xmax 10848
+ymax 1265
+multiline 1
+readonly 1
+noselect 1
+wasstatic 1
+html 1
+font 22
+height 280
+color #ff000000
+align left
+leftmargin 0
+rightmargin 0
+indent 0
+leading 120
+]<p align="left"><font face="Arial" size="14" color="#000000" letterSpacing="0.000000" kerning="0">Mỗi Đậu Vàng sử dụng trong cửa hàng sẽ cộng một điểm. Có thể đổi điểm tại mục Đổi điểm.</font></p>

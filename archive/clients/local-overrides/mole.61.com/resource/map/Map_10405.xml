@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	<Triggers>
+		<Trigger ResName="go_229" Layer="controlLevel" Ex="504" Ey="282" Cmd="alt_map" Param="229" Tips="Câu lạc bộ Siêu Đậu Đậu" />
+		<Trigger ResName="chuanchuanle" Layer="controlLevel" Ex="0" Ey="0" Cmd="null" Param="none" Tips="" />
+		<Trigger ResName="tree" Layer="controlLevel" Ex="0" Ey="0" Cmd="null" Param="none" Tips="" />
+		<Trigger ResName="treasule" Layer="controlLevel" Ex="0" Ey="0" Cmd="null" Param="none" Tips="" />
+	</Triggers>
+	<Talks>
+	</Talks> 
+</Map>

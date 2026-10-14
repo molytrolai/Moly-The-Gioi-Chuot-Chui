@@ -1,0 +1,39 @@
+<Map>
+	<NpcList>
+<!-- 		<Npc ID="10308" Layer="topLevel" Name="小喵咪" Ex="0" Ey="0" Cmd="s" Param="100" /> -->
+		<Npc ID="10012" Layer="depthLevel" Name="Lili" Ex="560" Ey="390"  Cmd="s" Param="1" />
+		<Npc ID="10018" Layer="depthLevel" Name="Bé Ngoan" Ex="608" Ey="409" Cmd="s" Param="2" />
+	</NpcList>
+	
+	<Triggers>
+<!-- 	Trigger ResName="mail_mc" Layer="controlLevel" Ex="162" Ey="392" Cmd="p" Param="NewTermsPlanPanel"   -->
+<!-- 		<Trigger ResName="spoof_mc" Layer="controlLevel" Ex="308" Ey="344" Cmd="p" Param="MomoBirthdayExpPanel" Tips="活动规则" /> -->
+		
+		<Trigger ResName="mail_mc" Layer="controlLevel" Ex="162" Ey="392" Cmd="act" Param="openMail" />
+		<Trigger ResName="bql_btn" Layer="controlLevel" Ex="700" Ey="376" Cmd="act" Param="openBQL"/>
+		<!--<Trigger ResName="mc_0" Layer = "depthLevel"  Ex="430" Ey="516" Cmd="act"  Param="mcClick"/>-->
+		<Trigger ResName="go_15" Layer="controlLevel" Ex="460" Ey="342" Cmd="alt_map" Param="15" Tips="Đại sảnh lâu đài" />
+		<Trigger ResName="go_32" Layer="controlLevel" Ex="503" Ey="140" Cmd="alt_map" Param="32" Tips="Thư viện lâu đài" />
+		
+		<Trigger ResName="go_4" Layer="controlLevel" Ex="122" Ey="357" Cmd="alt_map" Param="4" Tips="Chân núi Molyra" />
+		<Trigger ResName="go_2" Layer="controlLevel" Ex="90" Ey="419" Cmd="alt_map" Param="2" Tips="Quảng trường Tình Yêu" />
+		<Trigger ResName="go_17" Layer="controlLevel" Ex="682" Ey="333" Cmd="alt_map" Param="17" Tips="Nhà hàng Moly" />
+		<Trigger ResName="go_3" Layer="controlLevel" Ex="892" Ey="432" Cmd="alt_map" Param="3" Tips="Phố mua sắm" />
+	</Triggers>
+	
+	<Talks>
+		<Talk ID="1" NpcID="10012" Face="正常" Msg="Xin chào! Mình là Lili, rất vui được gặp bạn~" Option="Mình cũng rất vui được gặp bạn" Cmd="none" Param="1"/>
+		<Talk ID="11" NpcID="10227" Face="正常" Msg="Hãy tìm Thỏ Momo trên bản đồ để nhận quà. Trong ba ngày 19–21, quà còn được phát lúc 13 giờ và 19 giờ cho người đang trực tuyến." Option="Bánh trung thu may mắn dùng để làm gì?" Cmd="s" Param="12"/>
+		<Talk ID="12" NpcID="10227" Face="正常" Msg="Bạn có thể dùng bánh trực tiếp hoặc tặng cho các nhân vật nổi tiếng trong vương quốc để nhận bất ngờ." Option="Bất ngờ gì vậy?" Cmd="s" Param="13"/>
+		<Talk ID="13" NpcID="10227" Face="正常" Msg="Hãy tự khám phá nhé! Nhiều người bạn nổi tiếng đã chuẩn bị quà cho các Moly." Option="Tìm họ bằng cách nào?" Cmd="s" Param="14"/>
+		<Talk ID="14" NpcID="10227" Face="正常" Msg="Bấm bản đồ thế giới ở góc dưới bên trái. Tên các nhân vật sẽ hiện tại từng khu vực; bạn chỉ cần đến đúng bản đồ." Option="Tuyệt! Tôi đi ngay!" Cmd="none" Param=""/>
+		
+		<Talk ID="2" NpcID="10018" Face="正常" Msg="Nghe nói một thương nhân trang sức vừa đến và đang tuyển thợ giỏi ở Phố mua sắm! Bạn mau sang xem nhé!" Option="Được, mình đi ngay!" Cmd="none" Param="2" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="3" NpcID="10012" Face="正常" Msg="Đội Lửa Nhiệt Huyết ở Quảng trường Tình Yêu; Đội Gió Tốc Độ ở Đại lộ Miller!" Option="Đã hiểu" Cmd="s" Param="4" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="4" NpcID="10012" Face="正常" Msg="Đội Nước Dũng Cảm ở Nông trại Lãng Quên; Đội Đất Hy Vọng ở Tháp Nilra!" Option="Đã hiểu" Cmd="s" Param="5" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="5" NpcID="10012" Face="正常" Msg="Nếu chưa vào đội, hãy mau tìm đội trưởng mình thích để đăng ký nhé!" Option="Được, tôi đi ngay." Cmd="none" Param="5" AddTaskOption="1" IsHideClose="1" />
+		
+		<Talk ID="3333" NpcID="10287" Face="正常" Msg="Sao bạn lại tìm thấy tôi vậy? (┬＿┬)" Option="Vì chúng ta rất hiểu nhau (*^__^*)" Cmd="act" Param="xiaocfind" AddTaskOption="1" IsHideClose="1" />
+		<Talk ID="100" NpcID="10308" Face="正常" Msg="Ghét quá, bạn tìm thấy tôi rồi meo~ o(︶︿︶)o" Option="Tôi biết bạn đã nhường tôi mà~" Cmd="act" Param="overGame"/>
+	</Talks>
+</Map>

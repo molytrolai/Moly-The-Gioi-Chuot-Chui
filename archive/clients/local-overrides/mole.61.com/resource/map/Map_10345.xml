@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map>
+	<NpcList>
+	</NpcList>
+	
+	<Triggers>
+		<Trigger ResName="go_343" Layer="controlLevel" Ex="903" Ey="460" Cmd="alt_map" Param="343" Tips="Vương thành Molia" />
+	</Triggers>
+	
+	<Talks>
+	</Talks>
+</Map>
