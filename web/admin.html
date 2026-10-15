@@ -30,7 +30,7 @@
     /* Login Modal */
     #login-overlay {
       position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95);
-      display: flex; align-items: center; justify-content: center; z-index: 999;
+      display: none; align-items: center; justify-content: center; z-index: 999;
       backdrop-filter: blur(8px);
     }
     .login-box {
@@ -175,11 +175,17 @@
         </div>
         <div class="input-group">
           <label>Mật Khẩu Quản Trị</label>
-          <input type="password" id="login-password" value="" placeholder="Nhập mật khẩu quản trị..." autocomplete="current-password" required>
+          <div style="position: relative;">
+            <input type="password" id="login-password" value="" placeholder="Nhập mật khẩu quản trị..." autocomplete="current-password" required style="padding-right: 44px; width: 100%;">
+            <button type="button" onclick="toggleAdmFieldVis('login-password', this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#64748b;cursor:pointer;font-size:18px;padding:4px;line-height:1;" title="Hiện/Ẩn mật khẩu">👁</button>
+          </div>
         </div>
         <div class="input-group">
           <label>Mã PIN Bảo Mật Hệ Thống (6 số bí mật)</label>
-          <input type="password" id="login-pin" value="" placeholder="Nhập mã PIN bảo mật 6 số..." maxlength="6" pattern="[0-9]{6}" autocomplete="off" required>
+          <div style="position: relative;">
+            <input type="password" id="login-pin" value="" placeholder="Nhập mã PIN bảo mật 6 số..." maxlength="6" pattern="[0-9]{6}" autocomplete="off" required style="padding-right: 44px; width: 100%;">
+            <button type="button" onclick="toggleAdmFieldVis('login-pin', this)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:#64748b;cursor:pointer;font-size:18px;padding:4px;line-height:1;" title="Hiện/Ẩn mã PIN">👁</button>
+          </div>
           <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">Lớp bảo mật thứ 2 bắt buộc để kích hoạt quyền điều khiển máy chủ.</div>
         </div>
 
@@ -190,8 +196,8 @@
             <span>💾 <strong>Lưu tài khoản &amp; mật khẩu</strong> trên trình duyệt này</span>
           </label>
           <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #cbd5e1; user-select: none;">
-            <input type="checkbox" id="adm-keep-logged-in" checked style="width: 15px; height: 15px; accent-color: #3b82f6; cursor: pointer;">
-            <span>⏱️ <strong>Duy trì đăng nhập</strong> (Tự động đăng xuất sau 3 giờ)</span>
+            <input type="checkbox" id="adm-keep-logged-in" style="width: 15px; height: 15px; accent-color: #3b82f6; cursor: pointer;">
+            <span>⏱️ <strong>Duy trì đăng nhập</strong> (không tự động đăng xuất)</span>
           </label>
         </div>
 
@@ -750,6 +756,19 @@
 
     let adminOtpTimer = null;
 
+    // Hiện/Ẩn mật khẩu và mã PIN khi bấm icon mắt
+    function toggleAdmFieldVis(inputId, btn) {
+      const el = document.getElementById(inputId);
+      if (!el) return;
+      if (el.type === 'password') {
+        el.type = 'text';
+        btn.textContent = '🙈';
+      } else {
+        el.type = 'password';
+        btn.textContent = '👁';
+      }
+    }
+
     function openAdminForgotModal() {
       switchAdminForgotSubtab('otp');
       resetAdminOtpView();
@@ -1016,7 +1035,17 @@
 
     function startSessionCountdown(expiresAt) {
       if (sessionTimerInterval) clearInterval(sessionTimerInterval);
-      if (!expiresAt || expiresAt <= 0) return;
+      // expiresAt = 0 → phiên vĩnh viễn (Duy trì đăng nhập)
+      if (!expiresAt || expiresAt <= 0) {
+        const badge = document.getElementById("adm-session-badge");
+        if (badge) {
+          badge.textContent = "♾️ Phiên: Duy trì";
+          badge.style.background = "rgba(16, 185, 129, 0.2)";
+          badge.style.borderColor = "rgba(16, 185, 129, 0.4)";
+          badge.style.color = "#6ee7b7";
+        }
+        return;
+      }
 
       function updateBadge() {
         const remaining = expiresAt - Date.now();
@@ -1085,9 +1114,10 @@
             localStorage.removeItem("moly_adm_remember_creds");
           }
 
-          // Thời gian phiên làm việc 3 giờ (10,800,000 ms)
+          // keepLoggedIn = true → không hết hạn; false → tự đăng xuất sau 3 giờ
           const sessionMs = (data.expires_in || 10800) * 1000;
-          const expiresAt = Date.now() + sessionMs;
+          // expiresAt = 0 nghĩa là không hết hạn (keep logged in)
+          const expiresAt = keepLoggedIn ? 0 : (Date.now() + sessionMs);
           localStorage.setItem("moly_admin_token", token);
           localStorage.setItem("moly_admin_expires_at", expiresAt.toString());
           localStorage.setItem("moly_admin_keep_logged_in", keepLoggedIn ? "1" : "0");
@@ -1144,7 +1174,7 @@
         const resp = await fetch("/api/admin/stats", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { clearAdminSession(true); return; }
+        if (resp.status === 401) { const _exp = parseInt(localStorage.getItem("moly_admin_expires_at")||"0",10); clearAdminSession(_exp > 0 && Date.now() >= _exp); return; }
         const data = await resp.json();
         document.getElementById("stat-total-users").textContent = (data.total_accounts || 0).toLocaleString();
         document.getElementById("stat-online-ccu").textContent = (data.online_ccu || 0) + " cư dân";
@@ -1163,7 +1193,7 @@
         const resp = await fetch("/api/admin/users", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { clearAdminSession(true); return; }
+        if (resp.status === 401) { const _exp = parseInt(localStorage.getItem("moly_admin_expires_at")||"0",10); clearAdminSession(_exp > 0 && Date.now() >= _exp); return; }
         allUsers = await resp.json();
         renderUsers(allUsers);
       } catch (e) {
@@ -1474,7 +1504,7 @@
         const resp = await fetch("/api/admin/giftcodes", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { clearAdminSession(true); return; }
+        if (resp.status === 401) { const _exp = parseInt(localStorage.getItem("moly_admin_expires_at")||"0",10); clearAdminSession(_exp > 0 && Date.now() >= _exp); return; }
         allGiftcodes = await resp.json();
         renderGiftcodes(allGiftcodes);
       } catch (e) {
@@ -1776,7 +1806,7 @@
         const resp = await fetch("/api/admin/recharge/orders", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { clearAdminSession(true); return; }
+        if (resp.status === 401) { const _exp = parseInt(localStorage.getItem("moly_admin_expires_at")||"0",10); clearAdminSession(_exp > 0 && Date.now() >= _exp); return; }
         if (!resp.ok) return;
         const res = await resp.json();
         allRechargeOrders = res.orders || (Array.isArray(res) ? res : []);
@@ -1962,7 +1992,7 @@
         const resp = await fetch("/api/admin/recovery_requests", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { clearAdminSession(true); return; }
+        if (resp.status === 401) { const _exp = parseInt(localStorage.getItem("moly_admin_expires_at")||"0",10); clearAdminSession(_exp > 0 && Date.now() >= _exp); return; }
         const data = await resp.json();
         const tbody = document.getElementById("recovery-table-body");
         const badge = document.getElementById("recovery-badge");
