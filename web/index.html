@@ -1199,6 +1199,33 @@
           </div>
         </form>
 
+        <!-- Khối Xác Thực Gmail Bằng OTP -->
+        <div style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <h4 style="font-size: 13px; color: #e2e8f0; margin: 0;">🛡️ Bảo Mật Gmail & Mã OTP</h4>
+            <span id="dash-email-status-badge" class="badge" style="background: #eab308; color: #000; font-size: 11px; padding: 2px 6px; border-radius: 4px;">⚠️ Chưa Xác Thực</span>
+          </div>
+          <p style="font-size: 11px; color: #94a3b8; margin: 0 0 8px 0;">
+            Xác thực Gmail để nhận mã OTP lấy lại mật khẩu khi quên và nhận cảnh báo bảo mật tài khoản.
+          </p>
+          <div id="dash-email-verify-box">
+            <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+              <input type="email" id="dash-verify-email-input" class="modal-input" placeholder="Nhập địa chỉ Gmail của bạn..." style="margin-bottom: 0;">
+              <button type="button" id="btn-dash-send-verify-otp" class="nav-btn nav-btn-primary" onclick="handleSendVerifyEmailOtp()" style="white-space: nowrap; font-size: 12px; padding: 6px 12px;">📩 Gửi Mã OTP</button>
+            </div>
+            <div id="dash-verify-step2" style="display: none; background: #0f172a; padding: 10px; border-radius: 6px; border: 1px dashed #38bdf8; margin-bottom: 8px;">
+              <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 6px;">
+                Mã OTP 6 số đã được gửi đến: <strong id="dash-verify-target-email" style="color: #38bdf8;"></strong>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <input type="text" id="dash-verify-otp-code" class="modal-input" placeholder="Nhập mã 6 chữ số..." maxlength="6" style="margin-bottom: 0; text-align: center; font-size: 16px; letter-spacing: 4px; font-weight: bold;">
+                <button type="button" id="btn-dash-confirm-verify" class="nav-btn nav-btn-green" onclick="handleConfirmVerifyEmailOtp()" style="white-space: nowrap; font-size: 12px; padding: 6px 12px;">✓ Xác Nhận</button>
+              </div>
+            </div>
+            <div id="dash-email-verify-msg" style="font-size: 12px; margin-top: 6px; display: none;"></div>
+          </div>
+        </div>
+
         <!-- Form đổi mật khẩu -->
         <form onsubmit="handleDashboardPasswordChange(event)" style="border-top: 1px solid #334155; padding-top: 12px;">
           <h4 style="font-size: 13px; color: #e2e8f0; margin-bottom: 8px;">Đổi Mật Khẩu Tài Khoản</h4>
@@ -1920,6 +1947,25 @@
       document.getElementById("dash-edit-nickname").value = u.nickname || "";
       document.getElementById("dash-edit-email").value = u.email || "";
       document.getElementById("dash-edit-birthday").value = u.birthday || "2008-01-01";
+
+      const isVerified = Boolean(u.email_verified);
+      const emailStatusBadge = document.getElementById("dash-email-status-badge");
+      const sendOtpBtn = document.getElementById("btn-dash-send-verify-otp");
+      const verifyEmailInput = document.getElementById("dash-verify-email-input");
+      if (verifyEmailInput) verifyEmailInput.value = u.email || "";
+      if (emailStatusBadge) {
+        if (isVerified) {
+          emailStatusBadge.style.background = "#10b981";
+          emailStatusBadge.style.color = "#ffffff";
+          emailStatusBadge.textContent = "✅ Đã Xác Thực OTP";
+          if (sendOtpBtn) sendOtpBtn.textContent = "🔄 Gửi Lại Mã";
+        } else {
+          emailStatusBadge.style.background = "#eab308";
+          emailStatusBadge.style.color = "#000000";
+          emailStatusBadge.textContent = "⚠️ Chưa Xác Thực";
+          if (sendOtpBtn) sendOtpBtn.textContent = "📩 Gửi Mã OTP";
+        }
+      }
     }
 
     function copyMyCredentials() {
@@ -2160,6 +2206,101 @@
         msgBox.style.color = "#ef4444";
         msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
         msgBox.style.display = "block";
+      }
+    }
+
+    // --- Verify User Email via OTP Handlers ---
+    async function handleSendVerifyEmailOtp() {
+      const u = getSavedUser();
+      if (!u) return;
+      const email = document.getElementById("dash-verify-email-input").value.trim();
+      const msgBox = document.getElementById("dash-email-verify-msg");
+      const btn = document.getElementById("btn-dash-send-verify-otp");
+      if (!email || !email.includes("@")) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "Vui lòng nhập địa chỉ Gmail hợp lệ!";
+        msgBox.style.display = "block";
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Đang gửi mã...";
+      msgBox.style.display = "none";
+
+      try {
+        const resp = await fetch("/api/user/email/send_verification", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: u.user_id, email: email })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          document.getElementById("dash-verify-step2").style.display = "block";
+          document.getElementById("dash-verify-target-email").textContent = email;
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "✅ " + res.message;
+          msgBox.style.display = "block";
+          if (res.debug_otp) {
+            alert(`[Chế độ Demo / Thử nghiệm]\nMã OTP xác thực Gmail là: ${res.debug_otp}`);
+            document.getElementById("dash-verify-otp-code").value = res.debug_otp;
+          }
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + res.message;
+          msgBox.style.display = "block";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "📩 Gửi Mã OTP";
+      }
+    }
+
+    async function handleConfirmVerifyEmailOtp() {
+      const u = getSavedUser();
+      if (!u) return;
+      const email = document.getElementById("dash-verify-email-input").value.trim();
+      const code = document.getElementById("dash-verify-otp-code").value.trim();
+      const msgBox = document.getElementById("dash-email-verify-msg");
+      const btn = document.getElementById("btn-dash-confirm-verify");
+      if (!code || code.length !== 6) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "Vui lòng nhập đủ 6 chữ số OTP!";
+        msgBox.style.display = "block";
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Đang xác thực...";
+
+      try {
+        const resp = await fetch("/api/user/email/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ user_id: u.user_id, email: email, otp_code: code })
+        });
+        const res = await resp.json();
+        if (res.ok && res.account) {
+          saveUser(res.account);
+          populateDashboardUI(res.account);
+          document.getElementById("dash-verify-step2").style.display = "none";
+          document.getElementById("dash-verify-otp-code").value = "";
+          msgBox.style.color = "#34d399";
+          msgBox.textContent = "🎉 " + res.message;
+          msgBox.style.display = "block";
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + res.message;
+          msgBox.style.display = "block";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "✓ Xác Nhận";
       }
     }
 
@@ -2978,7 +3119,11 @@
           }
         } else {
           msgBox.style.color = "#ef4444";
-          msgBox.textContent = "❌ " + res.message;
+          if (res.not_verified) {
+            msgBox.innerHTML = `❌ ${res.message}<br><button type="button" class="nav-btn nav-btn-blue" style="margin-top:8px;font-size:12px;padding:4px 10px;" onclick="switchForgotSubtab('bday')">👉 Chuyển sang Lấy Lại Bằng Ngày Sinh</button>`;
+          } else {
+            msgBox.textContent = "❌ " + res.message;
+          }
           msgBox.style.display = "block";
         }
       } catch (err) {

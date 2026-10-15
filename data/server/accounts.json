@@ -11,9 +11,9 @@
     "element_knight_type": 1,
     "element_knight_talent": 40,
     "user_id": 10000001,
-    "password_hash": "*",
+    "password_hash": "66524f0f84b0af8382bf905563265d4f",
     "is_admin": true,
-    "email": "admin@moly.viet",
+    "email": "traivuho@gmail.com",
     "google_id": null,
     "created_at": "2026-10-09T00:00:00Z",
     "tasks": {
@@ -148,7 +148,8 @@
     "username": "admin",
     "fullname": "Quản Trị Viên Vương Quốc",
     "birthday": "2000-01-01",
-    "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58"
+    "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58",
+    "email_verified": true
   },
   "10000002": {
     "color": 1,
@@ -11129,7 +11130,7 @@
     "fullname": "Quản Trị Viên Vương Quốc",
     "nickname": "Moly Admin",
     "birthday": "2000-01-01",
-    "password_hash": "*",
+    "password_hash": "66524f0f84b0af8382bf905563265d4f",
     "color": 1,
     "vip_flags": 33,
     "vip_level": 19,
@@ -11140,7 +11141,7 @@
     "element_knight_type": 1,
     "element_knight_talent": 40,
     "is_admin": true,
-    "email": "admin@moly.viet",
+    "email": "traivuho@gmail.com",
     "google_id": null,
     "created_at": "2026-10-09T00:00:00Z",
     "tasks": {
@@ -11295,7 +11296,8 @@
     },
     "clothes": [],
     "inventory": {},
-    "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58"
+    "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58",
+    "email_verified": true
   },
   "64298193": {
     "username": "testuser_1791946727",
@@ -12486,5 +12488,180 @@
     "nickname": "Moly Viet",
     "password_hash": "24f058a8e307d797d7587d26b2539ca2",
     "created_at": "2026-10-15T04:14:11.097415+00:00"
+  },
+  "10000000": {
+    "user_id": 10000000,
+    "username": "molyvietnam",
+    "fullname": "Quản Trị Moly Việt Nam",
+    "nickname": "Moly Việt Nam",
+    "birthday": "2000-01-01",
+    "password_hash": "66524f0f84b0af8382bf905563265d4f",
+    "color": 1,
+    "vip_flags": 33,
+    "vip_level": 19,
+    "vip_month": 120,
+    "vip_value": 999999,
+    "vip_end": 4102444800,
+    "gold_beans": 99999999,
+    "element_knight_type": 1,
+    "element_knight_talent": 40,
+    "is_admin": true,
+    "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58",
+    "email": "traivuho@gmail.com",
+    "email_verified": true,
+    "google_id": null,
+    "created_at": "2026-10-09T00:00:00Z",
+    "tasks": {
+      "1": {
+        "status": 2,
+        "step": 1
+      },
+      "667": {
+        "status": 2,
+        "step": 1
+      },
+      "668": {
+        "status": 2,
+        "step": 1
+      },
+      "669": {
+        "status": 2,
+        "step": 1
+      },
+      "670": {
+        "status": 2,
+        "step": 1
+      }
+    },
+    "professions": {
+      "police": {
+        "level": 3,
+        "exp": 1000
+      },
+      "guide": {
+        "level": 3,
+        "exp": 1000
+      },
+      "journalist": {
+        "level": 3,
+        "exp": 1000
+      },
+      "knight": {
+        "level": 3,
+        "exp": 1000
+      }
+    },
+    "lamu": {
+      "id": 1,
+      "name": "Đậu Đậu Thần Thoại",
+      "color": 7,
+      "level": 5,
+      "hunger": 100,
+      "cleanliness": 100,
+      "mood": 100,
+      "skills": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "is_super_lamu": true,
+      "following": true,
+      "super_type": "mythic",
+      "cloth_id": 1200035,
+      "species_progress": {
+        "classic": {
+          "level": 5,
+          "exp": 1000,
+          "max_exp": 1000,
+          "unlocked": true
+        },
+        "dark": {
+          "level": 5,
+          "exp": 1000,
+          "max_exp": 1000,
+          "unlocked": true
+        },
+        "cosmic": {
+          "level": 5,
+          "exp": 1000,
+          "max_exp": 1000,
+          "unlocked": true
+        },
+        "mythic": {
+          "level": 5,
+          "exp": 1000,
+          "max_exp": 1000,
+          "unlocked": true
+        },
+        "ice": {
+          "level": 5,
+          "exp": 1000,
+          "max_exp": 1000,
+          "unlocked": true
+        },
+        "flame": {
+          "level": 5,
+          "exp": 1000,
+          "max_exp": 1000,
+          "unlocked": true
+        }
+      }
+    },
+    "home": {
+      "level": 5,
+      "cleanliness": 100,
+      "style_item": 160001,
+      "decorations": [
+        {
+          "item_id": 160002,
+          "x": 150,
+          "y": 250
+        },
+        {
+          "item_id": 160003,
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "homeland_bg": 1230001,
+      "homeland_decorations": [],
+      "farm_crops": [
+        {
+          "number": 1,
+          "itemid": 1230001,
+          "x": 200,
+          "y": 200,
+          "value": 100,
+          "sickflag": 0,
+          "fruit_num": 10,
+          "fruit_status": 3,
+          "mature_time": 0,
+          "diff_mature_time": 0,
+          "cur_grow_rate": 100,
+          "earth": 100,
+          "pollinate_num": 0,
+          "thiefable": 0
+        },
+        {
+          "number": 2,
+          "itemid": 1230002,
+          "x": 300,
+          "y": 200,
+          "value": 80,
+          "sickflag": 0,
+          "fruit_num": 8,
+          "fruit_status": 3,
+          "mature_time": 0,
+          "diff_mature_time": 0,
+          "cur_grow_rate": 100,
+          "earth": 100,
+          "pollinate_num": 0,
+          "thiefable": 0
+        }
+      ]
+    },
+    "clothes": [],
+    "inventory": {}
   }
 }

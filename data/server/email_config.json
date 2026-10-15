@@ -2,6 +2,7 @@
   "gmail_user": "",
   "app_password": "",
   "sender_name": "Moly Vương Quốc Chuột Chũi",
+  "admin_notify_email": "traivuho@gmail.com",
   "smtp_host": "smtp.gmail.com",
   "smtp_port": 465,
   "enabled": false

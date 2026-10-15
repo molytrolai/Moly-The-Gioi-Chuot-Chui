@@ -723,6 +723,28 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
                 return
 
+            elif parsed.path == "/api/user/email/send_verification":
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                uid = payload.get("user_id")
+                email = str(payload.get("email", "")).strip()
+                client_ip = self.client_address[0]
+                ok, msg, res = otp_mgr.request_verify_email_otp(uid, email, ip=client_ip)
+                resp = {"ok": ok, "message": msg}
+                resp.update(res)
+                self._send_json(resp, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/user/email/verify":
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                uid = payload.get("user_id")
+                email = str(payload.get("email", "")).strip()
+                otp_code = str(payload.get("otp_code") or payload.get("otp") or "").strip()
+                ok, msg = otp_mgr.verify_email_and_bind(uid, email, otp_code)
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
         if host in LOCAL_CONTROL_HOSTS or parsed.path.startswith("/api/admin/"):
             client_ip = self.client_address[0]
             if parsed.path == "/api/admin/login":
@@ -733,7 +755,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
                 username = str(payload.get("username", "")).strip()
                 password = str(payload.get("password", "")).strip()
-                pin = str(payload.get("pin", "")).strip()
+                pin = str(payload.get("pin") or payload.get("security_pin") or "").strip()
 
                 acc = accounts.get_account_by_identifier(username)
                 if not acc or not acc.get("is_admin", False):
@@ -1055,7 +1077,8 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 gmail_user = str(payload.get("gmail_user", "")).strip()
                 app_password = str(payload.get("app_password", "")).strip()
                 sender = str(payload.get("sender_name", "Moly - Thế Giới Chuột Chũi VN")).strip()
-                ok = otp_mgr.update_config(gmail_user, app_password, sender)
+                admin_notify = str(payload.get("admin_notify_email", "")).strip()
+                ok = otp_mgr.update_config(gmail_user, app_password, sender, admin_notify_email=admin_notify)
                 self._send_json({"ok": ok, "message": "Cập nhật cấu hình Gmail OTP thành công!", "config": otp_mgr.get_config()})
                 return
 

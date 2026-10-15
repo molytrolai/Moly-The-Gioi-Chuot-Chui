@@ -164,17 +164,17 @@
       <!-- View 1: Form Đăng Nhập Quản Trị -->
       <form id="login-form">
         <div class="input-group">
-          <label>Tài Khoản / ID Quản Trị Viên</label>
-          <input type="text" id="login-username" value="00000000" placeholder="00000000 hoặc admin" required>
+          <label>Tài Khoản / ID Quản Trị Viên (admin hoặc molyvietnam)</label>
+          <input type="text" id="login-username" value="admin" placeholder="admin hoặc molyvietnam" required>
         </div>
         <div class="input-group">
-          <label>Mật Khẩu Quản Trị</label>
-          <input type="password" id="login-password" placeholder="Nhập mật khẩu quản trị..." required autofocus>
+          <label>Mật Khẩu Quản Trị (Mặc định: Molyvietnam@2026)</label>
+          <input type="password" id="login-password" placeholder="Nhập Molyvietnam@2026..." required autofocus>
         </div>
         <div class="input-group">
-          <label>Mã PIN Bảo Mật Hệ Thống (6 số bí mật)</label>
-          <input type="password" id="login-pin" placeholder="Nhập mã PIN 6 số (mặc định: 888888)" maxlength="6" pattern="[0-9]{6}" required>
-          <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">Lớp bảo mật thứ 2 bắt buộc để kích hoạt quyền điều khiển máy chủ.</div>
+          <label>Mã PIN Bảo Mật Hệ Thống (6 số, mặc định: 888888)</label>
+          <input type="password" id="login-pin" value="888888" placeholder="Nhập mã PIN 6 số..." maxlength="6" pattern="[0-9]{6}" required>
+          <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">Mặc định: Tài khoản <strong>admin</strong> / <strong>molyvietnam</strong> &bull; MK: <strong>Molyvietnam@2026</strong> &bull; PIN: <strong>888888</strong>.</div>
         </div>
 
         <div style="text-align: right; margin-bottom: 14px;">
@@ -522,7 +522,7 @@
         </p>
         <form onsubmit="handleSaveEmailConfig(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; align-items: end;">
           <div class="input-group" style="margin-bottom: 0;">
-            <label>Địa Chỉ Gmail Gửi Thư</label>
+            <label>Địa Chỉ Gmail Gửi Thư (SMTP Dispatcher)</label>
             <input type="email" id="admin-gmail-user" placeholder="VD: yourgame@gmail.com" required>
           </div>
           <div class="input-group" style="margin-bottom: 0;">
@@ -532,6 +532,10 @@
           <div class="input-group" style="margin-bottom: 0;">
             <label>Tên Người Gửi Hiển Thị Trong Hòm Thư</label>
             <input type="text" id="admin-gmail-sender" placeholder="VD: Moly - Thế Giới Chuột Chũi VN" required>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>Gmail Nhận Mã OTP / Thông Báo Của Admin (Có thể đổi)</label>
+            <input type="email" id="admin-notify-email" value="traivuho@gmail.com" placeholder="traivuho@gmail.com" required>
           </div>
           <div>
             <button type="submit" class="btn btn-warning" id="btn-save-email-cfg">💾 Lưu Cấu Hình Gmail</button>
@@ -1019,6 +1023,9 @@
           if (data.config) {
             document.getElementById("admin-gmail-user").value = data.config.gmail_user || "";
             document.getElementById("admin-gmail-sender").value = data.config.sender_name || "Moly - Thế Giới Chuột Chũi VN";
+            if (data.config.admin_notify_email) {
+              document.getElementById("admin-notify-email").value = data.config.admin_notify_email;
+            }
             if (data.config.enabled) {
               document.getElementById("admin-gmail-app-pwd").placeholder = "•••••••••••••••• (Đã lưu mật khẩu ứng dụng)";
             }
@@ -1034,6 +1041,7 @@
       const u = document.getElementById("admin-gmail-user").value.trim();
       const p = document.getElementById("admin-gmail-app-pwd").value.trim();
       const s = document.getElementById("admin-gmail-sender").value.trim();
+      const noti = document.getElementById("admin-notify-email").value.trim();
       const msg = document.getElementById("email-cfg-msg");
       const btn = document.getElementById("btn-save-email-cfg");
       btn.disabled = true;
@@ -1042,7 +1050,7 @@
         const resp = await fetch("/api/admin/email/config", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
-          body: JSON.stringify({ gmail_user: u, app_password: p, sender_name: s })
+          body: JSON.stringify({ gmail_user: u, app_password: p, sender_name: s, admin_notify_email: noti })
         });
         const res = await resp.json();
         msg.textContent = (res.ok ? "✅ " : "❌ ") + res.message;
