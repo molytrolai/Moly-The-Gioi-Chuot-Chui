@@ -82,12 +82,16 @@ ADMIN_SESSIONS: dict[str, dict[str, Any]] = {}
 ADMIN_SESSIONS_LOCK = threading.Lock()
 
 
-def create_admin_session(user_id: int = 10000001) -> str:
+ADMIN_SESSION_LIFETIME = 3 * 3600  # 3 hours (10,800 seconds)
+
+
+def create_admin_session(user_id: int = 10000001, duration: int = ADMIN_SESSION_LIFETIME) -> str:
     token = secrets.token_hex(24)
     with ADMIN_SESSIONS_LOCK:
         ADMIN_SESSIONS[token] = {
             "user_id": user_id,
-            "expires": time.time() + 86400,
+            "expires": time.time() + duration,
+            "created_at": time.time(),
         }
     return token
 
@@ -797,8 +801,15 @@ class ProxyHandler(BaseHTTPRequestHandler):
                     self._send_json({"ok": False, "error": "Mã PIN bảo mật quản trị (6 số) không chính xác!"}, status=401)
                     return
                 rate_limiter.record_successful_login(client_ip)
-                token = create_admin_session(uid)
-                self._send_json({"ok": True, "token": token, "user_id": uid, "display_id": "00000000" if uid == 0 else str(uid)})
+                token = create_admin_session(uid, duration=ADMIN_SESSION_LIFETIME)
+                self._send_json({
+                    "ok": True,
+                    "token": token,
+                    "user_id": uid,
+                    "display_id": "00000000" if uid == 0 else str(uid),
+                    "expires_in": ADMIN_SESSION_LIFETIME,
+                    "expires_at": int(time.time() + ADMIN_SESSION_LIFETIME),
+                })
                 return
 
             elif parsed.path == "/api/admin/change_password":

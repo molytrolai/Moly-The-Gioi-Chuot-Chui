@@ -169,21 +169,33 @@
       <!-- Form Đăng Nhập Quản Trị -->
       <form id="login-form">
         <div class="input-group">
-          <label>Tên Tài Khoản Quản Trị Viên (Ưu tiên dùng tên đăng nhập)</label>
-          <input type="text" id="login-username" value="admin" placeholder="admin hoặc molyvietnam" required>
-          <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Ưu tiên nhập tên tài khoản quản trị: <strong>admin</strong> hoặc <strong>molyvietnam</strong></div>
+          <label>Tên Tài Khoản Quản Trị</label>
+          <input type="text" id="login-username" value="" placeholder="Nhập tên tài khoản quản trị..." autocomplete="username" required autofocus>
+          <div style="font-size: 11px; color: #64748b; margin-top: 4px;">Nhập tên tài khoản quản trị viên được cấp quyền truy cập.</div>
         </div>
         <div class="input-group">
           <label>Mật Khẩu Quản Trị</label>
-          <input type="password" id="login-password" placeholder="Nhập Molyvietnam@2026..." required autofocus>
+          <input type="password" id="login-password" value="" placeholder="Nhập mật khẩu quản trị..." autocomplete="current-password" required>
         </div>
         <div class="input-group">
           <label>Mã PIN Bảo Mật Hệ Thống (6 số bí mật)</label>
-          <input type="password" id="login-pin" value="888888" placeholder="Nhập mã PIN 6 số..." maxlength="6" pattern="[0-9]{6}" required>
+          <input type="password" id="login-pin" value="" placeholder="Nhập mã PIN bảo mật 6 số..." maxlength="6" pattern="[0-9]{6}" autocomplete="off" required>
           <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">Lớp bảo mật thứ 2 bắt buộc để kích hoạt quyền điều khiển máy chủ.</div>
         </div>
 
-        <div style="text-align: right; margin-bottom: 14px;">
+        <!-- Tùy Chọn: Lưu Tài Khoản / Mật Khẩu & Duy Trì Đăng Nhập (Tự động đăng xuất sau 3h) -->
+        <div style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(51, 65, 85, 0.7); border-radius: 8px; padding: 10px 12px; margin: 12px 0 16px 0; font-size: 12px; display: flex; flex-direction: column; gap: 8px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #cbd5e1; user-select: none;">
+            <input type="checkbox" id="adm-remember-creds" style="width: 15px; height: 15px; accent-color: #3b82f6; cursor: pointer;">
+            <span>💾 <strong>Lưu tài khoản &amp; mật khẩu</strong> trên trình duyệt này</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: #cbd5e1; user-select: none;">
+            <input type="checkbox" id="adm-keep-logged-in" checked style="width: 15px; height: 15px; accent-color: #3b82f6; cursor: pointer;">
+            <span>⏱️ <strong>Duy trì đăng nhập</strong> (Tự động đăng xuất sau 3 giờ)</span>
+          </label>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin-bottom: 14px;">
           <a href="javascript:void(0)" onclick="openAdminForgotModal()" style="color: #38bdf8; font-size: 12px; text-decoration: none;">🔒 Quên Mật Khẩu / Mã PIN?</a>
         </div>
 
@@ -218,7 +230,7 @@
       <!-- Subtab 1: OTP Gmail -->
       <div id="adm-subtab-view-otp">
         <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 12px; color: #93c5fd; line-height: 1.5;">
-          Hệ thống sẽ gửi mã xác thực bí mật 6 số đến địa chỉ Gmail Quản Trị (<code>traivuho@gmail.com</code>).
+          Hệ thống sẽ gửi mã xác thực bí mật 6 số đến địa chỉ Gmail Quản Trị đã thiết lập bảo mật.
         </div>
         
         <!-- Step 1: Send OTP -->
@@ -230,7 +242,7 @@
         <!-- Step 2: Verify OTP & Set New Pwd + PIN -->
         <div id="adm-otp-step-2" style="display: none;">
           <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 12px; color: #34d399;">
-            ✅ Mã OTP đã được gửi đến: <strong id="adm-otp-target-email">traivuho@gmail.com</strong><br>
+            ✅ Mã OTP đã được gửi đến: <strong id="adm-otp-target-email">Gmail Quản Trị</strong><br>
             ⏰ Hiệu lực trong: <strong id="adm-otp-countdown" style="color: #fde047;">05:00</strong>
           </div>
           
@@ -264,11 +276,11 @@
           </div>
           <div class="input-group">
             <label>Email Quản Trị</label>
-            <input type="email" id="reset-email" value="traivuho@gmail.com" required>
+            <input type="email" id="reset-email" value="" placeholder="Nhập địa chỉ Gmail Quản Trị..." required>
           </div>
           <div class="input-group">
             <label>Ngày Sinh Bảo Mật</label>
-            <input type="date" id="reset-birthday" value="2008-04-28" required>
+            <input type="date" id="reset-birthday" value="" required>
           </div>
           <div class="input-group">
             <label>Mật Khẩu Quản Trị Mới</label>
@@ -300,6 +312,7 @@
       <span>Moly - Thế Giới Chuột Chũi VN • Bảng Quản Trị Tối Cao</span>
     </div>
     <div class="user-pill">
+      <span id="adm-session-badge" style="display: inline-flex; align-items: center; gap: 4px; font-size: 11px; background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; padding: 4px 10px; border-radius: 999px; margin-right: 6px;">⏱️ Phiên: 03:00:00</span>
       <span>🟢 Quản Trị Viên: <strong id="admin-user-display">00000000</strong> (VIP 19)</span>
       <button class="btn btn-sm btn-warning" id="btn-open-pwd-modal" style="padding: 4px 10px; font-size: 12px; margin-left: 6px;" onclick="openPasswordModal()">🔒 Đổi Mật Khẩu &amp; PIN</button>
       <a href="/" class="btn btn-sm" style="background: #334155; color: #fff; text-decoration: none; padding: 4px 10px; font-size: 12px; margin-left: 4px;">🌐 Về Trang Chủ</a>
@@ -610,7 +623,7 @@
           </div>
           <div class="input-group" style="margin-bottom: 0;">
             <label>Gmail Nhận Mã OTP / Thông Báo Của Admin (Có thể đổi)</label>
-            <input type="email" id="admin-notify-email" value="traivuho@gmail.com" placeholder="traivuho@gmail.com" required>
+            <input type="email" id="admin-notify-email" value="" placeholder="Nhập địa chỉ Gmail nhận thông báo của Admin..." required>
           </div>
           <div>
             <button type="submit" class="btn btn-warning" id="btn-save-email-cfg">💾 Lưu Cấu Hình Gmail</button>
@@ -791,7 +804,7 @@
         });
         const res = await resp.json();
         if (res.ok) {
-          document.getElementById("adm-otp-target-email").textContent = res.masked_email || "traivuho@gmail.com";
+          document.getElementById("adm-otp-target-email").textContent = res.masked_email || "Gmail Quản Trị Đã Liên Kết";
           document.getElementById("adm-otp-step-1").style.display = "none";
           document.getElementById("adm-otp-step-2").style.display = "block";
 
@@ -937,10 +950,42 @@
       }
     }
 
-    // Check Login State
+    // Admin Session Management & 3-Hour Auto-Logout
+    let sessionTimerInterval = null;
+
+    function initSavedAdminCredentials() {
+      const savedUser = localStorage.getItem("moly_adm_saved_user") || "";
+      const savedPass = localStorage.getItem("moly_adm_saved_pass") || "";
+      const rememberCreds = localStorage.getItem("moly_adm_remember_creds") === "1";
+      const userEl = document.getElementById("login-username");
+      const passEl = document.getElementById("login-password");
+      const remEl = document.getElementById("adm-remember-creds");
+
+      if (remEl) remEl.checked = rememberCreds;
+      if (rememberCreds && savedUser && userEl) {
+        userEl.value = savedUser;
+        if (savedPass && passEl) {
+          try {
+            passEl.value = decodeURIComponent(escape(atob(savedPass)));
+          } catch (e) {
+            passEl.value = "";
+          }
+        }
+      }
+    }
+
     function checkLogin() {
-      if (token) {
+      const curToken = localStorage.getItem("moly_admin_token") || "";
+      const expiresAt = parseInt(localStorage.getItem("moly_admin_expires_at") || "0", 10);
+
+      if (curToken) {
+        if (expiresAt > 0 && Date.now() >= expiresAt) {
+          clearAdminSession(true);
+          return;
+        }
+        token = curToken;
         document.getElementById("login-overlay").style.display = "none";
+        startSessionCountdown(expiresAt);
         loadStats();
         loadUsers();
         loadGiftcodes();
@@ -948,8 +993,58 @@
         loadRechargeOrders();
         loadRecoveryRequests();
       } else {
+        token = "";
+        if (sessionTimerInterval) clearInterval(sessionTimerInterval);
         document.getElementById("login-overlay").style.display = "flex";
+        initSavedAdminCredentials();
       }
+    }
+
+    function clearAdminSession(isExpired = false) {
+      token = "";
+      localStorage.removeItem("moly_admin_token");
+      localStorage.removeItem("moly_admin_expires_at");
+      if (sessionTimerInterval) clearInterval(sessionTimerInterval);
+      const badge = document.getElementById("adm-session-badge");
+      if (badge) badge.textContent = "⏱️ Phiên: 00:00:00";
+      if (isExpired) {
+        alert("⏱️ Phiên làm việc quản trị đã hết hạn (sau 3 giờ). Vui lòng đăng nhập lại để tiếp tục quản lý hệ thống.");
+      }
+      document.getElementById("login-overlay").style.display = "flex";
+      initSavedAdminCredentials();
+    }
+
+    function startSessionCountdown(expiresAt) {
+      if (sessionTimerInterval) clearInterval(sessionTimerInterval);
+      if (!expiresAt || expiresAt <= 0) return;
+
+      function updateBadge() {
+        const remaining = expiresAt - Date.now();
+        if (remaining <= 0) {
+          clearAdminSession(true);
+          return;
+        }
+        const hours = Math.floor(remaining / 3600000);
+        const mins = Math.floor((remaining % 3600000) / 60000);
+        const secs = Math.floor((remaining % 60000) / 1000);
+        const pad = (n) => String(n).padStart(2, '0');
+        const badge = document.getElementById("adm-session-badge");
+        if (badge) {
+          badge.textContent = `⏱️ Phiên: ${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+          if (remaining < 300000) { // < 5 phút: cảnh báo đỏ
+            badge.style.background = "rgba(239, 68, 68, 0.25)";
+            badge.style.borderColor = "rgba(239, 68, 68, 0.5)";
+            badge.style.color = "#fca5a5";
+          } else {
+            badge.style.background = "rgba(59, 130, 246, 0.2)";
+            badge.style.borderColor = "rgba(59, 130, 246, 0.4)";
+            badge.style.color = "#93c5fd";
+          }
+        }
+      }
+
+      updateBadge();
+      sessionTimerInterval = setInterval(updateBadge, 1000);
     }
 
     document.getElementById("login-form").addEventListener("submit", async (e) => {
@@ -957,6 +1052,8 @@
       const user = document.getElementById("login-username").value.trim();
       const pass = document.getElementById("login-password").value.trim();
       const pin = document.getElementById("login-pin").value.trim();
+      const rememberCreds = document.getElementById("adm-remember-creds")?.checked;
+      const keepLoggedIn = document.getElementById("adm-keep-logged-in")?.checked;
       const errBox = document.getElementById("login-error");
       const btn = document.getElementById("btn-submit-login");
       errBox.style.display = "none";
@@ -972,7 +1069,31 @@
         const data = await resp.json();
         if (data.ok && data.token) {
           token = data.token;
+
+          // Lưu hoặc xóa thông tin tài khoản / mật khẩu
+          if (rememberCreds) {
+            localStorage.setItem("moly_adm_saved_user", user);
+            try {
+              localStorage.setItem("moly_adm_saved_pass", btoa(unescape(encodeURIComponent(pass))));
+            } catch (e) {
+              localStorage.setItem("moly_adm_saved_pass", pass);
+            }
+            localStorage.setItem("moly_adm_remember_creds", "1");
+          } else {
+            localStorage.removeItem("moly_adm_saved_user");
+            localStorage.removeItem("moly_adm_saved_pass");
+            localStorage.removeItem("moly_adm_remember_creds");
+          }
+
+          // Thời gian phiên làm việc 3 giờ (10,800,000 ms)
+          const sessionMs = (data.expires_in || 10800) * 1000;
+          const expiresAt = Date.now() + sessionMs;
           localStorage.setItem("moly_admin_token", token);
+          localStorage.setItem("moly_admin_expires_at", expiresAt.toString());
+          localStorage.setItem("moly_admin_keep_logged_in", keepLoggedIn ? "1" : "0");
+
+          btn.disabled = false;
+          btn.textContent = "Xác Thực & Vào Bảng Quản Trị";
           checkLogin();
         } else {
           errBox.textContent = "❌ " + (data.error || "Mật khẩu hoặc mã PIN quản trị không chính xác!");
@@ -989,13 +1110,13 @@
     });
 
     document.getElementById("btn-logout").addEventListener("click", async () => {
-      await fetch("/api/admin/logout", {
-        method: "POST",
-        headers: { "Authorization": `Bearer ${token}` }
-      });
-      token = "";
-      localStorage.removeItem("moly_admin_token");
-      checkLogin();
+      try {
+        await fetch("/api/admin/logout", {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+      } catch (e) {}
+      clearAdminSession(false);
     });
 
     // Tab Navigation
@@ -1023,7 +1144,7 @@
         const resp = await fetch("/api/admin/stats", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        if (resp.status === 401) { clearAdminSession(true); return; }
         const data = await resp.json();
         document.getElementById("stat-total-users").textContent = (data.total_accounts || 0).toLocaleString();
         document.getElementById("stat-online-ccu").textContent = (data.online_ccu || 0) + " cư dân";
@@ -1042,7 +1163,7 @@
         const resp = await fetch("/api/admin/users", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        if (resp.status === 401) { clearAdminSession(true); return; }
         allUsers = await resp.json();
         renderUsers(allUsers);
       } catch (e) {
@@ -1353,7 +1474,7 @@
         const resp = await fetch("/api/admin/giftcodes", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        if (resp.status === 401) { clearAdminSession(true); return; }
         allGiftcodes = await resp.json();
         renderGiftcodes(allGiftcodes);
       } catch (e) {
@@ -1655,7 +1776,7 @@
         const resp = await fetch("/api/admin/recharge/orders", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        if (resp.status === 401) { clearAdminSession(true); return; }
         if (!resp.ok) return;
         const res = await resp.json();
         allRechargeOrders = res.orders || (Array.isArray(res) ? res : []);
@@ -1841,7 +1962,7 @@
         const resp = await fetch("/api/admin/recovery_requests", {
           headers: { "Authorization": `Bearer ${token}` }
         });
-        if (resp.status === 401) { token = ""; checkLogin(); return; }
+        if (resp.status === 401) { clearAdminSession(true); return; }
         const data = await resp.json();
         const tbody = document.getElementById("recovery-table-body");
         const badge = document.getElementById("recovery-badge");
