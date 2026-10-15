@@ -849,7 +849,7 @@
         <div style="text-align: left;">
           <h3 style="font-size: 16px; color: #047857; margin-bottom: 4px;">👑 Chào mừng trở lại, <span id="qa-fullname" style="color: #0284c7;">-</span> (@<span id="qa-username">-</span>)!</h3>
           <p style="margin: 0; font-size: 13px; color: #475569;">
-            ID Mole: <strong id="qa-uid" style="color: #d97706;">-</strong> &bull;
+            ID Moly: <strong id="qa-uid" style="color: #d97706;">-</strong> &bull;
             Đậu Vàng: <strong id="qa-beans" style="color: #ca8a04;">0</strong> &bull;
             <span id="qa-vip" class="badge" style="background: #7c3aed; color: #fff; padding: 2px 7px; border-radius: 4px;">VIP 1</span> &bull;
             Trạng thái: <span style="color: #059669; font-weight: bold;">Đã Đăng Nhập Phiên Web</span>
@@ -1006,8 +1006,8 @@
       <!-- Tab 1: Đăng Nhập -->
       <div id="tab-content-login">
         <form onsubmit="handleWebLogin(event)">
-          <label class="modal-label">Tên Đăng Nhập Cư Dân (hoặc ID Mole)</label>
-          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly2026 (hoặc ID Mole)" required>
+          <label class="modal-label">Tên Đăng Nhập Cư Dân (hoặc ID Moly)</label>
+          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly2026 (hoặc ID Moly)" required>
           <label class="modal-label">Mật Khẩu</label>
           <input type="password" id="login-password" class="modal-input" placeholder="Nhập mật khẩu..." required>
           
@@ -1093,7 +1093,7 @@
 
           <!-- Step 1: Nhập định danh và gửi OTP -->
           <div id="otp-step-1">
-            <label class="modal-label">Tên Đăng Nhập, Mole ID hoặc Email</label>
+            <label class="modal-label">Tên Đăng Nhập, ID Moly hoặc Email</label>
             <input type="text" id="otp-identifier" class="modal-input" placeholder="VD: an_moly2026, 64298193 hoặc an@gmail.com" required>
             
             <div id="otp-send-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
@@ -1132,10 +1132,10 @@
         <!-- Subtab 2: Traditional Birthday -->
         <div id="subtab-view-bday" style="display: none;">
           <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
-            Nhập Tên đăng nhập (hoặc Mole ID) cùng Email và Ngày sinh đã đăng ký:
+            Nhập Tên đăng nhập (hoặc ID Moly) cùng Email và Ngày sinh đã đăng ký:
           </p>
           <form onsubmit="handleResetPassword(event)">
-            <label class="modal-label">Tên Đăng Nhập hoặc ID Mole</label>
+            <label class="modal-label">Tên Đăng Nhập hoặc ID Moly</label>
             <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: an_moly2026 hoặc ID" required>
 
             <label class="modal-label">Email Đã Đăng Ký</label>
@@ -1166,8 +1166,8 @@
             Nếu bạn chưa xác thực Gmail hoặc không nhớ ngày sinh, hãy gửi yêu cầu trực tiếp đến Ban Quản Trị. Bạn bắt buộc phải nhập <strong>mật khẩu cũ bạn nhớ gần giống nhất</strong> để BQT đối chiếu và phản hồi cấp lại.
           </div>
           <form onsubmit="handleSendRecoveryRequest(event)">
-            <label class="modal-label">Tên Đăng Nhập hoặc ID Mole <span style="color:#ef4444;">*</span></label>
-            <input type="text" id="rec-identifier" class="modal-input" placeholder="VD: an_moly hoặc ID Mole" required>
+            <label class="modal-label">Tên Đăng Nhập hoặc ID Moly <span style="color:#ef4444;">*</span></label>
+            <input type="text" id="rec-identifier" class="modal-input" placeholder="VD: an_moly hoặc ID Moly" required>
 
             <label class="modal-label">Email / Gmail Nhận Phản Hồi Từ QTV <span style="color:#ef4444;">*</span></label>
             <input type="email" id="rec-contact-email" class="modal-input" placeholder="VD: yourname@gmail.com để BQT gửi mật khẩu mới" required>
@@ -1217,13 +1217,13 @@
           </div>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #cbd5e1; border-top: 1px solid #1e293b; padding-top: 8px;">
-            <div>Mã Số Mole: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: #1e293b; border: 1px solid #334155; color: #38bdf8; cursor: pointer; font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">📋 Sao chép</button></div>
+            <div>Mã Số Moly: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: #1e293b; border: 1px solid #334155; color: #38bdf8; cursor: pointer; font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">📋 Sao chép</button></div>
             <div>Đậu Vàng: <strong id="dash-beans" style="color: #fde047;">0</strong> Đậu</div>
             <div>Điểm VIP: <strong id="dash-points" style="color: #10b981;">0</strong> (Max VIP 19)</div>
             <div>Thú Cưng: <span id="dash-lamu" style="color: #ec4899;">-</span></div>
           </div>
           <div style="font-size: 11px; color: #64748b; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #1e293b;">
-            💡 <em>Mã Số Mole là định danh kỹ thuật duy nhất dùng để nạp Đậu Vàng và hỗ trợ khôi phục tài khoản khi cần thiết.</em>
+            💡 <em>Mã Số Moly là định danh kỹ thuật duy nhất dùng để nạp Đậu Vàng và hỗ trợ khôi phục tài khoản khi cần thiết.</em>
           </div>
         </div>
 
@@ -1319,7 +1319,7 @@
 
           <!-- Khi CHƯA đăng nhập: Bắt buộc tra cứu & xác thực đúng nhân vật trước khi mua -->
           <div id="rc-guest-view" style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
-            <label class="modal-label">Nhập Mole ID của nhân vật cần mua:</label>
+            <label class="modal-label">Nhập ID Moly của nhân vật cần mua:</label>
             <div style="display: flex; gap: 8px; margin-bottom: 8px;">
               <input type="text" id="recharge-uid-input" class="modal-input" placeholder="VD: 64298193 hoặc 00000000" style="margin-bottom: 0;">
               <button type="button" class="nav-btn nav-btn-primary" onclick="verifyRechargeCharacter()">🔍 Xác Thực Nhân Vật</button>
@@ -1553,7 +1553,7 @@
         <button class="modal-close" onclick="closeLookupModal()" title="Đóng cửa sổ (ESC)">&times;</button>
       </div>
       <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
-        Nhập Mole ID hoặc Tên đăng nhập của bất kỳ cư dân nào để kiểm tra hồ sơ công khai trong hệ thống:
+        Nhập ID Moly hoặc Tên đăng nhập của bất kỳ cư dân nào để kiểm tra hồ sơ công khai trong hệ thống:
       </p>
       <div style="display: flex; gap: 8px; margin-bottom: 12px;">
         <input type="text" id="lookup-identifier-input" class="modal-input" placeholder="VD: 64298193 hoặc 00000000" style="margin-bottom: 0;">
@@ -1569,7 +1569,7 @@
           <span id="lookup-res-vip" class="badge" style="background: #7c3aed; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 12px;">VIP -</span>
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #cbd5e1; border-top: 1px solid #1e293b; padding-top: 8px;">
-          <div>Mole ID: <strong id="lookup-res-uid" style="color: #fde047;">-</strong></div>
+          <div>ID Moly: <strong id="lookup-res-uid" style="color: #fde047;">-</strong></div>
           <div>Đậu Vàng: <strong id="lookup-res-beans" style="color: #fde047;">0</strong> Đậu</div>
           <div>Điểm Tích Lũy: <strong id="lookup-res-points" style="color: #10b981;">0</strong></div>
           <div>Trạng thái: <span style="color: #34d399; font-weight: bold;">Hợp lệ</span></div>
@@ -1740,7 +1740,7 @@
         <button class="modal-close" onclick="closeSmcModal()" title="Đóng cửa sổ (ESC)">&times;</button>
       </div>
       <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
-        SMC (Super Mole Club) là câu lạc bộ những cư dân ưu tú nhất vương quốc. Gia nhập SMC để nhận quân hàm danh giá, trang phục nghề độc quyền và trợ cấp Đậu Vàng hàng tháng!
+        SMC (Super Moly Club) là câu lạc bộ những cư dân ưu tú nhất vương quốc. Gia nhập SMC để nhận quân hàm danh giá, trang phục nghề độc quyền và trợ cấp Đậu Vàng hàng tháng!
       </p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; max-height: 360px; overflow-y: auto;">
         <div style="background: #0f172a; border-left: 3px solid #3b82f6; border-radius: 8px; padding: 10px;">
@@ -2035,7 +2035,7 @@
       if (!u) return;
       const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
       navigator.clipboard.writeText(dispId);
-      alert(`📋 Đã sao chép ID Mole: ${dispId} vào bộ nhớ tạm!`);
+      alert(`📋 Đã sao chép ID Moly: ${dispId} vào bộ nhớ tạm!`);
     }
 
     function handleWebLogout() {
@@ -2611,7 +2611,7 @@
       const confirmChk = document.getElementById("rc-confirm-checkbox");
 
       if (!input) {
-        errBox.textContent = "Vui lòng nhập Mole ID hoặc tên tài khoản!";
+        errBox.textContent = "Vui lòng nhập ID Moly hoặc tên tài khoản!";
         errBox.style.display = "block";
         return;
       }
@@ -2792,7 +2792,7 @@
       const card = document.getElementById("lookup-result-card");
 
       if (!input) {
-        errBox.textContent = "Vui lòng nhập Mole ID hoặc tên đăng nhập!";
+        errBox.textContent = "Vui lòng nhập ID Moly hoặc tên đăng nhập!";
         errBox.style.display = "block";
         return;
       }

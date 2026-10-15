@@ -592,8 +592,8 @@
       <!-- Tab 1: Đăng Nhập -->
       <div id="tab-content-login">
         <form onsubmit="handleWebLogin(event)">
-          <label class="modal-label">Tên Đăng Nhập Cư Dân (hoặc ID Mole)</label>
-          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly2026 (hoặc ID Mole)" required>
+          <label class="modal-label">Tên Đăng Nhập Cư Dân (hoặc ID Moly)</label>
+          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly2026 (hoặc ID Moly)" required>
           <label class="modal-label">Mật Khẩu</label>
           <input type="password" id="login-password" class="modal-input" placeholder="Nhập mật khẩu..." required>
           
@@ -679,7 +679,7 @@
 
           <!-- Step 1: Nhập định danh và gửi OTP -->
           <div id="otp-step-1">
-            <label class="modal-label">Tên Đăng Nhập, Mole ID hoặc Email</label>
+            <label class="modal-label">Tên Đăng Nhập, ID Moly hoặc Email</label>
             <input type="text" id="otp-identifier" class="modal-input" placeholder="VD: an_moly2026, 64298193 hoặc an@gmail.com" required>
             
             <div id="otp-send-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
@@ -718,10 +718,10 @@
         <!-- Subtab 2: Traditional Birthday -->
         <div id="subtab-view-bday" style="display: none;">
           <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
-            Nhập Tên đăng nhập (hoặc Mole ID) cùng Email và Ngày sinh đã đăng ký:
+            Nhập Tên đăng nhập (hoặc ID Moly) cùng Email và Ngày sinh đã đăng ký:
           </p>
           <form onsubmit="handleResetPassword(event)">
-            <label class="modal-label">Tên Đăng Nhập hoặc ID Mole</label>
+            <label class="modal-label">Tên Đăng Nhập hoặc ID Moly</label>
             <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: an_moly2026 hoặc ID" required>
 
             <label class="modal-label">Email Đã Đăng Ký</label>
@@ -752,8 +752,8 @@
             Nếu bạn chưa xác thực Gmail hoặc không nhớ ngày sinh, hãy gửi yêu cầu trực tiếp đến Ban Quản Trị. Bạn bắt buộc phải nhập <strong>mật khẩu cũ bạn nhớ gần giống nhất</strong> để BQT đối chiếu và phản hồi cấp lại.
           </div>
           <form onsubmit="handleSendRecoveryRequest(event)">
-            <label class="modal-label">Tên Đăng Nhập hoặc ID Mole <span style="color:#ef4444;">*</span></label>
-            <input type="text" id="rec-identifier" class="modal-input" placeholder="VD: an_moly hoặc ID Mole" required>
+            <label class="modal-label">Tên Đăng Nhập hoặc ID Moly <span style="color:#ef4444;">*</span></label>
+            <input type="text" id="rec-identifier" class="modal-input" placeholder="VD: an_moly hoặc ID Moly" required>
 
             <label class="modal-label">Email / Gmail Nhận Phản Hồi Từ QTV <span style="color:#ef4444;">*</span></label>
             <input type="email" id="rec-contact-email" class="modal-input" placeholder="VD: yourname@gmail.com để BQT gửi mật khẩu mới" required>
@@ -803,13 +803,13 @@
           </div>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #cbd5e1; border-top: 1px solid #1e293b; padding-top: 8px;">
-            <div>Mã Số Mole: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: #1e293b; border: 1px solid #334155; color: #38bdf8; cursor: pointer; font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">📋 Sao chép</button></div>
+            <div>Mã Số Moly: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: #1e293b; border: 1px solid #334155; color: #38bdf8; cursor: pointer; font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">📋 Sao chép</button></div>
             <div>Đậu Vàng: <strong id="dash-beans" style="color: #fde047;">0</strong> Đậu</div>
             <div>Điểm VIP: <strong id="dash-points" style="color: #10b981;">0</strong> (Max VIP 19)</div>
             <div>Thú Cưng: <span id="dash-lamu" style="color: #ec4899;">-</span></div>
           </div>
           <div style="font-size: 11px; color: #64748b; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #1e293b;">
-            💡 <em>Mã Số Mole là định danh kỹ thuật duy nhất dùng để nạp Đậu Vàng và hỗ trợ khôi phục tài khoản khi cần thiết.</em>
+            💡 <em>Mã Số Moly là định danh kỹ thuật duy nhất dùng để nạp Đậu Vàng và hỗ trợ khôi phục tài khoản khi cần thiết.</em>
           </div>
         </div>
 
@@ -905,7 +905,7 @@
 
           <!-- Khi CHƯA đăng nhập: Bắt buộc tra cứu & xác thực đúng nhân vật trước khi mua -->
           <div id="rc-guest-view" style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
-            <label class="modal-label">Nhập Mole ID của nhân vật cần mua:</label>
+            <label class="modal-label">Nhập ID Moly của nhân vật cần mua:</label>
             <div style="display: flex; gap: 8px; margin-bottom: 8px;">
               <input type="text" id="recharge-uid-input" class="modal-input" placeholder="VD: 64298193 hoặc 00000000" style="margin-bottom: 0;">
               <button type="button" class="btn-ctrl btn-ctrl-primary" onclick="verifyRechargeCharacter()">🔍 Xác Thực Nhân Vật</button>
@@ -1059,10 +1059,10 @@
         <button class="modal-close" onclick="closeGiftcodeModal()" title="Đóng cửa sổ (ESC)">&times;</button>
       </div>
       <p style="color: #94a3b8; font-size: 12px; margin-bottom: 12px;">
-        Nhập ID Mole của bạn và Mã quà tặng (Mã tân thủ: <strong style="color: #fde047;">TANTHU2026</strong> (+100 Đậu, VIP 3 ngày), <strong style="color: #fde047;">MOLYVIET</strong> (+200 Đậu, VIP 7 ngày)):
+        Nhập ID Moly của bạn và Mã quà tặng (Mã tân thủ: <strong style="color: #fde047;">TANTHU2026</strong> (+100 Đậu, VIP 3 ngày), <strong style="color: #fde047;">MOLYVIET</strong> (+200 Đậu, VIP 7 ngày)):
       </p>
       <form id="play-gc-form" onsubmit="handlePlayRedeem(event)">
-        <label class="modal-label">ID Mole Của Bạn</label>
+        <label class="modal-label">ID Moly Của Bạn</label>
         <input type="text" id="play-gc-uid" class="modal-input" placeholder="VD: 64298193 hoặc 00000000" required>
         <label class="modal-label">Mã Giftcode</label>
         <input type="text" id="play-gc-code" class="modal-input" placeholder="VD: TANTHU2026" style="text-transform: uppercase;" required>
@@ -1091,7 +1091,7 @@
       </div>
 
       <div style="display: flex; gap: 8px; margin-bottom: 12px;">
-        <input type="text" id="lamu-uid-input" class="modal-input" placeholder="Nhập ID Mole (VD: 64298193 hoặc 00000000)" style="margin-bottom: 0;">
+        <input type="text" id="lamu-uid-input" class="modal-input" placeholder="Nhập ID Moly (VD: 64298193 hoặc 00000000)" style="margin-bottom: 0;">
         <button type="button" class="btn-ctrl btn-ctrl-blue" onclick="fetchLamuSpeciesStatus()">Kiểm Tra</button>
       </div>
 
@@ -1209,7 +1209,7 @@
         <button class="modal-close" onclick="closeSmcModal()" title="Đóng cửa sổ (ESC)">&times;</button>
       </div>
       <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
-        SMC (Super Mole Club) là câu lạc bộ những cư dân ưu tú nhất vương quốc. Gia nhập SMC để nhận quân hàm danh giá, trang phục nghề độc quyền và trợ cấp Đậu Vàng hàng tháng!
+        SMC (Super Moly Club) là câu lạc bộ những cư dân ưu tú nhất vương quốc. Gia nhập SMC để nhận quân hàm danh giá, trang phục nghề độc quyền và trợ cấp Đậu Vàng hàng tháng!
       </p>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; max-height: 360px; overflow-y: auto;">
         <div style="background: #0f172a; border-left: 3px solid #3b82f6; border-radius: 8px; padding: 10px;">
@@ -1793,7 +1793,7 @@
       if (!u) return;
       const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
       navigator.clipboard.writeText(dispId);
-      alert(`📋 Đã sao chép ID Mole: ${dispId} vào bộ nhớ tạm!`);
+      alert(`📋 Đã sao chép ID Moly: ${dispId} vào bộ nhớ tạm!`);
     }
 
     function handleWebLogout() {
@@ -2363,7 +2363,7 @@
       const confirmChk = document.getElementById("rc-confirm-checkbox");
 
       if (!input) {
-        errBox.textContent = "Vui lòng nhập Mole ID hoặc tên tài khoản!";
+        errBox.textContent = "Vui lòng nhập ID Moly hoặc tên tài khoản!";
         errBox.style.display = "block";
         return;
       }
@@ -2606,7 +2606,7 @@
     // --- Super Lamu Status & Progression ---
     async function fetchLamuSpeciesStatus() {
       const uidInput = document.getElementById("lamu-uid-input").value.trim();
-      if (!uidInput) { alert("Vui lòng nhập ID Mole!"); return; }
+      if (!uidInput) { alert("Vui lòng nhập ID Moly!"); return; }
 
       try {
         const resp = await fetch(`/api/user/lamu/status?user_id=${uidInput}`);

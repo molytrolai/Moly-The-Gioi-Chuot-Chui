@@ -483,7 +483,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 pwd = str(payload.get("password", "")).strip()
 
                 if not identifier:
-                    self._send_json({"ok": False, "message": "Vui lòng nhập Tên đăng nhập, Mole ID hoặc Email!"}, status=400)
+                    self._send_json({"ok": False, "message": "Vui lòng nhập Tên đăng nhập, ID Moly hoặc Email!"}, status=400)
                     return
 
                 ok, acc = accounts.authenticate(identifier, pwd)

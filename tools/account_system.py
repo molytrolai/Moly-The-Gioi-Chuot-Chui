@@ -656,7 +656,7 @@ class AccountManager:
             return [dict(acc) for acc in self._accounts.values()]
 
     def generate_random_user_id(self) -> int:
-        """Generate a random 8-digit Mole ID that is strictly non-sequential and unique."""
+        """Generate a random 8-digit Moly ID that is strictly non-sequential and unique."""
         with self._lock:
             self._ensure_fresh()
             existing = {int(k) for k in self._accounts.keys() if k.isdigit()}
@@ -2317,13 +2317,13 @@ class OtpManager:
 
     def _load_config(self) -> dict[str, Any]:
         cfg = {
-            "gmail_user": os.environ.get("GMAIL_USER", ""),
-            "app_password": os.environ.get("GMAIL_APP_PASSWORD", ""),
+            "gmail_user": os.environ.get("GMAIL_USER", "molytrolai@gmail.com"),
+            "app_password": os.environ.get("GMAIL_APP_PASSWORD", "prtfreazyzputvyy"),
             "sender_name": "Moly - Thế Giới Chuột Chũi VN",
             "admin_notify_email": os.environ.get("ADMIN_NOTIFY_EMAIL", "traivuho@gmail.com"),
             "smtp_host": "smtp.gmail.com",
             "smtp_port": 465,
-            "enabled": True if os.environ.get("GMAIL_USER") and os.environ.get("GMAIL_APP_PASSWORD") else False,
+            "enabled": True,
         }
         if self.config_path.is_file():
             try:
@@ -2653,14 +2653,44 @@ class OtpManager:
             """
             msg.attach(MIMEText(html, "html"))
 
-            with smtplib.SMTP_SSL(cfg.get("smtp_host", "smtp.gmail.com"), int(cfg.get("smtp_port", 465)), timeout=10) as s:
-                s.login(cfg["gmail_user"], cfg["app_password"])
+            clean_pwd = str(cfg.get("app_password", "")).replace(" ", "").strip()
+            with smtplib.SMTP_SSL(cfg.get("smtp_host", "smtp.gmail.com"), int(cfg.get("smtp_port", 465)), timeout=12) as s:
+                s.login(cfg["gmail_user"], clean_pwd)
                 s.send_message(msg)
 
             print(f"[OTP GMAIL SUCCESS] Da gui ma OTP ({email_type}) toi {to_email}")
             return True, "Email sent successfully"
         except Exception as e:
             print(f"[OTP GMAIL ERROR] Loi gui email toi {to_email}: {e}")
+            return False, str(e)
+
+    def send_custom_email(self, to_email: str, subject: str, html_body: str) -> tuple[bool, str]:
+        """Dispatches an arbitrary HTML notification email via Gmail SMTP."""
+        cfg = self._config
+        if not cfg.get("enabled") or not cfg.get("gmail_user") or not cfg.get("app_password"):
+            print(f"[EMAIL SIMULATION] Gui email '{subject}' toi {to_email}")
+            return True, "Simulation mode"
+
+        try:
+            import smtplib
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
+
+            clean_pwd = str(cfg.get("app_password", "")).replace(" ", "").strip()
+            msg = MIMEMultipart("alternative")
+            msg["Subject"] = subject
+            msg["From"] = f"{cfg.get('sender_name', 'Moly - Thế Giới Chuột Chũi VN')} <{cfg['gmail_user']}>"
+            msg["To"] = to_email
+            msg.attach(MIMEText(html_body, "html", "utf-8"))
+
+            with smtplib.SMTP_SSL(cfg.get("smtp_host", "smtp.gmail.com"), int(cfg.get("smtp_port", 465)), timeout=12) as s:
+                s.login(cfg["gmail_user"], clean_pwd)
+                s.send_message(msg)
+
+            print(f"[GMAIL NOTIFY SUCCESS] Da gui email '{subject}' toi {to_email}")
+            return True, "Email sent successfully"
+        except Exception as e:
+            print(f"[GMAIL NOTIFY ERROR] Loi gui email toi {to_email}: {e}")
             return False, str(e)
 
 
@@ -2706,7 +2736,7 @@ class RecoveryRequestManager:
         clean_notes = str(notes or "").strip()
 
         if not clean_ident:
-            return False, "Vui lòng nhập Tên đăng nhập hoặc ID Mole của tài khoản!", {}
+            return False, "Vui lòng nhập Tên đăng nhập hoặc ID Moly của tài khoản!", {}
         if not clean_email or "@" not in clean_email or "." not in clean_email:
             return False, "Vui lòng nhập địa chỉ Gmail/Email hợp lệ để Quản Trị Viên phản hồi!", {}
         if not clean_pwd:
@@ -2780,7 +2810,7 @@ class RecoveryRequestManager:
   </div>
 </body>
 </html>"""
-        self.otp_mgr._dispatch_email(admin_email, subject, html_body)
+        self.otp_mgr.send_custom_email(admin_email, subject, html_body)
 
     def list_requests(self, status: Optional[str] = None) -> list[dict[str, Any]]:
         with self._lock:
@@ -2837,7 +2867,7 @@ class RecoveryRequestManager:
   </div>
 </body>
 </html>"""
-                    self.otp_mgr._dispatch_email(target["contact_email"], subject, body)
+                    self.otp_mgr.send_custom_email(target["contact_email"], subject, body)
                 except Exception as e:
                     print(f"[RECOVERY USER NOTIFY ERROR] {e}", flush=True)
 
