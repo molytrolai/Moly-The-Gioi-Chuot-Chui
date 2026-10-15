@@ -1,10 +1,9 @@
 @echo off
-title Moly-Viet - The Gioi Chuot Chui
+title Moly - The Gioi Chuot Chui VN
 cd /d "%~dp0"
 echo ======================================================================
-echo             KHOI DONG THE GIOI CHUOT CHUI (MOLY-VIET)
+echo          KHOI DONG MOLY - THE GIOI CHUOT CHUI VN
 echo ======================================================================
-echo [*] Dang khoi chay Server game, Proxy cuc bo va Trinh phat Flash Ruffle...
-echo [*] Tai khoan Admin kiem thu: ID 10000001 (Mat khau bat ky)
+echo [*] Dang khoi chay he thong game va trinh phat Ruffle...
 echo ======================================================================
 start "" "%~dp0runtime\launcher\Moly-Official-Test.exe"

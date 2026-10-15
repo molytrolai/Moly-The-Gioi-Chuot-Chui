@@ -595,6 +595,7 @@
       z-index: 1000;
       backdrop-filter: blur(5px);
       padding: 15px;
+      cursor: pointer;
     }
 
     .modal-overlay.open {
@@ -612,6 +613,8 @@
       max-height: 90vh;
       overflow-y: auto;
       color: #fff;
+      cursor: default;
+      position: relative;
     }
 
     .modal-header {
@@ -621,6 +624,11 @@
       margin-bottom: 14px;
       padding-bottom: 10px;
       border-bottom: 1px solid #334155;
+      position: sticky;
+      top: -22px;
+      background: #1e293b;
+      z-index: 20;
+      padding-top: 4px;
     }
 
     .modal-header h3 {
@@ -964,7 +972,7 @@
   </main>
 
   <!-- ================= MODAL: TÀI KHOẢN & ĐĂNG KÝ / ĐỔI MẬT KHẨU ================= -->
-  <div id="modal-account" class="modal-overlay">
+  <div id="modal-account" class="modal-overlay" onclick="if(event.target===this){closeAccountModal();}">
     <div class="modal-box">
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1005,9 +1013,14 @@
             <button type="submit" id="btn-submit-login" class="nav-btn nav-btn-primary">Đăng Nhập</button>
           </div>
 
-          <!-- Cổng Quản Trị Viên (Ẩn mờ kín đáo, có xác thực mã PIN) -->
-          <div style="text-align: center; margin-top: 18px; padding-top: 10px; border-top: 1px dashed rgba(255, 255, 255, 0.1);">
-            <a href="/admin.html" style="color: #64748b; font-size: 11px; text-decoration: none; opacity: 0.5; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.5'">🔒 Cổng Quản Trị Hệ Thống</a>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155;">
+            <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="closeAccountModal()">← Trở lại</button>
+            <button type="button" class="nav-btn" onclick="closeAccountModal()">✕ Đóng</button>
+          </div>
+
+          <!-- Cổng Quản Trị Viên Bí Mật (Vô hình 100%, không hiện chữ, không đổi con trỏ, không tab tới, chỉ admin biết bấm vào giữa đáy modal) -->
+          <div style="text-align: center; margin-top: 8px; height: 18px; line-height: 18px;">
+            <a href="/admin.html" style="color: transparent; font-size: 11px; text-decoration: none; opacity: 0; cursor: default; user-select: none; -webkit-user-select: none; display: inline-block; width: 180px; height: 18px; line-height: 18px; background: transparent; border: none; outline: none;" title="" tabindex="-1">🔒 Cổng Quản Trị Hệ Thống</a>
           </div>
         </form>
       </div>
@@ -1044,6 +1057,10 @@
             <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #38bdf8; font-size: 13px; text-decoration: none;">👉 Đã có tài khoản? Đăng nhập ngay</a>
             <button type="submit" id="btn-submit-reg" class="nav-btn nav-btn-primary">Tạo Tài Khoản Ngay</button>
           </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155;">
+            <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="openLoginTab()">← Trở lại Đăng Nhập</button>
+            <button type="button" class="nav-btn" onclick="closeAccountModal()">✕ Đóng</button>
+          </div>
         </form>
       </div>
 
@@ -1073,6 +1090,10 @@
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #94a3b8; font-size: 13px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
             <button type="submit" id="btn-submit-forgot" class="nav-btn nav-btn-purple">Đặt Lại Mật Khẩu</button>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155;">
+            <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="openLoginTab()">← Trở lại Đăng Nhập</button>
+            <button type="button" class="nav-btn" onclick="closeAccountModal()">✕ Đóng</button>
           </div>
         </form>
       </div>
@@ -1129,6 +1150,10 @@
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <button type="button" class="nav-btn" style="background: #dc2626; color: #fff;" onclick="handleWebLogout()">🚪 Đăng Xuất</button>
             <button type="submit" class="nav-btn nav-btn-green" style="font-size: 12px; padding: 5px 12px;">Đổi Mật Khẩu</button>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155;">
+            <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="closeAccountModal()">← Trở lại</button>
+            <button type="button" class="nav-btn" onclick="closeAccountModal()">✕ Đóng</button>
           </div>
         </form>
       </div>
@@ -1302,7 +1327,7 @@
   </div>
 
   <!-- ================= MODAL: GIFTCODE ================= -->
-  <div id="modal-gc" class="modal-overlay">
+  <div id="modal-gc" class="modal-overlay" onclick="if(event.target===this){closeGiftcodeModal();}">
     <div class="modal-box">
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1329,7 +1354,7 @@
   </div>
 
   <!-- ================= MODAL: ĐẬU ĐẬU SIÊU CẤP ================= -->
-  <div id="modal-lamu" class="modal-overlay">
+  <div id="modal-lamu" class="modal-overlay" onclick="if(event.target===this){closeSuperLamuModal();}">
     <div class="modal-box" style="max-width: 600px;">
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1341,7 +1366,7 @@
       <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; border: 1px solid #475569; position: relative; background: #0f172a;">
         <img src="/assets/game_bg_superlamu.jpg" alt="Viện Nghiên Cứu Đậu Đậu Siêu Cấp" style="width: 100%; height: 160px; object-fit: cover; opacity: 0.65; display: block;">
         <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-around; padding: 10px;">
-          <img src="/assets/super_lamu_official.png" alt="Super Lamu" style="height: 120px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));">
+          <img src="/assets/super_lamu_official.png" alt="Đậu Đậu Siêu Cấp" style="height: 120px; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));">
           <div style="color: #fff; max-width: 320px;">
             <h4 style="color: #fde047; font-size: 16px; margin-bottom: 4px;">🐾 Viện Nghiên Cứu Hoàng Gia</h4>
             <p style="font-size: 12px; color: #cbd5e1; margin: 0; line-height: 1.4;">Chăm sóc, huấn luyện và chuyển đổi chủng loại Đậu Đậu Siêu Cấp. Mỗi chủng loài lưu giữ tiến trình phát triển độc lập!</p>
@@ -1382,7 +1407,7 @@
   </div>
 
   <!-- ================= MODAL: TRA CỨU CƯ DÂN ================= -->
-  <div id="modal-lookup" class="modal-overlay">
+  <div id="modal-lookup" class="modal-overlay" onclick="if(event.target===this){closeLookupModal();}">
     <div class="modal-box">
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1424,7 +1449,7 @@
   </div>
 
   <!-- ================= MODAL: BẢN TIN VƯƠNG QUỐC ================= -->
-  <div id="modal-news" class="modal-overlay">
+  <div id="modal-news" class="modal-overlay" onclick="if(event.target===this){closeNewsModal();}">
     <div class="modal-box" style="max-width: 650px;">
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1473,7 +1498,7 @@
   </div>
 
   <!-- ================= MODAL: 257 BẢN ĐỒ VƯƠNG QUỐC ================= -->
-  <div id="modal-kingdom" class="modal-overlay">
+  <div id="modal-kingdom" class="modal-overlay" onclick="if(event.target===this){closeKingdomInfoModal();}">
     <div class="modal-box" style="max-width: 620px;">
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -2429,7 +2454,7 @@
           if (rw.beans) details.push(`+${rw.beans.toLocaleString()} Đậu Vàng`);
           if (rw.trial_days) details.push(`VIP ${rw.vip_level || 1} dùng thử (${rw.trial_days} ngày)`);
           else if (rw.vip_level) details.push(`VIP ${rw.vip_level}`);
-          if (rw.super_lamu) details.push("Siêu LaMu");
+          if (rw.super_lamu) details.push("Đậu Đậu Siêu Cấp");
           if (rw.items && rw.items.length) details.push(`+${rw.items.length} Vật phẩm`);
           msgBox.style.color = "#34d399";
           msgBox.textContent = `🎉 Kích hoạt thành công! Nhận: ${details.join(", ")}`;
@@ -2553,12 +2578,16 @@
     }
 
     // --- Global Modal Backdrop Click & Escape Key Auto-Close ---
-    document.querySelectorAll(".modal-overlay").forEach(overlay => {
-      overlay.addEventListener("click", function(e) {
-        if (e.target === this) {
-          this.classList.remove("open");
-        }
-      });
+    document.addEventListener("click", function(e) {
+      if (e.target && e.target.classList && e.target.classList.contains("modal-overlay")) {
+        e.target.classList.remove("open");
+      }
+    });
+
+    document.addEventListener("touchend", function(e) {
+      if (e.target && e.target.classList && e.target.classList.contains("modal-overlay")) {
+        e.target.classList.remove("open");
+      }
     });
 
     document.addEventListener("keydown", function(e) {
@@ -2566,6 +2595,36 @@
         document.querySelectorAll(".modal-overlay.open").forEach(modal => modal.classList.remove("open"));
       }
     });
+
+    // --- Hash Deep-Linking & In-Game Action Button Router ---
+    function handleHashRoute() {
+      const hash = (window.location.hash || "").toLowerCase();
+      if (!hash) return;
+      if (hash === "#register" || hash === "#reg") {
+        openRegisterTab();
+      } else if (hash === "#login") {
+        openLoginTab();
+      } else if (hash === "#forgot" || hash === "#reset") {
+        openForgotTab();
+      } else if (hash === "#recharge" || hash === "#pay") {
+        openRechargeTab();
+      } else if (hash === "#giftcode" || hash === "#code") {
+        openGiftcodeModal();
+      } else if (hash === "#profile" || hash === "#security" || hash === "#account") {
+        openDashboardTab();
+      } else if (hash === "#lamu" || hash === "#superlamu" || hash === "#daudau") {
+        openSuperLamuModal();
+      } else if (hash === "#maps" || hash === "#kingdom") {
+        openKingdomInfoModal();
+      } else if (hash === "#news") {
+        openNewsModal();
+      } else if (hash === "#lookup") {
+        openLookupModal();
+      }
+    }
+    window.addEventListener("hashchange", handleHashRoute);
+    window.addEventListener("DOMContentLoaded", handleHashRoute);
+    setTimeout(handleHashRoute, 300);
   </script>
 </body>
 </html>

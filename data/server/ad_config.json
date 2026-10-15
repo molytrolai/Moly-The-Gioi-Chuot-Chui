@@ -1,21 +1,21 @@
 {
   "version": "1.0",
-  "comment": "Cấu hình quảng cáo & liên kết nội bộ Việt Nam cho Thế Giới Chuột Chũi (Moly Việt). Bạn có thể tự do chỉnh sửa target_url và tiêu đề sau này.",
-  "default_redirect": "https://molyviet.vn",
+  "comment": "Cấu hình thông tin & liên kết nội bộ Việt Nam cho Moly - Thế Giới Chuột Chũi VN. Bạn có thể tự do chỉnh sửa target_url và tiêu đề sau này.",
+  "default_redirect": "https://moly-the-gioi-chuot-chui.onrender.com",
   "ads": [
     {
       "id": "community",
       "title": "Cộng Đồng Chuột Chũi Việt Nam",
       "subtitle": "Giao lưu, kết bạn và cùng nhau xây dựng Vương quốc Moly",
-      "target_url": "https://facebook.com/groups/molyvietnam",
+      "target_url": "https://facebook.com/groups/molythegioichuotchui",
       "image": "/ads/banner_community.png",
       "active": true
     },
     {
       "id": "event",
-      "title": "Sự Kiện Khám Phá Moly Việt",
+      "title": "Sự Kiện Khám Phá Moly VN",
       "subtitle": "Chuỗi sự kiện thám hiểm bí cảnh và phần thưởng hấp dẫn",
-      "target_url": "https://discord.gg/molyviet",
+      "target_url": "https://discord.gg/molyvn",
       "image": "/ads/banner_event.png",
       "active": true
     },

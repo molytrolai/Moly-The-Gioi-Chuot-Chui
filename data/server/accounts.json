@@ -7,7 +7,7 @@
     "vip_month": 120,
     "vip_value": 999999,
     "vip_end": 4102444800,
-    "gold_beans": 1000299,
+    "gold_beans": 1000449,
     "element_knight_type": 1,
     "element_knight_talent": 40,
     "user_id": 10000001,
@@ -58,7 +58,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Thần Thoại",
+      "name": "Đậu Đậu Thần Thoại",
       "color": 7,
       "cloth_id": 1200035,
       "level": 5,
@@ -141,9 +141,9 @@
       12002
     ],
     "inventory": {
-      "13001": 30,
+      "13001": 34,
       "1230005": 5,
-      "1230008": 60
+      "1230008": 70
     },
     "username": "admin",
     "fullname": "Quản Trị Viên Vương Quốc",
@@ -185,7 +185,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -242,7 +242,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -299,7 +299,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -356,7 +356,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -413,7 +413,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -470,7 +470,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -527,7 +527,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -584,7 +584,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -641,7 +641,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -698,7 +698,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -755,7 +755,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -812,7 +812,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -869,7 +869,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -926,7 +926,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -983,7 +983,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1040,7 +1040,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1097,7 +1097,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1154,7 +1154,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1211,7 +1211,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1268,7 +1268,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1325,7 +1325,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1382,7 +1382,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1439,7 +1439,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1496,7 +1496,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1553,7 +1553,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1610,7 +1610,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1667,7 +1667,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1724,7 +1724,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1777,7 +1777,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1834,7 +1834,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1891,7 +1891,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -1948,7 +1948,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2005,7 +2005,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2062,7 +2062,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2119,7 +2119,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2176,7 +2176,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2233,7 +2233,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2290,7 +2290,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2369,7 +2369,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2448,7 +2448,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2527,7 +2527,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2606,7 +2606,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2685,7 +2685,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2764,7 +2764,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2843,7 +2843,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -2922,7 +2922,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3001,7 +3001,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3080,7 +3080,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3159,7 +3159,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3243,7 +3243,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3322,7 +3322,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3401,7 +3401,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3480,7 +3480,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3559,7 +3559,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3638,7 +3638,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Sieu Cap",
+      "name": "Đậu Đậu Siêu Cấp",
       "color": 1,
       "level": 1,
       "hunger": 100,
@@ -3722,7 +3722,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3801,7 +3801,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3880,7 +3880,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -3959,7 +3959,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4038,7 +4038,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4117,7 +4117,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Sieu Cap",
+      "name": "Đậu Đậu Siêu Cấp",
       "color": 1,
       "level": 1,
       "hunger": 100,
@@ -4201,7 +4201,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4280,7 +4280,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 5,
       "hunger": 100,
@@ -4364,7 +4364,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4445,7 +4445,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4524,7 +4524,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4603,7 +4603,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4682,7 +4682,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4761,7 +4761,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -4840,7 +4840,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Sieu Cap",
+      "name": "Đậu Đậu Siêu Cấp",
       "color": 1,
       "level": 1,
       "hunger": 100,
@@ -4924,7 +4924,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5003,7 +5003,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5082,7 +5082,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5161,7 +5161,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5240,7 +5240,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5319,7 +5319,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5398,7 +5398,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5477,7 +5477,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5556,7 +5556,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5635,7 +5635,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5714,7 +5714,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -5793,7 +5793,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Sieu Cap",
+      "name": "Đậu Đậu Siêu Cấp",
       "color": 1,
       "level": 1,
       "hunger": 100,
@@ -5877,7 +5877,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -6198,7 +6198,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -6316,7 +6316,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -6434,7 +6434,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -6552,7 +6552,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -6670,7 +6670,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -6788,7 +6788,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Sieu Cap",
+      "name": "Đậu Đậu Siêu Cấp",
       "color": 1,
       "level": 1,
       "hunger": 100,
@@ -6911,7 +6911,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -8980,7 +8980,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -9099,7 +9099,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -9218,7 +9218,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -9337,7 +9337,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -9456,7 +9456,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -9575,7 +9575,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Sieu Cap",
+      "name": "Đậu Đậu Siêu Cấp",
       "color": 1,
       "level": 1,
       "hunger": 100,
@@ -9699,7 +9699,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -10672,7 +10672,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -10791,7 +10791,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -10910,7 +10910,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -11029,7 +11029,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -11127,10 +11127,10 @@
     "color": 1,
     "vip_flags": 33,
     "vip_level": 19,
-    "vip_month": 892,
-    "vip_value": 1000099,
-    "vip_end": 4105036800,
-    "gold_beans": 1000099,
+    "vip_month": 120,
+    "vip_value": 999999,
+    "vip_end": 4102444800,
+    "gold_beans": 1100099,
     "element_knight_type": 1,
     "element_knight_talent": 40,
     "is_admin": true,
@@ -11179,7 +11179,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "LaMu Thần Thoại",
+      "name": "Đậu Đậu Thần Thoại",
       "color": 7,
       "level": 5,
       "hunger": 100,
@@ -11325,7 +11325,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -11444,7 +11444,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -11563,7 +11563,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -11682,7 +11682,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -11801,7 +11801,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -11892,11 +11892,11 @@
     "birthday": "2000-01-01",
     "color": 1,
     "vip_flags": 33,
-    "vip_level": 13,
-    "vip_month": 894,
-    "vip_value": 11500,
-    "vip_end": 4110220800,
-    "gold_beans": 2500,
+    "vip_level": 14,
+    "vip_month": 897,
+    "vip_value": 13000,
+    "vip_end": 4117996800,
+    "gold_beans": 4000,
     "element_knight_type": 0,
     "element_knight_talent": 1,
     "is_admin": false,
@@ -11920,7 +11920,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -12039,7 +12039,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -12158,7 +12158,7 @@
     },
     "lamu": {
       "id": 1,
-      "name": "Bé LaMu",
+      "name": "Bé Đậu Đậu",
       "color": 1,
       "level": 1,
       "hunger": 80,
@@ -12242,5 +12242,243 @@
     "nickname": "Moly Viet",
     "password_hash": "24f058a8e307d797d7587d26b2539ca2",
     "created_at": "2026-10-14T06:41:35.515863+00:00"
+  },
+  "43544812": {
+    "username": "moly_363136",
+    "fullname": "Moly Viet",
+    "birthday": "2010-01-01",
+    "color": 1,
+    "vip_flags": 0,
+    "vip_level": 0,
+    "vip_month": 0,
+    "vip_value": 0,
+    "vip_end": 0,
+    "gold_beans": 1000,
+    "element_knight_type": 0,
+    "element_knight_talent": 1,
+    "is_admin": false,
+    "google_id": null,
+    "email": null,
+    "tasks": {
+      "1": {
+        "status": 1,
+        "step": 1
+      }
+    },
+    "professions": {
+      "police": {
+        "level": 1,
+        "exp": 0
+      },
+      "guide": {
+        "level": 1,
+        "exp": 0
+      }
+    },
+    "lamu": {
+      "id": 1,
+      "name": "Bé Đậu Đậu",
+      "color": 1,
+      "level": 1,
+      "hunger": 80,
+      "cleanliness": 80,
+      "mood": 80,
+      "skills": [
+        1
+      ],
+      "is_super_lamu": false,
+      "following": true,
+      "super_type": "classic",
+      "cloth_id": 0,
+      "species_progress": {
+        "classic": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": true
+        },
+        "dark": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "cosmic": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "mythic": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "ice": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "flame": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        }
+      }
+    },
+    "home": {
+      "level": 1,
+      "cleanliness": 100,
+      "style_item": 160001,
+      "decorations": [],
+      "homeland_bg": 1230001,
+      "homeland_decorations": [],
+      "farm_crops": [
+        {
+          "number": 1,
+          "itemid": 1230001,
+          "x": 200,
+          "y": 200,
+          "value": 50,
+          "sickflag": 0,
+          "fruit_num": 5,
+          "fruit_status": 3,
+          "mature_time": 0,
+          "diff_mature_time": 0,
+          "cur_grow_rate": 100,
+          "earth": 100,
+          "pollinate_num": 0,
+          "thiefable": 0
+        }
+      ]
+    },
+    "clothes": [],
+    "inventory": {},
+    "user_id": 43544812,
+    "nickname": "Moly Viet",
+    "password_hash": "24f058a8e307d797d7587d26b2539ca2",
+    "created_at": "2026-10-15T04:07:11.213306+00:00"
+  },
+  "21776746": {
+    "username": "moly_498971",
+    "fullname": "Moly Viet",
+    "birthday": "2010-01-01",
+    "color": 1,
+    "vip_flags": 0,
+    "vip_level": 0,
+    "vip_month": 0,
+    "vip_value": 0,
+    "vip_end": 0,
+    "gold_beans": 1000,
+    "element_knight_type": 0,
+    "element_knight_talent": 1,
+    "is_admin": false,
+    "google_id": null,
+    "email": null,
+    "tasks": {
+      "1": {
+        "status": 1,
+        "step": 1
+      }
+    },
+    "professions": {
+      "police": {
+        "level": 1,
+        "exp": 0
+      },
+      "guide": {
+        "level": 1,
+        "exp": 0
+      }
+    },
+    "lamu": {
+      "id": 1,
+      "name": "Bé LaMu",
+      "color": 1,
+      "level": 1,
+      "hunger": 80,
+      "cleanliness": 80,
+      "mood": 80,
+      "skills": [
+        1
+      ],
+      "is_super_lamu": false,
+      "following": true,
+      "super_type": "classic",
+      "cloth_id": 0,
+      "species_progress": {
+        "classic": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": true
+        },
+        "dark": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "cosmic": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "mythic": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "ice": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        },
+        "flame": {
+          "level": 1,
+          "exp": 0,
+          "max_exp": 100,
+          "unlocked": false
+        }
+      }
+    },
+    "home": {
+      "level": 1,
+      "cleanliness": 100,
+      "style_item": 160001,
+      "decorations": [],
+      "homeland_bg": 1230001,
+      "homeland_decorations": [],
+      "farm_crops": [
+        {
+          "number": 1,
+          "itemid": 1230001,
+          "x": 200,
+          "y": 200,
+          "value": 50,
+          "sickflag": 0,
+          "fruit_num": 5,
+          "fruit_status": 3,
+          "mature_time": 0,
+          "diff_mature_time": 0,
+          "cur_grow_rate": 100,
+          "earth": 100,
+          "pollinate_num": 0,
+          "thiefable": 0
+        }
+      ]
+    },
+    "clothes": [],
+    "inventory": {},
+    "user_id": 21776746,
+    "nickname": "Moly Viet",
+    "password_hash": "24f058a8e307d797d7587d26b2539ca2",
+    "created_at": "2026-10-15T04:14:11.097415+00:00"
   }
 }

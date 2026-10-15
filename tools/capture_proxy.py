@@ -43,12 +43,15 @@ HOP_BY_HOP = {
 
 BLOCKED_EXTERNAL_HOSTS = {
     "newmisc.taomee.com", "g.cn.miaozhen.com", "view.admaster.com.cn",
-    "pay.61.com", "pay.51mole.com", "service.61.com", "bbs.61.com",
-    "event.61.com", "game.61.com", "kf.61.com",
     "dc.61.com", "v.61.com", "baike.baidu.com", "news.61.com",
-    "v.taomee.com", "home.51mole.com", "seer.61.com", "imole.61.com",
-    "haohaoting.61.com", "114.61.com", "e.61.com", "vip.61.com",
+    "v.taomee.com", "seer.61.com", "imole.61.com",
+    "haohaoting.61.com", "114.61.com", "e.61.com",
     "ad.61.com", "stat.61.com", "track.61.com", "log.61.com",
+}
+REDIRECT_SERVICE_HOSTS = {
+    "pay.61.com", "pay.51mole.com", "account.61.com", "account-httpd.61.com",
+    "reg.51mole.com", "reg.61.com", "service.61.com", "bbs.61.com",
+    "event.61.com", "game.61.com", "vip.61.com", "kf.61.com", "home.51mole.com",
 }
 ACCOUNT_SERVICE_HOSTS = {
     "account-httpd.61.com", "account.61.com", "reg.51mole.com",
@@ -1324,6 +1327,12 @@ class ProxyHandler(BaseHTTPRequestHandler):
                     return
                 self.send_error(404, "Ad banner not found")
                 return
+            elif parsed.path in {"/recharge", "/nap-the", "/nap-tien"}:
+                self.send_response(302, "Found")
+                self.send_header("Location", "/#recharge")
+                self.send_header("Connection", "close")
+                self.end_headers()
+                return
             elif parsed.path == "/vip":
                 html = """<!DOCTYPE html>
 <html>
@@ -1372,6 +1381,27 @@ class ProxyHandler(BaseHTTPRequestHandler):
             port = int(port_text) if separator else 80
             target = self.path
             absolute_url = f"http://{host_header}{target}"
+
+        if host.lower() in REDIRECT_SERVICE_HOSTS:
+            path_lower = parsed.path.lower()
+            if "pay" in host.lower() or "vip" in host.lower() or "recharge" in path_lower:
+                dest = "http://127.0.0.1:18080/#recharge"
+            elif "register" in path_lower or "reg" in host.lower():
+                dest = "http://127.0.0.1:18080/#register"
+            elif "change" in path_lower or "pwd" in path_lower:
+                dest = "http://127.0.0.1:18080/play.html#profile"
+            elif "forget" in path_lower or "find" in path_lower:
+                dest = "http://127.0.0.1:18080/#forgot"
+            elif "protect" in path_lower or "security" in path_lower:
+                dest = "http://127.0.0.1:18080/#security"
+            else:
+                dest = "http://127.0.0.1:18080/"
+            self.send_response(302, "Found")
+            self.send_header("Location", dest)
+            self.send_header("Connection", "close")
+            self.end_headers()
+            self.close_connection = True
+            return
 
         if host.lower() in BLOCKED_EXTERNAL_HOSTS:
             response_headers = [
@@ -1434,7 +1464,11 @@ class ProxyHandler(BaseHTTPRequestHandler):
                     ("Content-Type", content_type),
                     ("X-Moly-Source", source_name),
                 ]
-                if local_file.suffix.lower() in {".swf", ".png", ".jpg", ".jpeg", ".mp3", ".wasm"}:
+                if source_name == "override":
+                    response_headers.append(("Cache-Control", "no-cache, no-store, must-revalidate"))
+                    response_headers.append(("Pragma", "no-cache"))
+                    response_headers.append(("Expires", "0"))
+                elif local_file.suffix.lower() in {".swf", ".png", ".jpg", ".jpeg", ".mp3", ".wasm"}:
                     response_headers.append(("Cache-Control", "public, max-age=604800, immutable"))
                 elif local_file.suffix.lower() in {".xml", ".json"}:
                     response_headers.append(("Cache-Control", "public, max-age=3600"))

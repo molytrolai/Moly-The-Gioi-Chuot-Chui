@@ -136,13 +136,13 @@
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85);
       display: none; align-items: center; justify-content: center; z-index: 100;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px); cursor: pointer;
     }
     .modal-overlay.open { display: flex; }
     .modal {
       background: var(--card-bg); border: 1px solid var(--card-border);
       border-radius: 14px; padding: 28px; width: 100%; max-width: 500px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6); cursor: default;
     }
     .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
     .modal-close { background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
@@ -152,8 +152,9 @@
 <body>
 
   <!-- Login Modal (2-Factor: Password + PIN) -->
-  <div id="login-overlay">
-    <div class="login-box" style="max-width: 440px;">
+  <div id="login-overlay" onclick="if(event.target===this){window.location.href='/';}" style="cursor: pointer;">
+    <div class="login-box" style="max-width: 440px; position: relative; cursor: default;">
+      <a href="/" class="modal-close" style="position: absolute; top: 14px; right: 16px; text-decoration: none; color: #94a3b8; font-size: 24px; line-height: 1;" title="Trở lại Trang Chủ (Thoát)">&times;</a>
       <img src="/assets/logo-square.png" alt="Moly Viet Logo">
       <h2>Trung Tâm Quản Trị Moly</h2>
       <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
@@ -182,6 +183,10 @@
 
         <button type="submit" class="btn btn-primary" id="btn-submit-login">Xác Thực &amp; Vào Bảng Quản Trị</button>
         <div id="login-error" style="color: #ef4444; font-size: 13px; margin-top: 14px; display: none;"></div>
+
+        <div style="text-align: center; margin-top: 16px; padding-top: 10px; border-top: 1px solid #334155;">
+          <a href="/" class="btn btn-sm" style="background: #334155; color: #fff; text-decoration: none; padding: 6px 14px; font-size: 12px; border-radius: 6px; display: inline-block;">← Trở Lại Trang Chủ</a>
+        </div>
       </form>
 
       <!-- View 2: Form Khôi Phục & Đặt Lại Thông Tin Quản Trị -->
@@ -285,7 +290,7 @@
                 <th>Cấp VIP</th>
                 <th>Đậu Vàng</th>
                 <th>Hiệp Sĩ SMC</th>
-                <th>Bé LaMu</th>
+                <th>Bé Đậu Đậu</th>
                 <th>Thao Tác Nhanh</th>
               </tr>
             </thead>
@@ -448,7 +453,7 @@
                 <th>Mô Tả</th>
                 <th>Đậu Vàng</th>
                 <th>Cấp VIP</th>
-                <th>Siêu Lamu</th>
+                <th>Đậu Đậu Siêu Cấp</th>
                 <th>Đã Dùng / Tối Đa</th>
                 <th>Trạng Thái</th>
                 <th>Thao Tác</th>
@@ -496,7 +501,7 @@
   </div>
 
   <!-- Quick Action Modal -->
-  <div id="action-modal" class="modal-overlay">
+  <div id="action-modal" class="modal-overlay" onclick="if(event.target===this){closeModal();}">
     <div class="modal">
       <div class="modal-header">
         <h3 id="modal-title" style="color: #fff;">Điều Chỉnh Cư Dân</h3>
@@ -511,7 +516,7 @@
   </div>
 
   <!-- Modal Đổi Mật Khẩu & Mã PIN Admin -->
-  <div id="pwd-modal" class="modal-overlay">
+  <div id="pwd-modal" class="modal-overlay" onclick="if(event.target===this){closePasswordModal();}">
     <div class="modal" style="max-width: 480px;">
       <div class="modal-header">
         <h3 style="color: #fff;">🔒 Bảo Mật Quản Trị Viên</h3>
@@ -769,14 +774,14 @@
                 const sName = speciesMap[u.lamu.super_type] || 'Siêu Cấp';
                 return `<span class="badge" style="background: rgba(168, 85, 247, 0.25); color: #c084fc; font-weight: bold;">⭐ ${sName} (Lv.${u.lamu.level || 1})</span>`;
               }
-              return `<span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #93c5fd;">Bé Lamu</span>`;
+              return `<span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #93c5fd;">Bé Đậu Đậu</span>`;
             })()}
           </td>
           <td style="display: flex; gap: 4px; flex-wrap: wrap;">
             <button class="btn btn-sm btn-warning" onclick="quickAddBeans(${u.user_id})" title="+500 Đậu Vàng">+500 Đậu</button>
             <button class="btn btn-sm btn-success" onclick="quickAddMonthVIP(${u.user_id})" title="Cấp 1 Tháng Thẻ VIP (+100 điểm thăng cấp)">+1T VIP</button>
             <button class="btn btn-sm btn-info" onclick="quickSetVipLevel(${u.user_id})" title="Thiết lập cấp VIP (1 đến 19)">Cấp VIP</button>
-            <button class="btn btn-sm" style="background: #8b5cf6; color: white;" onclick="quickSetSuperLamu(${u.user_id})" title="Cấp Đậu Đậu Siêu Cấp theo chủng loại">🐾 Siêu Lamu</button>
+            <button class="btn btn-sm" style="background: #8b5cf6; color: white;" onclick="quickSetSuperLamu(${u.user_id})" title="Cấp Đậu Đậu Siêu Cấp theo chủng loại">🐾 Đậu Đậu Siêu Cấp</button>
             <button class="btn btn-sm btn-primary" onclick="quickMaxSMC(${u.user_id})" title="Cấp Full SMC">SMC</button>
           </td>
         </tr>
@@ -954,7 +959,7 @@
                   const sName = speciesMap[gc.super_lamu_species] || gc.super_lamu_species;
                   return `<span style="color: #c084fc; font-weight: bold;">🐾 ${sName}</span>`;
                 }
-                return gc.super_lamu ? '<span style="color: #a78bfa; font-weight: bold;">⭐ Siêu LaMu</span>' : "Không";
+                return gc.super_lamu ? '<span style="color: #a78bfa; font-weight: bold;">⭐ Đậu Đậu Siêu Cấp</span>' : "Không";
               })()}
             </td>
             <td><strong>${used}</strong> / ${max}</td>
