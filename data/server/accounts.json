@@ -201,11 +201,17 @@
       "decorations": [],
       "farm_crops": []
     },
-    "clothes": [],
-    "inventory": {},
+    "clothes": [
+      12005,
+      12001
+    ],
+    "inventory": {
+      "18001": 5
+    },
     "username": "moly_10000002",
     "fullname": "Moly Test",
-    "birthday": "2010-01-01"
+    "birthday": "2010-01-01",
+    "is_banned": false
   },
   "10000003": {
     "color": 1,
@@ -12002,7 +12008,7 @@
     "inventory": {},
     "user_id": 81870789,
     "nickname": "Chuột Thử Nghiệm",
-    "password_hash": "9df7a7314e3884b26222e2ccd834aa24",
+    "password_hash": "64b859f111d7c2cb389fa4e00976de56",
     "created_at": "2026-10-14T05:02:24.079694+00:00"
   },
   "35617530": {

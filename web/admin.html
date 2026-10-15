@@ -497,6 +497,48 @@
           <p>• <strong>Hỗ trợ Tri-Play:</strong> Web Browser Ruffle, Android APK (13MB), Desktop Portable (150MB)</p>
         </div>
       </div>
+
+      <!-- Card: Sao Lưu Dữ Liệu 1-Chạm -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📦 Sao Lưu Dữ Liệu 1-Chạm (1-Click Database Backup)</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">
+          Tải về ngay lập tức toàn bộ cơ sở dữ liệu hệ thống Moly (tài khoản cư dân, đơn nạp tiền, giftcode, cấu hình QR, lịch sử giao dịch) dưới dạng file nén ZIP để lưu trữ an toàn trên máy tính cá nhân phòng ngừa rủi ro.
+        </p>
+        <button class="btn btn-primary" onclick="downloadDatabaseBackup()" style="max-width: 280px; gap: 8px;">
+          <span>📥 Tải Bản Sao Lưu (.ZIP)</span>
+        </button>
+      </div>
+
+      <!-- Card: Cấu Hình Gmail OTP -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📧 Cấu Hình Gửi Mã OTP Qua Gmail App (Mật Khẩu Ứng Dụng 16 Ký Tự)</span>
+          <button class="btn btn-sm btn-primary" onclick="loadEmailConfig()">Làm Mới Cấu Hình</button>
+        </div>
+        <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 16px;">
+          Hệ thống tự động gửi email chứa mã OTP 6 số qua giao thức bảo mật SMTP SSL (cổng 465) của Google. Bạn cần bật Bảo Mật 2 Lớp trên tài khoản Google và tạo một <strong>Mật khẩu ứng dụng 16 ký tự</strong> tại trang <em>myaccount.google.com/apppasswords</em>.
+        </p>
+        <form onsubmit="handleSaveEmailConfig(event)" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; align-items: end;">
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>Địa Chỉ Gmail Gửi Thư</label>
+            <input type="email" id="admin-gmail-user" placeholder="VD: yourgame@gmail.com" required>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>Mật Khẩu Ứng Dụng (16 Ký Tự)</label>
+            <input type="password" id="admin-gmail-app-pwd" placeholder="16 ký tự do Google cấp..." required>
+          </div>
+          <div class="input-group" style="margin-bottom: 0;">
+            <label>Tên Người Gửi Hiển Thị Trong Hòm Thư</label>
+            <input type="text" id="admin-gmail-sender" placeholder="VD: Moly - Thế Giới Chuột Chũi VN" required>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-warning" id="btn-save-email-cfg">💾 Lưu Cấu Hình Gmail</button>
+          </div>
+        </form>
+        <div id="email-cfg-msg" style="font-size: 13px; margin-top: 10px; display: none;"></div>
+      </div>
     </div>
   </div>
 
@@ -706,6 +748,7 @@
         document.getElementById("tab-system").style.display = tab === "tab-system" ? "block" : "none";
         if (tab === "tab-giftcodes") loadGiftcodes();
         if (tab === "tab-recharge") { loadAdminPaymentConfig(); loadRechargeOrders(); }
+        if (tab === "tab-system") loadEmailConfig();
       });
     });
 
@@ -750,7 +793,10 @@
       }
       tbody.innerHTML = users.map(u => `
         <tr>
-          <td><strong style="color: #60a5fa;">${u.user_id}</strong></td>
+          <td>
+            <strong style="color: #60a5fa;">${u.user_id}</strong>
+            ${u.is_banned ? '<br><span class="badge" style="background: rgba(239, 68, 68, 0.25); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); font-size: 10px; margin-top: 3px;">🔒 ĐÃ KHÓA</span>' : ''}
+          </td>
           <td>${u.nickname || "Moly"}</td>
           <td>
             ${u.is_admin ? '<span class="badge badge-admin">ADMIN (VIP 19)</span>' :
@@ -783,6 +829,10 @@
             <button class="btn btn-sm btn-info" onclick="quickSetVipLevel(${u.user_id})" title="Thiết lập cấp VIP (1 đến 19)">Cấp VIP</button>
             <button class="btn btn-sm" style="background: #8b5cf6; color: white;" onclick="quickSetSuperLamu(${u.user_id})" title="Cấp Đậu Đậu Siêu Cấp theo chủng loại">🐾 Đậu Đậu Siêu Cấp</button>
             <button class="btn btn-sm btn-primary" onclick="quickMaxSMC(${u.user_id})" title="Cấp Full SMC">SMC</button>
+            <button class="btn btn-sm" style="background: #ec4899; color: white;" onclick="quickGiveItem(${u.user_id})" title="Tặng vật phẩm / trang phục túi đồ">🎁 Tặng Đồ</button>
+            ${u.is_banned ?
+              `<button class="btn btn-sm btn-success" onclick="quickUnban(${u.user_id})" title="Mở khóa tài khoản">🔓 Mở Khóa</button>` :
+              `<button class="btn btn-sm btn-danger" onclick="quickBan(${u.user_id})" title="Khóa tài khoản này">🔒 Khóa Nick</button>`}
           </td>
         </tr>
       `).join("");
@@ -889,7 +939,124 @@
       loadUsers();
     }
 
-    // Broadcast
+    async function quickGiveItem(uid) {
+      const itemIdStr = prompt(`Nhập ID Trang Phục hoặc Vật Phẩm muốn tặng cư dân ${uid}:\n(Ví dụ: 12001 - Mũ kỵ sĩ, 13002 - Áo giáp):`);
+      if (!itemIdStr) return;
+      const itemId = parseInt(itemIdStr, 10);
+      if (isNaN(itemId) || itemId <= 0) {
+        alert("ID không hợp lệ! Phải là số dương.");
+        return;
+      }
+      const countStr = prompt(`Nhập số lượng muốn tặng:`, "1");
+      const count = parseInt(countStr, 10) || 1;
+      const isCloth = confirm(`Vật phẩm này có phải là Trang Phục mặc lên người không?\n- Bấm OK (Đồng ý) nếu là Trang Phục / Quần Áo\n- Bấm Cancel (Hủy) nếu là Vật Phẩm Túi Đồ / Đạo Cụ`);
+      const resp = await fetch("/api/admin/user/give_item", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid, item_id: itemId, count: count, is_cloth: isCloth })
+      });
+      const res = await resp.json();
+      alert(res.message);
+      loadUsers();
+    }
+
+    async function quickBan(uid) {
+      const reason = prompt(`Nhập lý do khóa tài khoản ${uid}:`, "Vi phạm điều lệ vương quốc Moly");
+      if (!reason) return;
+      const resp = await fetch("/api/admin/user/ban", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid, reason: reason })
+      });
+      const res = await resp.json();
+      alert(res.message);
+      loadUsers();
+    }
+
+    async function quickUnban(uid) {
+      if (!confirm(`Bạn có chắc chắn muốn mở khóa tài khoản ${uid}?`)) return;
+      const resp = await fetch("/api/admin/user/unban", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+        body: JSON.stringify({ user_id: uid })
+      });
+      const res = await resp.json();
+      alert(res.message);
+      loadUsers();
+    }
+
+    async function downloadDatabaseBackup() {
+      try {
+        const resp = await fetch("/api/admin/backup", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (!resp.ok) {
+          alert("Lỗi tải bản sao lưu! Vui lòng kiểm tra quyền quản trị.");
+          return;
+        }
+        const blob = await resp.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        const ts = new Date().toISOString().slice(0, 10);
+        a.download = `moly_database_backup_${ts}.zip`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      } catch (err) {
+        alert("Lỗi kết nối tải sao lưu: " + err.message);
+      }
+    }
+
+    async function loadEmailConfig() {
+      try {
+        const resp = await fetch("/api/admin/email_config", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data.config) {
+            document.getElementById("admin-gmail-user").value = data.config.gmail_user || "";
+            document.getElementById("admin-gmail-sender").value = data.config.sender_name || "Moly - Thế Giới Chuột Chũi VN";
+            if (data.config.enabled) {
+              document.getElementById("admin-gmail-app-pwd").placeholder = "•••••••••••••••• (Đã lưu mật khẩu ứng dụng)";
+            }
+          }
+        }
+      } catch (e) {
+        console.error("Email config load error", e);
+      }
+    }
+
+    async function handleSaveEmailConfig(e) {
+      e.preventDefault();
+      const u = document.getElementById("admin-gmail-user").value.trim();
+      const p = document.getElementById("admin-gmail-app-pwd").value.trim();
+      const s = document.getElementById("admin-gmail-sender").value.trim();
+      const msg = document.getElementById("email-cfg-msg");
+      const btn = document.getElementById("btn-save-email-cfg");
+      btn.disabled = true;
+      btn.textContent = "Đang lưu...";
+      try {
+        const resp = await fetch("/api/admin/email/config", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ gmail_user: u, app_password: p, sender_name: s })
+        });
+        const res = await resp.json();
+        msg.textContent = (res.ok ? "✅ " : "❌ ") + res.message;
+        msg.style.color = res.ok ? "#10b981" : "#ef4444";
+        msg.style.display = "block";
+      } catch (err) {
+        msg.textContent = "❌ Lỗi: " + err.message;
+        msg.style.color = "#ef4444";
+        msg.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "💾 Lưu Cấu Hình Gmail";
+      }
+    }
     async function sendBroadcast() {
       const msg = document.getElementById("broadcast-input").value.trim();
       if (!msg) return;

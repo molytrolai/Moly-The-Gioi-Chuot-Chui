@@ -1,0 +1,8 @@
+{
+  "gmail_user": "",
+  "app_password": "",
+  "sender_name": "Moly Vương Quốc Chuột Chũi",
+  "smtp_host": "smtp.gmail.com",
+  "smtp_port": 465,
+  "enabled": false
+}

@@ -1491,6 +1491,129 @@ class AccountManager:
         except Exception:
             pass
 
+    def ban_account(self, user_id: Any, reason: str = "Vi phạm điều lệ cư dân Moly") -> tuple[bool, str]:
+        with self._lock:
+            self._ensure_fresh()
+            key = str(user_id).strip()
+            if key in ("0", "00000000"):
+                return False, "Không thể khóa tài khoản Tổng Quản Trị Tối Cao!"
+            if key not in self._accounts:
+                return False, f"Không tìm thấy cư dân ID {user_id}!"
+            acc = self._accounts[key]
+            acc["is_banned"] = True
+            acc["ban_reason"] = reason or "Vi phạm điều lệ cư dân Moly"
+            acc["banned_at"] = datetime.now(timezone.utc).isoformat()
+            self._save()
+            self.log_audit("BAN_USER", 0, {"target_id": key, "reason": acc["ban_reason"]})
+            return True, f"Đã khóa tài khoản #{key} thành công!"
+
+    def unban_account(self, user_id: Any) -> tuple[bool, str]:
+        with self._lock:
+            self._ensure_fresh()
+            key = str(user_id).strip()
+            if key not in self._accounts:
+                return False, f"Không tìm thấy cư dân ID {user_id}!"
+            acc = self._accounts[key]
+            acc["is_banned"] = False
+            acc.pop("ban_reason", None)
+            acc.pop("banned_at", None)
+            self._save()
+            self.log_audit("UNBAN_USER", 0, {"target_id": key})
+            return True, f"Đã mở khóa cho tài khoản #{key} thành công!"
+
+    def is_account_banned(self, user_id: Any) -> tuple[bool, str]:
+        with self._lock:
+            self._ensure_fresh()
+            key = str(user_id).strip()
+            acc = self._accounts.get(key)
+            if not acc:
+                return False, ""
+            if acc.get("is_banned", False):
+                return True, acc.get("ban_reason", "Vi phạm điều lệ cư dân Moly")
+            return False, ""
+
+    def give_item(self, user_id: Any, item_id: int, count: int = 1, is_cloth: bool = True) -> tuple[bool, str]:
+        with self._lock:
+            self._ensure_fresh()
+            key = str(user_id).strip()
+            if key in ("0", "00000000"):
+                key = "0"
+            if key not in self._accounts:
+                return False, f"Không tìm thấy cư dân ID {user_id}!"
+            acc = self._accounts[key]
+            item_id = int(item_id)
+            count = max(1, int(count))
+
+            if is_cloth:
+                clothes = acc.setdefault("clothes", [])
+                if item_id not in clothes:
+                    clothes.append(item_id)
+                msg = f"Đã thêm trang phục #{item_id} vào tủ đồ của cư dân ID {key}!"
+            else:
+                inv = acc.setdefault("inventory", {})
+                current = int(inv.get(str(item_id), 0))
+                inv[str(item_id)] = current + count
+                msg = f"Đã cộng thêm x{count} vật phẩm #{item_id} vào túi đồ của cư dân ID {key}!"
+
+            self._save()
+            self.log_audit("GIVE_ITEM", 0, {"target_id": key, "item_id": item_id, "count": count, "is_cloth": is_cloth})
+            return True, msg
+
+    def get_leaderboard(self, limit: int = 10) -> dict[str, Any]:
+        with self._lock:
+            self._ensure_fresh()
+            all_users = list(self._accounts.values())
+
+        def clean_user(u: dict[str, Any]) -> dict[str, Any]:
+            uid = int(u["user_id"])
+            disp = "00000000" if uid == 0 else str(uid)
+            lamu = u.get("lamu") or {}
+            species = (lamu.get("current_species") or {}).get("name") or lamu.get("super_type") or "Đậu Đậu"
+            return {
+                "user_id": uid,
+                "display_id": disp,
+                "nickname": u.get("fullname") or u.get("nickname") or f"Cư Dân {disp}",
+                "vip_level": int(u.get("vip_level", 0)),
+                "is_vip": int(u.get("vip_level", 0)) > 0 or bool(lamu.get("is_super_lamu")),
+                "gold_beans": int(u.get("gold_beans", 0)),
+                "lamu_name": lamu.get("name") or "Bé Đậu Đậu",
+                "lamu_level": int(lamu.get("level", 1)),
+                "lamu_species": species,
+                "smc_count": sum(1 for p in (u.get("professions") or {}).values() if (p.get("level") or 0) >= 1)
+            }
+
+        sorted_wealth = sorted(all_users, key=lambda x: int(x.get("gold_beans", 0)), reverse=True)
+        top_wealth = [clean_user(u) for u in sorted_wealth[:limit]]
+
+        sorted_vip = sorted(all_users, key=lambda x: (int(x.get("vip_level", 0)), int(x.get("vip_value", 0))), reverse=True)
+        top_vip = [clean_user(u) for u in sorted_vip[:limit]]
+
+        def smc_score(u):
+            profs = u.get("professions") or {}
+            return sum((p.get("level", 0) * 1000 + p.get("exp", 0)) for p in profs.values())
+        sorted_smc = sorted(all_users, key=smc_score, reverse=True)
+        top_smc = [clean_user(u) for u in sorted_smc[:limit]]
+
+        def lamu_score(u):
+            lamu = u.get("lamu") or {}
+            lvl = int(lamu.get("level", 1))
+            is_super = 10 if lamu.get("is_super_lamu") else 0
+            return lvl + is_super
+        sorted_lamu = sorted(all_users, key=lamu_score, reverse=True)
+        top_lamu = [clean_user(u) for u in sorted_lamu[:limit]]
+
+        return {
+            "beans": top_wealth,
+            "vip": top_vip,
+            "smc": top_smc,
+            "lamu": top_lamu,
+            "top_wealth": top_wealth,
+            "top_vip": top_vip,
+            "top_smc": top_smc,
+            "top_lamu": top_lamu,
+            "updated_at": datetime.now(timezone.utc).isoformat()
+        }
+
 
 GIFTCODES_PATH = DATA_DIR / "giftcodes.json"
 
@@ -2118,9 +2241,205 @@ class RechargeManager:
             return True, f"Đã từ chối đơn #{order_id}.", order
 
 
+EMAIL_CONFIG_PATH = DATA_DIR / "email_config.json"
+
+
+class OtpManager:
+    """Handles 6-digit OTP codes for password recovery and verification.
+    
+    Supports real dispatch via Gmail SMTP using Gmail App Password,
+    or falls back to mock/simulation mode when credentials are not configured.
+    """
+    def __init__(self, account_mgr: AccountManager, config_path: Path = EMAIL_CONFIG_PATH) -> None:
+        self.account_mgr = account_mgr
+        self.config_path = config_path
+        self._otps: dict[str, dict[str, Any]] = {}
+        self._cooldowns: dict[str, float] = {}
+        self._lock = threading.Lock()
+        self._load_config()
+
+    def _load_config(self) -> dict[str, Any]:
+        cfg = {
+            "gmail_user": os.environ.get("GMAIL_USER", ""),
+            "app_password": os.environ.get("GMAIL_APP_PASSWORD", ""),
+            "sender_name": "Moly - Thế Giới Chuột Chũi VN",
+            "smtp_host": "smtp.gmail.com",
+            "smtp_port": 465,
+            "enabled": True if os.environ.get("GMAIL_USER") and os.environ.get("GMAIL_APP_PASSWORD") else False,
+        }
+        if self.config_path.is_file():
+            try:
+                data = json.loads(self.config_path.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    cfg.update(data)
+            except Exception:
+                pass
+        self._config = cfg
+        return cfg
+
+    def get_config(self) -> dict[str, Any]:
+        with self._lock:
+            cfg = dict(self._config)
+            pwd = cfg.get("app_password", "")
+            cfg["has_app_password"] = bool(pwd)
+            cfg["app_password_masked"] = ("*" * (len(pwd) - 4) + pwd[-4:]) if len(pwd) >= 4 else ("*" * len(pwd))
+            cfg.pop("app_password", None)
+            return cfg
+
+    def update_config(self, gmail_user: str, app_password: str, sender_name: str = "Moly - Thế Giới Chuột Chũi VN") -> bool:
+        with self._lock:
+            self._config["gmail_user"] = gmail_user.strip()
+            if app_password.strip():
+                self._config["app_password"] = app_password.strip()
+            self._config["sender_name"] = sender_name.strip()
+            self._config["enabled"] = bool(self._config["gmail_user"] and self._config["app_password"])
+            self.config_path.parent.mkdir(parents=True, exist_ok=True)
+            self.config_path.write_text(json.dumps(self._config, ensure_ascii=False, indent=2), encoding="utf-8")
+            return True
+
+    def request_otp(self, identifier: str, ip: str = "127.0.0.1") -> tuple[bool, str, dict[str, Any]]:
+        with self._lock:
+            acc = self.account_mgr.get_account_by_identifier(identifier)
+            if not acc:
+                return False, "Không tìm thấy tài khoản với thông tin đã cung cấp!", {}
+
+            email = str(acc.get("email") or "").strip().lower()
+            if not email or "@" not in email:
+                return False, "Tài khoản này chưa đăng ký địa chỉ Email bảo mật! Vui lòng liên hệ Admin để được hỗ trợ.", {}
+
+            now = time.time()
+            last_req = self._cooldowns.get(email, 0)
+            if now - last_req < 60:
+                wait_sec = int(60 - (now - last_req))
+                return False, f"Vui lòng đợi {wait_sec} giây trước khi yêu cầu mã OTP mới!", {}
+
+            import secrets
+            otp_code = f"{secrets.randbelow(900000) + 100000}"
+            expires = now + 300  # 5 minutes
+
+            uid = int(acc["user_id"])
+            self._otps[str(uid)] = {
+                "code": otp_code,
+                "email": email,
+                "user_id": uid,
+                "expires": expires,
+                "attempts": 0,
+                "ip": ip,
+            }
+            self._cooldowns[email] = now
+
+            # Mask email for display: m***@gmail.com
+            parts = email.split("@")
+            masked_name = parts[0][0] + "***" + (parts[0][-1] if len(parts[0]) > 2 else "")
+            masked_email = f"{masked_name}@{parts[1]}"
+
+            sent_ok, send_msg = self._dispatch_email(email, acc.get("nickname") or "Cư Dân", otp_code)
+
+            return True, f"Mã xác thực OTP đã được gửi đến email {masked_email}! Mã có hiệu lực trong 5 phút.", {
+                "masked_email": masked_email,
+                "user_id": uid,
+                "expires_in": 300,
+                "is_real_smtp": sent_ok and self._config.get("enabled", False),
+                "debug_otp": otp_code if not self._config.get("enabled", False) else None
+            }
+
+    def verify_otp_and_reset_password(self, user_id: Any, otp_code: str, new_password: str) -> tuple[bool, str]:
+        with self._lock:
+            key = str(user_id).strip()
+            if key in ("0", "00000000"):
+                key = "0"
+
+            record = self._otps.get(key)
+            if not record:
+                return False, "Yêu cầu OTP không tồn tại hoặc đã hết hạn! Vui lòng gửi lại yêu cầu."
+
+            now = time.time()
+            if now > record["expires"]:
+                del self._otps[key]
+                return False, "Mã OTP đã hết hạn sau 5 phút! Vui lòng bấm 'Gửi lại mã'."
+
+            record["attempts"] += 1
+            if record["attempts"] > 3:
+                del self._otps[key]
+                return False, "Bạn đã nhập sai mã OTP quá 3 lần! Mã này đã bị hủy để bảo vệ tài khoản."
+
+            clean_otp = str(otp_code).strip()
+            if clean_otp != record["code"]:
+                remain = 3 - record["attempts"]
+                return False, f"Mã OTP không chính xác! Bạn còn {remain} lần thử."
+
+            if len(new_password) < 6:
+                return False, "Mật khẩu mới phải có tối thiểu 6 ký tự!"
+
+            # OTP verified! Change password
+            del self._otps[key]
+            acc = self.account_mgr.get_account(key)
+            if not acc:
+                return False, "Không tìm thấy dữ liệu tài khoản!"
+
+            self.account_mgr.update_account(key, {"password": new_password})
+            return True, "Đặt lại mật khẩu thành công! Bây giờ bạn có thể đăng nhập bằng mật khẩu mới."
+
+    def _dispatch_email(self, to_email: str, nickname: str, otp_code: str) -> tuple[bool, str]:
+        cfg = self._config
+        if not cfg.get("enabled") or not cfg.get("gmail_user") or not cfg.get("app_password"):
+            print(f"[OTP SIMULATION] Gui OTP {otp_code} toi {to_email}")
+            return True, "Simulation mode"
+
+        try:
+            import smtplib
+            from email.mime.text import MIMEText
+            from email.mime.multipart import MIMEMultipart
+
+            msg = MIMEMultipart("alternative")
+            msg["Subject"] = f"[{otp_code}] Ma Xac Thuc Dat Lai Mat Khau - Moly The Gioi Chuot Chui"
+            msg["From"] = f"{cfg.get('sender_name', 'Moly VN')} <{cfg['gmail_user']}>"
+            msg["To"] = to_email
+
+            html = f"""
+            <div style="font-family: Arial, sans-serif; max-width: 580px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #ffffff;">
+              <div style="background: linear-gradient(135deg, #ff7e1b, #f59e0b); padding: 24px; text-align: center; color: white;">
+                <h1 style="margin: 0; font-size: 24px;">MOLY - THẾ GIỚI CHUỘT CHŨI</h1>
+                <p style="margin: 6px 0 0; font-size: 14px; opacity: 0.9;">Xác Thực Tài Khoản Cư Dân An Toàn</p>
+              </div>
+              <div style="padding: 28px; color: #1e293b;">
+                <p style="font-size: 15px;">Xin chào <strong>{nickname}</strong>,</p>
+                <p style="font-size: 14px; color: #475569; line-height: 1.6;">
+                  Hệ thống vừa nhận được yêu cầu đặt lại mật khẩu cho tài khoản của bạn. Vui lòng sử dụng mã xác thực OTP 6 số bên dưới để hoàn tất:
+                </p>
+                <div style="text-align: center; margin: 24px 0;">
+                  <div style="display: inline-block; font-size: 36px; font-weight: 800; letter-spacing: 8px; color: #ff7e1b; background: #fff7ed; padding: 14px 28px; border-radius: 10px; border: 2px dashed #ffedd5;">
+                    {otp_code}
+                  </div>
+                </div>
+                <p style="font-size: 13px; color: #64748b;">
+                  ⏰ Mã OTP này có hiệu lực trong vòng <strong>5 phút</strong>.<br>
+                  🔒 Tuyệt đối không chia sẻ mã này cho bất kỳ ai, kể cả quản trị viên!
+                </p>
+                <p style="font-size: 12px; color: #94a3b8; border-top: 1px solid #f1f5f9; padding-top: 14px; margin-top: 24px;">
+                  Nếu bạn không yêu cầu hành động này, vui lòng bỏ qua email hoặc đổi mật khẩu ngay để bảo đảm an toàn.
+                </p>
+              </div>
+            </div>
+            """
+            msg.attach(MIMEText(html, "html"))
+
+            with smtplib.SMTP_SSL(cfg.get("smtp_host", "smtp.gmail.com"), int(cfg.get("smtp_port", 465)), timeout=10) as s:
+                s.login(cfg["gmail_user"], cfg["app_password"])
+                s.send_message(msg)
+
+            print(f"[OTP GMAIL SUCCESS] Da gui ma OTP toi {to_email}")
+            return True, "Email sent successfully"
+        except Exception as e:
+            print(f"[OTP GMAIL ERROR] Loi gui email toi {to_email}: {e}")
+            return False, str(e)
+
+
 # Shared singleton instances
 accounts = AccountManager()
 google_oidc = GoogleOIDCService()
 giftcodes = GiftcodeManager(accounts)
 recharges = RechargeManager(accounts)
+otp_mgr = OtpManager(accounts)
+
 

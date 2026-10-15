@@ -499,6 +499,9 @@
     <div class="controls-area">
       <a href="/" class="btn-ctrl">🏠 Trang Chủ</a>
       <button id="nav-btn-account" class="btn-ctrl btn-ctrl-primary" onclick="openAccountModal()">👤 Tài Khoản</button>
+      <button class="btn-ctrl" style="background: #eab308; color: #000; font-weight: bold;" onclick="openLeaderboardModal()">🏆 BXH</button>
+      <button class="btn-ctrl" style="background: #3b82f6; color: #fff;" onclick="openNewspaperModal()">📰 Báo Moly</button>
+      <button class="btn-ctrl" style="background: #8b5cf6; color: #fff;" onclick="openSmcModal()">🛡️ SMC</button>
       <button class="btn-ctrl btn-ctrl-purple" onclick="openGiftcodeModal()">🎁 Giftcode</button>
       <button class="btn-ctrl btn-ctrl-pink" onclick="openSuperLamuModal()">🐾 Đậu Đậu Siêu Cấp</button>
       <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="btn-ctrl btn-ctrl-green" download="Moly Thế Giới Chuột chũi.apk">📱 Tải Android</a>
@@ -661,36 +664,90 @@
 
       <!-- Tab 3: Quên / Đặt Lại Mật Khẩu Trước Khi Đăng Nhập -->
       <div id="tab-content-forgot" style="display: none;">
-        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
-          Nhập Tên đăng nhập (hoặc Mole ID) cùng Email và Ngày sinh đã đăng ký để đặt lại mật khẩu mới:
-        </p>
-        <form onsubmit="handleResetPassword(event)">
-          <label class="modal-label">Tên Đăng Nhập hoặc ID Mole</label>
-          <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: an_moly2026 hoặc ID" required>
+        <!-- Switch Recovery Sub-tabs -->
+        <div style="display: flex; gap: 6px; margin-bottom: 12px; background: #0f172a; padding: 4px; border-radius: 8px;">
+          <button type="button" id="subtab-btn-otp" class="btn-ctrl btn-ctrl-primary" style="flex: 1; font-size: 12px; padding: 6px;" onclick="switchForgotSubtab('otp')">📧 Nhận Mã OTP Gmail</button>
+          <button type="button" id="subtab-btn-bday" class="btn-ctrl" style="flex: 1; font-size: 12px; padding: 6px; background: transparent; color: #94a3b8;" onclick="switchForgotSubtab('bday')">📅 Dùng Ngày Sinh</button>
+        </div>
 
-          <label class="modal-label">Email Đã Đăng Ký</label>
-          <input type="email" id="forgot-email" class="modal-input" placeholder="VD: annguyen@gmail.com" required>
+        <!-- Subtab 1: OTP Gmail -->
+        <div id="subtab-view-otp">
+          <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
+            Hệ thống sẽ gửi mã xác thực bí mật gồm 6 chữ số đến địa chỉ Gmail đã đăng ký của bạn.
+          </p>
 
-          <label class="modal-label">Ngày Sinh Đã Đăng Ký</label>
-          <input type="date" id="forgot-birthday" class="modal-input" required>
+          <!-- Step 1: Nhập định danh và gửi OTP -->
+          <div id="otp-step-1">
+            <label class="modal-label">Tên Đăng Nhập, Mole ID hoặc Email</label>
+            <input type="text" id="otp-identifier" class="modal-input" placeholder="VD: an_moly2026, 64298193 hoặc an@gmail.com" required>
+            
+            <div id="otp-send-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
 
-          <label class="modal-label">Mật Khẩu Mới</label>
-          <input type="password" id="forgot-new-pwd" class="modal-input" placeholder="Mật khẩu mới (tối thiểu 6 ký tự)" required minlength="6">
-
-          <label class="modal-label">Xác Nhận Mật Khẩu Mới</label>
-          <input type="password" id="forgot-new-pwd-confirm" class="modal-input" placeholder="Nhập lại mật khẩu mới..." required minlength="6">
-
-          <div id="forgot-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
-
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #94a3b8; font-size: 13px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
-            <button type="submit" id="btn-submit-forgot" class="btn-ctrl btn-ctrl-purple">Đặt Lại Mật Khẩu</button>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #94a3b8; font-size: 13px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
+              <button type="button" id="btn-send-otp" class="btn-ctrl btn-ctrl-primary" onclick="handleSendOtp()">📩 Gửi Mã OTP Đến Gmail</button>
+            </div>
           </div>
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155;">
-            <button type="button" class="btn-ctrl" style="background: #334155; color: #fff;" onclick="openLoginTab()">← Trở lại Đăng Nhập</button>
-            <button type="button" class="btn-ctrl" onclick="closeAccountModal()">✕ Đóng</button>
+
+          <!-- Step 2: Nhập OTP và Mật Khẩu Mới -->
+          <div id="otp-step-2" style="display: none;">
+            <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 12px; color: #34d399;">
+              ✅ Mã OTP 6 số đã được gửi tới: <strong id="otp-target-email">-</strong><br>
+              ⏰ Thời gian còn lại: <strong id="otp-countdown" style="color: #fde047;">05:00</strong>
+            </div>
+
+            <label class="modal-label">Mã Xác Thực OTP 6 Chữ Số</label>
+            <input type="text" id="otp-code-input" class="modal-input" placeholder="Nhập đúng 6 số trong email..." maxlength="6" pattern="[0-9]{6}" style="font-size: 16px; font-weight: bold; letter-spacing: 4px; text-align: center;" required>
+
+            <label class="modal-label">Mật Khẩu Mới</label>
+            <input type="password" id="otp-new-pwd" class="modal-input" placeholder="Mật khẩu mới (tối thiểu 6 ký tự)" minlength="6" required>
+
+            <label class="modal-label">Xác Nhận Mật Khẩu Mới</label>
+            <input type="password" id="otp-new-pwd-confirm" class="modal-input" placeholder="Nhập lại mật khẩu mới..." minlength="6" required>
+
+            <div id="otp-verify-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn-ctrl" style="background: #334155; color: #fff;" onclick="resetOtpView()">← Gửi lại mã khác</button>
+              <button type="button" id="btn-verify-otp" class="btn-ctrl btn-ctrl-green" onclick="handleVerifyOtp()">🔐 Đặt Lại Mật Khẩu</button>
+            </div>
           </div>
-        </form>
+        </div>
+
+        <!-- Subtab 2: Traditional Birthday -->
+        <div id="subtab-view-bday" style="display: none;">
+          <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
+            Nhập Tên đăng nhập (hoặc Mole ID) cùng Email và Ngày sinh đã đăng ký:
+          </p>
+          <form onsubmit="handleResetPassword(event)">
+            <label class="modal-label">Tên Đăng Nhập hoặc ID Mole</label>
+            <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: an_moly2026 hoặc ID" required>
+
+            <label class="modal-label">Email Đã Đăng Ký</label>
+            <input type="email" id="forgot-email" class="modal-input" placeholder="VD: annguyen@gmail.com" required>
+
+            <label class="modal-label">Ngày Sinh Đã Đăng Ký</label>
+            <input type="date" id="forgot-birthday" class="modal-input" required>
+
+            <label class="modal-label">Mật Khẩu Mới</label>
+            <input type="password" id="forgot-new-pwd" class="modal-input" placeholder="Mật khẩu mới (tối thiểu 6 ký tự)" required minlength="6">
+
+            <label class="modal-label">Xác Nhận Mật Khẩu Mới</label>
+            <input type="password" id="forgot-new-pwd-confirm" class="modal-input" placeholder="Nhập lại mật khẩu mới..." required minlength="6">
+
+            <div id="forgot-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #94a3b8; font-size: 13px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
+              <button type="submit" id="btn-submit-forgot" class="btn-ctrl btn-ctrl-purple">Đặt Lại Mật Khẩu</button>
+            </div>
+          </form>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155;">
+          <button type="button" class="btn-ctrl" style="background: #334155; color: #fff;" onclick="openLoginTab()">← Trở lại Đăng Nhập</button>
+          <button type="button" class="btn-ctrl" onclick="closeAccountModal()">✕ Đóng</button>
+        </div>
       </div>
 
       <!-- Tab 4: Bảng Quản Lý Hồ Sơ Cư Dân (Hiển thị khi ĐÃ đăng nhập) -->
@@ -1004,6 +1061,120 @@
     </div>
   </div>
 
+  <!-- ================= MODAL: BẢNG XẾP HẠNG CƯ DÂN ================= -->
+  <div id="modal-leaderboard" class="modal-overlay" onclick="if(event.target===this){closeLeaderboardModal();}">
+    <div class="modal-box" style="max-width: 650px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-ctrl" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeLeaderboardModal()">← Trở lại</button>
+          <h3>🏆 Bảng Vinh Danh Cư Dân Vương Quốc Moly</h3>
+        </div>
+        <button class="modal-close" onclick="closeLeaderboardModal()" title="Đóng cửa sổ (ESC)">&times;</button>
+      </div>
+      <div class="tab-btn-row">
+        <button class="tab-btn active" id="lb-tab-beans" onclick="switchLbTab('beans')">💰 Phú Hào Đậu Vàng</button>
+        <button class="tab-btn" id="lb-tab-vip" onclick="switchLbTab('vip')">👑 Cấp Bậc VIP</button>
+        <button class="tab-btn" id="lb-tab-smc" onclick="switchLbTab('smc')">🛡️ Hiệp Sĩ SMC</button>
+        <button class="tab-btn" id="lb-tab-lamu" onclick="switchLbTab('lamu')">⭐ Đậu Đậu Siêu Cấp</button>
+      </div>
+      <div style="max-height: 340px; overflow-y: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 13px; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 1px solid #334155; color: #94a3b8;">
+              <th style="padding: 8px 12px; width: 60px;">Hạng</th>
+              <th style="padding: 8px 12px; width: 110px;">ID Moly</th>
+              <th style="padding: 8px 12px;">Cư Dân</th>
+              <th style="padding: 8px 12px; text-align: right;" id="lb-val-header">Đậu Vàng</th>
+            </tr>
+          </thead>
+          <tbody id="lb-table-body">
+            <tr><td colspan="4" style="text-align: center; color: #64748b; padding: 20px;">Đang tải dữ liệu bảng xếp hạng...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; border-top: 1px solid #334155; padding-top: 10px;">
+        <span style="font-size: 11px; color: #64748b;">Dữ liệu đồng bộ trực tiếp từ máy chủ thời gian thực</span>
+        <button type="button" class="btn-ctrl" onclick="closeLeaderboardModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: THỜI BÁO MOLY ================= -->
+  <div id="modal-newspaper" class="modal-overlay" onclick="if(event.target===this){closeNewspaperModal();}">
+    <div class="modal-box" style="max-width: 680px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-ctrl" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeNewspaperModal()">← Trở lại</button>
+          <h3>📰 Thời Báo Moly - Tuần Báo Vương Quốc Chuột Chũi</h3>
+        </div>
+        <button class="modal-close" onclick="closeNewspaperModal()" title="Đóng cửa sổ (ESC)">&times;</button>
+      </div>
+      <div style="background: #fffbeb; color: #78350f; border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; border: 1px solid #fef3c7;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #b45309; padding-bottom: 6px; margin-bottom: 8px;">
+          <span style="font-weight: 800; font-size: 18px; letter-spacing: 1px; color: #92400e;">THỜI BÁO MOLY &bull; SỐ ĐẶC BIỆT 128</span>
+          <span style="font-size: 12px; font-weight: 600;">Xuất Bản: 15/10/2026</span>
+        </div>
+        <p style="font-size: 12px; line-height: 1.5; margin: 0; color: #92400e;">
+          Cơ quan ngôn luận chính thức của Tòa Thị Chính Vương Quốc Chuột Chũi. Tổng biên tập: Thị Trưởng Bồ Đào.
+        </p>
+      </div>
+      <div id="newspaper-articles-container" style="display: flex; flex-direction: column; gap: 12px; max-height: 360px; overflow-y: auto;">
+        <!-- Articles rendered dynamically -->
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; border-top: 1px solid #334155; padding-top: 10px;">
+        <span style="font-size: 11px; color: #94a3b8;">Đón đọc số mới nhất phát hành vào thứ Sáu hàng tuần</span>
+        <button type="button" class="btn-ctrl" onclick="closeNewspaperModal()">Đóng Báo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: CẨM NANG HIỆP SĨ SMC ================= -->
+  <div id="modal-smc" class="modal-overlay" onclick="if(event.target===this){closeSmcModal();}">
+    <div class="modal-box" style="max-width: 650px;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" class="btn-ctrl" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeSmcModal()">← Trở lại</button>
+          <h3>🛡️ Học Viện Nghề Nghiệp &amp; Hiệp Sĩ SMC</h3>
+        </div>
+        <button class="modal-close" onclick="closeSmcModal()" title="Đóng cửa sổ (ESC)">&times;</button>
+      </div>
+      <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
+        SMC (Super Mole Club) là câu lạc bộ những cư dân ưu tú nhất vương quốc. Gia nhập SMC để nhận quân hàm danh giá, trang phục nghề độc quyền và trợ cấp Đậu Vàng hàng tháng!
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; max-height: 360px; overflow-y: auto;">
+        <div style="background: #0f172a; border-left: 3px solid #3b82f6; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 20px; margin-bottom: 4px;">👮 Cảnh Sát Moly</div>
+          <div style="font-size: 12px; font-weight: 700; color: #60a5fa;">Đồn Cảnh Sát Lâu Đài</div>
+          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Gìn giữ an ninh vương quốc. Yêu cầu: Vượt qua bài thi bắn bia và trinh sát.</p>
+        </div>
+        <div style="background: #0f172a; border-left: 3px solid #f59e0b; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 20px; margin-bottom: 4px;">👨‍🍳 Đầu Bếp Hoàng Gia</div>
+          <div style="font-size: 12px; font-weight: 700; color: #fbbf24;">Nhà Hàng Moly</div>
+          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Chế biến các món ăn thơm ngon phục vụ cư dân. Nhận mũ bếp trưởng hoàng gia.</p>
+        </div>
+        <div style="background: #0f172a; border-left: 3px solid #10b981; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 20px; margin-bottom: 4px;">🌾 Nông Dân Chăm Chỉ</div>
+          <div style="font-size: 12px; font-weight: 700; color: #34d399;">Nông Trại Vui Vẻ</div>
+          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Trồng trọt hoa màu, thu hoạch bí đỏ khổng lồ và nuôi dưỡng thú cưng nông trại.</p>
+        </div>
+        <div style="background: #0f172a; border-left: 3px solid #ec4899; border-radius: 8px; padding: 10px;">
+          <div style="font-size: 20px; margin-bottom: 4px;">🚩 Hướng Dẫn Viên</div>
+          <div style="font-size: 12px; font-weight: 700; color: #f472b6;">Tòa Thị Chính Moly</div>
+          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Hướng dẫn các bạn nhỏ mới đến vương quốc. Nhận cờ hiệu và loa phát thanh.</p>
+        </div>
+        <div style="background: #0f172a; border-left: 3px solid #ef4444; border-radius: 8px; padding: 10px; grid-column: 1 / -1;">
+          <div style="font-size: 20px; margin-bottom: 4px;">🐉 Kỵ Sĩ Rồng Lửa Huyền Thoại</div>
+          <div style="font-size: 12px; font-weight: 700; color: #f87171;">Thành Rồng - Rừng Đen</div>
+          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Đẳng cấp cao nhất của chiến binh Moly. Thuần hóa ấp trứng rồng, cưỡi rồng bay lượn và sử dụng thương hiệp sĩ hộ quốc.</p>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; border-top: 1px solid #334155; padding-top: 10px;">
+        <span style="font-size: 11px; color: #94a3b8;">Có thể dùng chức năng Quản Trị hoặc vào game để thi thăng chức</span>
+        <button type="button" class="btn-ctrl" onclick="closeSmcModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // --- Scale Mode state (12:7 standard vs Stretch) ---
     let isStretchMode = false;
@@ -1049,6 +1220,264 @@
       document.getElementById("modal-lamu").classList.add("open");
     }
     function closeSuperLamuModal() { document.getElementById("modal-lamu").classList.remove("open"); }
+
+    // --- BẢNG XẾP HẠNG (LEADERBOARD) ---
+    let currentLbData = null;
+    let currentLbTab = "beans";
+
+    function openLeaderboardModal() {
+      document.getElementById("modal-leaderboard").classList.add("open");
+      loadLeaderboard();
+    }
+    function closeLeaderboardModal() {
+      document.getElementById("modal-leaderboard").classList.remove("open");
+    }
+    function switchLbTab(tab) {
+      currentLbTab = tab;
+      document.querySelectorAll("#modal-leaderboard .tab-btn").forEach(b => b.classList.remove("active"));
+      const btn = document.getElementById(`lb-tab-${tab}`);
+      if (btn) btn.classList.add("active");
+      
+      const header = document.getElementById("lb-val-header");
+      if (tab === "beans") header.textContent = "Đậu Vàng";
+      else if (tab === "vip") header.textContent = "Cấp VIP & Điểm";
+      else if (tab === "smc") header.textContent = "Cấp Hiệp Sĩ";
+      else if (tab === "lamu") header.textContent = "Chủng Loài";
+
+      renderLeaderboardRows();
+    }
+    async function loadLeaderboard() {
+      try {
+        const res = await fetch("/api/leaderboard?limit=10");
+        const data = await res.json();
+        if (data.ok && data.leaderboard) {
+          currentLbData = data.leaderboard;
+          renderLeaderboardRows();
+        }
+      } catch (e) {
+        console.error("Leaderboard error", e);
+      }
+    }
+    function renderLeaderboardRows() {
+      const tbody = document.getElementById("lb-table-body");
+      if (!currentLbData) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748b; padding: 20px;">Đang tải...</td></tr>`;
+        return;
+      }
+      const list = currentLbData[currentLbTab] || [];
+      if (!list.length) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; color: #64748b; padding: 20px;">Chưa có dữ liệu</td></tr>`;
+        return;
+      }
+      const medalIcons = ["🥇", "🥈", "🥉"];
+      tbody.innerHTML = list.map((item, idx) => {
+        const rankBadge = idx < 3 ? `<span style="font-size: 16px;">${medalIcons[idx]}</span>` : `<strong style="color: #94a3b8;">${idx + 1}</strong>`;
+        let valStr = "";
+        if (currentLbTab === "beans") valStr = `<strong style="color: #f59e0b;">${(item.gold_beans || 0).toLocaleString()} Đậu</strong>`;
+        else if (currentLbTab === "vip") valStr = `<span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24;">VIP ${item.vip_level || 1} (${item.vip_value || 0}đ)</span>`;
+        else if (currentLbTab === "smc") valStr = `<span style="color: #38bdf8; font-weight: bold;">Cấp ${item.knight_talent || 1}</span>`;
+        else if (currentLbTab === "lamu") {
+          const spMap = { classic: "Hoàng Kim", dark: "Hắc Ám", cosmic: "Vũ Trụ", mythic: "Thần Thoại", ice: "Băng Tuyết", flame: "Lửa Thiêng" };
+          valStr = `<span class="badge" style="background: rgba(168, 85, 247, 0.25); color: #c084fc;">⭐ ${spMap[item.species] || "Siêu Cấp"} (Lv.${item.level || 1})</span>`;
+        }
+        return `
+          <tr style="border-bottom: 1px solid rgba(51, 65, 85, 0.4);">
+            <td style="padding: 10px 12px;">${rankBadge}</td>
+            <td style="padding: 10px 12px; color: #60a5fa; font-weight: 600;">${item.display_id || item.user_id}</td>
+            <td style="padding: 10px 12px; font-weight: 600; color: #f1f5f9;">${item.nickname || "Cư Dân Moly"}</td>
+            <td style="padding: 10px 12px; text-align: right;">${valStr}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    // --- THỜI BÁO MOLY (NEWSPAPER) ---
+    function openNewspaperModal() {
+      document.getElementById("modal-newspaper").classList.add("open");
+      loadNewspaper();
+    }
+    function closeNewspaperModal() {
+      document.getElementById("modal-newspaper").classList.remove("open");
+    }
+    async function loadNewspaper() {
+      const container = document.getElementById("newspaper-articles-container");
+      try {
+        const res = await fetch("/api/newspaper/latest");
+        const data = await res.json();
+        if (data.ok && data.headlines) {
+          container.innerHTML = data.headlines.map(art => `
+            <div style="background: #0f172a; border-radius: 8px; padding: 12px; border: 1px solid #334155;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 11px; color: #f59e0b; font-weight: bold;">TIN NÓNG SỐ ${data.issue_no}</span>
+                <span style="font-size: 11px; color: #64748b;">${art.date}</span>
+              </div>
+              <h4 style="color: #fff; font-size: 15px; margin-bottom: 6px;">📰 ${art.title}</h4>
+              <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin: 0 0 6px 0;">${art.summary}</p>
+              <div style="font-size: 11px; color: #38bdf8; text-align: right;">— Tác giả: <strong>${art.author}</strong></div>
+            </div>
+          `).join("");
+        }
+      } catch (e) {
+        container.innerHTML = `<div style="color: #ef4444; padding: 10px;">Lỗi tải thời báo: ${e.message}</div>`;
+      }
+    }
+
+    // --- SMC GUIDE ---
+    function openSmcModal() { document.getElementById("modal-smc").classList.add("open"); }
+    function closeSmcModal() { document.getElementById("modal-smc").classList.remove("open"); }
+
+    // --- GMAIL OTP PASSWORD RECOVERY ---
+    let otpCountdownTimer = null;
+    let currentOtpUserId = null;
+
+    function switchForgotSubtab(subtab) {
+      const isOtp = subtab === 'otp';
+      document.getElementById("subtab-view-otp").style.display = isOtp ? "block" : "none";
+      document.getElementById("subtab-view-bday").style.display = isOtp ? "none" : "block";
+      const btnOtp = document.getElementById("subtab-btn-otp");
+      const btnBday = document.getElementById("subtab-btn-bday");
+      if (isOtp) {
+        btnOtp.classList.add("btn-ctrl-primary");
+        btnOtp.style.background = "#ff7e1b";
+        btnOtp.style.color = "#fff";
+        btnBday.style.background = "transparent";
+        btnBday.style.color = "#94a3b8";
+      } else {
+        btnBday.classList.add("btn-ctrl-primary");
+        btnBday.style.background = "#ff7e1b";
+        btnBday.style.color = "#fff";
+        btnOtp.style.background = "transparent";
+        btnOtp.style.color = "#94a3b8";
+      }
+    }
+
+    function resetOtpView() {
+      document.getElementById("otp-step-1").style.display = "block";
+      document.getElementById("otp-step-2").style.display = "none";
+      document.getElementById("otp-send-msg").style.display = "none";
+      document.getElementById("otp-verify-msg").style.display = "none";
+      if (otpCountdownTimer) clearInterval(otpCountdownTimer);
+    }
+
+    async function handleSendOtp() {
+      const ident = document.getElementById("otp-identifier").value.trim();
+      const msgBox = document.getElementById("otp-send-msg");
+      const btn = document.getElementById("btn-send-otp");
+      if (!ident) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "Vui lòng nhập Tên đăng nhập, ID hoặc Email!";
+        msgBox.style.display = "block";
+        return;
+      }
+      btn.disabled = true;
+      btn.textContent = "Đang gửi mã...";
+      msgBox.style.display = "none";
+
+      try {
+        const resp = await fetch("/api/otp/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ identifier: ident })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          currentOtpUserId = res.user_id;
+          document.getElementById("otp-target-email").textContent = res.masked_email;
+          document.getElementById("otp-step-1").style.display = "none";
+          document.getElementById("otp-step-2").style.display = "block";
+          
+          let remain = res.expires_in || 300;
+          const countEl = document.getElementById("otp-countdown");
+          if (otpCountdownTimer) clearInterval(otpCountdownTimer);
+          otpCountdownTimer = setInterval(() => {
+            remain--;
+            if (remain <= 0) {
+              clearInterval(otpCountdownTimer);
+              countEl.textContent = "HẾT HẠN";
+              countEl.style.color = "#ef4444";
+            } else {
+              const m = Math.floor(remain / 60).toString().padStart(2, '0');
+              const s = (remain % 60).toString().padStart(2, '0');
+              countEl.textContent = `${m}:${s}`;
+            }
+          }, 1000);
+
+          if (res.debug_otp) {
+            alert(`[Chế độ Demo / Thử nghiệm]\nMã OTP mô phỏng của bạn là: ${res.debug_otp}\n(Khi cấu hình Gmail App Password trong Admin, mã sẽ được gửi trực tiếp vào hòm thư Gmail của cư dân)`);
+            document.getElementById("otp-code-input").value = res.debug_otp;
+          }
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + res.message;
+          msgBox.style.display = "block";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "📩 Gửi Mã OTP Đến Gmail";
+      }
+    }
+
+    async function handleVerifyOtp() {
+      const code = document.getElementById("otp-code-input").value.trim();
+      const pwd = document.getElementById("otp-new-pwd").value;
+      const pwdConf = document.getElementById("otp-new-pwd-confirm").value;
+      const msgBox = document.getElementById("otp-verify-msg");
+      const btn = document.getElementById("btn-verify-otp");
+
+      if (!code || code.length < 6) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "Vui lòng nhập đầy đủ mã OTP 6 số!";
+        msgBox.style.display = "block";
+        return;
+      }
+      if (!pwd || pwd.length < 6) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "Mật khẩu mới phải có tối thiểu 6 ký tự!";
+        msgBox.style.display = "block";
+        return;
+      }
+      if (pwd !== pwdConf) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "Xác nhận mật khẩu không trùng khớp!";
+        msgBox.style.display = "block";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Đang xác thực...";
+      try {
+        const resp = await fetch("/api/otp/verify_and_reset", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: currentOtpUserId,
+            otp_code: code,
+            new_password: pwd
+          })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          alert("🎉 Đặt lại mật khẩu thành công! Bây giờ bạn có thể đăng nhập bằng mật khẩu mới.");
+          resetOtpView();
+          openLoginTab();
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + res.message;
+          msgBox.style.display = "block";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "🔐 Đặt Lại Mật Khẩu";
+      }
+    }
 
     function switchAccountTab(tab) {
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
@@ -2146,14 +2575,23 @@
           openRegisterTab();
         } else if (hash === "#login") {
           openLoginTab();
-        } else if (hash === "#forgot" || hash === "#reset") {
+        } else if (hash === "#forgot" || hash === "#reset" || hash === "#otp") {
           openForgotTab();
+        } else if (hash === "#recharge" || hash === "#pay") {
+          switchAccountTab('recharge');
+          document.getElementById("modal-account").classList.add("open");
         } else if (hash === "#giftcode" || hash === "#code") {
           openGiftcodeModal();
         } else if (hash === "#profile" || hash === "#security" || hash === "#account") {
           openDashboardTab();
         } else if (hash === "#lamu" || hash === "#superlamu" || hash === "#daudau") {
           openSuperLamuModal();
+        } else if (hash === "#leaderboard" || hash === "#top" || hash === "#bxh") {
+          openLeaderboardModal();
+        } else if (hash === "#newspaper" || hash === "#baomoly") {
+          openNewspaperModal();
+        } else if (hash === "#smc") {
+          openSmcModal();
         }
       }
       window.addEventListener("hashchange", handlePlayHashRoute);

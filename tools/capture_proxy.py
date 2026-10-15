@@ -105,7 +105,9 @@ def verify_admin_session(token: str) -> bool:
         return True
 
 
-def get_admin_token(headers: Any) -> str:
+def get_admin_token(headers: Any, query_token: str = "") -> str:
+    if query_token:
+        return query_token.strip()
     auth = headers.get("Authorization", "")
     if auth.startswith("Bearer "):
         return auth[7:].strip()
@@ -181,12 +183,12 @@ rate_limiter = RateLimiter()
 
 
 try:
-    from account_system import accounts, google_oidc, giftcodes, recharges
+    from account_system import accounts, google_oidc, giftcodes, recharges, otp_mgr
     from websocket_bridge import make_handshake_response, bridge_sockets
 except ImportError:
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from account_system import accounts, google_oidc, giftcodes, recharges
+    from account_system import accounts, google_oidc, giftcodes, recharges, otp_mgr
     from websocket_bridge import make_handshake_response, bridge_sockets
 
 
@@ -693,6 +695,34 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 })
                 return
 
+            elif parsed.path == "/api/otp/send":
+                client_ip = self.client_address[0]
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                identifier = payload.get("identifier") or payload.get("username") or payload.get("email") or payload.get("user_id")
+                if not identifier:
+                    self._send_json({"ok": False, "message": "Vui lòng nhập Tên đăng nhập, ID hoặc Email đã đăng ký!"}, status=400)
+                    return
+                ok, msg, data = otp_mgr.request_otp(identifier, client_ip)
+                resp = {"ok": ok, "message": msg}
+                resp.update(data)
+                self._send_json(resp, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/otp/verify_and_reset":
+                client_ip = self.client_address[0]
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                user_id = payload.get("user_id")
+                otp_code = payload.get("otp_code") or payload.get("otp")
+                new_pwd = str(payload.get("new_password", "")).strip()
+                if not user_id or not otp_code or not new_pwd:
+                    self._send_json({"ok": False, "message": "Vui lòng nhập đầy đủ mã OTP và mật khẩu mới!"}, status=400)
+                    return
+                ok, msg = otp_mgr.verify_otp_and_reset_password(user_id, otp_code, new_pwd)
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
         if host in LOCAL_CONTROL_HOSTS or parsed.path.startswith("/api/admin/"):
             client_ip = self.client_address[0]
             if parsed.path == "/api/admin/login":
@@ -975,6 +1005,60 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": True, "message": "Cập nhật cấu hình thanh toán & QR thành công!", "config": cfg})
                 return
 
+            elif parsed.path == "/api/admin/user/ban":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                uid = payload.get("user_id")
+                reason = payload.get("reason", "Vi phạm điều lệ cư dân Moly")
+                ok, msg = accounts.ban_account(uid, reason)
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/admin/user/unban":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                uid = payload.get("user_id")
+                ok, msg = accounts.unban_account(uid)
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/admin/user/give_item":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                uid = payload.get("user_id")
+                item_id = int(payload.get("item_id", 0))
+                count = int(payload.get("count", 1))
+                is_cloth = bool(payload.get("is_cloth", True))
+                ok, msg = accounts.give_item(uid, item_id, count, is_cloth)
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/admin/email/config":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                gmail_user = str(payload.get("gmail_user", "")).strip()
+                app_password = str(payload.get("app_password", "")).strip()
+                sender = str(payload.get("sender_name", "Moly - Thế Giới Chuột Chũi VN")).strip()
+                ok = otp_mgr.update_config(gmail_user, app_password, sender)
+                self._send_json({"ok": ok, "message": "Cập nhật cấu hình Gmail OTP thành công!", "config": otp_mgr.get_config()})
+                return
+
         self.send_error(405, "Request bodies are not supported for external hosts")
 
     def do_PUT(self) -> None:
@@ -1099,7 +1183,88 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 uid = int(query.get("user_id", [0])[0])
             except (ValueError, TypeError):
                 uid = 0
+            st = accounts.get_super_lamu_status(uid)
             self._send_json({"ok": True, "status": st})
+            return
+
+        if parsed.path == "/api/leaderboard":
+            from urllib.parse import parse_qs
+            query = parse_qs(parsed.query)
+            try:
+                limit = int(query.get("limit", [10])[0])
+            except (ValueError, TypeError):
+                limit = 10
+            board = accounts.get_leaderboard(limit=limit)
+            self._send_json({"ok": True, "leaderboard": board})
+            return
+
+        if parsed.path == "/api/newspaper/latest":
+            news_data = {
+                "ok": True,
+                "issue_no": 128,
+                "title": "Thời Báo Moly - Số Đặc Biệt: Đậu Đậu Siêu Cấp Trở Lại!",
+                "date": "2026-10-15",
+                "cover_img": "/assets/news_cover.png",
+                "headlines": [
+                    {
+                        "id": 1,
+                        "title": "Vương Quốc Chuột Chũi Chào Đón Cư Dân Mới",
+                        "summary": "Tất cả các cư dân đăng ký tài khoản mới đều nhận được gói quà khởi nghiệp 50,000 Đậu Vàng và Thẻ Đậu Đậu Siêu Cấp 7 Ngày!",
+                        "author": "Thị Trưởng Bồ Đào",
+                        "date": "2026-10-15"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Học Viện Kỹ Xảo SMC Khai Giảng Khóa Mới",
+                        "summary": "Các nghề Cảnh Sát, Đầu Bếp, Nông Dân, Hướng Dẫn Viên đã chính thức mở ghi danh tại Lâu Đài Moly và Nông Trại Vui Vẻ.",
+                        "author": "Đội Trưởng Kỵ Sĩ",
+                        "date": "2026-10-14"
+                    },
+                    {
+                        "id": 3,
+                        "title": "Bí Ẩn Về Sự Xuất Hiện Của Đậu Đậu Siêu Cấp Đặc Biệt",
+                        "summary": "Các nhà khoa học tại Phòng Thí Nghiệm Viện Nghiên Cứu Moly đang nghiên cứu 4 hệ tiến hóa đặc biệt của Đậu Đậu Siêu Cấp.",
+                        "author": "Bác Sĩ Wow",
+                        "date": "2026-10-13"
+                    }
+                ]
+            }
+            self._send_json(news_data)
+            return
+
+        if parsed.path == "/api/admin/email_config":
+            token = get_admin_token(self.headers)
+            if not verify_admin_session(token):
+                self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                return
+            self._send_json({"ok": True, "config": otp_mgr.get_config()})
+            return
+
+        if parsed.path == "/api/admin/backup":
+            from urllib.parse import parse_qs
+            query = parse_qs(parsed.query)
+            q_token = query.get("token", [""])[0]
+            token = get_admin_token(self.headers, q_token)
+            if not verify_admin_session(token):
+                self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                return
+            import zipfile
+            from io import BytesIO
+            buf = BytesIO()
+            with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+                if DATA_DIR.exists():
+                    for json_f in DATA_DIR.glob("*.json"):
+                        zf.write(json_f, arcname=f"database_backup/{json_f.name}")
+            backup_bytes = buf.getvalue()
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"moly_backup_{ts}.zip"
+            self.send_response(200, "OK")
+            self.send_header("Content-Type", "application/zip")
+            self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+            self.send_header("Content-Length", str(len(backup_bytes)))
+            self.send_header("Connection", "close")
+            self.end_headers()
+            self.wfile.write(backup_bytes)
             return
 
         if parsed.path == "/api/payment/config":
