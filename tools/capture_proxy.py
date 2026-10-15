@@ -108,6 +108,9 @@ def verify_admin_session(token: str) -> bool:
 def get_admin_token(headers: Any, query_token: str = "") -> str:
     if query_token:
         return query_token.strip()
+    x_token = headers.get("X-Admin-Token", "")
+    if x_token:
+        return x_token.strip()
     auth = headers.get("Authorization", "")
     if auth.startswith("Bearer "):
         return auth[7:].strip()
@@ -183,12 +186,12 @@ rate_limiter = RateLimiter()
 
 
 try:
-    from account_system import accounts, google_oidc, giftcodes, recharges, otp_mgr
+    from account_system import accounts, google_oidc, giftcodes, recharges, otp_mgr, recovery_mgr
     from websocket_bridge import make_handshake_response, bridge_sockets
 except ImportError:
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from account_system import accounts, google_oidc, giftcodes, recharges, otp_mgr
+    from account_system import accounts, google_oidc, giftcodes, recharges, otp_mgr, recovery_mgr
     from websocket_bridge import make_handshake_response, bridge_sockets
 
 
@@ -637,7 +640,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
                 identifier = payload.get("user_id")
                 target = accounts.get_account_by_identifier(identifier)
-                if not target:
+                if not target or target.get("is_admin", False) or target.get("user_id") in (0, 10000000, 10000001):
                     self._send_json({"ok": False, "message": "Nhân vật không tồn tại trong hệ thống! Vui lòng kiểm tra lại ID."}, status=404)
                     return
                 uid = int(target["user_id"])
@@ -672,7 +675,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
                 identifier = payload.get("user_id")
                 target = accounts.get_account_by_identifier(identifier)
-                if not target:
+                if not target or target.get("is_admin", False) or target.get("user_id") in (0, 10000000, 10000001):
                     self._send_json({"ok": False, "message": "Nhân vật không tồn tại trong hệ thống! Vui lòng kiểm tra lại ID."}, status=404)
                     return
                 uid = int(target["user_id"])
@@ -743,6 +746,28 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 otp_code = str(payload.get("otp_code") or payload.get("otp") or "").strip()
                 ok, msg = otp_mgr.verify_email_and_bind(uid, email, otp_code)
                 self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/support/recovery_request":
+                client_ip = self.client_address[0]
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                ident = str(payload.get("identifier", "")).strip()
+                contact_email = str(payload.get("contact_email", "")).strip()
+                remembered_pwd = str(payload.get("remembered_password", "")).strip()
+                bday = str(payload.get("birthday", "")).strip()
+                notes = str(payload.get("notes", "")).strip()
+                ok, msg, extra = recovery_mgr.submit_request(
+                    identifier=ident,
+                    contact_email=contact_email,
+                    remembered_password=remembered_pwd,
+                    birthday=bday,
+                    notes=notes,
+                    ip=client_ip
+                )
+                resp = {"ok": ok, "message": msg}
+                resp.update(extra)
+                self._send_json(resp, status=200 if ok else 400)
                 return
 
         if host in LOCAL_CONTROL_HOSTS or parsed.path.startswith("/api/admin/"):
@@ -1082,6 +1107,20 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": ok, "message": "Cập nhật cấu hình Gmail OTP thành công!", "config": otp_mgr.get_config()})
                 return
 
+            elif parsed.path == "/api/admin/recovery_requests/resolve":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                req_id = str(payload.get("request_id", "")).strip()
+                new_pwd = str(payload.get("new_password", "")).strip()
+                admin_note = str(payload.get("admin_note", "")).strip()
+                ok, msg = recovery_mgr.resolve_request(req_id, new_password=new_pwd, admin_note=admin_note)
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
         self.send_error(405, "Request bodies are not supported for external hosts")
 
     def do_PUT(self) -> None:
@@ -1261,6 +1300,18 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
                 return
             self._send_json({"ok": True, "config": otp_mgr.get_config()})
+            return
+
+        if parsed.path == "/api/admin/recovery_requests":
+            token = get_admin_token(self.headers)
+            if not verify_admin_session(token):
+                self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                return
+            from urllib.parse import parse_qs
+            query = parse_qs(parsed.query)
+            status_f = query.get("status", [None])[0]
+            requests = recovery_mgr.list_requests(status=status_f)
+            self._send_json({"ok": True, "requests": requests})
             return
 
         if parsed.path == "/api/admin/backup":
@@ -1461,6 +1512,10 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.wfile.write(html)
                 return
             elif parsed.path == "/api/accounts":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
                 data = json.dumps(
                     accounts.list_accounts(), ensure_ascii=False, indent=2
                 ).encode("utf-8")

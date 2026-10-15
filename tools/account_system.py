@@ -36,6 +36,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "data" / "server"
 ACCOUNTS_PATH = DATA_DIR / "accounts.json"
 OAUTH_CONFIG_PATH = DATA_DIR / "oauth_config.json"
+RECOVERY_REQUESTS_PATH = DATA_DIR / "recovery_requests.json"
 
 DEFAULT_MOLY_ADMIN_ID = 0
 LEGACY_MOLY_ADMIN_ID = 10000001
@@ -834,7 +835,7 @@ class AccountManager:
         with self._lock:
             self._ensure_fresh()
             acc = self.get_account_by_identifier(identifier)
-            if not acc:
+            if not acc or acc.get("is_admin", False) or acc.get("user_id") in (0, 10000000, 10000001):
                 return False, "Không tìm thấy tài khoản tương ứng với thông tin đã nhập!"
 
             acc_email = str(acc.get("email") or "").strip().lower()
@@ -1488,6 +1489,9 @@ class AccountManager:
             if not acc:
                 return None
             uid = acc.get("user_id")
+            # Strictly hide admin accounts from public character verification/lookup
+            if acc.get("is_admin", False) or uid in (0, 10000000, 10000001):
+                return None
             disp_id = "00000000" if uid == 0 else str(uid)
             vip_st = self.check_vip_status(uid)
             return {
@@ -1500,6 +1504,20 @@ class AccountManager:
                 "vip_level": vip_st.get("vip_level", 0),
                 "gold_beans": acc.get("gold_beans", 0)
             }
+
+    def reset_password_admin(self, user_id: Any, new_password: str) -> tuple[bool, str]:
+        """Admin privilege to reset a user's password directly."""
+        with self._lock:
+            self._ensure_fresh()
+            key = str(user_id).strip()
+            if key not in self._accounts:
+                return False, f"Không tìm thấy tài khoản cư dân #{key}!"
+            if len(new_password) < 6:
+                return False, "Mật khẩu mới phải có tối thiểu 6 ký tự!"
+            self._accounts[key]["password_hash"] = hash_moly_password(new_password)
+            self._save()
+            self.log_audit("ADMIN_RESET_PASSWORD", 0, {"target_id": key})
+            return True, f"Đặt lại mật khẩu cho tài khoản #{key} thành công!"
 
     def log_audit(self, action: str, admin_id: int, details: dict[str, Any]) -> None:
         log_file = DATA_DIR / "admin_audit.log"
@@ -1586,7 +1604,8 @@ class AccountManager:
     def get_leaderboard(self, limit: int = 10) -> dict[str, Any]:
         with self._lock:
             self._ensure_fresh()
-            all_users = list(self._accounts.values())
+            # Omit admin accounts entirely from public leaderboards
+            all_users = [u for u in self._accounts.values() if not u.get("is_admin", False) and u.get("user_id") not in (0, 10000000, 10000001)]
 
         def clean_user(u: dict[str, Any]) -> dict[str, Any]:
             uid = int(u["user_id"])
@@ -2328,7 +2347,7 @@ class OtpManager:
     def request_otp(self, identifier: str, ip: str = "127.0.0.1") -> tuple[bool, str, dict[str, Any]]:
         with self._lock:
             acc = self.account_mgr.get_account_by_identifier(identifier)
-            if not acc:
+            if not acc or acc.get("is_admin", False) or acc.get("user_id") in (0, 10000000, 10000001):
                 return False, "Không tìm thấy tài khoản với thông tin đã cung cấp!", {}
 
             email = str(acc.get("email") or "").strip().lower()
@@ -2549,9 +2568,186 @@ class OtpManager:
         except Exception as e:
             print(f"[OTP GMAIL ERROR] Loi gui email toi {to_email}: {e}")
             return False, str(e)
+
+
+class RecoveryRequestManager:
+    """Manages user requests to recover account password when they cannot use OTP or birthday."""
+    def __init__(self, account_mgr: AccountManager, otp_mgr: OtpManager, filepath: Path = RECOVERY_REQUESTS_PATH) -> None:
+        self.account_mgr = account_mgr
+        self.otp_mgr = otp_mgr
+        self.filepath = filepath
+        self._lock = threading.Lock()
+        self._requests: list[dict[str, Any]] = []
+        self._load()
+
+    def _load(self) -> None:
+        if self.filepath.is_file():
+            try:
+                data = json.loads(self.filepath.read_text(encoding="utf-8"))
+                if isinstance(data, list):
+                    self._requests = data
+            except Exception:
+                self._requests = []
+
+    def _save(self) -> None:
+        try:
+            self.filepath.parent.mkdir(parents=True, exist_ok=True)
+            self.filepath.write_text(json.dumps(self._requests, ensure_ascii=False, indent=2), encoding="utf-8")
         except Exception as e:
-            print(f"[OTP GMAIL ERROR] Loi gui email toi {to_email}: {e}")
-            return False, str(e)
+            print(f"[RECOVERY ERROR] Failed saving recovery requests: {e}", flush=True)
+
+    def submit_request(
+        self,
+        identifier: str,
+        contact_email: str,
+        remembered_password: str,
+        birthday: str = "",
+        notes: str = "",
+        ip: str = "127.0.0.1"
+    ) -> tuple[bool, str, dict[str, Any]]:
+        clean_ident = str(identifier or "").strip()
+        clean_email = str(contact_email or "").strip().lower()
+        clean_pwd = str(remembered_password or "").strip()
+        clean_bday = str(birthday or "").strip()
+        clean_notes = str(notes or "").strip()
+
+        if not clean_ident:
+            return False, "Vui lòng nhập Tên đăng nhập hoặc ID Mole của tài khoản!", {}
+        if not clean_email or "@" not in clean_email or "." not in clean_email:
+            return False, "Vui lòng nhập địa chỉ Gmail/Email hợp lệ để Quản Trị Viên phản hồi!", {}
+        if not clean_pwd:
+            return False, "Vui lòng nhập Mật khẩu cũ gần nhớ nhất để Quản Trị Viên đối chiếu xác thực chủ tài khoản!", {}
+
+        with self._lock:
+            self._load()
+            now_ts = datetime.now(timezone.utc)
+            # Rate limiting: max 3 requests per IP per 10 minutes
+            recent_count = 0
+            for r in self._requests:
+                if r.get("ip") == ip:
+                    try:
+                        c_dt = datetime.fromisoformat(r["created_at"].replace("Z", "+00:00"))
+                        if (now_ts - c_dt).total_seconds() < 600:
+                            recent_count += 1
+                    except Exception:
+                        pass
+            if recent_count >= 3:
+                return False, "Bạn đã gửi yêu cầu quá nhiều lần! Vui lòng chờ 10 phút hoặc kiểm tra hòm thư phản hồi.", {}
+
+            req_id = f"req_{int(time.time())}_{secrets.token_hex(3)}"
+            req_data = {
+                "id": req_id,
+                "identifier": clean_ident,
+                "contact_email": clean_email,
+                "remembered_password": clean_pwd,
+                "birthday": clean_bday,
+                "notes": clean_notes,
+                "ip": ip,
+                "status": "pending",  # "pending", "resolved", "rejected"
+                "admin_response": "",
+                "created_at": now_ts.isoformat(),
+                "resolved_at": None,
+            }
+            self._requests.insert(0, req_data)
+            self._save()
+
+        # Send alert email to admin if Gmail SMTP is configured
+        try:
+            self._notify_admin(req_data)
+        except Exception as e:
+            print(f"[RECOVERY NOTIFY ERROR] {e}", flush=True)
+
+        return True, "Gửi yêu cầu hỗ trợ thành công! Ban Quản Trị sẽ đối chiếu thông tin và gửi phản hồi tới Gmail của bạn.", {"request_id": req_id}
+
+    def _notify_admin(self, req: dict[str, Any]) -> None:
+        cfg = self.otp_mgr._config
+        if not cfg.get("enabled"):
+            return
+        admin_email = cfg.get("admin_notify_email") or "traivuho@gmail.com"
+        subject = f"[Moly Quản Trị] Yêu cầu cấp lại mật khẩu từ cư dân: {req['identifier']}"
+        html_body = f"""<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; background: #0f172a; color: #f8fafc; padding: 20px;">
+  <div style="max-width: 600px; margin: auto; background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px;">
+    <h2 style="color: #38bdf8; margin-top: 0;">📩 Yêu Cầu Cấp Lại Mật Khẩu (Cư Dân Moly)</h2>
+    <p>Hệ thống vừa nhận được một yêu cầu cấp lại mật khẩu từ cư dân với thông tin chi tiết như sau:</p>
+    <table style="width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px;">
+      <tr><td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Tài khoản / ID:</td><td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #fde047;">{req['identifier']}</td></tr>
+      <tr><td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Email liên hệ:</td><td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #38bdf8;">{req['contact_email']}</td></tr>
+      <tr><td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Mật khẩu cũ gần nhớ nhất:</td><td style="padding: 8px; border-bottom: 1px solid #334155; font-weight: bold; color: #f43f5e;">{req['remembered_password']}</td></tr>
+      <tr><td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Ngày sinh cung cấp:</td><td style="padding: 8px; border-bottom: 1px solid #334155; color: #cbd5e1;">{req['birthday'] or 'Không cung cấp'}</td></tr>
+      <tr><td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">Ghi chú cư dân:</td><td style="padding: 8px; border-bottom: 1px solid #334155; color: #cbd5e1;">{req['notes'] or 'Không có ghi chú'}</td></tr>
+      <tr><td style="padding: 8px; border-bottom: 1px solid #334155; color: #94a3b8;">IP gửi yêu cầu:</td><td style="padding: 8px; border-bottom: 1px solid #334155; color: #cbd5e1;">{req['ip']}</td></tr>
+      <tr><td style="padding: 8px; color: #94a3b8;">Thời gian:</td><td style="padding: 8px; color: #cbd5e1;">{req['created_at']}</td></tr>
+    </table>
+    <div style="background: #0f172a; border-left: 4px solid #10b981; padding: 12px; border-radius: 4px; font-size: 13px; color: #94a3b8;">
+      Bạn có thể truy cập Bảng Quản Trị Admin tại <code>/admin</code> để xem xét, đối chiếu dữ liệu và cấp lại mật khẩu cho cư dân này.
+    </div>
+  </div>
+</body>
+</html>"""
+        self.otp_mgr._dispatch_email(admin_email, subject, html_body)
+
+    def list_requests(self, status: Optional[str] = None) -> list[dict[str, Any]]:
+        with self._lock:
+            self._load()
+            if status:
+                return [r for r in self._requests if r.get("status") == status]
+            return list(self._requests)
+
+    def resolve_request(self, req_id: str, new_password: Optional[str] = None, admin_note: str = "") -> tuple[bool, str]:
+        with self._lock:
+            self._load()
+            target = None
+            for r in self._requests:
+                if r.get("id") == req_id:
+                    target = r
+                    break
+            if not target:
+                return False, "Không tìm thấy yêu cầu này!"
+
+            ident = target["identifier"]
+            acc = self.account_mgr.get_account_by_identifier(ident)
+            
+            # If new_password provided, reset password for account
+            if new_password and new_password.strip():
+                if not acc:
+                    return False, f"Không tìm thấy tài khoản cư dân '{ident}' trong hệ thống để đặt lại mật khẩu!"
+                uid = int(acc["user_id"])
+                ok, msg = self.account_mgr.reset_password_admin(uid, new_password.strip())
+                if not ok:
+                    return False, msg
+
+            target["status"] = "resolved"
+            target["admin_response"] = admin_note or f"Đã giải quyết và cấp mật khẩu mới lúc {datetime.now(timezone.utc).strftime('%H:%M %d/%m/%Y')}."
+            target["resolved_at"] = datetime.now(timezone.utc).isoformat()
+            self._save()
+
+            # Optionally send email notification to user
+            if target.get("contact_email") and self.otp_mgr._config.get("enabled"):
+                try:
+                    subject = "[Moly Vương Quốc Chuột Chũi] Thông Báo Phản Hồi Cấp Lại Mật Khẩu"
+                    pwd_html = f'<div style="margin-top:10px;color:#fde047;font-size:15px;">Mật khẩu mới của bạn: <strong>{new_password}</strong></div>' if new_password else ''
+                    body = f"""<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; background: #0f172a; color: #f8fafc; padding: 20px;">
+  <div style="max-width: 600px; margin: auto; background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px;">
+    <h2 style="color: #38bdf8; margin-top: 0;">🎉 Yêu Cầu Cấp Lại Mật Khẩu Đã Được Xử Lý</h2>
+    <p>Chào bạn, yêu cầu hỗ trợ tài khoản <strong>{ident}</strong> của bạn đã được Ban Quản Trị xem xét và giải quyết.</p>
+    <div style="background: #0f172a; border: 1px solid #10b981; border-radius: 8px; padding: 14px; margin: 16px 0;">
+      <div style="color: #34d399; font-weight: bold; margin-bottom: 6px;">Nội dung phản hồi từ Quản Trị Viên:</div>
+      <div style="color: #f8fafc; font-size: 14px;">{target['admin_response']}</div>
+      {pwd_html}
+    </div>
+    <p style="font-size: 13px; color: #94a3b8;">Sau khi đăng nhập thành công, bạn nên vào mục <strong>Hồ Sơ Cư Dân</strong> để xác thực Gmail và đổi lại mật khẩu cá nhân.</p>
+  </div>
+</body>
+</html>"""
+                    self.otp_mgr._dispatch_email(target["contact_email"], subject, body)
+                except Exception as e:
+                    print(f"[RECOVERY USER NOTIFY ERROR] {e}", flush=True)
+
+            return True, f"Đã cập nhật trạng thái yêu cầu #{req_id} thành công!"
 
 
 # Shared singleton instances
@@ -2560,5 +2756,7 @@ google_oidc = GoogleOIDCService()
 giftcodes = GiftcodeManager(accounts)
 recharges = RechargeManager(accounts)
 otp_mgr = OtpManager(accounts)
+recovery_mgr = RecoveryRequestManager(accounts, otp_mgr)
+
 
 

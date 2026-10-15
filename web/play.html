@@ -666,8 +666,9 @@
       <div id="tab-content-forgot" style="display: none;">
         <!-- Switch Recovery Sub-tabs -->
         <div style="display: flex; gap: 6px; margin-bottom: 12px; background: #0f172a; padding: 4px; border-radius: 8px;">
-          <button type="button" id="subtab-btn-otp" class="btn-ctrl btn-ctrl-primary" style="flex: 1; font-size: 12px; padding: 6px;" onclick="switchForgotSubtab('otp')">📧 Nhận Mã OTP Gmail</button>
-          <button type="button" id="subtab-btn-bday" class="btn-ctrl" style="flex: 1; font-size: 12px; padding: 6px; background: transparent; color: #94a3b8;" onclick="switchForgotSubtab('bday')">📅 Dùng Ngày Sinh</button>
+          <button type="button" id="subtab-btn-otp" class="btn-ctrl btn-ctrl-primary" style="flex: 1; font-size: 11px; padding: 6px 4px;" onclick="switchForgotSubtab('otp')">📧 Mã OTP Gmail</button>
+          <button type="button" id="subtab-btn-bday" class="btn-ctrl" style="flex: 1; font-size: 11px; padding: 6px 4px; background: transparent; color: #94a3b8;" onclick="switchForgotSubtab('bday')">📅 Ngày Sinh</button>
+          <button type="button" id="subtab-btn-contact" class="btn-ctrl" style="flex: 1; font-size: 11px; padding: 6px 4px; background: transparent; color: #94a3b8;" onclick="switchForgotSubtab('contact')">📞 Liên Hệ QTV</button>
         </div>
 
         <!-- Subtab 1: OTP Gmail -->
@@ -744,6 +745,45 @@
           </form>
         </div>
 
+        <!-- Subtab 3: Liên Hệ Quản Trị Viên Cấp Lại -->
+        <div id="subtab-view-contact" style="display: none;">
+          <div style="background: rgba(56, 189, 248, 0.1); border: 1px solid #0284c7; border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 12px; color: #bae6fd; line-height: 1.5;">
+            🛡️ <strong>Hỗ Trợ Khôi Phục Tài Khoản Đặc Biệt:</strong><br>
+            Nếu bạn chưa xác thực Gmail hoặc không nhớ ngày sinh, hãy gửi yêu cầu trực tiếp đến Ban Quản Trị. Bạn bắt buộc phải nhập <strong>mật khẩu cũ bạn nhớ gần giống nhất</strong> để BQT đối chiếu và phản hồi cấp lại.
+          </div>
+          <form onsubmit="handleSendRecoveryRequest(event)">
+            <label class="modal-label">Tên Đăng Nhập hoặc ID Mole <span style="color:#ef4444;">*</span></label>
+            <input type="text" id="rec-identifier" class="modal-input" placeholder="VD: an_moly hoặc ID Mole" required>
+
+            <label class="modal-label">Email / Gmail Nhận Phản Hồi Từ QTV <span style="color:#ef4444;">*</span></label>
+            <input type="email" id="rec-contact-email" class="modal-input" placeholder="VD: yourname@gmail.com để BQT gửi mật khẩu mới" required>
+
+            <label class="modal-label">Mật Khẩu Cũ Gần Nhớ Nhất <span style="color:#ef4444;">*</span></label>
+            <input type="text" id="rec-remembered-pwd" class="modal-input" placeholder="Gõ mật khẩu bạn nhớ gần giống nhất..." required>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div>
+                <label class="modal-label">Ngày Sinh Đăng Ký (Nếu nhớ)</label>
+                <input type="date" id="rec-birthday" class="modal-input">
+              </div>
+              <div>
+                <label class="modal-label">Biệt Danh / Tên Trong Game</label>
+                <input type="text" id="rec-nickname" class="modal-input" placeholder="VD: Chuột Chũi Cam">
+              </div>
+            </div>
+
+            <label class="modal-label">Ghi Chú Thêm Cho Quản Trị Viên (Tùy chọn)</label>
+            <textarea id="rec-notes" class="modal-input" style="height: 60px; resize: none; font-size: 12px;" placeholder="Thông tin thú cưng Đậu Đậu, cấp VIP, nghề SMC hoặc thời điểm tạo nick..."></textarea>
+
+            <div id="rec-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #94a3b8; font-size: 13px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
+              <button type="submit" id="btn-send-recovery" class="btn-ctrl btn-ctrl-blue">🚀 Gửi Yêu Cầu Cho QTV</button>
+            </div>
+          </form>
+        </div>
+
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid #334155;">
           <button type="button" class="btn-ctrl" style="background: #334155; color: #fff;" onclick="openLoginTab()">← Trở lại Đăng Nhập</button>
           <button type="button" class="btn-ctrl" onclick="closeAccountModal()">✕ Đóng</button>
@@ -757,16 +797,19 @@
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <div>
               <strong id="dash-fullname" style="color: #38bdf8; font-size: 16px;">-</strong>
-              <div style="font-size: 12px; color: #94a3b8;">Tên tài khoản: <span id="dash-username" style="color: #fff; font-weight: bold;">-</span> <span class="badge" style="background: #334155; color: #94a3b8; padding: 1px 5px; border-radius: 3px; font-size: 10px;">Cố định</span></div>
+              <div style="font-size: 12px; color: #94a3b8;">Tên tài khoản: <span id="dash-username" style="color: #fff; font-weight: bold;">-</span></div>
             </div>
             <span id="dash-vip-badge" class="badge" style="background: #7c3aed; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 12px;">VIP 1</span>
           </div>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #cbd5e1; border-top: 1px solid #1e293b; padding-top: 8px;">
-            <div>ID Mole: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: none; border: none; color: #38bdf8; cursor: pointer; font-size: 11px;">[Copy]</button></div>
+            <div>Mã Số Mole: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: #1e293b; border: 1px solid #334155; color: #38bdf8; cursor: pointer; font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">📋 Sao chép</button></div>
             <div>Đậu Vàng: <strong id="dash-beans" style="color: #fde047;">0</strong> Đậu</div>
             <div>Điểm VIP: <strong id="dash-points" style="color: #10b981;">0</strong> (Max VIP 19)</div>
             <div>Thú Cưng: <span id="dash-lamu" style="color: #ec4899;">-</span></div>
+          </div>
+          <div style="font-size: 11px; color: #64748b; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #1e293b;">
+            💡 <em>Mã Số Mole là định danh kỹ thuật duy nhất dùng để nạp Đậu Vàng và hỗ trợ khôi phục tài khoản khi cần thiết.</em>
           </div>
         </div>
 
@@ -1359,22 +1402,87 @@
 
     function switchForgotSubtab(subtab) {
       const isOtp = subtab === 'otp';
+      const isBday = subtab === 'bday';
+      const isContact = subtab === 'contact';
+
       document.getElementById("subtab-view-otp").style.display = isOtp ? "block" : "none";
-      document.getElementById("subtab-view-bday").style.display = isOtp ? "none" : "block";
+      document.getElementById("subtab-view-bday").style.display = isBday ? "block" : "none";
+      document.getElementById("subtab-view-contact").style.display = isContact ? "block" : "none";
+
       const btnOtp = document.getElementById("subtab-btn-otp");
       const btnBday = document.getElementById("subtab-btn-bday");
-      if (isOtp) {
-        btnOtp.classList.add("btn-ctrl-primary");
-        btnOtp.style.background = "#ff7e1b";
-        btnOtp.style.color = "#fff";
-        btnBday.style.background = "transparent";
-        btnBday.style.color = "#94a3b8";
-      } else {
-        btnBday.classList.add("btn-ctrl-primary");
-        btnBday.style.background = "#ff7e1b";
-        btnBday.style.color = "#fff";
-        btnOtp.style.background = "transparent";
-        btnOtp.style.color = "#94a3b8";
+      const btnContact = document.getElementById("subtab-btn-contact");
+
+      [btnOtp, btnBday, btnContact].forEach(btn => {
+        if (!btn) return;
+        btn.style.background = "transparent";
+        btn.style.color = "#94a3b8";
+        btn.classList.remove("btn-ctrl-primary");
+      });
+
+      const activeBtn = isOtp ? btnOtp : (isBday ? btnBday : btnContact);
+      if (activeBtn) {
+        activeBtn.classList.add("btn-ctrl-primary");
+        activeBtn.style.background = "#ff7e1b";
+        activeBtn.style.color = "#fff";
+      }
+    }
+
+    async function handleSendRecoveryRequest(e) {
+      e.preventDefault();
+      const ident = document.getElementById("rec-identifier").value.trim();
+      const email = document.getElementById("rec-contact-email").value.trim();
+      const rememberedPwd = document.getElementById("rec-remembered-pwd").value.trim();
+      const birthday = document.getElementById("rec-birthday").value;
+      const nickname = document.getElementById("rec-nickname").value.trim();
+      const notes = document.getElementById("rec-notes").value.trim();
+      const msgBox = document.getElementById("rec-msg");
+      const btn = document.getElementById("btn-send-recovery");
+
+      if (!rememberedPwd) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Bạn bắt buộc phải nhập mật khẩu cũ bạn nhớ gần giống nhất để BQT đối chiếu!";
+        msgBox.style.display = "block";
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Đang gửi hồ sơ...";
+      msgBox.style.display = "none";
+
+      try {
+        const resp = await fetch("/api/support/recovery_request", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            identifier: ident,
+            contact_email: email,
+            remembered_password: rememberedPwd,
+            birthday: birthday,
+            nickname: nickname,
+            notes: notes
+          })
+        });
+        const res = await resp.json();
+        msgBox.style.display = "block";
+        if (res.ok) {
+          msgBox.style.color = "#34d399";
+          msgBox.innerHTML = `✅ <strong>Gửi yêu cầu thành công!</strong><br>Mã đơn hỗ trợ: <code>${res.request_id}</code><br>Ban Quản Trị đã nhận được thông báo và sẽ đối chiếu thông tin, sau đó phản hồi hoặc cấp lại mật khẩu qua email <strong>${email}</strong> của bạn sớm nhất!`;
+          btn.textContent = "Đã Gửi Thành Công!";
+          document.getElementById("rec-remembered-pwd").value = "";
+          document.getElementById("rec-notes").value = "";
+        } else {
+          msgBox.style.color = "#ef4444";
+          msgBox.textContent = "❌ " + (res.message || "Gửi yêu cầu thất bại!");
+          btn.disabled = false;
+          btn.textContent = "🚀 Gửi Yêu Cầu Cho QTV";
+        }
+      } catch (err) {
+        msgBox.style.color = "#ef4444";
+        msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
+        msgBox.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "🚀 Gửi Yêu Cầu Cho QTV";
       }
     }
 
