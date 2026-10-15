@@ -850,6 +850,33 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
                 return
 
+            elif parsed.path == "/api/admin/otp/send":
+                if not rate_limiter.check_login_allowed(client_ip):
+                    self._send_json({"ok": False, "message": "Quá nhiều yêu cầu thử! Vui lòng chờ 15 phút."}, status=429)
+                    return
+                admin_cfg = otp_mgr.get_config()
+                admin_email = admin_cfg.get("admin_notify_email") or "traivuho@gmail.com"
+                ok, msg, data = otp_mgr.request_admin_otp(admin_email, client_ip)
+                resp_payload = {"ok": ok, "message": msg}
+                resp_payload.update(data)
+                self._send_json(resp_payload, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/admin/otp/verify_and_reset":
+                if not rate_limiter.check_login_allowed(client_ip):
+                    self._send_json({"ok": False, "message": "Quá nhiều yêu cầu thử! Vui lòng chờ 15 phút."}, status=429)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                otp_code = str(payload.get("otp_code", "")).strip()
+                new_pwd = str(payload.get("new_password", "")).strip()
+                new_pin = str(payload.get("new_pin", "")).strip()
+                ok, msg = otp_mgr.verify_admin_otp_and_reset(otp_code, new_pwd, new_pin)
+                if ok:
+                    accounts.log_audit("RESET_ADMIN_CREDENTIALS_OTP", 0, {"ip": client_ip})
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
             elif parsed.path == "/api/admin/giftcodes/create":
                 token = get_admin_token(self.headers)
                 if not verify_admin_session(token):

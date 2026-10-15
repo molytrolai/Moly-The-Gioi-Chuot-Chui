@@ -99,6 +99,7 @@
     .nav-dropdown {
       position: relative;
       display: inline-block;
+      padding-bottom: 8px;
     }
 
     .nav-dropdown-btn {
@@ -146,13 +147,19 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
       padding: 6px;
       z-index: 1000;
-      margin-top: 5px;
+      margin-top: 0px;
       animation: dropdownFade 0.15s ease-out;
     }
 
-    @keyframes dropdownFade {
-      from { opacity: 0; transform: translateY(-4px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Invisible hover bridge between button and dropdown so mouse never loses focus */
+    .dropdown-menu::before {
+      content: "";
+      position: absolute;
+      top: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: transparent;
     }
 
     .nav-dropdown:hover .dropdown-menu {
@@ -999,8 +1006,8 @@
       <!-- Tab 1: Đăng Nhập -->
       <div id="tab-content-login">
         <form onsubmit="handleWebLogin(event)">
-          <label class="modal-label">Tên Đăng Nhập, Mole ID hoặc Email</label>
-          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly, 64298193 hoặc 00000000" required>
+          <label class="modal-label">Tên Đăng Nhập Cư Dân (hoặc ID Mole)</label>
+          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly2026 (hoặc ID Mole)" required>
           <label class="modal-label">Mật Khẩu</label>
           <input type="password" id="login-password" class="modal-input" placeholder="Nhập mật khẩu..." required>
           
@@ -1023,9 +1030,9 @@
             <button type="button" class="nav-btn" onclick="closeAccountModal()">✕ Đóng</button>
           </div>
 
-          <!-- Cổng Quản Trị Viên Bí Mật (Vô hình 100%, không hiện chữ, không đổi con trỏ, không tab tới, chỉ admin biết bấm vào giữa đáy modal) -->
-          <div style="text-align: center; margin-top: 8px; height: 18px; line-height: 18px;">
-            <a href="/admin.html" style="color: transparent; font-size: 11px; text-decoration: none; opacity: 0; cursor: default; user-select: none; -webkit-user-select: none; display: inline-block; width: 180px; height: 18px; line-height: 18px; background: transparent; border: none; outline: none;" title="" tabindex="-1">🔒 Cổng Quản Trị Hệ Thống</a>
+          <!-- Cổng Quản Trị Viên Bí Mật (Icon nhỏ mờ trong suốt, không chữ) -->
+          <div style="text-align: right; margin-top: 6px; padding-right: 4px;">
+            <a href="/admin.html" style="color: #64748b; font-size: 10px; opacity: 0.12; text-decoration: none; display: inline-block; transition: opacity 0.3s; cursor: pointer;" onmouseover="this.style.opacity='0.5'" onmouseout="this.style.opacity='0.12'" title="" tabindex="-1">🔒</a>
           </div>
         </form>
       </div>
@@ -1879,7 +1886,10 @@
       const titleEl = document.getElementById("modal-account-title");
       if (tab === "login") titleEl.textContent = "🔑 Đăng Nhập Cư Dân";
       else if (tab === "reg") titleEl.textContent = "➕ Tạo Tài Khoản Cư Dân Mới";
-      else if (tab === "forgot") titleEl.textContent = "🔒 Quên / Đặt Lại Mật Khẩu";
+      else if (tab === "forgot") {
+        titleEl.textContent = "🔒 Quên / Đặt Lại Mật Khẩu";
+        switchForgotSubtab('otp');
+      }
       else if (tab === "dashboard") titleEl.textContent = "👤 Bảng Quản Lý Hồ Sơ Cư Dân";
       else if (tab === "recharge") {
         titleEl.textContent = "💎 Cửa Hàng Đậu Vàng & Hội Viên Siêu Cấp";
@@ -1889,7 +1899,16 @@
 
     function openLoginTab() { switchAccountTab('login'); document.getElementById("modal-account").classList.add("open"); }
     function openRegisterTab() { switchAccountTab('reg'); document.getElementById("modal-account").classList.add("open"); }
-    function openForgotTab() { switchAccountTab('forgot'); document.getElementById("modal-account").classList.add("open"); }
+    function openForgotTab() { 
+      switchAccountTab('forgot'); 
+      switchForgotSubtab('otp');
+      resetOtpView();
+      document.getElementById("modal-account").classList.add("open"); 
+      setTimeout(() => {
+        const inp = document.getElementById("otp-identifier");
+        if (inp) inp.focus();
+      }, 100);
+    }
     function openDashboardTab() { 
       const u = getSavedUser();
       if (!u) { openLoginTab(); return; }

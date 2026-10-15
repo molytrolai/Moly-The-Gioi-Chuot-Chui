@@ -592,8 +592,8 @@
       <!-- Tab 1: Đăng Nhập -->
       <div id="tab-content-login">
         <form onsubmit="handleWebLogin(event)">
-          <label class="modal-label">Tên Đăng Nhập, Mole ID hoặc Email</label>
-          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly, 64298193 hoặc 00000000" required>
+          <label class="modal-label">Tên Đăng Nhập Cư Dân (hoặc ID Mole)</label>
+          <input type="text" id="login-identifier" class="modal-input" placeholder="VD: an_moly2026 (hoặc ID Mole)" required>
           <label class="modal-label">Mật Khẩu</label>
           <input type="password" id="login-password" class="modal-input" placeholder="Nhập mật khẩu..." required>
           
@@ -616,9 +616,9 @@
             <button type="button" class="btn-ctrl" onclick="closeAccountModal()">✕ Đóng</button>
           </div>
 
-          <!-- Cổng Quản Trị Viên Bí Mật (Vô hình 100%, không hiện chữ, không đổi con trỏ, không tab tới, chỉ admin biết bấm vào giữa đáy modal) -->
-          <div style="text-align: center; margin-top: 8px; height: 18px; line-height: 18px;">
-            <a href="/admin.html" style="color: transparent; font-size: 11px; text-decoration: none; opacity: 0; cursor: default; user-select: none; -webkit-user-select: none; display: inline-block; width: 180px; height: 18px; line-height: 18px; background: transparent; border: none; outline: none;" title="" tabindex="-1">🔒 Cổng Quản Trị Hệ Thống</a>
+          <!-- Cổng Quản Trị Viên Bí Mật (Chỉ icon nhỏ xíu mờ trong suốt, không hiện chữ) -->
+          <div style="text-align: right; margin-top: 6px; padding-right: 4px;">
+            <a href="/admin.html" style="color: #64748b; font-size: 10px; opacity: 0.12; text-decoration: none; display: inline-block; transition: opacity 0.3s; cursor: pointer;" onmouseover="this.style.opacity='0.5'" onmouseout="this.style.opacity='0.12'" title="" tabindex="-1">🔒</a>
           </div>
         </form>
       </div>
@@ -1627,7 +1627,17 @@
       document.getElementById("tab-content-recharge").style.display = tab === "recharge" ? "block" : "none";
       const btn = document.getElementById(`tab-btn-${tab}`);
       if (btn) btn.classList.add("active");
-      if (tab === "recharge") {
+
+      const titleEl = document.getElementById("modal-account-title");
+      if (tab === "login" && titleEl) titleEl.textContent = "🔑 Đăng Nhập Cư Dân";
+      else if (tab === "reg" && titleEl) titleEl.textContent = "➕ Tạo Tài Khoản Cư Dân Mới";
+      else if (tab === "forgot") {
+        if (titleEl) titleEl.textContent = "🔒 Quên / Đặt Lại Mật Khẩu";
+        if (typeof switchForgotSubtab === 'function') switchForgotSubtab('otp');
+      }
+      else if (tab === "dashboard" && titleEl) titleEl.textContent = "👤 Bảng Quản Lý Hồ Sơ Cư Dân";
+      else if (tab === "recharge") {
+        if (titleEl) titleEl.textContent = "💎 Cửa Hàng Đậu Vàng & Hội Viên Siêu Cấp";
         prepareRechargeUI();
       }
     }
@@ -1642,7 +1652,13 @@
     }
     function openForgotTab() {
       switchAccountTab('forgot');
+      if (typeof switchForgotSubtab === 'function') switchForgotSubtab('otp');
+      if (typeof resetOtpView === 'function') resetOtpView();
       document.getElementById("modal-account").classList.add("open");
+      setTimeout(() => {
+        const inp = document.getElementById("otp-identifier");
+        if (inp) inp.focus();
+      }, 100);
     }
     function openDashboardTab() {
       const u = getSavedUser();
