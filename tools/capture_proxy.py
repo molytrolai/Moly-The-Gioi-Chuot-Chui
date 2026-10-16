@@ -1213,6 +1213,16 @@ class ProxyHandler(BaseHTTPRequestHandler):
             })
             return
 
+        if parsed.path.lower() in {"/ip.txt", "/config/ip.txt"}:
+            body = f"{self.local_server}:1863\n".encode("ascii")
+            self.send_response(200, "OK")
+            self.send_header("Content-Type", "text/plain")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Connection", "close")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+
         # 2. Handle Web Portal & Direct Download endpoints
         if parsed.path in {"/", "/index.html"}:
             index_path = WEB_DIR / "index.html"
