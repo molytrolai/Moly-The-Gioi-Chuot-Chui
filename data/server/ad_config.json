@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "comment": "Cấu hình thông tin & liên kết nội bộ Việt Nam cho Moly - Thế Giới Chuột Chũi VN. Bạn có thể tự do chỉnh sửa target_url và tiêu đề sau này.",
-  "default_redirect": "https://moly-the-gioi-chuot-chui.onrender.com",
+  "default_redirect": "https://molyvn.onrender.com",
   "ads": [
     {
       "id": "community",

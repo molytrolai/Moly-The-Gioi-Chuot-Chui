@@ -38,7 +38,7 @@ Chào mừng toàn thể Cư dân trở về với Vương quốc Chuột chũi 
 ### 🎮 Các phiên bản tải về:
 - **📱 Android APK (13.7 MB):** Tải file `Moly-The-Gioi-Chuot-Chui.apk` cài đặt trực tiếp trên điện thoại Android.
 - **💻 Windows Desktop (150 MB):** Tải file `Moly-The-Gioi-Chuot-Chui-Windows.zip`, giải nén và bấm `Choi-Game.bat` để trải nghiệm mượt mà với Ruffle Native siêu tốc.
-- **🌐 Chơi trực tiếp trên Web:** Truy cập ngay cổng game: https://moly-the-gioi-chuot-chui.onrender.com
+- **🌐 Chơi trực tiếp trên Web:** Truy cập ngay cổng game: https://molyvn.onrender.com
 
 ### ✨ Điểm nổi bật:
 - Việt hóa 100% 257 bản đồ, UI thanh công cụ, hội thoại NPC, Siêu LaMu, Nông trại và Lâu đài Moly.

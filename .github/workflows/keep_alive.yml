@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Ping Moly VN Health Endpoint
         run: |
-          curl -s -f -m 20 https://moly-the-gioi-chuot-chui.onrender.com/health || echo "Ping dispatched"
+          curl -s -f -m 20 https://molyvn.onrender.com/health || echo "Ping dispatched"

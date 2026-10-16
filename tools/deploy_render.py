@@ -17,7 +17,7 @@ def create_service():
 
     payload = {
         "type": "web_service",
-        "name": "moly-the-gioi-chuot-chui",
+        "name": "molyvn",
         "ownerId": OWNER_ID,
         "repo": REPO_URL,
         "branch": "main",

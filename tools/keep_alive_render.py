@@ -12,7 +12,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime
 
-TARGET_URL = "https://moly-the-gioi-chuot-chui.onrender.com/health"
+TARGET_URL = "https://molyvn.onrender.com/health"
 INTERVAL_SECONDS = 300  # 5 minutes
 
 def ping_server():

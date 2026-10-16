@@ -8,7 +8,7 @@ Chào mừng toàn thể Cư dân trở về với Vương quốc Moly tuổi th
 
 | Nền tảng | Cách trải nghiệm | Trạng thái |
 | :--- | :--- | :---: |
-| **🌐 Chơi Trực Tiếp Trên Web** | Truy cập [Cổng Game Moly VN](https://moly-the-gioi-chuot-chui.onrender.com) hoặc [Khung Chơi Web](https://moly-the-gioi-chuot-chui.onrender.com/play.html) | **Sẵn sàng** |
+| **🌐 Chơi Trực Tiếp Trên Web** | Truy cập [Cổng Game Moly VN](https://molyvn.onrender.com) hoặc [Khung Chơi Web](https://molyvn.onrender.com/play.html) | **Sẵn sàng** |
 | **💻 Bản Windows Desktop** | Tải từ [GitHub Releases v1.0.0](https://github.com/molytrolai/Moly-The-Gioi-Chuot-Chui/releases/tag/v1.0.0) (`Moly-The-Gioi-Chuot-Chui-Windows.zip`) | **Sẵn sàng** |
 | **📱 Bản Android APK** | Tải từ [GitHub Releases v1.0.0](https://github.com/molytrolai/Moly-The-Gioi-Chuot-Chui/releases/tag/v1.0.0) (`Moly-The-Gioi-Chuot-Chui.apk`) | **Sẵn sàng** |
 
