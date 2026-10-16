@@ -34,6 +34,7 @@ def main():
         ("03_nut_dien_dan_chinh_thuc", "Nút Diễn đàn"),
         ("04_cskh_phu_huynh_va_do_tuoi", "Cụm CSKH & Phụ huynh & Độ tuổi"),
         ("05_chu_taomee_chan_trang", "Chữ Taomee chân trang"),
+        ("06_tieu_de_thong_bao_alert", "Tiêu đề hộp thoại Thông Báo (Shape 362)"),
     ]
     
     print("\n[1/3] Kiểm tra các thư mục icon người dùng:")
@@ -45,15 +46,23 @@ def main():
         else:
             print(f"  ! Chưa có thư mục: {fld}")
 
-    # 2. Chạy rebuild master LoginHome
+    # 2. Chạy rebuild master LoginHome & Login
     print("\n[2/3] Tiến hành đóng gói và đồng bộ dữ liệu vào game...")
     build_home_script = PROJECT_ROOT / "scratch" / "build_home.py"
     if build_home_script.exists():
         res = subprocess.run([sys.executable, str(build_home_script)], capture_output=True, text=True)
         if res.returncode != 0:
-            print(f"[CẢNH BÁO] Quá trình build trả về mã lỗi: {res.stderr}")
+            print(f"[CẢNH BÁO] Quá trình build LoginHome trả về mã lỗi: {res.stderr}")
         else:
             print("  ✓ Đã biên dịch xong LoginHome.swf")
+
+    build_login_script = PROJECT_ROOT / "scratch" / "build_login.py"
+    if build_login_script.exists():
+        res = subprocess.run([sys.executable, str(build_login_script)], capture_output=True, text=True)
+        if res.returncode != 0:
+            print(f"[CẢNH BÁO] Quá trình build Login trả về mã lỗi: {res.stderr}")
+        else:
+            print("  ✓ Đã biên dịch xong Login.swf (Áp dụng tiêu đề 362 & font chữ)")
 
     # 3. Chạy fix_tag_order để đảm bảo FileAttributes ở Tag #0 (chống treo Flash/Ruffle)
     print("\n[3/3] Kiểm tra an toàn cấu trúc SWF (AVM2 Tag Order)...")
