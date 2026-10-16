@@ -1213,9 +1213,37 @@
             ${u.is_banned ?
               `<button class="btn btn-sm btn-success" onclick="quickUnban(${u.user_id})" title="Mở khóa tài khoản">🔓 Mở Khóa</button>` :
               `<button class="btn btn-sm btn-danger" onclick="quickBan(${u.user_id})" title="Khóa tài khoản này">🔒 Khóa Nick</button>`}
+            ${(!u.is_admin && u.user_id != 10000001 && u.user_id != 10000002) ?
+              `<button class="btn btn-sm" style="background: #dc2626; color: white;" onclick="quickDeleteUser(${u.user_id}, '${escapeHtml(u.nickname || 'Cư dân')}')" title="Xóa vĩnh viễn tài khoản">🗑️ Xóa</button>` : ''}
           </td>
         </tr>
       `).join("");
+    }
+
+    async function quickDeleteUser(userId, nickname) {
+      if (!confirm(`⚠️ CẢNH BÁO: Bạn có chắc chắn muốn XÓA VĨNH VIỄN tài khoản "${nickname}" (ID: ${userId}) không?\n\nThao tác này sẽ xóa toàn bộ nhân vật, túi đồ, thú cưng và không thể khôi phục!`)) {
+        return;
+      }
+      try {
+        const resp = await fetch("/api/admin/user/delete", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify({ user_id: userId })
+        });
+        const res = await resp.json();
+        if (resp.ok && res.ok) {
+          alert(`✅ ${res.message || "Đã xóa tài khoản thành công!"}`);
+          loadUsers();
+          loadStats();
+        } else {
+          alert(`❌ Không thể xóa tài khoản: ${res.error || res.message || "Lỗi không xác định"}`);
+        }
+      } catch (err) {
+        alert(`❌ Lỗi kết nối: ${err.message}`);
+      }
     }
 
     function filterUsers() {

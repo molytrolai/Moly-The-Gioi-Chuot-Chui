@@ -121,16 +121,22 @@ def login_response(user_id: int, request_body: bytes = b"") -> bytes:
 
     if not acc:
         # Error 5005 = Tài khoản không chính xác
-        return packet(103, user_id, b"", error=5005)
+        # Must return 4-byte flag body (struct.pack('>I', 1)) so ActionScript doesn't hit EOFError!
+        fallback_uid = user_id if user_id > 0 else 10000001
+        return packet(103, fallback_uid, struct.pack(">I", 1), error=5005)
 
     actual_uid = int(acc["user_id"])
+    if actual_uid <= 0:
+        actual_uid = 10000001
+
     if len(request_body) >= 32:
         pwd_offset = 64 if (user_id == 0 and len(request_body) >= 96) else 0
         pwd_hash = request_body[pwd_offset : pwd_offset + 32].decode("ascii", errors="ignore")
         ok, _ = accounts.authenticate(actual_uid, pwd_hash)
         if not ok:
             # Error 5003 = Tài khoản hoặc mật khẩu không đúng, vui lòng thử lại!
-            return packet(103, actual_uid, b"", error=5003)
+            # Must return 4-byte flag body so ActionScript doesn't hit EOFError!
+            return packet(103, actual_uid, struct.pack(">I", 1), error=5003)
 
     return packet(103, actual_uid, struct.pack(">I", 0) + SESSION)
 
@@ -150,21 +156,24 @@ def server_info() -> bytes:
 
 
 def recommended_servers_response(user_id: int) -> bytes:
+    effective_uid = user_id if user_id > 0 else 10000001
     body = struct.pack(">I", 1) + server_info()
     body += struct.pack(">III", 1, 0, 0)
-    return packet(105, user_id, body)
+    return packet(105, effective_uid, body)
 
 
 def all_servers_response(user_id: int) -> bytes:
-    return packet(106, user_id, struct.pack(">I", 1) + server_info())
+    effective_uid = user_id if user_id > 0 else 10000001
+    return packet(106, effective_uid, struct.pack(">I", 1) + server_info())
 
 
 def online_login_response(user_id: int, version: int) -> bytes:
     """Minimal command-201 profile accepted by LoginOnlineSreRes."""
-    profile = account_profile(user_id)
+    effective_uid = user_id if user_id > 0 else 10000001
+    profile = account_profile(effective_uid)
     nickname = fixed_text(profile["nickname"], 16)
     body = bytearray()
-    body += struct.pack(">I16s", user_id, nickname)
+    body += struct.pack(">I16s", effective_uid, nickname)
     body += struct.pack(">III", 0, 0, 0)  # parent and invite counts
     body += struct.pack(">III", int(profile["color"]), int(profile["vip_flags"]), 0)
     body += struct.pack(">IIIIIIIIIIII", 0, 25_000_000, 9999, 9999, 9999, 9999, 99_999_999, 9999, 9999, 9999, 9999, 0)
@@ -177,7 +186,7 @@ def online_login_response(user_id: int, version: int) -> bytes:
     body += b"\0"  # zero starter items
     if len(body) != 215:
         raise AssertionError(f"unexpected command-201 body size: {len(body)}")
-    return packet(201, user_id, moly_encrypt(bytes(body)), version=version)
+    return packet(201, effective_uid, moly_encrypt(bytes(body)), version=version)
 
 
 def scene_user_record(
@@ -1160,6 +1169,15 @@ class Handler(socketserver.BaseRequestHandler):
                     "port": port,
                     "peer": f"{peer_host}:{peer_port}",
                     "reason": type(error).__name__,
+                }
+            )
+        except Exception as error:
+            server.recorder.write(
+                {
+                    "event": "socket-error",
+                    "port": port,
+                    "peer": f"{peer_host}:{peer_port}",
+                    "error": str(error),
                 }
             )
         finally:

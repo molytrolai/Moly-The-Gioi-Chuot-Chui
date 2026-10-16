@@ -1115,6 +1115,18 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
                 return
 
+            elif parsed.path == "/api/admin/user/delete":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                uid = payload.get("user_id")
+                ok, msg = accounts.delete_account(uid)
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
             elif parsed.path == "/api/admin/user/give_item":
                 token = get_admin_token(self.headers)
                 if not verify_admin_session(token):
@@ -1231,6 +1243,9 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.send_response(200, "OK")
                 self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.send_header("Content-Length", str(len(content)))
+                self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+                self.send_header("Pragma", "no-cache")
+                self.send_header("Expires", "0")
                 self.send_header("Connection", "close")
                 self.end_headers()
                 self.wfile.write(content)
@@ -1243,6 +1258,9 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.send_response(200, "OK")
                 self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.send_header("Content-Length", str(len(content)))
+                self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+                self.send_header("Pragma", "no-cache")
+                self.send_header("Expires", "0")
                 self.send_header("Connection", "close")
                 self.end_headers()
                 self.wfile.write(content)
@@ -1255,6 +1273,9 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.send_response(200, "OK")
                 self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.send_header("Content-Length", str(len(content)))
+                self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+                self.send_header("Pragma", "no-cache")
+                self.send_header("Expires", "0")
                 self.send_header("Connection", "close")
                 self.end_headers()
                 self.wfile.write(content)
@@ -1777,11 +1798,11 @@ class ProxyHandler(BaseHTTPRequestHandler):
                     ("Content-Type", content_type),
                     ("X-Moly-Source", source_name),
                 ]
-                if source_name == "override":
+                if source_name == "override" or local_file.suffix.lower() == ".swf":
                     response_headers.append(("Cache-Control", "no-cache, no-store, must-revalidate"))
                     response_headers.append(("Pragma", "no-cache"))
                     response_headers.append(("Expires", "0"))
-                elif local_file.suffix.lower() in {".swf", ".png", ".jpg", ".jpeg", ".mp3", ".wasm"}:
+                elif local_file.suffix.lower() in {".png", ".jpg", ".jpeg", ".mp3", ".wasm"}:
                     response_headers.append(("Cache-Control", "public, max-age=604800, immutable"))
                 elif local_file.suffix.lower() in {".xml", ".json"}:
                     response_headers.append(("Cache-Control", "public, max-age=3600"))

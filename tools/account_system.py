@@ -38,14 +38,16 @@ ACCOUNTS_PATH = DATA_DIR / "accounts.json"
 OAUTH_CONFIG_PATH = DATA_DIR / "oauth_config.json"
 RECOVERY_REQUESTS_PATH = DATA_DIR / "recovery_requests.json"
 
-DEFAULT_MOLY_ADMIN_ID = 0
+DEFAULT_MOLY_ADMIN_ID = 10000001
 LEGACY_MOLY_ADMIN_ID = 10000001
-MOLYVIETNAM_ADMIN_ID = 10000000
+ADMIN2_ID = 10000002
+TEST_USER_ID = 10000003
+
 DEFAULT_MOLY_ADMIN: dict[str, Any] = {
     "user_id": DEFAULT_MOLY_ADMIN_ID,
-    "username": "00000000",
-    "fullname": "Quản Trị Viên Vương Quốc",
-    "nickname": "Moly Admin",
+    "username": "admin",
+    "fullname": "Tổng Quản Trị Hệ Thống",
+    "nickname": "Admin Tổng",
     "birthday": "2000-01-01",
     "password_hash": "66524f0f84b0af8382bf905563265d4f",  # Molyvietnam@2026
     "color": 1,
@@ -434,46 +436,79 @@ class AccountManager:
                 except Exception:
                     self._accounts = {}
 
-        # Ensure Moly Admin accounts always exist and keep VIP/Admin rights
+        # Ensure only the 2 Admins (10000001, 10000002) and 1 Test (10000003) exist by default
         needs_save = False
-        admin_accounts_def = (
-            ("0", DEFAULT_MOLY_ADMIN),
+        # Remove legacy 0 and 10000000 accounts if present
+        for legacy_key in ("0", "10000000"):
+            if legacy_key in self._accounts:
+                del self._accounts[legacy_key]
+                needs_save = True
+
+        standard_accounts_def = (
             ("10000001", {
                 **DEFAULT_MOLY_ADMIN,
-                "user_id": 10000001,
+                "user_id": DEFAULT_MOLY_ADMIN_ID,
                 "username": "admin",
                 "fullname": "Tổng Quản Trị Hệ Thống",
                 "nickname": "Admin Tổng",
+                "email": "traivuho@gmail.com",
+                "email_verified": True,
+                "password_hash": "66524f0f84b0af8382bf905563265d4f",
+                "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58",
+                "is_admin": True,
+                "vip_level": 19,
+                "vip_end": 4102444800,
             }),
-            ("10000000", {
+            ("10000002", {
                 **DEFAULT_MOLY_ADMIN,
-                "user_id": 10000000,
-                "username": "molyvietnam",
-                "fullname": "Quản Trị Moly Việt Nam",
-                "nickname": "Moly Việt Nam",
+                "user_id": ADMIN2_ID,
+                "username": "admin2",
+                "fullname": "Phó Quản Trị Hệ Thống",
+                "nickname": "Admin Phụ",
+                "email": "traivuho@gmail.com",
+                "email_verified": True,
+                "password_hash": "66524f0f84b0af8382bf905563265d4f",
+                "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58",
+                "is_admin": True,
+                "vip_level": 19,
+                "vip_end": 4102444800,
+            }),
+            ("10000003", {
+                **DEFAULT_PLAYER_TEMPLATE,
+                "user_id": TEST_USER_ID,
+                "username": "test",
+                "fullname": "Tài Khoản Kiểm Thử",
+                "nickname": "Người Chơi Thử",
+                "email": "test@molyvietnam.vn",
+                "email_verified": True,
+                "password_hash": "66524f0f84b0af8382bf905563265d4f",
+                "is_admin": False,
+                "vip_level": 1,
+                "gold_beans": 10000,
             }),
         )
-        for admin_id, default_admin_cfg in admin_accounts_def:
-            if admin_id not in self._accounts:
-                self._accounts[admin_id] = dict(default_admin_cfg)
+        for std_id, default_cfg in standard_accounts_def:
+            if std_id not in self._accounts:
+                self._accounts[std_id] = dict(default_cfg)
                 needs_save = True
             else:
-                acc = self._accounts[admin_id]
-                for key, val in default_admin_cfg.items():
+                acc = self._accounts[std_id]
+                for key, val in default_cfg.items():
                     if key not in acc:
                         acc[key] = val
                         needs_save = True
-                acc["vip_level"] = 19
-                acc["vip_end"] = max(acc.get("vip_end", 0), 4102444800)
-                acc["is_admin"] = True
-                acc["email"] = "traivuho@gmail.com"
-                acc["email_verified"] = True
-                acc["password_hash"] = "66524f0f84b0af8382bf905563265d4f"
-                acc["admin_pin_hash"] = "46cc468df60c961d8da2326337c7aa58"
+                if std_id in ("10000001", "10000002"):
+                    acc["vip_level"] = 19
+                    acc["vip_end"] = max(acc.get("vip_end", 0), 4102444800)
+                    acc["is_admin"] = True
+                    acc["email"] = "traivuho@gmail.com"
+                    acc["email_verified"] = True
+                    acc["password_hash"] = "66524f0f84b0af8382bf905563265d4f"
+                    acc["admin_pin_hash"] = "46cc468df60c961d8da2326337c7aa58"
                 needs_save = True
 
         for uid, acc in self._accounts.items():
-            if uid not in ("0", "10000001", "10000000"):
+            if uid not in ("10000001", "10000002"):
                 for field in ("tasks", "professions", "lamu", "home"):
                     if field not in acc:
                         acc[field] = dict(DEFAULT_PLAYER_TEMPLATE[field])
@@ -589,11 +624,11 @@ class AccountManager:
         with self._lock:
             self._ensure_fresh()
             key = str(user_id).strip()
-            if key in ("0", "00000000"):
-                key = "0"
+            if key in ("0", "00000000", "admin"):
+                key = str(DEFAULT_MOLY_ADMIN_ID)
             acc = self._accounts.get(key)
-            if not acc and key == str(LEGACY_MOLY_ADMIN_ID):
-                acc = self._accounts.get("0")
+            if not acc and key in ("1000001", str(LEGACY_MOLY_ADMIN_ID)):
+                acc = self._accounts.get(str(DEFAULT_MOLY_ADMIN_ID))
             return dict(acc) if acc else None
 
     def get_account_by_google_id(self, google_id: str) -> Optional[dict[str, Any]]:
@@ -622,7 +657,11 @@ class AccountManager:
         with self._lock:
             self._ensure_fresh()
             if normalized in ("0", "00000000", "admin"):
-                return self.get_account("0")
+                return self.get_account(DEFAULT_MOLY_ADMIN_ID)
+            if normalized == "admin2":
+                return self.get_account(ADMIN2_ID)
+            if normalized == "test":
+                return self.get_account(TEST_USER_ID)
             for acc in self._accounts.values():
                 if acc.get("username") and acc["username"].strip().lower() == normalized:
                     return dict(acc)
@@ -645,29 +684,65 @@ class AccountManager:
         s = str(identifier).strip()
         if not s:
             return None
-        if s in ("0", "00000000", "admin"):
-            return self.get_account("0")
-        if s == str(LEGACY_MOLY_ADMIN_ID):
-            return self.get_account(s) or self.get_account("0")
+        # Special alias mappings
+        if s in ("0", "00000000", "admin", "1000001", str(LEGACY_MOLY_ADMIN_ID)):
+            return self.get_account(DEFAULT_MOLY_ADMIN_ID)
+        if s.lower() == "admin2":
+            return self.get_account(ADMIN2_ID)
+        if s.lower() == "test":
+            return self.get_account(TEST_USER_ID)
+
         # 1. Mã ID Moly (nếu là số)
         if s.isdigit():
             acc = self.get_account(int(s))
             if acc:
                 return acc
-            # Hỗ trợ tự động nếu người dùng gõ nhầm 1000001 (7 số) thay vì 10000001 (8 số)
             if s == "1000001":
-                acc = self.get_account(10000001) or self.get_account("0")
+                acc = self.get_account(DEFAULT_MOLY_ADMIN_ID)
                 if acc:
                     return acc
+
         # 2. Tên tài khoản (Username)
         acc = self.get_account_by_username(s)
         if acc:
             return acc
+
         # 3. Gmail nếu đã liên kết (Email)
         acc = self.get_account_by_email(s)
         if acc:
             return acc
+
         return None
+
+    def delete_account(self, user_id: Any) -> tuple[bool, str]:
+        """Delete an account permanently, forbidding deletion of Supreme Admins."""
+        with self._lock:
+            self._ensure_fresh()
+            try:
+                uid_int = int(user_id)
+            except (ValueError, TypeError):
+                return False, "ID tài khoản không hợp lệ."
+
+            if uid_int in (DEFAULT_MOLY_ADMIN_ID, ADMIN2_ID):
+                return False, "Không thể xóa tài khoản Quản Trị Viên tối cao."
+
+            uid_str = str(uid_int)
+            if uid_str not in self._accounts:
+                return False, f"Không tìm thấy tài khoản ID {uid_str}."
+
+            del self._accounts[uid_str]
+            self._save()
+
+            if self.use_postgres and HAS_PSYCOPG2:
+                try:
+                    with psycopg2.connect(self.db_url) as conn:
+                        with conn.cursor() as cur:
+                            cur.execute("DELETE FROM moly_users WHERE user_id = %s;", (uid_int,))
+                        conn.commit()
+                except Exception as exc:
+                    print(f"[!] PostgreSQL delete warning: {exc}")
+
+            return True, f"Đã xóa vĩnh viễn tài khoản {uid_str} thành công."
 
     def list_accounts(self) -> list[dict[str, Any]]:
         with self._lock:
