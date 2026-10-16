@@ -7,12 +7,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
     private WebView webView;
+    private static final String ONLINE_URL = "https://molyvn.onrender.com/play.html";
+    private static final String OFFLINE_URL = "file:///android_asset/offline.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +46,25 @@ public class MainActivity extends Activity {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                if (failingUrl != null && failingUrl.startsWith("http")) {
+                    view.loadUrl(OFFLINE_URL);
+                }
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                if (request != null && request.isForMainFrame()) {
+                    view.loadUrl(OFFLINE_URL);
+                }
+            }
+        });
         webView.setWebChromeClient(new WebChromeClient());
 
-        // Load mobile stage with offline Ruffle bundle and WebSocket proxy
-        webView.loadUrl("file:///android_asset/mobile.html");
+        // Load live synchronized game world directly
+        webView.loadUrl(ONLINE_URL);
     }
 
     private void setImmersiveMode() {

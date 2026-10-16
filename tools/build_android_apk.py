@@ -43,18 +43,17 @@ def setup_project_structure() -> None:
     values_dir = res_dir / "values"
     values_dir.mkdir(parents=True, exist_ok=True)
 
-    # 1. AndroidManifest.xml
+    # 1. AndroidManifest.xml (Minimal permissions: INTERNET & ACCESS_NETWORK_STATE only - no popup prompts)
     manifest_path = ANDROID_DIR / "src" / "main" / "AndroidManifest.xml"
     manifest_path.parent.mkdir(parents=True, exist_ok=True)
     manifest_content = """<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.molyviet.thegioichuotchui"
-    android:versionCode="1"
-    android:versionName="1.0.0">
+    android:versionCode="2"
+    android:versionName="1.1.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:label="@string/app_name"
@@ -127,12 +126,16 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceError;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
     private WebView webView;
+    private static final String ONLINE_URL = "https://molyvn.onrender.com/play.html";
+    private static final String OFFLINE_URL = "file:///android_asset/offline.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,11 +165,25 @@ public class MainActivity extends Activity {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                if (failingUrl != null && failingUrl.startsWith("http")) {
+                    view.loadUrl(OFFLINE_URL);
+                }
+            }
+
+            @Override
+            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+                if (request != null && request.isForMainFrame()) {
+                    view.loadUrl(OFFLINE_URL);
+                }
+            }
+        });
         webView.setWebChromeClient(new WebChromeClient());
 
-        // Load mobile stage with offline Ruffle bundle and WebSocket proxy
-        webView.loadUrl("file:///android_asset/mobile.html");
+        // Load live synchronized game world directly
+        webView.loadUrl(ONLINE_URL);
     }
 
     private void setImmersiveMode() {
@@ -221,7 +238,59 @@ def setup_mobile_assets() -> None:
     shutil.copy(PROJECT_ROOT / "web" / "assets" / "logo-square.png", logo_dst / "logo-square.png")
     shutil.copy(PROJECT_ROOT / "web" / "assets" / "logo-horizontal.png", logo_dst / "logo-horizontal.png")
 
-    # Mobile play HTML
+    # Offline retry page
+    offline_html = """<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Moly VN - Kết Nối Máy Chủ</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 100vw; height: 100vh;
+      background: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #f8fafc;
+      text-align: center;
+      padding: 24px;
+    }
+    .logo {
+      width: 80px; height: 80px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      margin-bottom: 16px;
+    }
+    h2 { font-size: 20px; font-weight: 800; color: #ff7e1b; margin-bottom: 8px; }
+    p { font-size: 14px; color: #94a3b8; max-width: 420px; line-height: 1.5; margin-bottom: 24px; }
+    .btn-retry {
+      background: linear-gradient(135deg, #ff7e1b, #ea580c);
+      color: #ffffff;
+      border: none;
+      padding: 12px 32px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <img src="assets/logo-square.png" alt="Moly" class="logo">
+  <h2>VƯƠNG QUỐC CHUỘT CHŨI (MOLY VN)</h2>
+  <p>Không thể kết nối đến máy chủ trực tuyến. Vui lòng kiểm tra lại kết nối WiFi hoặc dữ liệu 4G/5G trên điện thoại và nhấn Thử Lại nhé!</p>
+  <button class="btn-retry" onclick="window.location.href='https://molyvn.onrender.com/play.html'">🔄 THỬ LẠI KẾT NỐI</button>
+</body>
+</html>
+"""
+    (assets_dir / "offline.html").write_text(offline_html, encoding="utf-8")
+
+    # Mobile play HTML (standalone local fallback)
     mobile_html = """<!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -282,23 +351,22 @@ def setup_mobile_assets() -> None:
   <div id="loading">
     <img src="assets/logo-square.png" alt="Moly">
     <div class="spinner"></div>
-    <div>Đang khởi động Thế Giới Chuột Chũi...</div>
+    <div>Đang kết nối Vương Quốc Chuột Chũi Moly VN...</div>
   </div>
   <div id="game-container"></div>
 
   <script>
     window.RufflePlayer = window.RufflePlayer || {};
-    // Configure remote server address: defaults to production or local bridge
-    const SERVER_HOST = "10.0.2.2:18080"; // Android emulator host, or change to molyviet.vn in production
+    const SERVER_HOST = "molyvn.onrender.com";
     window.RufflePlayer.config = {
       letterbox: "on",
       allowScriptAccess: true,
       scale: "showAll",
       socketProxy: [
-        { host: "127.0.0.1", port: 1863, proxyUrl: `ws://${SERVER_HOST}/ws/1863` },
-        { host: "127.0.0.1", port: 3200, proxyUrl: `ws://${SERVER_HOST}/ws/3200` },
-        { host: "123.206.131.236", port: 1863, proxyUrl: `ws://${SERVER_HOST}/ws/1863` },
-        { host: "123.206.131.63", port: 3200, proxyUrl: `ws://${SERVER_HOST}/ws/3200` }
+        { host: "127.0.0.1", port: 1863, proxyUrl: `wss://${SERVER_HOST}/ws/1863` },
+        { host: "127.0.0.1", port: 3200, proxyUrl: `wss://${SERVER_HOST}/ws/3200` },
+        { host: "123.206.131.236", port: 1863, proxyUrl: `wss://${SERVER_HOST}/ws/1863` },
+        { host: "123.206.131.63", port: 3200, proxyUrl: `wss://${SERVER_HOST}/ws/3200` }
       ]
     };
 
@@ -312,7 +380,7 @@ def setup_mobile_assets() -> None:
         container.appendChild(player);
 
         player.load({
-          url: `http://${SERVER_HOST}/Client.swf`,
+          url: `https://${SERVER_HOST}/Client.swf?v=20261017_apk`,
           parameters: {}
         }).then(() => {
           setTimeout(() => { loading.style.display = "none"; }, 800);

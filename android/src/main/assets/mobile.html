@@ -58,23 +58,22 @@
   <div id="loading">
     <img src="assets/logo-square.png" alt="Moly">
     <div class="spinner"></div>
-    <div>Đang khởi động Thế Giới Chuột Chũi...</div>
+    <div>Đang kết nối Vương Quốc Chuột Chũi Moly VN...</div>
   </div>
   <div id="game-container"></div>
 
   <script>
     window.RufflePlayer = window.RufflePlayer || {};
-    // Configure remote server address: defaults to production or local bridge
-    const SERVER_HOST = "10.0.2.2:18080"; // Android emulator host, or change to molyviet.vn in production
+    const SERVER_HOST = "molyvn.onrender.com";
     window.RufflePlayer.config = {
       letterbox: "on",
       allowScriptAccess: true,
       scale: "showAll",
       socketProxy: [
-        { host: "127.0.0.1", port: 1863, proxyUrl: `ws://${SERVER_HOST}/ws/1863` },
-        { host: "127.0.0.1", port: 3200, proxyUrl: `ws://${SERVER_HOST}/ws/3200` },
-        { host: "123.206.131.236", port: 1863, proxyUrl: `ws://${SERVER_HOST}/ws/1863` },
-        { host: "123.206.131.63", port: 3200, proxyUrl: `ws://${SERVER_HOST}/ws/3200` }
+        { host: "127.0.0.1", port: 1863, proxyUrl: `wss://${SERVER_HOST}/ws/1863` },
+        { host: "127.0.0.1", port: 3200, proxyUrl: `wss://${SERVER_HOST}/ws/3200` },
+        { host: "123.206.131.236", port: 1863, proxyUrl: `wss://${SERVER_HOST}/ws/1863` },
+        { host: "123.206.131.63", port: 3200, proxyUrl: `wss://${SERVER_HOST}/ws/3200` }
       ]
     };
 
@@ -88,7 +87,7 @@
         container.appendChild(player);
 
         player.load({
-          url: `http://${SERVER_HOST}/Client.swf`,
+          url: `https://${SERVER_HOST}/Client.swf?v=20261017_apk`,
           parameters: {}
         }).then(() => {
           setTimeout(() => { loading.style.display = "none"; }, 800);
