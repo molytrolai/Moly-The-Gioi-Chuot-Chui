@@ -1,0 +1,4 @@
+=== HƯỚNG DẪN CHỈNH SỬA 15_khung_dang_ky_trong_game ===
+Thư mục này chứa các nút thuộc 15_khung_dang_ky_trong_game.
+Bạn có thể chỉnh sửa trực tiếp các tệp ảnh PNG trong từng thư mục con.
+Sau khi sửa xong, chỉ cần chạy file: Cap-Nhat-Icon-Sau-Khi-Sua.bat ngoài thư mục gốc là game sẽ tự động cập nhật ngay!

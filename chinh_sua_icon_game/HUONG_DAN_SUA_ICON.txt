@@ -1,21 +1,35 @@
 ==================================================================
-HƯỚNG DẪN CHỈNH SỬA TOÀN BỘ ICON / NÚT BẮT ĐẦU GAME MOLY VN
+HƯỚNG DẪN CHỈNH SỬA TOÀN BỘ ICON / NÚT GIAO DIỆN GAME MOLY VN
 ==================================================================
 
-1. TOÀN BỘ CÁC NÚT ĐÃ ĐƯỢC XUẤT RA DẠNG ẢNH PNG TRONG SUỐT TRONG THƯ MỤC NÀY:
-   - Thư mục 01_nut_dang_ky: Nút 'Đăng ký'
-   - Thư mục 02_nut_luu_trang_yeu_thich: Nút 'Lưu trang yêu thích' (收藏摩尔庄园)
-   - Thư mục 03_nut_dien_dan_chinh_thuc: Nút 'Diễn đàn' (官方论坛)
-   - Thư mục 04_cskh_phu_huynh_va_do_tuoi: Cụm CSKH, Phụ huynh, và Độ tuổi (联系客服, 家长须知)
-   - Thư mục 05_chu_taomee_chan_trang: Chữ thông tin Taomee
+1. DANH MỤC TOÀN BỘ 15 NHÓM ICON / NÚT ĐÃ ĐƯỢC PHÂN LOẠI CHI TIẾT:
+   - 01_nut_dang_ky: Nút 'Đăng ký' ở chân trang
+   - 02_nut_luu_trang_yeu_thich: Nút 'Lưu trang yêu thích' (收藏摩尔庄园)
+   - 03_nut_dien_dan_chinh_thuc: Nút 'Diễn đàn chính thức' (官方论坛)
+   - 04_cskh_phu_huynh_va_do_tuoi: Cụm CSKH, Phụ huynh, và Độ tuổi (联系客服, 家长须知)
+   - 05_chu_taomee_chan_trang: Chữ thông tin Taomee chân trang
+   - 06_tieu_de_thong_bao_alert: Tiêu đề khung Thông Báo (Shape 362 - "LỜI NHẮC HỆ THỐNG")
+   - 07_nut_dang_nhap_lai_alert: Nút 'Đăng Nhập Lại' trong hộp thoại thông báo (gốc: 重新登陆)
+   - 08_nut_da_hieu_alert: Nút 'Đã Hiểu' trong hộp thoại thông báo (gốc: 我知道了)
+   - 09_nut_huy_bo_alert: Nút 'Hủy Bỏ' trong hộp thoại thông báo (gốc: 取消)
+   - 10_nut_xac_nhan_alert: Nút 'Xác Nhận' trong hộp thoại thông báo (gốc: 确定)
+   - 11_nut_tro_giup_alert: Nút 'Trợ Giúp' trong hộp thoại thông báo (gốc: 求助)
+   - 12_nut_dang_nhap_alert: Nút 'Đăng Nhập' trong hộp thoại thông báo (gốc: 登录)
+   - 13_nut_doi_mat_khau_alert: Nút 'Đổi Mật Khẩu' trong hộp thoại thông báo (gốc: 修改密码)
+   - 14_man_hinh_chon_server: Cụm nút màn hình Chọn Máy Chủ (Tất cả máy chủ, Đề xuất, Vào nhanh, Đi tới)
+   - 15_khung_dang_ky_trong_game: Cụm nút màn hình Đăng Ký Cư Dân (Đăng ký ngay, Đổi mã, Nút đóng)
 
-2. CÁCH SỬA RẤT ĐƠN GIẢN:
-   - Bạn chỉ cần nhấp đúp vào file ảnh .png để mở bằng Photoshop, Paint, Canva hoặc bất kỳ phần mềm sửa ảnh nào.
-   - Sửa chữ Trung Quốc thành tiếng Việt theo ý bạn.
-   - Lưu lại (giữ định dạng PNG trong suốt).
+2. CÁCH CHỈNH SỬA RẤT ĐƠN GIẢN:
+   - Bạn chỉ cần nhấp đúp vào file ảnh .png trong bất kỳ thư mục nào để mở bằng Photoshop, Canva, Paint...
+   - Sửa đè nội dung theo ý thích của bạn (giữ nguyên định dạng PNG trong suốt).
+   - Trong mỗi thư mục nút có 4 trạng thái:
+     + 1_up.png: Bình thường
+     + 2_over.png: Khi rê chuột vào
+     + 3_down.png: Khi nhấn chuột xuống
+     + 4_hittest.png: Vùng nhận diện click chuột
 
 3. CẬP NHẬT VÀO GAME BẰNG 1 CÚ NHẤP CHUỘT:
    - Sau khi bạn sửa ảnh xong, chỉ cần ra thư mục gốc chạy file:
      'Cap-Nhat-Icon-Sau-Khi-Sua.bat'
-   - Hệ thống sẽ tự động ghép ảnh của bạn trở lại vào game mà không cần bạn phải thao tác lệnh phức tạp gì cả!
+   - Hệ thống sẽ tự động ghép ảnh của bạn trở lại vào game chuẩn xác 100%!
 ==================================================================

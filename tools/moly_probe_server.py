@@ -121,13 +121,17 @@ def login_response(user_id: int, request_body: bytes = b"") -> bytes:
         elif identifier in ("0", "00000000", "admin"):
             actual_uid = 0
 
+    if not accounts.get_account(actual_uid):
+        # Error 5005 = Tài khoản không chính xác
+        return packet(103, actual_uid, b"", error=5005)
+
     if len(request_body) >= 32:
         pwd_offset = 64 if (user_id == 0 and len(request_body) >= 96) else 0
         pwd_hash = request_body[pwd_offset : pwd_offset + 32].decode("ascii", errors="ignore")
         ok, _ = accounts.authenticate(actual_uid, pwd_hash)
         if not ok:
-            # Flag 1 = Password incorrect
-            return packet(103, actual_uid, struct.pack(">I", 1) + b"\0" * 16)
+            # Error 5003 = Tài khoản hoặc mật khẩu không đúng, vui lòng thử lại!
+            return packet(103, actual_uid, b"", error=5003)
 
     return packet(103, actual_uid, struct.pack(">I", 0) + SESSION)
 

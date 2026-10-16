@@ -1,0 +1,11 @@
+=== HƯỚNG DẪN CHỈNH SỬA 11_nut_tro_giup_alert ===
+Mô tả: Nút TRỢ GIÚP trong khung thông báo (gốc: 求助)
+
+Các tệp trong thư mục này:
+- 1_up.png: Trạng thái bình thường của nút
+- 2_over.png: Trạng thái khi di chuột qua
+- 3_down.png: Trạng thái khi nhấn chuột xuống
+- 4_hittest.png: Vùng bấm chuột (giữ nguyên kích thước/độ trong suốt)
+
+Cách chỉnh sửa: Bạn có thể chỉnh sửa đè lên các tệp PNG này bằng Photoshop, Canva hoặc Paint.
+Sau khi sửa xong, chỉ cần chạy file: Cap-Nhat-Icon-Sau-Khi-Sua.bat ngoài thư mục gốc là game sẽ tự động cập nhật ngay!

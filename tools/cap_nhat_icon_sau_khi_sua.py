@@ -34,7 +34,16 @@ def main():
         ("03_nut_dien_dan_chinh_thuc", "Nút Diễn đàn"),
         ("04_cskh_phu_huynh_va_do_tuoi", "Cụm CSKH & Phụ huynh & Độ tuổi"),
         ("05_chu_taomee_chan_trang", "Chữ Taomee chân trang"),
-        ("06_tieu_de_thong_bao_alert", "Tiêu đề hộp thoại Thông Báo (Shape 362)"),
+        ("06_tieu_de_thong_bao_alert", "Tiêu đề Thông Báo Alert (Shape 362)"),
+        ("07_nut_dang_nhap_lai_alert", "Nút Đăng Nhập Lại trong Alert (Shape 384/385/386/378)"),
+        ("08_nut_da_hieu_alert", "Nút Đã Hiểu trong Alert (Shape 367/368/369)"),
+        ("09_nut_huy_bo_alert", "Nút Hủy Bỏ trong Alert (Shape 371/372/373)"),
+        ("10_nut_xac_nhan_alert", "Nút Xác Nhận trong Alert (Shape 375/376)"),
+        ("11_nut_tro_giup_alert", "Nút Trợ Giúp trong Alert (Shape 380/381/382)"),
+        ("12_nut_dang_nhap_alert", "Nút Đăng Nhập trong Alert (Shape 388/389/390)"),
+        ("13_nut_doi_mat_khau_alert", "Nút Đổi Mật Khẩu trong Alert (Shape 392/393/394)"),
+        ("14_man_hinh_chon_server", "Cụm nút Màn Hình Chọn Máy Chủ"),
+        ("15_khung_dang_ky_trong_game", "Cụm nút Khung Đăng Ký Trong Game"),
     ]
     
     print("\n[1/3] Kiểm tra các thư mục icon người dùng:")

@@ -2,6 +2,9 @@
 title Moly - The Gioi Chuot Chui VN
 cd /d "%~dp0"
 
+:: Cau hinh ket noi dong bo du lieu may chu Neon PostgreSQL Cloud
+set DATABASE_URL=postgresql://neondb_owner:npg_QUak1c0dzVqy@ep-autumn-bar-a1n8y84y.ap-southeast-1.aws.neon.tech/neondb?sslmode=require
+
 :: 1. Kiem tra va khoi dong proxy tai nguyen (Port 18080) chay ngam hoan toan qua pythonw
 netstat -ano | findstr :18080 >nul 2>&1
 if errorlevel 1 (
