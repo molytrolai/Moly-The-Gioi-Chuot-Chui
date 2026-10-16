@@ -1649,6 +1649,23 @@ class AccountManager:
         except Exception:
             pass
 
+    def get_recent_audit_logs(self, limit: int = 15) -> list[dict[str, Any]]:
+        log_file = DATA_DIR / "admin_audit.log"
+        if not log_file.exists():
+            return []
+        try:
+            lines = log_file.read_text(encoding="utf-8").strip().splitlines()
+            records = []
+            for line in reversed(lines[-limit:]):
+                if line.strip():
+                    try:
+                        records.append(json.loads(line))
+                    except Exception:
+                        pass
+            return records
+        except Exception:
+            return []
+
     def ban_account(self, user_id: Any, reason: str = "Vi phạm điều lệ cư dân Moly") -> tuple[bool, str]:
         with self._lock:
             self._ensure_fresh()
@@ -2161,18 +2178,22 @@ class RechargeManager:
 
     def update_payment_config(
         self,
-        bank_name: str,
-        account_number: str,
-        account_name: str,
-        qr_image_url: str,
+        bank_name: str = "",
+        account_number: str = "",
+        account_name: str = "",
+        qr_image_url: str = "",
         note: str = "",
     ) -> dict[str, Any]:
         with self._lock:
             self._load_config()
-            self._config["bank_name"] = str(bank_name).strip()
-            self._config["account_number"] = str(account_number).strip()
-            self._config["account_name"] = str(account_name).strip().upper()
-            self._config["qr_image_url"] = str(qr_image_url).strip() or "/assets/payment_qr_placeholder.png"
+            if bank_name:
+                self._config["bank_name"] = str(bank_name).strip()
+            if account_number:
+                self._config["account_number"] = str(account_number).strip()
+            if account_name:
+                self._config["account_name"] = str(account_name).strip().upper()
+            if qr_image_url:
+                self._config["qr_image_url"] = str(qr_image_url).strip()
             if note:
                 self._config["note"] = str(note).strip()
             self._config["updated_at"] = datetime.now(timezone.utc).isoformat()

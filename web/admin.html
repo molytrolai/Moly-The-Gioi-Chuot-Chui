@@ -284,7 +284,8 @@
     <div class="user-pill">
       <span id="adm-session-badge" style="display: inline-flex; align-items: center; gap: 4px; font-size: 11px; background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.4); color: #93c5fd; padding: 4px 10px; border-radius: 999px; margin-right: 6px;">⏱️ Phiên: 03:00:00</span>
       <span>🟢 Quản Trị Viên: <strong id="admin-user-display">00000000</strong> (VIP 19)</span>
-      <button class="btn btn-sm btn-warning" id="btn-open-pwd-modal" style="padding: 4px 10px; font-size: 12px; margin-left: 6px;" onclick="openPasswordModal()">🔒 Đổi Mật Khẩu &amp; PIN</button>
+      <button class="btn btn-sm" style="background: linear-gradient(135deg, #7c3aed, #4f46e5); color: #fff; padding: 4px 10px; font-size: 12px; margin-left: 6px; font-weight: bold; border-radius: 6px;" onclick="switchToAdminHub()">👑 Trung Tâm Admin</button>
+      <button class="btn btn-sm btn-warning" id="btn-open-pwd-modal" style="padding: 4px 10px; font-size: 12px; margin-left: 4px;" onclick="openPasswordModal()">🔒 Đổi Pass &amp; PIN</button>
       <a href="/" class="btn btn-sm" style="background: #334155; color: #fff; text-decoration: none; padding: 4px 10px; font-size: 12px; margin-left: 4px;">🌐 Về Trang Chủ</a>
       <button class="btn-logout" id="btn-logout">Đăng Xuất</button>
     </div>
@@ -318,17 +319,171 @@
     </div>
 
     <!-- Navigation Tabs -->
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="tab-residents">Quản Lý Cư Dân</button>
+    <div class="tabs" style="overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px;">
+      <button class="tab-btn active" data-tab="tab-admin-hub" style="background: rgba(124, 58, 237, 0.25); border: 1px solid #7c3aed; color: #c4b5fd; font-weight: bold;">👑 Quản Trị Hệ Thống &amp; Admin</button>
+      <button class="tab-btn" data-tab="tab-residents">👥 Quản Lý Cư Dân</button>
       <button class="tab-btn" data-tab="tab-recharge">💳 Quản Lý Nạp Tiền &amp; QR</button>
       <button class="tab-btn" data-tab="tab-giftcodes">🎁 Quản Lý Mã Quà Tặng (Giftcodes)</button>
-      <button class="tab-btn" data-tab="tab-broadcast">Thông Báo Toàn Server</button>
-      <button class="tab-btn" data-tab="tab-system">Hạ Tầng & Triển Khai</button>
+      <button class="tab-btn" data-tab="tab-broadcast">📢 Thông Báo Toàn Server</button>
+      <button class="tab-btn" data-tab="tab-system">⚙️ Hạ Tầng &amp; Triển Khai</button>
       <button class="tab-btn" data-tab="tab-recovery">📩 Hộp Thư Cấp Lại MK <span id="recovery-badge" class="badge badge-danger" style="display:none; margin-left: 4px; padding: 2px 6px; font-size: 11px;">0</span></button>
     </div>
 
+    <!-- Tab: Trung Tâm Quản Trị Hệ Thống & Admin -->
+    <div id="tab-admin-hub">
+      <!-- Khung Tiêu Đề Trung Tâm Admin -->
+      <div style="background: linear-gradient(135deg, rgba(88, 28, 135, 0.5) 0%, rgba(30, 27, 75, 0.7) 100%); border: 1px solid #7c3aed; border-radius: 12px; padding: 20px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 28px;">👑</span>
+              <div>
+                <h2 style="font-size: 20px; color: #fff; margin: 0;">Trung Tâm Quản Trị Viên &amp; Điều Hành Hệ Thống</h2>
+                <div style="font-size: 13px; color: #c4b5fd; margin-top: 4px;">Tổng hợp toàn bộ thông tin tài khoản admin, phân quyền phụ tá, an ninh bảo mật và phím tắt điều hành vương quốc Moly.</div>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-primary" onclick="loadAdminHubInfo()">🔄 Làm Mới Trạng Thái</button>
+            <a href="/api/admin/backup" class="btn btn-sm btn-success" download>💾 Tải Bản Sao Lưu DB (ZIP)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lưới 3 Cột: Profile Admin, Admin 2, và Phiên Làm Việc -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-bottom: 24px;">
+        
+        <!-- Cột 1: Hồ Sơ & Bảo Mật Quản Trị Viên Đang Đăng Nhập -->
+        <div class="card" style="margin-bottom: 0;">
+          <div class="card-header">
+            <span class="card-title">👤 Hồ Sơ &amp; Quyền Hạn Admin Đang Đăng Nhập</span>
+            <span id="hub-admin-badge" class="badge badge-warning" style="padding: 3px 8px;">Tối Cao</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.8; margin-bottom: 14px; background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid #334155;">
+            <div>ID Quản Trị: <strong id="hub-admin-uid" style="color: #60a5fa;">10000001</strong></div>
+            <div>Tên Đăng Nhập: <strong id="hub-admin-uname" style="color: #fde047;">admin</strong></div>
+            <div>Biệt Danh Hiện Tại: <span id="hub-admin-nick" style="color: #38bdf8;">Tổng Quản Trị Moly</span></div>
+            <div>Email Quản Trị Nhận OTP: <span id="hub-admin-email" style="color: #34d399;">traivuho@gmail.com</span></div>
+            <div>Mã PIN Cấp Cao 6 Số: <strong id="hub-admin-pin-status" style="color: #a78bfa;">Đã Thiết Lập Bảo Vệ</strong></div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-warning" onclick="openPasswordModal()" style="flex: 1;">🔐 Đổi Pass &amp; PIN</button>
+            <button class="btn btn-sm btn-primary" onclick="openAdminProfileModal()" style="flex: 1;">✏️ Sửa Biệt Danh &amp; Email</button>
+          </div>
+        </div>
+
+        <!-- Cột 2: Quản Lý Phụ Tá Quản Trị 2 (Admin 2) -->
+        <div class="card" style="margin-bottom: 0;">
+          <div class="card-header">
+            <span class="card-title">🛡️ Quản Lý Phụ Tá Quản Trị 2 (Admin 2)</span>
+            <span id="hub-admin2-status-badge" class="badge badge-success" style="padding: 3px 8px;">Đang Hoạt Động</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.8; margin-bottom: 14px; background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid #334155;">
+            <div>ID Tài Khoản: <strong style="color: #60a5fa;">10000002</strong></div>
+            <div>Tên Đăng Nhập: <strong style="color: #fde047;">admin2</strong></div>
+            <div>Biệt Danh: <span id="hub-admin2-nick" style="color: #38bdf8;">Quản Trị Viên 2</span></div>
+            <div>Email Liên Hệ: <span id="hub-admin2-email" style="color: #cbd5e1;">admin2@moly.vn</span></div>
+            <div>Trạng Thái Quyền: <strong style="color: #34d399;">Quyền Quản Trị Thứ Cấp</strong></div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-danger" onclick="promptResetAdmin2Password()" style="flex: 1;">🔑 Đặt Lại MK Cho Admin 2</button>
+          </div>
+        </div>
+
+        <!-- Cột 3: Quản Lý Phiên Làm Việc & An Ninh Token -->
+        <div class="card" style="margin-bottom: 0;">
+          <div class="card-header">
+            <span class="card-title">⏱️ Phiên Làm Việc &amp; An Ninh Phiên</span>
+            <span class="badge badge-info" id="hub-session-status">An Toàn</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.8; margin-bottom: 14px; background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 8px; border: 1px solid #334155;">
+            <div>Thời Gian Phiên Còn Lại: <strong id="hub-session-countdown" style="color: #fbbf24; font-size: 15px;">--:--:--</strong></div>
+            <div>Cơ Chế Hết Hạn: <span id="hub-session-mode" style="color: #93c5fd;">Tự Động Đăng Xuất Khi Hết Giờ</span></div>
+            <div>Địa Chỉ Máy Chủ Đang Chạy: <code style="color: #34d399;">Tri-Play &bull; Render Live</code></div>
+            <div>Giới Hạn IP: <span style="color: #a78bfa;">Khóa Tạm Thời Nếu Sai 5 Lần</span></div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-primary" onclick="extendAdminSession(10800)" style="flex: 1;">⚡ Gia Hạn Thêm 3 Giờ</button>
+            <button class="btn btn-sm btn-danger" onclick="handleAdminLogout()" style="flex: 1;">🚪 Đăng Xuất An Toàn</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trung Tâm Phím Tắt Điều Hành Thần Tốc (6 Quick Action Cards) -->
+      <div class="card" style="margin-bottom: 24px;">
+        <div class="card-header">
+          <span class="card-title">🚀 Ma Trận Phím Tắt Điều Hành Thần Tốc (Quick Action Matrix)</span>
+          <span style="font-size: 12px; color: var(--text-muted);">Bấm để chuyển ngay đến mục tương ứng</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 6px;">
+          
+          <div onclick="switchAdminTab('tab-residents')" style="background: rgba(30, 41, 59, 0.8); border: 1px solid #3b82f6; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <div style="font-size: 24px; margin-bottom: 6px;">👥</div>
+            <strong style="color: #60a5fa; font-size: 14px;">Quản Lý Cư Dân</strong>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Xem danh sách, tìm kiếm ID, nạp Đậu, cấp VIP, duyệt xóa tài khoản.</div>
+          </div>
+
+          <div onclick="switchAdminTab('tab-recharge')" style="background: rgba(30, 41, 59, 0.8); border: 1px solid #10b981; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <div style="font-size: 24px; margin-bottom: 6px;">💳</div>
+            <strong style="color: #34d399; font-size: 14px;">Quản Lý Nạp Tiền &amp; Mã QR</strong>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Duyệt/từ chối đơn nạp thẻ cào &amp; QR, tải file ảnh mã QR thanh toán mới.</div>
+          </div>
+
+          <div onclick="switchAdminTab('tab-giftcodes')" style="background: rgba(30, 41, 59, 0.8); border: 1px solid #a855f7; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <div style="font-size: 24px; margin-bottom: 6px;">🎁</div>
+            <strong style="color: #c084fc; font-size: 14px;">Kho Mã Quà Tặng Giftcode</strong>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Tạo giftcode mới, thiết lập số lượng Đậu, ngày hết hạn và lượt dùng.</div>
+          </div>
+
+          <div onclick="switchAdminTab('tab-broadcast')" style="background: rgba(30, 41, 59, 0.8); border: 1px solid #eab308; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <div style="font-size: 24px; margin-bottom: 6px;">📢</div>
+            <strong style="color: #facc15; font-size: 14px;">Loa Phóng Thanh Toàn Server</strong>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Phát tin nhắn thông báo đỏ chạy trực tiếp trên đỉnh màn hình trong game.</div>
+          </div>
+
+          <div onclick="switchAdminTab('tab-recovery')" style="background: rgba(30, 41, 59, 0.8); border: 1px solid #ec4899; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <div style="font-size: 24px; margin-bottom: 6px;">📩</div>
+            <strong style="color: #f472b6; font-size: 14px;">Hộp Thư Cấp Lại Mật Khẩu</strong>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Xem và duyệt các yêu cầu xin cấp lại mật khẩu từ cư dân quên thông tin.</div>
+          </div>
+
+          <div onclick="switchAdminTab('tab-system')" style="background: rgba(30, 41, 59, 0.8); border: 1px solid #64748b; border-radius: 8px; padding: 14px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+            <div style="font-size: 24px; margin-bottom: 6px;">⚙️</div>
+            <strong style="color: #94a3b8; font-size: 14px;">Hạ Tầng, Sao Lưu &amp; SMTP</strong>
+            <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Cấu hình gửi email OTP qua Gmail App Password, tải bản backup toàn bộ DB.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Nhật Ký Thao Tác Quản Trị (Admin Activity Audit Log) -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📜 Nhật Ký Hoạt Động Quản Trị Hệ Thống (Audit Logs)</span>
+          <button class="btn btn-sm btn-primary" onclick="loadAdminHubInfo()">🔄 Tải Lại Nhật Ký</button>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 170px;">Thời Gian (UTC)</th>
+                <th style="width: 130px;">Admin Thực Hiện</th>
+                <th style="width: 200px;">Hành Động</th>
+                <th>Chi Tiết Thao Tác</th>
+              </tr>
+            </thead>
+            <tbody id="hub-audit-log-body">
+              <tr><td colspan="4" style="text-align: center; color: var(--text-muted);">Đang tải nhật ký kiểm toán...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
     <!-- Tab 1: Residents -->
-    <div id="tab-residents">
+    <div id="tab-residents" style="display: none;">
       <div class="card">
         <div class="card-header">
           <span class="card-title">Danh Sách Cư Dân Vương Quốc Chuột Chũi</span>
@@ -385,8 +540,13 @@
             <input type="text" id="admin-bank-holder" placeholder="VD: NGUYEN VAN ADMIN" required>
           </div>
           <div class="input-group" style="margin-bottom: 0;">
-            <label>URL / Link Ảnh Mã QR (Admin tự điền link ảnh QR)</label>
-            <input type="text" id="admin-bank-qr-url" placeholder="VD: /assets/payment_qr_placeholder.png hoặc https://..." oninput="updateAdminQrPreview(this.value)">
+            <label>Ảnh Mã QR Thanh Toán (Dán URL hoặc Tải File Ảnh Lên)</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="admin-bank-qr-url" placeholder="VD: /assets/payment_qr.png hoặc dán link..." oninput="updateAdminQrPreview(this.value)" style="margin-bottom: 0;">
+              <input type="file" id="admin-qr-file-input" accept="image/png,image/jpeg,image/webp" style="display: none;" onchange="handleAdminQrFileUpload(this)">
+              <button type="button" class="btn btn-sm btn-primary" onclick="document.getElementById('admin-qr-file-input').click()" style="white-space: nowrap; padding: 6px 12px; font-size: 12px;">📁 Tải File Lên</button>
+            </div>
+            <div id="admin-qr-upload-status" style="font-size: 11px; color: #34d399; margin-top: 4px; display: none;"></div>
           </div>
           <div class="input-group" style="margin-bottom: 0; grid-column: 1 / -1;">
             <label>Ghi Chú / Hướng Dẫn Nạp Tiền Cho Cư Dân</label>
@@ -648,6 +808,102 @@
         <button class="btn btn-sm" style="background: #334155; color: #fff;" onclick="closeModal()">← Trở lại</button>
         <button class="btn btn-sm btn-primary" id="btn-modal-confirm">Xác Nhận</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal Từ Chối Đơn Nạp Với Lý Do Chi Tiết -->
+  <div id="modal-reject-order" class="modal-overlay" onclick="if(event.target===this){closeRejectModal();}">
+    <div class="modal" style="max-width: 480px; position: relative;">
+      <div class="modal-header">
+        <h3 style="font-size: 16px; color: #ef4444; margin: 0;">❌ Từ Chối Đơn Nạp Tiền</h3>
+        <button type="button" class="modal-close" onclick="closeRejectModal()">&times;</button>
+      </div>
+
+      <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 10px; margin-bottom: 12px; font-size: 13px;">
+        <div>Đơn Nạp: <strong id="reject-modal-order-id" style="color: #fff;">-</strong></div>
+        <div>Cư Dân: <strong id="reject-modal-user" style="color: #60a5fa;">-</strong> &bull; Mệnh Giá Đã Chọn: <strong id="reject-modal-amount" style="color: #fde047;">-</strong></div>
+      </div>
+
+      <div class="input-group">
+        <label style="font-weight: bold; color: #e2e8f0; margin-bottom: 8px;">Chọn Lý Do Từ Chối:</label>
+        
+        <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; cursor: pointer; font-size: 13px; color: #cbd5e1;">
+          <input type="radio" name="reject-preset" value="amount_mismatch" checked onchange="toggleRejectReasonInputs()">
+          <div>
+            <strong>1. Sai số tiền chuyển khoản (Mệnh giá không khớp)</strong>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Cư dân chọn một mệnh giá nhưng chuyển số tiền khác.</div>
+          </div>
+        </label>
+        <div id="reject-sub-amount-box" style="margin-left: 24px; margin-bottom: 12px; background: #0f172a; padding: 8px 12px; border-radius: 6px; border: 1px dashed #475569;">
+          <label style="font-size: 11px; color: #94a3b8;">Số tiền thực tế ngân hàng nhận được (VNĐ):</label>
+          <input type="number" id="reject-actual-amount" placeholder="VD: 5000 (đã chuyển 5.000đ)" style="font-size: 12px; padding: 6px 10px; margin-top: 4px; width: 100%;">
+        </div>
+
+        <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; cursor: pointer; font-size: 13px; color: #cbd5e1;">
+          <input type="radio" name="reject-preset" value="code_mismatch" onchange="toggleRejectReasonInputs()">
+          <div>
+            <strong>2. Sai nội dung chuyển khoản / Không tìm thấy mã GD</strong>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Không ghi hoặc ghi sai mã giao dịch được cấp.</div>
+          </div>
+        </label>
+
+        <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; cursor: pointer; font-size: 13px; color: #cbd5e1;">
+          <input type="radio" name="reject-preset" value="bank_pending" onchange="toggleRejectReasonInputs()">
+          <div>
+            <strong>3. Giao dịch chưa hoàn tất trên sao kê ngân hàng</strong>
+            <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Chưa nhận được biến động số dư trong tài khoản admin.</div>
+          </div>
+        </label>
+
+        <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 10px; cursor: pointer; font-size: 13px; color: #cbd5e1;">
+          <input type="radio" name="reject-preset" value="card_invalid" onchange="toggleRejectReasonInputs()">
+          <div>
+            <strong>4. Mã thẻ / Seri thẻ cào không hợp lệ hoặc đã nạp</strong>
+          </div>
+        </label>
+
+        <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; cursor: pointer; font-size: 13px; color: #cbd5e1;">
+          <input type="radio" name="reject-preset" value="custom" onchange="toggleRejectReasonInputs()">
+          <div>
+            <strong>5. Lý do khác (tự nhập)...</strong>
+          </div>
+        </label>
+        <div id="reject-sub-custom-box" style="margin-left: 24px; margin-bottom: 8px; display: none;">
+          <input type="text" id="reject-custom-text" placeholder="Gõ lý do từ chối cụ thể..." style="font-size: 12px; padding: 6px 10px; width: 100%;">
+        </div>
+      </div>
+
+      <div id="reject-modal-error" style="font-size: 12px; color: #ef4444; margin-bottom: 10px; display: none;"></div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid var(--card-border);">
+        <button type="button" class="btn btn-sm" style="background: #334155; color: #fff;" onclick="closeRejectModal()">← Hủy Bỏ</button>
+        <button type="button" id="btn-confirm-reject" class="btn btn-sm btn-danger" onclick="submitRejectOrder()">❌ Xác Nhận Từ Chối</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Chỉnh Sửa Biệt Danh & Email Admin -->
+  <div id="modal-admin-profile" class="modal-overlay" onclick="if(event.target===this){closeAdminProfileModal();}">
+    <div class="modal" style="max-width: 440px; position: relative;">
+      <div class="modal-header">
+        <h3 style="font-size: 16px; color: #fff; margin: 0;">✏️ Cập Nhật Hồ Sơ Quản Trị Viên</h3>
+        <button type="button" class="modal-close" onclick="closeAdminProfileModal()">&times;</button>
+      </div>
+      <form onsubmit="handleUpdateAdminProfile(event)">
+        <div class="input-group">
+          <label>Biệt Danh Hiển Thị Admin</label>
+          <input type="text" id="admin-profile-nickname" required maxlength="30" placeholder="VD: Tổng Quản Trị Moly">
+        </div>
+        <div class="input-group">
+          <label>Email Quản Trị (Nhận OTP Khôi Phục)</label>
+          <input type="email" id="admin-profile-email" required placeholder="VD: traivuho@gmail.com">
+        </div>
+        <div id="admin-profile-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+          <button type="button" class="btn btn-sm" style="background: #334155; color: #fff;" onclick="closeAdminProfileModal()">← Hủy</button>
+          <button type="submit" class="btn btn-sm btn-success">💾 Lưu Thay Đổi</button>
+        </div>
+      </form>
     </div>
   </div>
 
@@ -970,11 +1226,13 @@
         document.getElementById("login-overlay").style.display = "none";
         startSessionCountdown(expiresAt);
         loadStats();
+        loadAdminHubInfo();
         loadUsers();
         loadGiftcodes();
         loadAdminPaymentConfig();
         loadRechargeOrders();
         loadRecoveryRequests();
+        switchAdminTab("tab-admin-hub");
       } else {
         token = "";
         if (sessionTimerInterval) clearInterval(sessionTimerInterval);
@@ -1008,6 +1266,10 @@
           badge.style.borderColor = "rgba(16, 185, 129, 0.4)";
           badge.style.color = "#6ee7b7";
         }
+        const hubExp = document.getElementById("hub-session-countdown");
+        if (hubExp) hubExp.textContent = "Vĩnh Viễn (Duy Trì)";
+        const hubMode = document.getElementById("hub-session-mode");
+        if (hubMode) hubMode.textContent = "Duy Trì Đăng Nhập Không Tự Thoát";
         return;
       }
 
@@ -1021,9 +1283,11 @@
         const mins = Math.floor((remaining % 3600000) / 60000);
         const secs = Math.floor((remaining % 60000) / 1000);
         const pad = (n) => String(n).padStart(2, '0');
+        const formatted = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+        
         const badge = document.getElementById("adm-session-badge");
         if (badge) {
-          badge.textContent = `⏱️ Phiên: ${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+          badge.textContent = `⏱️ Phiên: ${formatted}`;
           if (remaining < 300000) { // < 5 phút: cảnh báo đỏ
             badge.style.background = "rgba(239, 68, 68, 0.25)";
             badge.style.borderColor = "rgba(239, 68, 68, 0.5)";
@@ -1034,6 +1298,10 @@
             badge.style.color = "#93c5fd";
           }
         }
+        const hubExp = document.getElementById("hub-session-countdown");
+        if (hubExp) hubExp.textContent = formatted;
+        const hubMode = document.getElementById("hub-session-mode");
+        if (hubMode) hubMode.textContent = "Tự Động Đăng Xuất Khi Hết Giờ";
       }
 
       updateBadge();
@@ -1103,7 +1371,7 @@
       }
     });
 
-    document.getElementById("btn-logout").addEventListener("click", async () => {
+    async function handleAdminLogout() {
       try {
         await fetch("/api/admin/logout", {
           method: "POST",
@@ -1111,25 +1379,35 @@
         });
       } catch (e) {}
       clearAdminSession(false);
-    });
+    }
+
+    document.getElementById("btn-logout").addEventListener("click", handleAdminLogout);
 
     // Tab Navigation
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const tab = btn.dataset.tab;
-        document.getElementById("tab-residents").style.display = tab === "tab-residents" ? "block" : "none";
-        document.getElementById("tab-recharge").style.display = tab === "tab-recharge" ? "block" : "none";
-        document.getElementById("tab-giftcodes").style.display = tab === "tab-giftcodes" ? "block" : "none";
-        document.getElementById("tab-broadcast").style.display = tab === "tab-broadcast" ? "block" : "none";
-        document.getElementById("tab-system").style.display = tab === "tab-system" ? "block" : "none";
-        document.getElementById("tab-recovery").style.display = tab === "tab-recovery" ? "block" : "none";
-        if (tab === "tab-giftcodes") loadGiftcodes();
-        if (tab === "tab-recharge") { loadAdminPaymentConfig(); loadRechargeOrders(); }
-        if (tab === "tab-system") loadEmailConfig();
-        if (tab === "tab-recovery") loadRecoveryRequests();
+    function switchAdminTab(tab) {
+      document.querySelectorAll(".tabs .tab-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.tab === tab);
       });
+      const allTabs = ["tab-admin-hub", "tab-residents", "tab-recharge", "tab-giftcodes", "tab-broadcast", "tab-system", "tab-recovery"];
+      allTabs.forEach(t => {
+        const el = document.getElementById(t);
+        if (el) el.style.display = (t === tab) ? "block" : "none";
+      });
+      if (tab === "tab-admin-hub") loadAdminHubInfo();
+      if (tab === "tab-residents") loadUsers();
+      if (tab === "tab-giftcodes") loadGiftcodes();
+      if (tab === "tab-recharge") { loadAdminPaymentConfig(); loadRechargeOrders(); }
+      if (tab === "tab-system") loadEmailConfig();
+      if (tab === "tab-recovery") loadRecoveryRequests();
+    }
+
+    function switchToAdminHub() {
+      switchAdminTab("tab-admin-hub");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll(".tabs .tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => switchAdminTab(btn.dataset.tab));
     });
 
     // Stats
@@ -1957,25 +2235,264 @@
       }
     }
 
-    async function rejectRechargeOrder(orderId) {
-      const reason = prompt(`Nhập lý do từ chối đơn nạp [${orderId}]:`, "Sai mã thẻ / Chưa nhận được tiền chuyển khoản");
-      if (reason === null) return; // User pressed cancel
+    let currentRejectOrderId = null;
+    let currentRejectOrderData = null;
+
+    function rejectRechargeOrder(orderId) {
+      currentRejectOrderId = orderId;
+      const order = allRechargeOrders.find(o => o.order_id === orderId);
+      currentRejectOrderData = order;
+
+      document.getElementById("reject-modal-order-id").textContent = orderId;
+      document.getElementById("reject-modal-user").textContent = order ? `${order.user_id} (${order.nickname || order.username || 'Moly'})` : '--';
+      document.getElementById("reject-modal-amount").textContent = order ? Number(order.amount || 0).toLocaleString() + " đ" : '--';
+      document.getElementById("reject-actual-amount").value = "";
+      document.getElementById("reject-custom-text").value = "";
+      document.getElementById("reject-modal-error").style.display = "none";
+      
+      const r1 = document.querySelector('input[name="reject-preset"][value="amount_mismatch"]');
+      if (r1) r1.checked = true;
+      toggleRejectReasonInputs();
+
+      document.getElementById("modal-reject-order").classList.add("open");
+    }
+
+    function closeRejectModal() {
+      document.getElementById("modal-reject-order").classList.remove("open");
+      currentRejectOrderId = null;
+      currentRejectOrderData = null;
+    }
+
+    function toggleRejectReasonInputs() {
+      const selected = document.querySelector('input[name="reject-preset"]:checked')?.value;
+      const subAmt = document.getElementById("reject-sub-amount-box");
+      const subCustom = document.getElementById("reject-sub-custom-box");
+      if (subAmt) subAmt.style.display = (selected === "amount_mismatch") ? "block" : "none";
+      if (subCustom) subCustom.style.display = (selected === "custom") ? "block" : "none";
+    }
+
+    async function submitRejectOrder() {
+      if (!currentRejectOrderId) return;
+      const selected = document.querySelector('input[name="reject-preset"]:checked')?.value;
+      let reason = "";
+
+      if (selected === "amount_mismatch") {
+        const actualAmt = document.getElementById("reject-actual-amount").value.trim();
+        const expectedAmt = currentRejectOrderData ? Number(currentRejectOrderData.amount || 0).toLocaleString() : '';
+        if (actualAmt) {
+          reason = `Sai số tiền chuyển khoản (Yêu cầu ${expectedAmt}đ nhưng chỉ nhận được ${Number(actualAmt).toLocaleString()}đ)`;
+        } else {
+          reason = `Sai số tiền chuyển khoản (Số tiền nhận được không đúng với mệnh giá đã chọn ${expectedAmt}đ)`;
+        }
+      } else if (selected === "code_mismatch") {
+        reason = "Sai nội dung chuyển khoản / Không tìm thấy mã giao dịch trong sao kê";
+      } else if (selected === "bank_pending") {
+        reason = "Giao dịch chưa hoàn tất hoặc chưa thành công trên sao kê ngân hàng";
+      } else if (selected === "card_invalid") {
+        reason = "Thẻ cào sai số Seri hoặc mã PIN / Thẻ đã qua sử dụng";
+      } else if (selected === "custom") {
+        reason = document.getElementById("reject-custom-text").value.trim();
+        if (!reason) {
+          const errBox = document.getElementById("reject-modal-error");
+          errBox.textContent = "Vui lòng nhập lý do từ chối cụ thể!";
+          errBox.style.display = "block";
+          return;
+        }
+      }
+
+      const btn = document.getElementById("btn-confirm-reject");
+      btn.disabled = true;
+      btn.textContent = "Đang xử lý...";
 
       try {
         const resp = await fetch("/api/admin/recharge/reject", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
-          body: JSON.stringify({ order_id: orderId, reason: reason })
+          body: JSON.stringify({ order_id: currentRejectOrderId, reason: reason })
         });
         const res = await resp.json();
         if (res.ok) {
-          alert(`✅ Đã từ chối đơn [${orderId}].`);
+          alert(`✅ Đã từ chối đơn [${currentRejectOrderId}].\nLý do: ${reason}`);
+          closeRejectModal();
           loadRechargeOrders();
         } else {
           alert(`❌ ${res.message || res.error || 'Thao tác thất bại!'}`);
         }
       } catch (err) {
         alert("Lỗi kết nối máy chủ: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "❌ Xác Nhận Từ Chối";
+      }
+    }
+
+    // QR Image File Upload
+    async function handleAdminQrFileUpload(input) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+
+      const statusBox = document.getElementById("admin-qr-upload-status");
+      statusBox.textContent = "⏳ Đang tải ảnh mã QR lên...";
+      statusBox.style.color = "#facc15";
+      statusBox.style.display = "block";
+
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        const base64Data = e.target.result;
+        updateAdminQrPreview(base64Data);
+
+        try {
+          const resp = await fetch("/api/admin/payment/upload_qr", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+            body: JSON.stringify({ image_data: base64Data, filename: file.name })
+          });
+          const res = await resp.json();
+          if (res.ok) {
+            statusBox.textContent = "✅ " + res.message;
+            statusBox.style.color = "#34d399";
+            document.getElementById("admin-bank-qr-url").value = res.qr_url;
+            updateAdminQrPreview(res.qr_url);
+          } else {
+            statusBox.textContent = "❌ " + (res.error || res.message || "Tải lên thất bại");
+            statusBox.style.color = "#ef4444";
+          }
+        } catch (err) {
+          statusBox.textContent = "❌ Lỗi kết nối: " + err.message;
+          statusBox.style.color = "#ef4444";
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Admin Hub Info & Operations
+    async function loadAdminHubInfo() {
+      if (!token) return;
+      try {
+        const resp = await fetch("/api/admin/hub_info", {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (resp.status === 401) {
+          const _exp = parseInt(localStorage.getItem("moly_admin_expires_at") || "0", 10);
+          clearAdminSession(_exp > 0 && Date.now() >= _exp);
+          return;
+        }
+        const data = await resp.json();
+        if (data.ok) {
+          const cur = data.current_admin;
+          document.getElementById("hub-admin-uid").textContent = cur.user_id;
+          document.getElementById("hub-admin-uname").textContent = cur.username;
+          document.getElementById("hub-admin-nick").textContent = cur.nickname;
+          document.getElementById("hub-admin-email").textContent = cur.email;
+          document.getElementById("hub-admin-badge").textContent = cur.role;
+          document.getElementById("hub-admin-pin-status").textContent = cur.has_pin ? "Đã Thiết Lập Bảo Vệ (6 số)" : "Chưa Đặt Mã PIN";
+          const headerDisp = document.getElementById("admin-user-display");
+          if (headerDisp) headerDisp.textContent = `${cur.username} (${cur.user_id})`;
+          
+          const a2 = data.admin2;
+          document.getElementById("hub-admin2-nick").textContent = a2.nickname || "Quản Trị Viên 2";
+          document.getElementById("hub-admin2-email").textContent = a2.email || "admin2@moly.vn";
+          document.getElementById("hub-admin2-status-badge").textContent = a2.is_active ? "Đang Hoạt Động" : "Bị Tạm Khóa";
+          document.getElementById("hub-admin2-status-badge").className = a2.is_active ? "badge badge-success" : "badge badge-danger";
+
+          // Audit logs
+          const tbody = document.getElementById("hub-audit-log-body");
+          if (tbody) {
+            if (data.recent_audits && data.recent_audits.length > 0) {
+              tbody.innerHTML = data.recent_audits.map(a => {
+                const dt = a.timestamp ? new Date(a.timestamp).toLocaleString("vi-VN") : "--";
+                return `
+                  <tr>
+                    <td style="color: #94a3b8; font-size: 12px;">${dt}</td>
+                    <td><strong style="color: #60a5fa;">${a.admin_id}</strong></td>
+                    <td><span class="badge badge-info" style="font-size: 11px;">${a.action}</span></td>
+                    <td style="color: #cbd5e1; font-size: 12px;"><code>${JSON.stringify(a.details || {})}</code></td>
+                  </tr>
+                `;
+              }).join("");
+            } else {
+              tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; color: var(--text-muted); padding: 12px;">Chưa có lịch sử thao tác nào gần đây.</td></tr>';
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Error loading hub info:", err);
+      }
+    }
+
+    function extendAdminSession(seconds = 10800) {
+      const newExp = Date.now() + (seconds * 1000);
+      localStorage.setItem("moly_admin_expires_at", newExp);
+      startSessionCountdown(newExp);
+      alert("⚡ Đã gia hạn thêm 3 giờ cho phiên làm việc của bạn!");
+      loadAdminHubInfo();
+    }
+
+    async function promptResetAdmin2Password() {
+      const newPwd = prompt("Nhập mật khẩu mới cho tài khoản Phụ Tá Quản Trị 2 (admin2 / 10000002):", "MolyAdmin2@2026");
+      if (!newPwd) return;
+      if (newPwd.length < 6) {
+        alert("Mật khẩu mới tối thiểu 6 ký tự!");
+        return;
+      }
+      try {
+        const resp = await fetch("/api/admin/admin2/reset_password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ new_password: newPwd })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          alert(`🎉 Đã đặt lại mật khẩu cho Admin 2 thành công!\nMật khẩu mới: ${newPwd}`);
+          loadAdminHubInfo();
+        } else {
+          alert(`❌ ${res.error || res.message || 'Thao tác thất bại!'}`);
+        }
+      } catch (err) {
+        alert("Lỗi kết nối: " + err.message);
+      }
+    }
+
+    function openAdminProfileModal() {
+      const nick = document.getElementById("hub-admin-nick").textContent;
+      const email = document.getElementById("hub-admin-email").textContent;
+      document.getElementById("admin-profile-nickname").value = nick;
+      document.getElementById("admin-profile-email").value = email;
+      document.getElementById("admin-profile-msg").style.display = "none";
+      document.getElementById("modal-admin-profile").classList.add("open");
+    }
+
+    function closeAdminProfileModal() {
+      document.getElementById("modal-admin-profile").classList.remove("open");
+    }
+
+    async function handleUpdateAdminProfile(e) {
+      e.preventDefault();
+      const nick = document.getElementById("admin-profile-nickname").value.trim();
+      const email = document.getElementById("admin-profile-email").value.trim();
+      const msg = document.getElementById("admin-profile-msg");
+      try {
+        const resp = await fetch("/api/admin/update_profile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify({ nickname: nick, email: email })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          msg.textContent = "✅ " + res.message;
+          msg.style.color = "#34d399";
+          msg.style.display = "block";
+          loadAdminHubInfo();
+          setTimeout(() => closeAdminProfileModal(), 1200);
+        } else {
+          msg.textContent = "❌ " + (res.error || res.message);
+          msg.style.color = "#ef4444";
+          msg.style.display = "block";
+        }
+      } catch (err) {
+        msg.textContent = "Lỗi kết nối: " + err.message;
+        msg.style.color = "#ef4444";
+        msg.style.display = "block";
       }
     }
 

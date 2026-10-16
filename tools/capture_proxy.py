@@ -1090,6 +1090,86 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self._send_json({"ok": True, "message": "Cập nhật cấu hình thanh toán & QR thành công!", "config": cfg})
                 return
 
+            elif parsed.path == "/api/admin/payment/upload_qr":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                image_data = payload.get("image_data", "")
+                if not image_data:
+                    self._send_json({"error": "Dữ liệu ảnh trống!"}, status=400)
+                    return
+                if "," in image_data:
+                    _, b64_str = image_data.split(",", 1)
+                else:
+                    b64_str = image_data
+                try:
+                    import base64
+                    img_bytes = base64.b64decode(b64_str)
+                    asset_paths = [
+                        WEB_DIR / "assets" / "payment_qr.png",
+                        Path("data/server/payment_qr.png")
+                    ]
+                    for ap in asset_paths:
+                        ap.parent.mkdir(parents=True, exist_ok=True)
+                        ap.write_bytes(img_bytes)
+                    ts = int(time.time())
+                    qr_url = f"/assets/payment_qr.png?v={ts}"
+                    cfg = recharges.update_payment_config(qr_image_url=qr_url)
+                    admin_uid = get_admin_user_id(token)
+                    accounts.log_audit("ADMIN_UPLOAD_QR", admin_uid, {"qr_url": qr_url})
+                    self._send_json({"ok": True, "message": "Tải lên và lưu ảnh mã QR thành công!", "qr_url": qr_url, "config": cfg})
+                    return
+                except Exception as ex:
+                    self._send_json({"error": f"Lỗi giải mã ảnh: {ex}"}, status=400)
+                    return
+
+            elif parsed.path == "/api/admin/admin2/reset_password":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                admin_uid = get_admin_user_id(token)
+                if admin_uid != 10000001:
+                    self._send_json({"error": "Chỉ Tổng Quản Trị Tối Cao (10000001) mới có quyền đổi mật khẩu Admin 2!"}, status=403)
+                    return
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                new_pwd = str(payload.get("new_password", "")).strip()
+                if len(new_pwd) < 6:
+                    self._send_json({"error": "Mật khẩu mới tối thiểu 6 ký tự!"}, status=400)
+                    return
+                ok, msg = accounts.reset_password("10000002", new_pwd)
+                if ok:
+                    accounts.log_audit("ADMIN_RESET_ADMIN2_PWD", admin_uid, {"target": "10000002"})
+                self._send_json({"ok": ok, "message": msg}, status=200 if ok else 400)
+                return
+
+            elif parsed.path == "/api/admin/update_profile":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                admin_uid = get_admin_user_id(token)
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                nickname = str(payload.get("nickname", "")).strip()
+                email = str(payload.get("email", "")).strip()
+                acc = accounts.get_account(admin_uid)
+                if not acc:
+                    self._send_json({"error": "Không tìm thấy hồ sơ quản trị!"}, status=404)
+                    return
+                if nickname:
+                    acc["nickname"] = nickname
+                if email:
+                    acc["email"] = email
+                accounts._save()
+                accounts.log_audit("ADMIN_UPDATE_PROFILE", admin_uid, {"nickname": nickname, "email": email})
+                self._send_json({"ok": True, "message": "Cập nhật hồ sơ quản trị viên thành công!", "account": acc})
+                return
+
             elif parsed.path == "/api/admin/user/ban":
                 token = get_admin_token(self.headers)
                 if not verify_admin_session(token):
@@ -1376,6 +1456,38 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 ]
             }
             self._send_json(news_data)
+            return
+
+        if parsed.path == "/api/admin/hub_info":
+            token = get_admin_token(self.headers)
+            if not verify_admin_session(token):
+                self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                return
+            admin_uid = get_admin_user_id(token)
+            curr_acc = accounts.get_account(admin_uid) or {}
+            admin2_acc = accounts.get_account("10000002") or {}
+            audits = accounts.get_recent_audit_logs(limit=15)
+            self._send_json({
+                "ok": True,
+                "current_admin": {
+                    "user_id": admin_uid,
+                    "username": curr_acc.get("username", "admin"),
+                    "nickname": curr_acc.get("nickname", "Tổng Quản Trị Moly"),
+                    "email": curr_acc.get("email", "traivuho@gmail.com"),
+                    "role": "Supreme Administrator" if admin_uid == 10000001 else "Secondary Administrator",
+                    "has_pin": bool(curr_acc.get("admin_pin_hash")),
+                },
+                "admin2": {
+                    "exists": bool(admin2_acc),
+                    "user_id": 10000002,
+                    "username": admin2_acc.get("username", "admin2"),
+                    "nickname": admin2_acc.get("nickname", "Quản Trị Viên 2"),
+                    "email": admin2_acc.get("email", "admin2@moly.vn"),
+                    "is_active": not admin2_acc.get("is_banned", False),
+                },
+                "recent_audits": audits,
+                "session_lifetime": ADMIN_SESSION_LIFETIME,
+            })
             return
 
         if parsed.path == "/api/admin/email_config":

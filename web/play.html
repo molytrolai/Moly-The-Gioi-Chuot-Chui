@@ -499,6 +499,7 @@
     <div class="controls-area">
       <a href="/" class="btn-ctrl">🏠 Trang Chủ</a>
       <button id="nav-btn-account" class="btn-ctrl btn-ctrl-primary" onclick="openAccountModal()">👤 Tài Khoản</button>
+      <button class="btn-ctrl btn-ctrl-green" onclick="openRechargeTab()" title="Cửa hàng Đậu Vàng & Hội Viên">💎 Mua Đậu &amp; Hội Viên</button>
       <button class="btn-ctrl" style="background: #eab308; color: #000; font-weight: bold;" onclick="openLeaderboardModal()">🏆 BXH</button>
       <button class="btn-ctrl" style="background: #3b82f6; color: #fff;" onclick="openNewspaperModal()">📰 Báo Moly</button>
       <button class="btn-ctrl" style="background: #8b5cf6; color: #fff;" onclick="openSmcModal()">🛡️ SMC</button>
@@ -525,6 +526,7 @@
         <div class="sso-actions">
           <button class="btn-ctrl btn-ctrl-primary" onclick="openLoginTab()">Đăng Nhập</button>
           <button class="btn-ctrl" onclick="openRegisterTab()">Đăng Ký Cư Dân Mới</button>
+          <button class="btn-ctrl btn-ctrl-green" onclick="openRechargeTab()">💎 Nạp Đậu &amp; VIP</button>
         </div>
       </div>
 
@@ -542,6 +544,7 @@
             <input type="checkbox" id="chk-auto-sso" onchange="toggleAutoSso(this.checked)"> Tự ủy quyền
           </label>
           <button id="btn-sso-auth" class="btn-ctrl btn-ctrl-green" onclick="authorizeGameLogin()">⚡ Vào Game Bằng Nick Này</button>
+          <button class="btn-ctrl btn-ctrl-green" onclick="openRechargeTab()">💎 Nạp Đậu &amp; VIP</button>
           <button class="btn-ctrl" onclick="copyMyCredentials()">📋 Copy ID</button>
           <button class="btn-ctrl" onclick="openDashboardTab()">👤 Hồ Sơ</button>
           <button class="btn-ctrl" style="background: #dc2626;" onclick="handleWebLogout()">🚪 Đăng Xuất</button>
@@ -804,8 +807,8 @@
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #cbd5e1; border-top: 1px solid #1e293b; padding-top: 8px;">
             <div>Mã Số Moly: <strong id="dash-uid" style="color: #fde047;">-</strong> <button type="button" onclick="copyMyCredentials()" style="background: #1e293b; border: 1px solid #334155; color: #38bdf8; cursor: pointer; font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: 4px;">📋 Sao chép</button></div>
-            <div>Đậu Vàng: <strong id="dash-beans" style="color: #fde047;">0</strong> Đậu</div>
-            <div>Điểm VIP: <strong id="dash-points" style="color: #10b981;">0</strong> (Max VIP 19)</div>
+            <div>Đậu Vàng: <strong id="dash-beans" style="color: #fde047;">0</strong> Đậu <button type="button" onclick="openRechargeTab()" class="btn-ctrl btn-ctrl-green" style="font-size: 10px; padding: 1px 6px; margin-left: 4px; display: inline-block;">+ Nạp Đậu</button></div>
+            <div>Điểm VIP: <strong id="dash-points" style="color: #10b981;">0</strong> (Max VIP 19) <button type="button" onclick="openRechargeTab()" class="btn-ctrl" style="background: #7c3aed; color: #fff; font-size: 10px; padding: 1px 6px; margin-left: 4px; display: inline-block;">Nâng VIP</button></div>
             <div>Thú Cưng: <span id="dash-lamu" style="color: #ec4899;">-</span></div>
           </div>
           <div style="font-size: 11px; color: #64748b; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #1e293b;">
@@ -888,6 +891,7 @@
 
         <!-- Trạng Thái Xác Thực Nhân Vật Nhận Đậu -->
         <div id="recharge-character-area">
+          <input type="hidden" id="recharge-verified-uid" value="">
           <!-- Khi ĐÃ đăng nhập trên web -->
           <div id="rc-logged-view" style="display: none; background: rgba(16, 185, 129, 0.12); border: 1px solid #059669; border-radius: 8px; padding: 12px; margin-bottom: 12px;">
             <div style="font-size: 11px; color: #34d399; font-weight: bold; text-transform: uppercase;">✅ Nhân Vật Của Bạn (Đang Đăng Nhập):</div>
@@ -1667,6 +1671,10 @@
       switchAccountTab('dashboard');
       document.getElementById("modal-account").classList.add("open");
     }
+    function openRechargeTab() {
+      switchAccountTab('recharge');
+      document.getElementById("modal-account").classList.add("open");
+    }
 
     // --- User Session Management via localStorage ---
     function getSavedUser() {
@@ -2301,13 +2309,17 @@
             }
             const methodText = o.method === 'card' ? `Thẻ ${o.card_telco}` : `CK Mã ${o.transfer_code || o.order_id}`;
             const timeStr = o.created_at ? new Date(o.created_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) : '';
+            const rejectNotice = o.status === 'rejected' && o.reject_reason ? `<div style="color: #f87171; font-size: 11px; margin-top: 3px; font-weight: 500;">⚠️ Lý do từ chối: ${o.reject_reason}</div>` : '';
             return `
-              <div style="background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 6px 10px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <strong>${Number(o.amount).toLocaleString()}đ</strong> &bull; <span style="color: #cbd5e1;">${methodText}</span>
-                  <div style="color: #64748b; font-size: 10px;">${timeStr} &bull; Mã: ${o.order_id}</div>
+              <div style="background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 6px 10px; margin-bottom: 6px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <strong>${Number(o.amount).toLocaleString()}đ</strong> &bull; <span style="color: #cbd5e1;">${methodText}</span>
+                    <div style="color: #64748b; font-size: 10px;">${timeStr} &bull; Mã: ${o.order_id}</div>
+                  </div>
+                  <div>${statusBadge}</div>
                 </div>
-                <div>${statusBadge}</div>
+                ${rejectNotice}
               </div>
             `;
           }).join("");
