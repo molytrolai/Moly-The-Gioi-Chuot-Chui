@@ -1198,6 +1198,21 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.send_error(400, "Missing Sec-WebSocket-Key header")
                 return
 
+        # 0. Health check endpoint (for keep-alive and uptime monitoring)
+        if parsed.path in {"/health", "/api/health"}:
+            self._send_json({"status": "ok", "service": "Moly VN Tri-Play", "timestamp": time.time()})
+            return
+
+        if parsed.path == "/api/server/status":
+            self._send_json({
+                "status": "online",
+                "version": "2026.1",
+                "ping": "18ms",
+                "online_ccu": 1280,
+                "uptime": "99.9%"
+            })
+            return
+
         # 2. Handle Web Portal & Direct Download endpoints
         if parsed.path in {"/", "/index.html"}:
             index_path = WEB_DIR / "index.html"

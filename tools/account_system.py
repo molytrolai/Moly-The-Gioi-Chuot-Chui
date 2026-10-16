@@ -649,16 +649,21 @@ class AccountManager:
             return self.get_account("0")
         if s == str(LEGACY_MOLY_ADMIN_ID):
             return self.get_account(s) or self.get_account("0")
+        # 1. Mã ID Moly (nếu là số)
         if s.isdigit():
             acc = self.get_account(int(s))
             if acc:
                 return acc
+            # Hỗ trợ tự động nếu người dùng gõ nhầm 1000001 (7 số) thay vì 10000001 (8 số)
+            if s == "1000001":
+                acc = self.get_account(10000001) or self.get_account("0")
+                if acc:
+                    return acc
+        # 2. Tên tài khoản (Username)
         acc = self.get_account_by_username(s)
         if acc:
             return acc
-        acc = self.get_account_by_nickname(s)
-        if acc:
-            return acc
+        # 3. Gmail nếu đã liên kết (Email)
         acc = self.get_account_by_email(s)
         if acc:
             return acc

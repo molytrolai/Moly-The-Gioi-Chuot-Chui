@@ -112,19 +112,18 @@ def auth_code_response(user_id: int) -> bytes:
 
 def login_response(user_id: int, request_body: bytes = b"") -> bytes:
     """Handle directory login (cmd 103) with local authentication."""
-    actual_uid = user_id
+    acc = None
     if user_id == 0 and len(request_body) >= 64:
         identifier = request_body[:64].decode("utf-8", errors="ignore").rstrip("\0").strip()
         acc = accounts.get_account_by_identifier(identifier)
-        if acc:
-            actual_uid = int(acc["user_id"])
-        elif identifier in ("0", "00000000", "admin"):
-            actual_uid = 0
+    else:
+        acc = accounts.get_account(user_id) or accounts.get_account_by_identifier(user_id)
 
-    if not accounts.get_account(actual_uid):
+    if not acc:
         # Error 5005 = Tài khoản không chính xác
-        return packet(103, actual_uid, b"", error=5005)
+        return packet(103, user_id, b"", error=5005)
 
+    actual_uid = int(acc["user_id"])
     if len(request_body) >= 32:
         pwd_offset = 64 if (user_id == 0 and len(request_body) >= 96) else 0
         pwd_hash = request_body[pwd_offset : pwd_offset + 32].decode("ascii", errors="ignore")

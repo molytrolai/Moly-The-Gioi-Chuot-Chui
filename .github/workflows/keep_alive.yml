@@ -1,0 +1,15 @@
+name: Render Server Keep-Alive
+
+on:
+  schedule:
+    # Chạy mỗi 5 phút một lần để giữ máy chủ Render luôn thức và phản hồi tức thì
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Moly VN Health Endpoint
+        run: |
+          curl -s -f -m 20 https://moly-the-gioi-chuot-chui.onrender.com/health || echo "Ping dispatched"

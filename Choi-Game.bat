@@ -20,5 +20,5 @@ if errorlevel 1 (
 )
 
 :: 3. Mo truc tiep cua so game Ruffle va tu dong dong bang lenh nay
-start "" "%~dp0tools\ruffle-0.7.1\ruffle.exe" http://127.0.0.1:18080/Client.swf --tcp-connections allow --scale show-all --force-scale --width 1024 --height 768
+start "" "%~dp0tools\ruffle-0.7.1\ruffle.exe" http://127.0.0.1:18080/Client.swf --tcp-connections allow --open-url-mode allow --scale show-all --force-scale --width 1024 --height 768
 exit

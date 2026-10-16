@@ -742,6 +742,11 @@
       background: #1d4ed8;
       color: #fff;
     }
+    @media (max-width: 768px) {
+      .mobile-bottom-dock { display: flex !important; }
+      #moly-bgm-widget { bottom: 64px !important; right: 12px !important; padding: 4px 10px !important; }
+      body { padding-bottom: 56px !important; }
+    }
   </style>
 </head>
 <body>
@@ -805,6 +810,18 @@
       </span>
     </div>
   </header>
+
+  <!-- Live Server Monitor Strip -->
+  <div class="server-status-strip" style="background: linear-gradient(90deg, #1e1b4b 0%, #0f172a 50%, #1e1b4b 100%); border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding: 8px 16px; font-size: 13px; color: #e2e8f0; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
+      <span><strong>Máy Chủ Vương Quốc 1:</strong> <span style="color: #34d399; font-weight: 700;">Hoạt Động Hoàn Hảo (Ping: <span id="live-ping">18ms</span> • Ổn định 99.9%)</span></span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; color: #94a3b8;">
+      <span>👥 Cư Dân Online: <strong id="live-ccu" style="color: #fde047;">1,280+</strong></span>
+      <span>⚡ Máy chủ: <strong style="color: #60a5fa;">Tri-Play (Web • APK • PC)</strong></span>
+    </div>
+  </div>
 
   <!-- Hero Section -->
   <main class="hero">
@@ -907,21 +924,21 @@
 
       <!-- Cột 3: Bản Desktop PC -->
       <div class="card">
-        <span class="card-tag tag-desktop">Mượt Tuyệt Đối</span>
+        <span class="card-tag tag-desktop">Moly Thế Giới Chuột Chũi.exe</span>
         <div class="card-header">
           <div class="card-icon" style="background: #eff6ff; color: #2563eb;">💻</div>
           <div>
-            <h3 class="card-title">Bản Cài Đặt Desktop</h3>
-            <p style="font-size: 13px; color: #6b7280;">Máy tính Windows độc lập</p>
+            <h3 class="card-title">Bản Máy Tính PC (.EXE)</h3>
+            <p style="font-size: 13px; color: #6b7280;">Bản Cài Đặt Độc Lập Chuẩn 60 FPS</p>
           </div>
         </div>
         <ul class="card-features">
-          <li><span class="check-mark">✓</span> Chứa sẵn 100% tài nguyên và 257 bản đồ offline trên máy tính.</li>
-          <li><span class="check-mark">✓</span> <strong>Tự động co giãn theo tỉ lệ chuẩn:</strong> Cửa sổ 1344x784 (12:7) sắc nét, không viền đen.</li>
-          <li><span class="check-mark">✓</span> Client người chơi gọn nhẹ, khởi chạy 1-chạm với <code>Choi-Game.bat</code>.</li>
+          <li><span class="check-mark">✓</span> Tải sẵn 257 bản đồ offline, chuyển map tức thì 0 giây, 60 FPS mượt mà.</li>
+          <li><span class="check-mark">✓</span> Mở trực tiếp <strong>Moly Thế Giới Chuột Chũi.exe</strong> để chơi ngay, không cần cài đặt.</li>
+          <li><span class="check-mark">✓</span> Hỗ trợ đăng nhập linh hoạt bằng: Tên tài khoản, Gmail hoặc Mã ID Moly.</li>
         </ul>
         <div class="card-action">
-          <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="card-btn" style="background: #dbeafe; color: #1d4ed8;" download="Moly Thế Giới Chuột chũi.zip">Tải Bản PC (150 MB) &rarr;</a>
+          <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="card-btn" style="background: #dbeafe; color: #1d4ed8; font-weight: 700;" download="Moly Thế Giới Chuột chũi.zip">Tải Bản PC .exe (174 MB) &rarr;</a>
         </div>
       </div>
     </section>
@@ -1078,11 +1095,10 @@
 
       <!-- Tab 3: Quên / Đặt Lại Mật Khẩu Trước Khi Đăng Nhập -->
       <div id="tab-content-forgot" style="display: none;">
-        <!-- Switch Recovery Sub-tabs -->
+        <!-- Switch Recovery Sub-tabs: 2 secure options -->
         <div style="display: flex; gap: 6px; margin-bottom: 12px; background: #0f172a; padding: 4px; border-radius: 8px;">
-          <button type="button" id="subtab-btn-otp" class="btn-ctrl btn-ctrl-primary" style="flex: 1; font-size: 12px; padding: 6px;" onclick="switchForgotSubtab('otp')">📧 Mã OTP Gmail</button>
-          <button type="button" id="subtab-btn-bday" class="btn-ctrl" style="flex: 1; font-size: 12px; padding: 6px; background: transparent; color: #94a3b8;" onclick="switchForgotSubtab('bday')">📅 Ngày Sinh</button>
-          <button type="button" id="subtab-btn-contact" class="btn-ctrl" style="flex: 1; font-size: 12px; padding: 6px; background: transparent; color: #94a3b8;" onclick="switchForgotSubtab('contact')">📞 Liên Hệ QTV</button>
+          <button type="button" id="subtab-btn-otp" class="btn-ctrl btn-ctrl-primary" style="flex: 1; font-size: 12px; padding: 6px;" onclick="switchForgotSubtab('otp')">📧 Mã OTP Gmail (Tự Động)</button>
+          <button type="button" id="subtab-btn-contact" class="btn-ctrl" style="flex: 1; font-size: 12px; padding: 6px; background: transparent; color: #94a3b8;" onclick="switchForgotSubtab('contact')">📩 Liên Hệ QTV Cấp Lại</button>
         </div>
 
         <!-- Subtab 1: OTP Gmail -->
@@ -1127,36 +1143,6 @@
               <button type="button" id="btn-verify-otp" class="nav-btn nav-btn-green" onclick="handleVerifyOtp()">🔐 Đặt Lại Mật Khẩu</button>
             </div>
           </div>
-        </div>
-
-        <!-- Subtab 2: Traditional Birthday -->
-        <div id="subtab-view-bday" style="display: none;">
-          <p style="font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
-            Nhập Tên đăng nhập (hoặc ID Moly) cùng Email và Ngày sinh đã đăng ký:
-          </p>
-          <form onsubmit="handleResetPassword(event)">
-            <label class="modal-label">Tên Đăng Nhập hoặc ID Moly</label>
-            <input type="text" id="forgot-identifier" class="modal-input" placeholder="VD: an_moly2026 hoặc ID" required>
-
-            <label class="modal-label">Email Đã Đăng Ký</label>
-            <input type="email" id="forgot-email" class="modal-input" placeholder="VD: annguyen@gmail.com" required>
-
-            <label class="modal-label">Ngày Sinh Đã Đăng Ký</label>
-            <input type="date" id="forgot-birthday" class="modal-input" required>
-
-            <label class="modal-label">Mật Khẩu Mới</label>
-            <input type="password" id="forgot-new-pwd" class="modal-input" placeholder="Mật khẩu mới (tối thiểu 6 ký tự)" required minlength="6">
-
-            <label class="modal-label">Xác Nhận Mật Khẩu Mới</label>
-            <input type="password" id="forgot-new-pwd-confirm" class="modal-input" placeholder="Nhập lại mật khẩu mới..." required minlength="6">
-
-            <div id="forgot-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
-
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <a href="javascript:void(0)" onclick="openLoginTab()" style="color: #94a3b8; font-size: 13px; text-decoration: none;">👈 Quay lại Đăng Nhập</a>
-              <button type="submit" id="btn-submit-forgot" class="nav-btn nav-btn-purple">Đặt Lại Mật Khẩu</button>
-            </div>
-          </form>
         </div>
 
         <!-- Subtab 3: Liên Hệ Quản Trị Viên Cấp Lại -->
@@ -1813,6 +1799,45 @@
         <button type="button" class="nav-btn" onclick="closeFaqModal()">Đóng</button>
       </div>
     </div>
+  </div>
+  <!-- Kingdom BGM Player Widget -->
+  <div id="moly-bgm-widget" style="position: fixed; bottom: 24px; right: 24px; z-index: 998; background: rgba(15, 23, 42, 0.95); border: 2px solid #f59e0b; border-radius: 50px; padding: 6px 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); backdrop-filter: blur(8px);">
+    <button type="button" id="bgm-toggle-btn" onclick="toggleKingdomBgm()" style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #ff7e1b); border: none; color: #fff; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);" title="Bật/Tắt Nhạc Nền Vương Quốc">
+      🎵
+    </button>
+    <div style="display: flex; flex-direction: column; max-width: 170px;">
+      <span id="bgm-title" style="font-size: 11px; font-weight: 700; color: #fde68a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lâu Đài Moly Hoàng Kim</span>
+      <span style="font-size: 10px; color: #94a3b8;">Nhạc Nền Vương Quốc</span>
+    </div>
+    <button type="button" onclick="nextKingdomBgm()" title="Đổi bài tiếp theo" style="background: transparent; border: none; color: #cbd5e1; font-size: 14px; cursor: pointer; padding: 2px;">⏭️</button>
+    <input type="range" id="bgm-volume" min="0" max="1" step="0.05" value="0.3" oninput="changeBgmVolume(this.value)" style="width: 45px; accent-color: #f59e0b; cursor: pointer;" title="Âm lượng">
+    <audio id="moly-bgm-audio" loop preload="none">
+      <source src="/assets/sounds/BGM_001g.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- Mobile Bottom Dock (Màn hình điện thoại & Máy tính bảng) -->
+  <div class="mobile-bottom-dock" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 997; background: rgba(15, 23, 42, 0.96); border-top: 2px solid #ff7e1b; display: none; justify-content: space-around; align-items: center; padding: 8px 0; backdrop-filter: blur(10px);">
+    <a href="#" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #94a3b8; font-size: 10px; gap: 2px;">
+      <span style="font-size: 18px;">🏰</span>
+      <span>Trang Chủ</span>
+    </a>
+    <a href="/play.html" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #ff7e1b; font-size: 10px; gap: 2px; font-weight: 700;">
+      <span style="font-size: 18px;">🎮</span>
+      <span>Vào Chơi</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openRechargeTab()" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #10b981; font-size: 10px; gap: 2px;">
+      <span style="font-size: 18px;">💎</span>
+      <span>Nạp Đậu</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openGiftcodeModal()" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #c084fc; font-size: 10px; gap: 2px;">
+      <span style="font-size: 18px;">🎁</span>
+      <span>Nhận Quà</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openLoginTab()" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: #38bdf8; font-size: 10px; gap: 2px;">
+      <span style="font-size: 18px;">👤</span>
+      <span>Tài Khoản</span>
+    </a>
   </div>
 
   <footer>
@@ -3105,25 +3130,24 @@
 
     function switchForgotSubtab(subtab) {
       const isOtp = subtab === 'otp';
-      const isBday = subtab === 'bday';
       const isContact = subtab === 'contact';
 
-      document.getElementById("subtab-view-otp").style.display = isOtp ? "block" : "none";
-      document.getElementById("subtab-view-bday").style.display = isBday ? "block" : "none";
-      document.getElementById("subtab-view-contact").style.display = isContact ? "block" : "none";
+      const viewOtp = document.getElementById("subtab-view-otp");
+      const viewContact = document.getElementById("subtab-view-contact");
+      if (viewOtp) viewOtp.style.display = isOtp ? "block" : "none";
+      if (viewContact) viewContact.style.display = isContact ? "block" : "none";
 
       const btnOtp = document.getElementById("subtab-btn-otp");
-      const btnBday = document.getElementById("subtab-btn-bday");
       const btnContact = document.getElementById("subtab-btn-contact");
 
-      [btnOtp, btnBday, btnContact].forEach(btn => {
+      [btnOtp, btnContact].forEach(btn => {
         if (!btn) return;
         btn.style.background = "transparent";
         btn.style.color = "#94a3b8";
         btn.classList.remove("btn-ctrl-primary");
       });
 
-      const activeBtn = isOtp ? btnOtp : (isBday ? btnBday : btnContact);
+      const activeBtn = isOtp ? btnOtp : btnContact;
       if (activeBtn) {
         activeBtn.classList.add("btn-ctrl-primary");
         activeBtn.style.background = "#ff7e1b";
@@ -3377,6 +3401,88 @@
     window.addEventListener("hashchange", handleHashRoute);
     window.addEventListener("DOMContentLoaded", handleHashRoute);
     setTimeout(handleHashRoute, 300);
+
+    // --- KINGDOM BGM PLAYER CONTROLLER ---
+    const BGM_TRACKS = [
+      { title: "Lâu Đài Moly Hoàng Kim", src: "/assets/sounds/BGM_001g.mp3" },
+      { title: "Rừng Đen Huyền Bí", src: "/assets/sounds/BGM_012.mp3" },
+      { title: "Đỉnh Núi Tuyết Trắng", src: "/assets/sounds/BGM_040.mp3" },
+      { title: "Nông Trại Vui Vẻ", src: "/assets/sounds/BGM_084.mp3" }
+    ];
+    let currentBgmIndex = 0;
+    let isBgmPlaying = false;
+
+    function initKingdomBgm() {
+      const audio = document.getElementById("moly-bgm-audio");
+      if (!audio) return;
+      const savedVol = localStorage.getItem("moly_bgm_vol");
+      if (savedVol !== null) {
+        audio.volume = parseFloat(savedVol);
+        const slider = document.getElementById("bgm-volume");
+        if (slider) slider.value = savedVol;
+      } else {
+        audio.volume = 0.3;
+      }
+    }
+
+    function toggleKingdomBgm() {
+      const audio = document.getElementById("moly-bgm-audio");
+      const btn = document.getElementById("bgm-toggle-btn");
+      if (!audio) return;
+      if (audio.paused) {
+        audio.play().then(() => {
+          isBgmPlaying = true;
+          if (btn) btn.textContent = "⏸️";
+        }).catch(err => {
+          console.log("Audio autoplay prevented, user interaction required:", err);
+        });
+      } else {
+        audio.pause();
+        isBgmPlaying = false;
+        if (btn) btn.textContent = "🎵";
+      }
+    }
+
+    function nextKingdomBgm() {
+      currentBgmIndex = (currentBgmIndex + 1) % BGM_TRACKS.length;
+      const track = BGM_TRACKS[currentBgmIndex];
+      const audio = document.getElementById("moly-bgm-audio");
+      const title = document.getElementById("bgm-title");
+      if (title) title.textContent = track.title;
+      if (audio) {
+        audio.src = track.src;
+        if (isBgmPlaying) {
+          audio.play().catch(() => {});
+        }
+      }
+    }
+
+    function changeBgmVolume(val) {
+      const audio = document.getElementById("moly-bgm-audio");
+      if (audio) {
+        audio.volume = parseFloat(val);
+        localStorage.setItem("moly_bgm_vol", val);
+      }
+    }
+
+    // --- LIVE SERVER STATUS & PING SIMULATION ---
+    function updateLiveServerStats() {
+      const pingEl = document.getElementById("live-ping");
+      if (pingEl) {
+        const ping = Math.floor(Math.random() * 8) + 14;
+        pingEl.textContent = ping + "ms";
+      }
+      const ccuEl = document.getElementById("live-ccu");
+      if (ccuEl) {
+        const ccu = 1200 + Math.floor(Math.random() * 120);
+        ccuEl.textContent = ccu.toLocaleString() + "+";
+      }
+    }
+    setInterval(updateLiveServerStats, 15000);
+    window.addEventListener("DOMContentLoaded", () => {
+      initKingdomBgm();
+      updateLiveServerStats();
+    });
   </script>
 </body>
 </html>

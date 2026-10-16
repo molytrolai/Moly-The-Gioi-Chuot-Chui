@@ -49,12 +49,13 @@ PLAYER_README_CONTENT = """=====================================================
 ======================================================================
 
 1. CÁCH KHỞI ĐỘNG GAME:
-   - Nhấp đúp chuột vào tệp "Choi-Game.bat" để mở game.
-   - Cửa sổ Flash Player Ruffle sẽ mở lên và nạp sẵn 257 bản đồ offline.
+   - Nhấp đúp chuột vào tệp biểu tượng "Moly Thế Giới Chuột Chũi.exe" để mở game.
+   - Cửa sổ trò chơi sẽ mở lên tức thì, sẵn sàng trải nghiệm không cần cài đặt.
+   - (Hoặc bạn cũng có thể mở tệp "Choi-Game.bat" làm phương án dự phòng).
 
 2. TÀI KHOẢN TRẢI NGHIỆM:
-   - Bạn có thể đăng ký tài khoản mới trực tiếp trong màn hình đăng nhập của game.
-   - Hoặc đăng nhập bằng ID tài khoản Moly cá nhân của bạn.
+   - Bạn có thể đăng ký tài khoản mới trực tiếp trên Web hoặc trong game.
+   - Đăng nhập linh hoạt bằng: Tên tài khoản (Username), Gmail đã liên kết hoặc Mã ID Moly.
    - Cư dân khi tham gia sẽ được khám phá trọn vẹn thế giới thần tiên và hệ thống hiệp sĩ SMC!
 
 3. TÍNH NĂNG VƯỢT TRỘI BẢN MÁY TÍNH:
@@ -83,6 +84,7 @@ def create_package() -> None:
         temp_server.write_text("127.0.0.1", encoding="utf-8")
 
     specs = [
+        ("Moly Thế Giới Chuột Chũi.exe", "Moly Thế Giới Chuột Chũi.exe"),
         ("Choi-Game-Client.bat", "Choi-Game.bat"),
         ("Huong-Dan-Cai-Dat.txt", "Huong-Dan-Choi.txt"),
         ("server_address.txt", "server_address.txt"),
