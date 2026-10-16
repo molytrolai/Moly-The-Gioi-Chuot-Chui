@@ -1,0 +1,11 @@
+Cụm thông tin góc dưới bên phải gồm:
+- Cuộn giấy: Liên hệ CSKH (联系客服)
+- Quả cầu: Dành cho phụ huynh (家长须知)
+- Dòng chữ: Thế Giới Trẻ Em / Moly VN (中国儿童网上乐园)
+- Dòng nhắc nhở độ tuổi: Phù hợp từ 6-14 tuổi (适龄提示)
+
+CÁCH SỬA:
+1. Mở file .png bằng Paint, Photoshop, Canva, v.v.
+2. Chỉnh sửa chữ hoặc hình theo ý bạn (giữ nguyên kích thước và nền trong suốt PNG).
+3. Lưu đè lên file ảnh.
+4. Ra thư mục gốc chạy file 'Cap-Nhat-Icon-Sau-Khi-Sua.bat' là game sẽ cập nhật ngay lập tức!

@@ -159,6 +159,14 @@ def compile_all():
         ("5881", str(ASSETS_DIR / "ui_5881.png")),
         ("5882", str(ASSETS_DIR / "ui_5881.png")),
         ("5883", str(ASSETS_DIR / "ui_5881.png")),
+        # Embedded Fonts -> Arial TTF (Full Unicode Vietnamese Support)
+        ("1251", r"C:\Windows\Fonts\arial.ttf"),
+        ("264", r"C:\Windows\Fonts\arial.ttf"),
+        ("1587", r"C:\Windows\Fonts\arial.ttf"),
+        ("2399", r"C:\Windows\Fonts\arial.ttf"),
+        ("3715", r"C:\Windows\Fonts\arial.ttf"),
+        ("4112", r"C:\Windows\Fonts\arial.ttf"),
+        ("7299", r"C:\Windows\Fonts\arial.ttf"),
     ]
     ui_texts = {
         "265.txt": "Moly Chuột Chũi",
@@ -211,6 +219,8 @@ def compile_all():
         ("82", str(ASSETS_DIR / "topui_82.png")),
         ("361", str(ASSETS_DIR / "topui_361.png")),
         ("366", str(ASSETS_DIR / "topui_366.png")),
+        # Embedded Font -> Arial TTF (Full Unicode Vietnamese Support)
+        ("441", r"C:\Windows\Fonts\arial.ttf"),
     ]
     topui_texts = {
         "81.txt": "Lâu Đài Moly",

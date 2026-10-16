@@ -1,0 +1,16 @@
+==================================================================
+HƯỚNG DẪN SỬA TIÊU ĐỀ THÔNG BÁO (SHAPE 362)
+==================================================================
+
+- Vị trí hiển thị: Nằm ở trên cùng của khung thông báo / cảnh báo (Alert Popup).
+- Kích thước chuẩn: 85 x 21 pixels (nền trong suốt).
+- Tệp cần sửa: '362.png'
+
+CÁCH THỰC HIỆN:
+1. Mở file '362.png' bằng Paint / Photoshop / Canva.
+2. Vẽ chữ "THÔNG BÁO" (hoặc chữ bạn muốn) với màu nâu cam theo ý bạn.
+   (Hoặc nếu thích bản mẫu tiếng Việt có sẵn, bạn chỉ cần đổi tên file
+   '362_tieng_viet_mau.png' thành '362.png' là xong).
+3. Bấm Ctrl + S lưu lại file '362.png'.
+4. Ra thư mục gốc chạy file 'Cap-Nhat-Icon-Sau-Khi-Sua.bat' để áp dụng ngay vào game!
+==================================================================

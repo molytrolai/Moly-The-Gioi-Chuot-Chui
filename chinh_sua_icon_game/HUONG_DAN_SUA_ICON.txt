@@ -1,0 +1,21 @@
+==================================================================
+HƯỚNG DẪN CHỈNH SỬA TOÀN BỘ ICON / NÚT BẮT ĐẦU GAME MOLY VN
+==================================================================
+
+1. TOÀN BỘ CÁC NÚT ĐÃ ĐƯỢC XUẤT RA DẠNG ẢNH PNG TRONG SUỐT TRONG THƯ MỤC NÀY:
+   - Thư mục 01_nut_dang_ky: Nút 'Đăng ký'
+   - Thư mục 02_nut_luu_trang_yeu_thich: Nút 'Lưu trang yêu thích' (收藏摩尔庄园)
+   - Thư mục 03_nut_dien_dan_chinh_thuc: Nút 'Diễn đàn' (官方论坛)
+   - Thư mục 04_cskh_phu_huynh_va_do_tuoi: Cụm CSKH, Phụ huynh, và Độ tuổi (联系客服, 家长须知)
+   - Thư mục 05_chu_taomee_chan_trang: Chữ thông tin Taomee
+
+2. CÁCH SỬA RẤT ĐƠN GIẢN:
+   - Bạn chỉ cần nhấp đúp vào file ảnh .png để mở bằng Photoshop, Paint, Canva hoặc bất kỳ phần mềm sửa ảnh nào.
+   - Sửa chữ Trung Quốc thành tiếng Việt theo ý bạn.
+   - Lưu lại (giữ định dạng PNG trong suốt).
+
+3. CẬP NHẬT VÀO GAME BẰNG 1 CÚ NHẤP CHUỘT:
+   - Sau khi bạn sửa ảnh xong, chỉ cần ra thư mục gốc chạy file:
+     'Cap-Nhat-Icon-Sau-Khi-Sua.bat'
+   - Hệ thống sẽ tự động ghép ảnh của bạn trở lại vào game mà không cần bạn phải thao tác lệnh phức tạp gì cả!
+==================================================================

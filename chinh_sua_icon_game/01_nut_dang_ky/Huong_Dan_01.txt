@@ -1,0 +1,8 @@
+Nút 'Đăng Ký' (góc trái dưới màn hình bắt đầu).
+Bao gồm 3 trạng thái: bình thường, rê chuột và bấm chuột.
+
+CÁCH SỬA:
+1. Mở file .png bằng Paint, Photoshop, Canva, v.v.
+2. Chỉnh sửa chữ hoặc hình theo ý bạn (giữ nguyên kích thước và nền trong suốt PNG).
+3. Lưu đè lên file ảnh.
+4. Ra thư mục gốc chạy file 'Cap-Nhat-Icon-Sau-Khi-Sua.bat' là game sẽ cập nhật ngay lập tức!

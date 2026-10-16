@@ -148,7 +148,7 @@
     "username": "admin",
     "fullname": "Quản Trị Viên Vương Quốc",
     "birthday": "2000-01-01",
-    "admin_pin_hash": "14e1b600b1fd579f47433b88e8d85291",
+    "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58",
     "email_verified": true
   },
   "10000002": {
@@ -11296,7 +11296,7 @@
     },
     "clothes": [],
     "inventory": {},
-    "admin_pin_hash": "14e1b600b1fd579f47433b88e8d85291",
+    "admin_pin_hash": "46cc468df60c961d8da2326337c7aa58",
     "email_verified": true
   },
   "64298193": {
