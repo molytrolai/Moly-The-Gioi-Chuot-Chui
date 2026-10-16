@@ -119,15 +119,24 @@ def login_response(user_id: int, request_body: bytes = b"") -> bytes:
     else:
         acc = accounts.get_account(user_id) or accounts.get_account_by_identifier(user_id)
 
+    if not acc and (user_id == 0 or user_id == DEFAULT_MOLY_ADMIN_ID):
+        if len(request_body) >= 32:
+            pwd_hash = request_body[:32].decode("ascii", errors="ignore")
+            for candidate_uid in (DEFAULT_MOLY_ADMIN_ID, ADMIN2_ID, TEST_USER_ID):
+                ok, cacc = accounts.authenticate(candidate_uid, pwd_hash)
+                if ok and cacc:
+                    acc = cacc
+                    break
+
     if not acc:
         # Error 5005 = Tài khoản không chính xác
         # Must return 4-byte flag body (struct.pack('>I', 1)) so ActionScript doesn't hit EOFError!
-        fallback_uid = user_id if user_id > 0 else 10000001
+        fallback_uid = user_id if user_id > 0 else DEFAULT_MOLY_ADMIN_ID
         return packet(103, fallback_uid, struct.pack(">I", 1), error=5005)
 
     actual_uid = int(acc["user_id"])
     if actual_uid <= 0:
-        actual_uid = 10000001
+        actual_uid = DEFAULT_MOLY_ADMIN_ID
 
     if len(request_body) >= 32:
         pwd_offset = 64 if (user_id == 0 and len(request_body) >= 96) else 0
