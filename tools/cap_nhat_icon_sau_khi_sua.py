@@ -59,31 +59,33 @@ def main():
     print("\n[2/3] Tiến hành đóng gói và đồng bộ dữ liệu vào game...")
     build_home_script = PROJECT_ROOT / "scratch" / "build_home.py"
     if build_home_script.exists():
+        print("  -> Đang biên dịch LoginHome.swf...", flush=True)
         res = subprocess.run([sys.executable, str(build_home_script)], capture_output=True, text=True)
         if res.returncode != 0:
-            print(f"[CẢNH BÁO] Quá trình build LoginHome trả về mã lỗi: {res.stderr}")
+            print(f"[CẢNH BÁO] Quá trình build LoginHome trả về mã lỗi: {res.stderr}", flush=True)
         else:
-            print("  ✓ Đã biên dịch xong LoginHome.swf")
+            print("  ✓ Đã biên dịch xong LoginHome.swf", flush=True)
 
     build_login_script = PROJECT_ROOT / "scratch" / "build_login.py"
     if build_login_script.exists():
+        print("  -> Đang biên dịch Login.swf (quá trình này mất khoảng 25-35 giây do FFDec nạp và ráp đồ hoạ, vui lòng chờ chút nhé)...", flush=True)
         res = subprocess.run([sys.executable, str(build_login_script)], capture_output=True, text=True)
         if res.returncode != 0:
-            print(f"[CẢNH BÁO] Quá trình build Login trả về mã lỗi: {res.stderr}")
+            print(f"[CẢNH BÁO] Quá trình build Login trả về mã lỗi: {res.stderr}", flush=True)
         else:
-            print("  ✓ Đã biên dịch xong Login.swf (Áp dụng tiêu đề 362 & font chữ)")
+            print("  ✓ Đã biên dịch xong Login.swf (Áp dụng các nút và đồ hoạ mới)", flush=True)
 
     # 3. Chạy fix_tag_order để đảm bảo FileAttributes ở Tag #0 (chống treo Flash/Ruffle)
-    print("\n[3/3] Kiểm tra an toàn cấu trúc SWF (AVM2 Tag Order)...")
+    print("\n[3/3] Kiểm tra an toàn cấu trúc SWF (AVM2 Tag Order)...", flush=True)
     fix_script = PROJECT_ROOT / "scratch" / "fix_tag_order.py"
     if fix_script.exists():
         res = subprocess.run([sys.executable, str(fix_script)], capture_output=True, text=True)
-        print("  ✓ Cấu trúc SWF đạt chuẩn:", res.stdout.strip().replace("\n", " | "))
+        print("  ✓ Cấu trúc SWF đạt chuẩn:", res.stdout.strip().replace("\n", " | "), flush=True)
 
-    print("\n======================================================================")
-    print("   THÀNH CÔNG! ĐÃ CẬP NHẬT TOÀN BỘ ICON VÀO GAME MOLY THÀNH CÔNG!     ")
-    print("   Bạn có thể mở game bằng 'Choi-Game.bat' để xem thành quả ngay.    ")
-    print("======================================================================")
+    print("\n======================================================================", flush=True)
+    print("   THÀNH CÔNG 100%! ĐÃ CẬP NHẬT TOÀN BỘ ICON VÀO GAME MOLY THÀNH CÔNG!     ", flush=True)
+    print("   Bạn có thể mở game bằng 'Choi-Game.bat' để vào chơi ngay.             ", flush=True)
+    print("======================================================================\n", flush=True)
     return 0
 
 if __name__ == "__main__":

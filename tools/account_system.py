@@ -628,6 +628,17 @@ class AccountManager:
                     return dict(acc)
             return None
 
+    def get_account_by_nickname(self, nickname: str) -> Optional[dict[str, Any]]:
+        normalized = str(nickname).strip().lower()
+        if not normalized:
+            return None
+        with self._lock:
+            self._ensure_fresh()
+            for acc in self._accounts.values():
+                if acc.get("nickname") and acc["nickname"].strip().lower() == normalized:
+                    return dict(acc)
+            return None
+
     def get_account_by_identifier(self, identifier: Any) -> Optional[dict[str, Any]]:
         if identifier is None:
             return None
@@ -643,6 +654,9 @@ class AccountManager:
             if acc:
                 return acc
         acc = self.get_account_by_username(s)
+        if acc:
+            return acc
+        acc = self.get_account_by_nickname(s)
         if acc:
             return acc
         acc = self.get_account_by_email(s)
