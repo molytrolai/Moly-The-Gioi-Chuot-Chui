@@ -1504,6 +1504,13 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 return
 
         if parsed.path in {"/download", "/download/Moly-The-Gioi-Chuot-Chui.zip"} or parsed.path.startswith("/download/"):
+            if not DESKTOP_ZIP_PATH.is_file():
+                try:
+                    import package_desktop_game
+                    package_desktop_game.create_package()
+                except Exception as e:
+                    print(f"[DOWNLOAD] Auto-create desktop package notice: {e}", flush=True)
+
             if DESKTOP_ZIP_PATH.is_file():
                 content = DESKTOP_ZIP_PATH.read_bytes()
                 self.send_response(200, "OK")

@@ -34,29 +34,35 @@ def setup_folder():
     # Create draft for Shape 73
     im73 = Image.new("RGBA", (946, 96), (0, 0, 0, 0))
     d73 = ImageDraw.Draw(im73)
-    font_box = ImageFont.truetype(FONT_TAHOMA_BD, 13)
+    font_box = ImageFont.truetype(FONT_ARIAL_BD, 11)
     
-    # Left box text (x: 10..270)
+    # Left box text (centered in range 1..271, center = 136)
     left_lines = [
-        "Chào mừng đến với Moly Thế Giới Chuột Chũi VN!",
-        "Cổng nạp Đậu Vàng và Kim Đậu chính thức tại web.",
-        "Tham gia sự kiện để nhận nhiều quà tặng hấp dẫn!"
+        "Chào mừng đến Moly VN!",
+        "Cổng nạp Đậu Vàng & Kim Đậu tại web.",
+        "Tham gia sự kiện nhận quà hot!"
     ]
-    y_left = 12
+    y_left = 14
     for l in left_lines:
-        draw_text_stroke(d73, (16, y_left), l, font_box, (255, 235, 180, 255), (60, 40, 20, 255), 2)
-        y_left += 26
+        bbox = font_box.getbbox(l)
+        w = bbox[2] - bbox[0]
+        x = 136 - w // 2
+        draw_text_stroke(d73, (x, y_left), l, font_box, (255, 235, 180, 255), (60, 40, 20, 255), 2)
+        y_left += 24
         
-    # Right box text (x: 675..940)
+    # Right box text (centered in range 674..944, center = 809)
     right_lines = [
-        "Lưu ý bảo mật: Tuyệt đối không chia sẻ mật khẩu",
-        "tài khoản cho bất kỳ ai để phòng tránh lừa đảo.",
-        "Mọi thắc mắc vui lòng liên hệ Admin qua kênh hỗ trợ!"
+        "Lưu ý: Không chia sẻ mật khẩu",
+        "cho bất kỳ ai để tránh lừa đảo.",
+        "Hỗ trợ cư dân 24/7 tại diễn đàn!"
     ]
-    y_right = 12
+    y_right = 14
     for l in right_lines:
-        draw_text_stroke(d73, (680, y_right), l, font_box, (255, 235, 180, 255), (60, 40, 20, 255), 2)
-        y_right += 26
+        bbox = font_box.getbbox(l)
+        w = bbox[2] - bbox[0]
+        x = 809 - w // 2
+        draw_text_stroke(d73, (x, y_right), l, font_box, (255, 235, 180, 255), (60, 40, 20, 255), 2)
+        y_right += 24
         
     im73.save(OUT_DIR / "01_thong_bao_2_hop_trai_phai_shape_73.png")
     print("  Created 01_thong_bao_2_hop_trai_phai_shape_73.png (946x96)")
@@ -65,9 +71,10 @@ def setup_folder():
     shutil.copy2(SRC_SHAPES / "79.png", OUT_DIR / "goc_02_nut_dung_moly_khac_shape_79.png")
     im79 = Image.new("RGBA", (98, 17), (0, 0, 0, 0))
     d79 = ImageDraw.Draw(im79)
-    f79 = ImageFont.truetype(FONT_TAHOMA_BD, 11)
-    # "DÙNG MOLY KHÁC"
-    draw_text_stroke(d79, (3, 1), "DÙNG MOLY KHÁC", f79, (255, 240, 100, 255), (140, 40, 0, 255), 2)
+    f79 = ImageFont.truetype(FONT_TAHOMA_BD, 9)
+    b79 = f79.getbbox("DÙNG MOLY KHÁC")
+    w79 = b79[2] - b79[0]
+    draw_text_stroke(d79, ((98 - w79) // 2, 1), "DÙNG MOLY KHÁC", f79, (255, 240, 100, 255), (140, 40, 0, 255), 2)
     im79.save(OUT_DIR / "02_nut_dung_moly_khac_shape_79.png")
     print("  Created 02_nut_dung_moly_khac_shape_79.png (98x17)")
 

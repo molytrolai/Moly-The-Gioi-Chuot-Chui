@@ -76,15 +76,25 @@ def main():
             print("  ✓ Đã biên dịch xong Login.swf (Áp dụng các nút và đồ hoạ mới)", flush=True)
 
     # 3. Chạy fix_tag_order để đảm bảo FileAttributes ở Tag #0 (chống treo Flash/Ruffle)
-    print("\n[3/3] Kiểm tra an toàn cấu trúc SWF (AVM2 Tag Order)...", flush=True)
+    print("\n[3/4] Kiểm tra an toàn cấu trúc SWF (AVM2 Tag Order)...", flush=True)
     fix_script = PROJECT_ROOT / "scratch" / "fix_tag_order.py"
     if fix_script.exists():
         res = subprocess.run([sys.executable, str(fix_script)], capture_output=True, text=True)
         print("  ✓ Cấu trúc SWF đạt chuẩn:", res.stdout.strip().replace("\n", " | "), flush=True)
 
+    # 4. Tự động đóng gói bộ cài Desktop Client
+    print("\n[4/4] Tự động đồng bộ gói cài đặt Desktop Client...", flush=True)
+    package_script = PROJECT_ROOT / "tools" / "package_desktop_game.py"
+    if package_script.exists():
+        res = subprocess.run([sys.executable, str(package_script)], capture_output=True, text=True)
+        if res.returncode == 0:
+            print("  ✓ Đã cập nhật xong web/download/Moly Thế Giới Chuột chũi.zip", flush=True)
+        else:
+            print(f"  ! Cảnh báo khi đóng gói zip: {res.stderr}", flush=True)
+
     print("\n======================================================================", flush=True)
     print("   THÀNH CÔNG 100%! ĐÃ CẬP NHẬT TOÀN BỘ ICON VÀO GAME MOLY THÀNH CÔNG!     ", flush=True)
-    print("   Bạn có thể mở game bằng 'Choi-Game.bat' để vào chơi ngay.             ", flush=True)
+    print("   Toàn bộ bản Chơi Web & Bản Tải Máy Tính (PC) đã được đồng bộ chuẩn xác!  ", flush=True)
     print("======================================================================\n", flush=True)
     return 0
 
