@@ -1,0 +1,292 @@
+/**
+ * Moly Vietnam 2.0 - Mole Kingdom Glassmorphic Theme System
+ */
+:root {
+  --moly-gold: #f6a828;
+  --moly-gold-light: #fde047;
+  --moly-gold-dark: #d97706;
+  --moly-gold-glow: rgba(246, 168, 40, 0.45);
+  
+  --moly-green: #10b981;
+  --moly-green-glow: rgba(16, 185, 129, 0.4);
+  
+  --moly-zalopay: #0068ff;
+  --moly-zalopay-light: #38bdf8;
+  --moly-zalopay-glow: rgba(0, 104, 255, 0.45);
+  
+  --moly-glass-bg: rgba(15, 23, 19, 0.78);
+  --moly-glass-card: rgba(22, 34, 28, 0.72);
+  --moly-glass-card-hover: rgba(28, 44, 36, 0.85);
+  --moly-glass-border: rgba(246, 168, 40, 0.25);
+  --moly-glass-border-strong: rgba(246, 168, 40, 0.55);
+  
+  --moly-text-main: #f8fafc;
+  --moly-text-muted: #94a3b8;
+  --moly-text-gold: #fde047;
+}
+
+/* Sound Button Styling */
+.moly-sound-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(246, 168, 40, 0.3);
+  color: #fef08a;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.moly-sound-btn:hover {
+  background: rgba(246, 168, 40, 0.2);
+  border-color: var(--moly-gold);
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px var(--moly-gold-glow);
+}
+.moly-sound-btn.sound-off {
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.4);
+}
+
+/* Floating Quick Play Launcher Dock */
+.moly-launcher-dock {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: rgba(15, 23, 19, 0.88);
+  border: 1px solid var(--moly-glass-border-strong);
+  border-radius: 9999px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px var(--moly-gold-glow);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.moly-launcher-dock:hover {
+  border-color: var(--moly-gold);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.7), 0 0 32px var(--moly-gold-glow);
+}
+.moly-dock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  border: none;
+}
+.moly-dock-btn-primary {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+}
+.moly-dock-btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.6);
+}
+.moly-dock-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.moly-dock-btn-secondary:hover {
+  background: rgba(246, 168, 40, 0.18);
+  border-color: var(--moly-gold);
+  color: #fef08a !important;
+  transform: translateY(-2px);
+}
+.moly-dock-btn-zalopay {
+  background: linear-gradient(135deg, #0284c7 0%, #0068ff 100%);
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 104, 255, 0.35);
+}
+.moly-dock-btn-zalopay:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 18px rgba(0, 104, 255, 0.55);
+}
+
+/* Denomination Selector Chips */
+.moly-amount-chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.moly-amount-chip {
+  padding: 10px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.moly-amount-chip:hover {
+  background: rgba(246, 168, 40, 0.12);
+  border-color: var(--moly-gold);
+}
+.moly-amount-chip.active {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(234, 88, 12, 0.25));
+  border-color: var(--moly-gold);
+  box-shadow: 0 0 14px var(--moly-gold-glow);
+}
+.moly-amount-chip .chip-val {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+.moly-amount-chip.active .chip-val {
+  color: #fde047;
+}
+.moly-amount-chip .chip-beans {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+.moly-amount-chip.active .chip-beans {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+/* Payment Channel Tabs */
+.moly-pay-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px;
+  border-radius: 12px;
+}
+.moly-pay-tab {
+  flex: 1;
+  padding: 9px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+.moly-pay-tab:hover {
+  color: #f1f5f9;
+}
+.moly-pay-tab.active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fef08a;
+  border-color: var(--moly-glass-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.moly-pay-tab.active.tab-zalopay {
+  background: rgba(0, 104, 255, 0.22);
+  color: #60a5fa;
+  border-color: rgba(0, 104, 255, 0.45);
+  box-shadow: 0 0 12px var(--moly-zalopay-glow);
+}
+
+/* QR Presentation Box */
+.moly-qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(10, 17, 13, 0.85);
+  border: 1px solid var(--moly-glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+.moly-qr-img {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+.moly-qr-copy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 380px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  font-size: 13px;
+}
+.moly-copy-btn {
+  background: rgba(246, 168, 40, 0.18);
+  border: 1px solid var(--moly-gold);
+  color: #fef08a;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.moly-copy-btn:hover {
+  background: var(--moly-gold);
+  color: #000;
+}
+
+/* Safe Action Confirmation Modal */
+.moly-safe-modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.moly-safe-modal {
+  background: #181f1b;
+  border: 2px solid #ef4444;
+  border-radius: 18px;
+  padding: 26px;
+  max-width: 460px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(239, 68, 68, 0.4);
+}
+
+/* Mobile Responsiveness for Dock */
+@media (max-width: 768px) {
+  .moly-launcher-dock {
+    bottom: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    justify-content: space-around;
+    padding: 10px 8px 18px;
+    gap: 4px;
+  }
+  .moly-dock-btn {
+    padding: 7px 11px;
+    font-size: 11px;
+    flex-direction: column;
+    gap: 3px;
+  }
+}

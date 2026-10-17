@@ -1,8 +1,13 @@
 {
-  "bank_name": "Vietcombank",
-  "account_number": "999888777666",
-  "account_name": "",
-  "qr_image_url": "/assets/payment_qr_placeholder.png",
-  "note": "Nạp tiền tự động duyệt trong 5 - 15 phút. Ghi đúng mã giao dịch!",
-  "updated_at": "2026-10-16T11:19:20.436590+00:00"
+  "bank_name": "MB BANK",
+  "account_number": "0987654321",
+  "account_name": "CHU DU TRAM",
+  "account_holder": "CHU DU TRAM",
+  "qr_image_url": "/assets/payment_qr.png",
+  "zalopay_enabled": true,
+  "zalopay_phone": "0987654321",
+  "zalopay_name": "CHU DU TRAM",
+  "zalopay_qr_url": "/assets/zalopay_qr.png?v=1792200683",
+  "note": "Nap dau Moly",
+  "updated_at": "2026-10-17T01:31:23.046802+00:00"
 }

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moly - Thế Giới Chuột Chũi | Khung Chơi Game Chuyên Nghiệp</title>
   <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
+  <script src="/js/moly-audio.js"></script>
   <script src="/static/ruffle/ruffle.js"></script>
   <style>
     :root {
@@ -509,6 +511,7 @@
       <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="btn-ctrl btn-ctrl-blue" download="Moly Thế Giới Chuột chũi.zip">💻 Tải Bản PC</a>
       <button id="btn-scale-toggle" class="btn-ctrl" onclick="toggleScaleMode()">📐 Tỷ Lệ: Chuẩn (12:7)</button>
       <button id="btn-fullscreen" class="btn-ctrl" style="background: #0284c7;">⛶ Toàn Màn Hình</button>
+      <button type="button" class="moly-sound-btn" onclick="MolyAudio.toggle()" style="padding: 4px 10px; font-size: 11px;"><span class="sound-icon">🔊</span></button>
     </div>
   </header>
 
@@ -544,6 +547,7 @@
             <input type="checkbox" id="chk-auto-sso" onchange="toggleAutoSso(this.checked)"> Tự ủy quyền
           </label>
           <button id="btn-sso-auth" class="btn-ctrl btn-ctrl-green" onclick="authorizeGameLogin()">⚡ Vào Game Bằng Nick Này</button>
+          <button type="button" class="btn-ctrl" style="background: #475569; color: #fff;" onclick="enterGameLoginScreen()" title="Mở màn hình đăng nhập trong game để tự gõ tài khoản/mật khẩu">🔐 Đăng Nhập Trong Game</button>
           <button class="btn-ctrl btn-ctrl-green" onclick="openRechargeTab()">💎 Nạp Đậu &amp; VIP</button>
           <button class="btn-ctrl" onclick="copyMyCredentials()">📋 Copy ID</button>
           <button class="btn-ctrl" onclick="openDashboardTab()">👤 Hồ Sơ</button>
@@ -1773,8 +1777,10 @@
     }
 
     function toggleAutoSso(enabled) {
+      if (window.MolyAudio) window.MolyAudio.play("click");
       localStorage.setItem("moly_auto_sso", enabled ? "true" : "false");
       if (enabled) {
+        localStorage.removeItem("moly_manual_login");
         window.sso_authorized = true;
         document.getElementById("btn-sso-auth").style.background = "#047857";
         document.getElementById("btn-sso-auth").innerHTML = "✓ Đã Tự Ủy Quyền Vào Game";
@@ -1785,7 +1791,25 @@
       }
     }
 
+    function enterGameLoginScreen() {
+      if (window.MolyAudio) window.MolyAudio.play("pop");
+      localStorage.setItem("moly_manual_login", "true");
+      localStorage.setItem("moly_auto_sso", "false");
+      window.sso_authorized = false;
+      const chk = document.getElementById("chk-auto-sso");
+      if (chk) chk.checked = false;
+      const btn = document.getElementById("btn-sso-auth");
+      if (btn) {
+        btn.style.background = "#059669";
+        btn.innerHTML = "⚡ Vào Game Bằng Nick Này";
+      }
+      alert("Đã chuyển sang chế độ tự đăng nhập trong game!\nTrang sẽ tải lại để bạn tự nhập tài khoản và mật khẩu trực tiếp trên màn hình Flash.");
+      window.location.reload();
+    }
+
     function authorizeGameLogin() {
+      if (window.MolyAudio) window.MolyAudio.play("chime");
+      localStorage.removeItem("moly_manual_login");
       const u = getSavedUser();
       if (!u) { openLoginTab(); return; }
       window.sso_authorized = true;
@@ -2720,6 +2744,7 @@
 
     // --- Global Flash Bridge Callbacks (ExternalInterface) ---
     window.get_uid = function() {
+      if (localStorage.getItem("moly_manual_login") === "true") return "";
       const user = getSavedUser();
       if (user) {
         return user.display_id || (user.user_id === 0 ? "00000000" : String(user.user_id));
@@ -2728,6 +2753,7 @@
     };
 
     window.get_sid = function() {
+      if (localStorage.getItem("moly_manual_login") === "true") return "";
       const user = getSavedUser();
       const isAuto = localStorage.getItem("moly_auto_sso") === "true";
       if (user && (window.sso_authorized || isAuto)) {

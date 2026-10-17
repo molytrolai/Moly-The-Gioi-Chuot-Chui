@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moly - Thế Giới Chuột Chũi VN | Cổng Game Tuổi Thơ</title>
   <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
+  <script src="/js/moly-audio.js"></script>
+  <script src="/js/moly-ambient.js"></script>
   <style>
     :root {
       --primary: #ff7e1b;
@@ -1329,21 +1332,131 @@
           </div>
         </div>
 
-        <!-- CHỌN 2 PHƯƠNG THỨC MUA ĐẬU -->
+        <!-- CHỌN 3 PHƯƠNG THỨC NẠP ĐẬU -->
         <div style="margin-bottom: 14px;">
-          <label class="modal-label" style="font-size: 13px; font-weight: bold; color: #fde047;">Chọn Phương Thức Mua Đậu &amp; Hội Viên:</label>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px;">
-            <button type="button" id="rc-method-btn-card" class="nav-btn" style="background: #ff7e1b; color: #fff; padding: 10px 8px; font-size: 13px; font-weight: bold; border: 2px solid #ea580c; border-radius: 8px;" onclick="switchRechargeMethod('card')">
-              💳 Thẻ Cào Điện Thoại
+          <label class="modal-label" style="font-size: 13px; font-weight: bold; color: #fde047;">Chọn Phương Thức Nạp Đậu &amp; Hội Viên:</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 6px;">
+            <button type="button" id="rc-method-btn-bank" class="nav-btn" style="background: rgba(246, 168, 40, 0.2); color: #fde047; padding: 10px 4px; font-size: 12px; font-weight: bold; border: 2px solid #f59e0b; border-radius: 8px;" onclick="switchRechargeMethod('bank')">
+              🏦 Ngân Hàng
             </button>
-            <button type="button" id="rc-method-btn-qr" class="nav-btn" style="background: #1e293b; color: #94a3b8; padding: 10px 8px; font-size: 13px; font-weight: bold; border: 2px solid #334155; border-radius: 8px;" onclick="switchRechargeMethod('qr')">
-              📱 Chuyển Khoản Mã QR
+            <button type="button" id="rc-method-btn-zalopay" class="nav-btn" style="background: #1e293b; color: #94a3b8; padding: 10px 4px; font-size: 12px; font-weight: bold; border: 2px solid #334155; border-radius: 8px;" onclick="switchRechargeMethod('zalopay')">
+              📱 Ví ZaloPay
+            </button>
+            <button type="button" id="rc-method-btn-card" class="nav-btn" style="background: #1e293b; color: #94a3b8; padding: 10px 4px; font-size: 12px; font-weight: bold; border: 2px solid #334155; border-radius: 8px;" onclick="switchRechargeMethod('card')">
+              💳 Thẻ Cào
             </button>
           </div>
         </div>
 
-        <!-- PHƯƠNG THỨC 1: THẺ CÀO -->
-        <div id="rc-method-card-view">
+        <!-- CHỌN MỆNH GIÁ NHANH (ÁP DỤNG CHO NGÂN HÀNG & ZALOPAY) -->
+        <div id="rc-amount-chips-container" style="margin-bottom: 14px;">
+          <label class="modal-label" style="font-size: 12px; color: #cbd5e1;">Chọn Mệnh Giá Nạp Nhanh:</label>
+          <div class="moly-amount-chips" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 6px;">
+            <div class="moly-amount-chip" data-amount="10000" onclick="selectRechargeAmount(10000)">
+              <div class="chip-val">10.000đ</div>
+              <div class="chip-beans">100 Đậu • VIP 2</div>
+            </div>
+            <div class="moly-amount-chip" data-amount="20000" onclick="selectRechargeAmount(20000)">
+              <div class="chip-val">20.000đ</div>
+              <div class="chip-beans">200 Đậu • VIP 2</div>
+            </div>
+            <div class="moly-amount-chip active" data-amount="50000" onclick="selectRechargeAmount(50000)">
+              <div class="chip-val">50.000đ</div>
+              <div class="chip-beans">500 Đậu • VIP 3</div>
+            </div>
+            <div class="moly-amount-chip" data-amount="100000" onclick="selectRechargeAmount(100000)">
+              <div class="chip-val">100.000đ</div>
+              <div class="chip-beans">1.000 Đậu • VIP 5</div>
+            </div>
+            <div class="moly-amount-chip" data-amount="200000" onclick="selectRechargeAmount(200000)">
+              <div class="chip-val">200.000đ</div>
+              <div class="chip-beans">2.000 Đậu • VIP 6</div>
+            </div>
+            <div class="moly-amount-chip" data-amount="500000" onclick="selectRechargeAmount(500000)">
+              <div class="chip-val">500.000đ</div>
+              <div class="chip-beans">5.000 Đậu • VIP 9</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PHƯƠNG THỨC 1: CHUYỂN KHOẢN NGÂN HÀNG (VIETQR) -->
+        <div id="rc-method-bank-view">
+          <div style="background: #0f172a; border: 1px solid rgba(246, 168, 40, 0.4); border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+            <!-- Khung Chi Tiết Ngân Hàng & Mã QR -->
+            <div style="display: grid; grid-template-columns: 140px 1fr; gap: 14px; background: rgba(30, 41, 59, 0.85); border: 1px solid #475569; border-radius: 10px; padding: 12px; align-items: center;">
+              <div style="text-align: center;">
+                <img id="rc-bank-qr-image" src="/assets/payment_qr.png" alt="Mã QR Ngân Hàng" style="width: 130px; height: 130px; border-radius: 8px; border: 2px solid #f59e0b; background: #fff; object-fit: contain;">
+                <div style="font-size: 10px; color: #fde047; margin-top: 4px; font-weight: 600;">Quét Bằng App Ngân Hàng</div>
+              </div>
+              <div style="font-size: 12px; color: #e2e8f0; line-height: 1.6;">
+                <div>Ngân Hàng: <strong id="rc-bank-name" style="color: #60a5fa;">Vietcombank</strong></div>
+                <div>Số Tài Khoản: <strong id="rc-bank-stk" style="color: #fde047; font-size: 13px;">999888777666</strong> <button type="button" onclick="copyText(document.getElementById('rc-bank-stk').textContent, 'Đã sao chép STK!')" style="background: none; border: none; color: #38bdf8; cursor: pointer; font-size: 11px;">[Copy]</button></div>
+                <div>Chủ Tài Khoản: <strong id="rc-bank-holder" style="color: #fff;">ADMIN MOLY</strong></div>
+                <div>Số Tiền Nạp: <strong id="rc-bank-amt-disp" style="color: #34d399; font-size: 14px;">50.000đ</strong></div>
+                
+                <div style="background: rgba(234, 88, 12, 0.15); border: 1px dashed #ea580c; border-radius: 6px; padding: 6px; margin-top: 6px;">
+                  <div style="font-size: 11px; color: #fdba74;">Nội Dung Chuyển Khoản (Bắt buộc ghi đúng):</div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+                    <strong id="rc-bank-code" style="color: #fde047; font-size: 14px; letter-spacing: 1px;">MOLY-LOAD</strong>
+                    <button type="button" class="nav-btn nav-btn-primary" style="padding: 2px 8px; font-size: 11px;" onclick="copyTransferCode('bank')">Sao Chép</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; padding: 8px 12px; margin-top: 10px; font-size: 11px; color: #fca5a5; line-height: 1.4;">
+              ⚠️ <strong>LƯU Ý QUAN TRỌNG:</strong> Vui lòng chuyển chính xác số tiền <strong id="rc-bank-warn-amt" style="color: #fde047;">50.000đ</strong> và điền đúng Nội Dung Chuyển Khoản. Nếu chuyển sai số tiền (VD chọn 50k nhưng chỉ chuyển 20k) đơn sẽ bị Admin từ chối duyệt!
+            </div>
+          </div>
+
+          <div id="rc-bank-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="closeAccountModal()">← Trở lại</button>
+            <button type="button" id="btn-submit-bank" class="nav-btn nav-btn-green" style="padding: 9px 18px;" onclick="handleRechargeQrSubmit('bank')">✅ Tôi Đã Chuyển Khoản Ngân Hàng</button>
+          </div>
+        </div>
+
+        <!-- PHƯƠNG THỨC 2: VÍ ĐIỆN TỬ ZALOPAY -->
+        <div id="rc-method-zalopay-view" style="display: none;">
+          <div style="background: #0f172a; border: 1px solid rgba(0, 104, 255, 0.4); border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+            <!-- Khung Chi Tiết ZaloPay & Mã QR -->
+            <div style="display: grid; grid-template-columns: 140px 1fr; gap: 14px; background: rgba(30, 41, 59, 0.85); border: 1px solid #0284c7; border-radius: 10px; padding: 12px; align-items: center;">
+              <div style="text-align: center;">
+                <img id="rc-zalopay-qr-image" src="/assets/zalopay_qr.png" alt="Mã QR ZaloPay" style="width: 130px; height: 130px; border-radius: 8px; border: 2px solid #0068ff; background: #fff; object-fit: contain;">
+                <div style="font-size: 10px; color: #60a5fa; margin-top: 4px; font-weight: 600;">Quét Bằng Ví ZaloPay</div>
+              </div>
+              <div style="font-size: 12px; color: #e2e8f0; line-height: 1.6;">
+                <div>Kênh Nạp: <strong style="color: #60a5fa;">Ví Điện Tử ZaloPay</strong></div>
+                <div>Số Điện Thoại ZaloPay: <strong id="rc-zalopay-phone" style="color: #fde047; font-size: 13px;">0888888888</strong> <button type="button" onclick="copyText(document.getElementById('rc-zalopay-phone').textContent, 'Đã sao chép SĐT ZaloPay!')" style="background: none; border: none; color: #38bdf8; cursor: pointer; font-size: 11px;">[Copy]</button></div>
+                <div>Tên Chủ Ví: <strong id="rc-zalopay-name" style="color: #fff;">ADMIN MOLY VIETNAM</strong></div>
+                <div>Số Tiền Nạp: <strong id="rc-zalopay-amt-disp" style="color: #34d399; font-size: 14px;">50.000đ</strong></div>
+                
+                <div style="background: rgba(0, 104, 255, 0.15); border: 1px dashed #0068ff; border-radius: 6px; padding: 6px; margin-top: 6px;">
+                  <div style="font-size: 11px; color: #93c5fd;">Lời Nhắn / Lời Chúc ZaloPay (Bắt buộc ghi đúng):</div>
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
+                    <strong id="rc-zalopay-code" style="color: #fde047; font-size: 14px; letter-spacing: 1px;">MOLY-LOAD</strong>
+                    <button type="button" class="nav-btn nav-btn-primary" style="padding: 2px 8px; font-size: 11px;" onclick="copyTransferCode('zalopay')">Sao Chép</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div style="background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; padding: 8px 12px; margin-top: 10px; font-size: 11px; color: #fca5a5; line-height: 1.4;">
+              ⚠️ <strong>LƯU Ý QUAN TRỌNG:</strong> Vui lòng chuyển chính xác số tiền <strong id="rc-zalopay-warn-amt" style="color: #fde047;">50.000đ</strong> và điền đúng Lời Nhắn ZaloPay. Nếu chuyển sai số tiền sẽ bị Admin từ chối duyệt!
+            </div>
+          </div>
+
+          <div id="rc-zalopay-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="closeAccountModal()">← Trở lại</button>
+            <button type="button" id="btn-submit-zalopay" class="nav-btn nav-btn-green" style="padding: 9px 18px; background: linear-gradient(135deg, #0284c7, #0068ff);" onclick="handleRechargeQrSubmit('zalopay')">✅ Tôi Đã Chuyển Tiền ZaloPay</button>
+          </div>
+        </div>
+
+        <!-- PHƯƠNG THỨC 3: THẺ CÀO ĐIỆN THOẠI -->
+        <div id="rc-method-card-view" style="display: none;">
           <form onsubmit="handleRechargeCardSubmit(event)">
             <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
               <label class="modal-label">Loại Thẻ Nạp</label>
@@ -1360,7 +1473,7 @@
               <select id="rc-card-amount" class="modal-input" style="cursor: pointer;" required>
                 <option value="10000">10.000đ &bull; Nhận 100 Đậu Vàng + VIP 2</option>
                 <option value="20000">20.000đ &bull; Nhận 200 Đậu Vàng + VIP 2</option>
-                <option value="50000">50.000đ &bull; Nhận 500 Đậu Vàng + VIP 3</option>
+                <option value="50000" selected>50.000đ &bull; Nhận 500 Đậu Vàng + VIP 3</option>
                 <option value="100000">100.000đ &bull; Nhận 1.000 Đậu Vàng + VIP 5</option>
                 <option value="200000">200.000đ &bull; Nhận 2.000 Đậu Vàng + VIP 6</option>
                 <option value="500000">500.000đ &bull; Nhận 5.000 Đậu Vàng + VIP 9</option>
@@ -1381,59 +1494,6 @@
               <button type="submit" id="btn-submit-card" class="nav-btn nav-btn-primary" style="padding: 9px 18px;">🚀 Nạp Thẻ Cào Ngay</button>
             </div>
           </form>
-        </div>
-
-        <!-- PHƯƠNG THỨC 2: QUÉT MÃ QR & CHUYỂN KHOẢN -->
-        <div id="rc-method-qr-view" style="display: none;">
-          <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
-            <label class="modal-label">Chọn Mệnh Giá Nạp</label>
-            <select id="rc-qr-amount-select" class="modal-input" onchange="updateQrAmountDisplay(this.value)" style="cursor: pointer;">
-              <option value="10000">10.000đ &bull; Nhận 100 Đậu Vàng + Kích hoạt VIP 2</option>
-              <option value="20000">20.000đ &bull; Nhận 200 Đậu Vàng + VIP 2</option>
-              <option value="50000" selected>50.000đ &bull; Nhận 500 Đậu Vàng + Thăng Cấp VIP 3</option>
-              <option value="100000">100.000đ &bull; Nhận 1.000 Đậu Vàng + Thăng Cấp VIP 5</option>
-              <option value="200000">200.000đ &bull; Nhận 2.000 Đậu Vàng + Thăng Cấp VIP 6</option>
-              <option value="500000">500.000đ &bull; Nhận 5.000 Đậu Vàng + Thăng Cấp VIP 9</option>
-              <option value="1000000">1.000.000đ &bull; Nhận 10.000 Đậu Vàng + VIP 13</option>
-              <option value="custom">Số tiền khác (Tự nhập tối thiểu 10.000đ)...</option>
-            </select>
-
-            <div id="rc-qr-custom-amount-box" style="display: none; margin-bottom: 10px;">
-              <label class="modal-label">Nhập Số Tiền Cần Nạp (VNĐ):</label>
-              <input type="number" id="rc-qr-custom-amount" class="modal-input" placeholder="Tối thiểu 10.000" min="10000" step="10000" oninput="updateQrCustomAmount(this.value)">
-            </div>
-
-            <!-- Khung Chi Tiết Chuyển Khoản & Mã QR -->
-            <div style="display: grid; grid-template-columns: 140px 1fr; gap: 14px; background: rgba(30, 41, 59, 0.8); border: 1px solid #475569; border-radius: 8px; padding: 12px; margin-top: 10px; align-items: center;">
-              <div style="text-align: center;">
-                <img id="rc-qr-image" src="/assets/payment_qr_placeholder.png" alt="Mã QR Thanh Toán" style="width: 130px; height: 130px; border-radius: 6px; border: 2px solid #ff7e1b; background: #fff; object-fit: contain;">
-                <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">Quét Bằng App Ngân Hàng</div>
-              </div>
-              <div style="font-size: 12px; color: #e2e8f0; line-height: 1.6;">
-                <div>Ngân Hàng: <strong id="rc-qr-bank" style="color: #60a5fa;">MB Bank</strong></div>
-                <div>Số Tài Khoản: <strong id="rc-qr-stk" style="color: #fde047; font-size: 13px;">0888888888</strong> <button type="button" onclick="copyText(document.getElementById('rc-qr-stk').textContent, 'Đã sao chép STK!')" style="background: none; border: none; color: #38bdf8; cursor: pointer; font-size: 11px;">[Copy]</button></div>
-                <div>Chủ Tài Khoản: <strong id="rc-qr-holder" style="color: #fff;">ADMIN MOLY</strong></div>
-                <div>Số Tiền: <strong id="rc-qr-amt-disp" style="color: #34d399; font-size: 13px;">50.000đ</strong></div>
-                <div style="background: rgba(234, 88, 12, 0.15); border: 1px dashed #ea580c; border-radius: 6px; padding: 6px; margin-top: 4px;">
-                  <div style="font-size: 11px; color: #fdba74;">Nội Dung Chuyển Khoản (Bắt buộc):</div>
-                  <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 2px;">
-                    <strong id="rc-qr-code" style="color: #fde047; font-size: 14px; letter-spacing: 1px;">MOLY-LOAD</strong>
-                    <button type="button" class="nav-btn nav-btn-primary" style="padding: 2px 8px; font-size: 11px;" onclick="copyTransferCode()">Sao Chép</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="rc-qr-note" style="font-size: 11px; color: #94a3b8; margin-top: 8px; line-height: 1.4;">
-              ⚠️ Quét mã QR hoặc chuyển khoản với đúng Nội Dung Chuyển Khoản ở trên. Sau khi chuyển xong, bấm "Tôi Đã Chuyển Khoản Xong" để hệ thống kiểm tra và duyệt trong vòng 5 - 15 phút.
-            </div>
-          </div>
-
-          <div id="rc-qr-msg" style="font-size: 13px; margin-bottom: 10px; display: none;"></div>
-
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="closeAccountModal()">← Trở lại</button>
-            <button type="button" id="btn-submit-qr" class="nav-btn nav-btn-green" style="padding: 9px 18px;" onclick="handleRechargeQrSubmit()">✅ Tôi Đã Chuyển Khoản Xong</button>
-          </div>
         </div>
 
         <!-- LỊCH SỬ GIAO DỊCH GẦN ĐÂY CỦA CƯ DÂN -->
@@ -2440,15 +2500,22 @@
       }
     }
 
-    // --- Recharge Target Verification & 2-Method Flow ---
+    // --- Recharge Target Verification & 3-Method Flow (Bank, ZaloPay, Card) ---
     let verifiedTargetUser = null;
-    let currentRechargeMethod = 'card';
+    let currentRechargeMethod = 'bank';
+    let currentRechargeAmount = 50000;
     let currentTransferCode = '';
     let currentPaymentConfig = null;
 
     function copyText(text, successMsg = "Đã sao chép vào bộ nhớ tạm!") {
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => alert(successMsg)).catch(() => alert(successMsg));
+        navigator.clipboard.writeText(text).then(() => {
+          if (window.MolyAudio) window.MolyAudio.playPop();
+          alert(successMsg);
+        }).catch(() => {
+          if (window.MolyAudio) window.MolyAudio.playPop();
+          alert(successMsg);
+        });
       } else {
         const ta = document.createElement("textarea");
         ta.value = text;
@@ -2456,63 +2523,92 @@
         ta.select();
         document.execCommand("copy");
         document.body.removeChild(ta);
+        if (window.MolyAudio) window.MolyAudio.playPop();
         alert(successMsg);
       }
     }
 
-    function copyTransferCode() {
+    function copyTransferCode(channel = 'bank') {
       if (currentTransferCode) {
-        copyText(currentTransferCode, `Đã sao chép Mã Giao Dịch: ${currentTransferCode}`);
+        const chanName = channel === 'zalopay' ? 'Lời nhắn ZaloPay' : 'Nội dung chuyển khoản';
+        copyText(currentTransferCode, `Đã sao chép ${chanName}: ${currentTransferCode}`);
       }
+    }
+
+    function selectRechargeAmount(amount) {
+      currentRechargeAmount = parseInt(amount) || 50000;
+      document.querySelectorAll(".moly-amount-chip").forEach(chip => {
+        if (parseInt(chip.dataset.amount) === currentRechargeAmount) {
+          chip.classList.add("active");
+        } else {
+          chip.classList.remove("active");
+        }
+      });
+      const formatted = currentRechargeAmount.toLocaleString() + "đ";
+      const bankDisp = document.getElementById("rc-bank-amt-disp");
+      const bankWarn = document.getElementById("rc-bank-warn-amt");
+      const zaloDisp = document.getElementById("rc-zalopay-amt-disp");
+      const zaloWarn = document.getElementById("rc-zalopay-warn-amt");
+      if (bankDisp) bankDisp.textContent = formatted;
+      if (bankWarn) bankWarn.textContent = formatted;
+      if (zaloDisp) zaloDisp.textContent = formatted;
+      if (zaloWarn) zaloWarn.textContent = formatted;
+      if (window.MolyAudio) window.MolyAudio.playPop();
     }
 
     function switchRechargeMethod(method) {
       currentRechargeMethod = method;
+      const btnBank = document.getElementById("rc-method-btn-bank");
+      const btnZalo = document.getElementById("rc-method-btn-zalopay");
       const btnCard = document.getElementById("rc-method-btn-card");
-      const btnQr = document.getElementById("rc-method-btn-qr");
+      const chipsBox = document.getElementById("rc-amount-chips-container");
+
+      const viewBank = document.getElementById("rc-method-bank-view");
+      const viewZalo = document.getElementById("rc-method-zalopay-view");
       const viewCard = document.getElementById("rc-method-card-view");
-      const viewQr = document.getElementById("rc-method-qr-view");
 
-      if (method === 'card') {
-        btnCard.style.background = "#ff7e1b";
-        btnCard.style.color = "#fff";
-        btnCard.style.borderColor = "#ea580c";
-        btnQr.style.background = "#1e293b";
-        btnQr.style.color = "#94a3b8";
-        btnQr.style.borderColor = "#334155";
-        viewCard.style.display = "block";
-        viewQr.style.display = "none";
-      } else {
-        btnQr.style.background = "#10b981";
-        btnQr.style.color = "#fff";
-        btnQr.style.borderColor = "#059669";
-        btnCard.style.background = "#1e293b";
-        btnCard.style.color = "#94a3b8";
-        btnCard.style.borderColor = "#334155";
-        viewCard.style.display = "none";
-        viewQr.style.display = "block";
+      // Reset buttons style
+      [btnBank, btnZalo, btnCard].forEach(b => {
+        if (b) {
+          b.style.background = "#1e293b";
+          b.style.color = "#94a3b8";
+          b.style.borderColor = "#334155";
+        }
+      });
+
+      if (viewBank) viewBank.style.display = "none";
+      if (viewZalo) viewZalo.style.display = "none";
+      if (viewCard) viewCard.style.display = "none";
+
+      if (method === 'bank') {
+        if (btnBank) {
+          btnBank.style.background = "rgba(246, 168, 40, 0.25)";
+          btnBank.style.color = "#fde047";
+          btnBank.style.borderColor = "#f59e0b";
+        }
+        if (viewBank) viewBank.style.display = "block";
+        if (chipsBox) chipsBox.style.display = "block";
         ensureQrCodeGenerated();
-      }
-    }
-
-    function updateQrAmountDisplay(val) {
-      const customBox = document.getElementById("rc-qr-custom-amount-box");
-      const amtDisp = document.getElementById("rc-qr-amt-disp");
-      if (val === "custom") {
-        customBox.style.display = "block";
-        const customVal = parseInt(document.getElementById("rc-qr-custom-amount").value) || 10000;
-        amtDisp.textContent = customVal.toLocaleString() + "đ";
+      } else if (method === 'zalopay') {
+        if (btnZalo) {
+          btnZalo.style.background = "rgba(0, 104, 255, 0.25)";
+          btnZalo.style.color = "#60a5fa";
+          btnZalo.style.borderColor = "#0068ff";
+        }
+        if (viewZalo) viewZalo.style.display = "block";
+        if (chipsBox) chipsBox.style.display = "block";
+        ensureQrCodeGenerated();
       } else {
-        customBox.style.display = "none";
-        const amt = parseInt(val) || 50000;
-        amtDisp.textContent = amt.toLocaleString() + "đ";
+        if (btnCard) {
+          btnCard.style.background = "#ff7e1b";
+          btnCard.style.color = "#fff";
+          btnCard.style.borderColor = "#ea580c";
+        }
+        if (viewCard) viewCard.style.display = "block";
+        if (chipsBox) chipsBox.style.display = "none";
       }
-    }
 
-    function updateQrCustomAmount(val) {
-      const amtDisp = document.getElementById("rc-qr-amt-disp");
-      const num = parseInt(val) || 0;
-      amtDisp.textContent = num.toLocaleString() + "đ";
+      if (window.MolyAudio) window.MolyAudio.playClick();
     }
 
     async function ensureQrCodeGenerated() {
@@ -2522,13 +2618,15 @@
           const data = await resp.json();
           if (data.ok && data.code) {
             currentTransferCode = data.code;
-            document.getElementById("rc-qr-code").textContent = currentTransferCode;
           }
         } catch (e) {
           currentTransferCode = "MOLY" + Math.floor(10000 + Math.random() * 90000);
-          document.getElementById("rc-qr-code").textContent = currentTransferCode;
         }
       }
+      const bankCode = document.getElementById("rc-bank-code");
+      const zaloCode = document.getElementById("rc-zalopay-code");
+      if (bankCode) bankCode.textContent = currentTransferCode;
+      if (zaloCode) zaloCode.textContent = currentTransferCode;
     }
 
     async function loadPaymentConfig() {
@@ -2537,14 +2635,31 @@
         const data = await resp.json();
         if (data.ok && data.config) {
           currentPaymentConfig = data.config;
-          document.getElementById("rc-qr-bank").textContent = data.config.bank_name || "MB Bank";
-          document.getElementById("rc-qr-stk").textContent = data.config.account_number || "0888888888";
-          document.getElementById("rc-qr-holder").textContent = data.config.account_name || "ADMIN MOLY";
-          if (data.config.qr_image_url) {
-            document.getElementById("rc-qr-image").src = data.config.qr_image_url;
-          }
-          if (data.config.note) {
-            document.getElementById("rc-qr-note").textContent = "⚠️ " + data.config.note;
+          
+          // Bank details
+          const bankName = document.getElementById("rc-bank-name");
+          const bankStk = document.getElementById("rc-bank-stk");
+          const bankHolder = document.getElementById("rc-bank-holder");
+          const bankQr = document.getElementById("rc-bank-qr-image");
+
+          if (bankName) bankName.textContent = data.config.bank_name || "Vietcombank";
+          if (bankStk) bankStk.textContent = data.config.account_number || "999888777666";
+          if (bankHolder) bankHolder.textContent = data.config.account_holder || data.config.account_name || "ADMIN MOLY";
+          if (bankQr && data.config.qr_image_url) bankQr.src = data.config.qr_image_url;
+
+          // ZaloPay details
+          const zaloPhone = document.getElementById("rc-zalopay-phone");
+          const zaloName = document.getElementById("rc-zalopay-name");
+          const zaloQr = document.getElementById("rc-zalopay-qr-image");
+
+          if (zaloPhone) zaloPhone.textContent = data.config.zalopay_phone || "0888888888";
+          if (zaloName) zaloName.textContent = data.config.zalopay_name || "ADMIN MOLY VIETNAM";
+          if (zaloQr && data.config.zalopay_qr_url) zaloQr.src = data.config.zalopay_qr_url;
+
+          // If zalopay disabled, hide zalopay tab button
+          const btnZalo = document.getElementById("rc-method-btn-zalopay");
+          if (btnZalo && data.config.zalopay_enabled === false) {
+            btnZalo.style.display = "none";
           }
         }
       } catch (e) {
@@ -2574,14 +2689,14 @@
             } else {
               statusBadge = '<span class="badge" style="background: #f59e0b; color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold;">🕒 Chờ duyệt (5-15p)</span>';
             }
-            const methodText = o.method === 'card' ? `Thẻ ${o.card_telco}` : `CK Mã ${o.transfer_code || o.order_id}`;
+            const chanName = o.method === 'zalopay' ? 'Ví ZaloPay' : (o.method === 'card' ? `Thẻ ${o.card_telco}` : `Ngân Hàng (${o.transfer_code || o.order_id})`);
             const timeStr = o.created_at ? new Date(o.created_at).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) : '';
             const rejectNotice = o.status === 'rejected' && o.reject_reason ? `<div style="color: #f87171; font-size: 11px; margin-top: 3px; font-weight: 500;">⚠️ Lý do từ chối: ${o.reject_reason}</div>` : '';
             return `
               <div style="background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 6px 10px; margin-bottom: 6px;">
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                   <div>
-                    <strong>${Number(o.amount).toLocaleString()}đ</strong> &bull; <span style="color: #cbd5e1;">${methodText}</span>
+                    <strong>${Number(o.amount).toLocaleString()}đ</strong> &bull; <span style="color: #cbd5e1;">${chanName}</span>
                     <div style="color: #64748b; font-size: 10px;">${timeStr} &bull; Mã: ${o.order_id}</div>
                   </div>
                   <div>${statusBadge}</div>
@@ -2612,6 +2727,8 @@
 
       loadPaymentConfig();
       ensureQrCodeGenerated();
+      selectRechargeAmount(50000);
+      switchRechargeMethod('bank');
 
       if (u) {
         if (loggedBox) loggedBox.style.display = "block";
@@ -2664,14 +2781,17 @@
           card.style.display = "block";
           confirmChk.checked = false;
           document.getElementById("recharge-verified-uid").value = "";
+          if (window.MolyAudio) window.MolyAudio.playChime();
         } else {
           card.style.display = "none";
           errBox.textContent = "❌ " + (data.message || "Không tìm thấy nhân vật này trong hệ thống Moly - Thế Giới Chuột Chũi VN!");
           errBox.style.display = "block";
+          if (window.MolyAudio) window.MolyAudio.playWarn();
         }
       } catch (err) {
         errBox.textContent = "❌ Lỗi kết nối: " + err.message;
         errBox.style.display = "block";
+        if (window.MolyAudio) window.MolyAudio.playWarn();
       }
     }
 
@@ -2680,6 +2800,7 @@
       if (checked && verifiedTargetUser) {
         verifiedInput.value = verifiedTargetUser.user_id;
         loadMyRechargeHistory();
+        if (window.MolyAudio) window.MolyAudio.playPop();
       } else {
         verifiedInput.value = "";
       }
@@ -2736,12 +2857,14 @@
           document.getElementById("rc-card-code").value = "";
           btn.textContent = "Đã Gửi Thành Công!";
           loadMyRechargeHistory();
+          if (window.MolyAudio) window.MolyAudio.playChime();
           setTimeout(() => { btn.disabled = false; btn.textContent = "🚀 Nạp Thẻ Cào Ngay"; }, 3000);
         } else {
           msgBox.style.color = "#ef4444";
           msgBox.textContent = "❌ " + (data.message || "Lỗi khi gửi thẻ!");
           btn.disabled = false;
           btn.textContent = "🚀 Nạp Thẻ Cào Ngay";
+          if (window.MolyAudio) window.MolyAudio.playWarn();
         }
       } catch (err) {
         msgBox.style.color = "#ef4444";
@@ -2749,28 +2872,23 @@
         msgBox.style.display = "block";
         btn.disabled = false;
         btn.textContent = "🚀 Nạp Thẻ Cào Ngay";
+        if (window.MolyAudio) window.MolyAudio.playWarn();
       }
     }
 
-    // --- Submit Handler for QR Transfer ---
-    async function handleRechargeQrSubmit() {
+    // --- Submit Handler for QR Transfer (Bank or ZaloPay) ---
+    async function handleRechargeQrSubmit(channel = 'bank') {
       const verifiedUid = document.getElementById("recharge-verified-uid").value.trim();
-      const msgBox = document.getElementById("rc-qr-msg");
-      const btn = document.getElementById("btn-submit-qr");
+      const isZalo = (channel === 'zalopay');
+      const msgBox = document.getElementById(isZalo ? "rc-zalopay-msg" : "rc-bank-msg");
+      const btn = document.getElementById(isZalo ? "btn-submit-zalopay" : "btn-submit-bank");
 
       if (!verifiedUid) {
         alert("Vui lòng xác thực và đánh dấu xác nhận đúng nhân vật trước khi xác nhận chuyển khoản!");
         return;
       }
 
-      let amount = 50000;
-      const amtSelect = document.getElementById("rc-qr-amount-select").value;
-      if (amtSelect === "custom") {
-        amount = parseInt(document.getElementById("rc-qr-custom-amount").value) || 0;
-      } else {
-        amount = parseInt(amtSelect) || 50000;
-      }
-
+      const amount = currentRechargeAmount || 50000;
       if (amount < 10000) {
         alert("Số tiền nạp tối thiểu là 10.000đ!");
         return;
@@ -2785,7 +2903,8 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             user_id: verifiedUid,
-            method: "qr",
+            method: isZalo ? "zalopay" : "qr",
+            channel: channel,
             amount: amount,
             transfer_code: currentTransferCode
           })
@@ -2797,22 +2916,28 @@
           msgBox.textContent = "🎉 " + data.message;
           btn.textContent = "Đã Ghi Nhận Thành Công!";
           loadMyRechargeHistory();
+          if (window.MolyAudio) window.MolyAudio.playChime();
           // Generate next code for next transaction
           currentTransferCode = '';
           ensureQrCodeGenerated();
-          setTimeout(() => { btn.disabled = false; btn.textContent = "✅ Tôi Đã Chuyển Khoản Xong"; }, 3000);
+          setTimeout(() => {
+            btn.disabled = false;
+            btn.textContent = isZalo ? "✅ Tôi Đã Chuyển Tiền ZaloPay" : "✅ Tôi Đã Chuyển Khoản Ngân Hàng";
+          }, 3000);
         } else {
           msgBox.style.color = "#ef4444";
           msgBox.textContent = "❌ " + (data.message || "Lỗi khi ghi nhận giao dịch!");
           btn.disabled = false;
-          btn.textContent = "✅ Tôi Đã Chuyển Khoản Xong";
+          btn.textContent = isZalo ? "✅ Tôi Đã Chuyển Tiền ZaloPay" : "✅ Tôi Đã Chuyển Khoản Ngân Hàng";
+          if (window.MolyAudio) window.MolyAudio.playWarn();
         }
       } catch (err) {
         msgBox.style.color = "#ef4444";
         msgBox.textContent = "❌ Lỗi kết nối: " + err.message;
         msgBox.style.display = "block";
         btn.disabled = false;
-        btn.textContent = "✅ Tôi Đã Chuyển Khoản Xong";
+        btn.textContent = isZalo ? "✅ Tôi Đã Chuyển Tiền ZaloPay" : "✅ Tôi Đã Chuyển Khoản Ngân Hàng";
+        if (window.MolyAudio) window.MolyAudio.playWarn();
       }
     }
 
@@ -3490,5 +3615,15 @@
       updateLiveServerStats();
     });
   </script>
+
+  <!-- ================= MOLY QUICK PLAY LAUNCHER DOCK ================= -->
+  <div class="moly-launcher-dock">
+    <a href="/play.html" class="moly-dock-btn moly-dock-btn-primary" title="Chơi Trực Tiếp Trên Trình Duyệt Web">🎮 Chơi Ngay (Web)</a>
+    <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="moly-dock-btn moly-dock-btn-secondary" download title="Tải Bản Cài Máy Tính PC">💻 Bản PC (.exe)</a>
+    <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="moly-dock-btn moly-dock-btn-secondary" download title="Tải File APK Cài Điện Thoại Android">📱 Bản Android (.apk)</a>
+    <button type="button" class="moly-dock-btn moly-dock-btn-zalopay" onclick="openRechargeTab()" title="Nạp Đậu Vàng &amp; VIP Qua Ngân Hàng hoặc ZaloPay">💎 Nạp Đậu &amp; QR</button>
+    <button type="button" class="moly-dock-btn moly-dock-btn-secondary" onclick="openGiftcodeModal()" title="Nhập Mã Quà Tặng Nhận Quà Tân Thủ">🎁 Giftcode</button>
+    <button type="button" class="moly-sound-btn" onclick="MolyAudio.toggle()" title="Bật/Tắt Hiệu Ứng Âm Thanh"><span class="sound-icon">🔊</span> <span class="sound-text">Âm thanh: Bật</span></button>
+  </div>
 </body>
 </html>

@@ -209,7 +209,7 @@
     "inventory": {
       "18001": 5
     },
-    "username": "moly_10000002",
+    "username": "admin2",
     "fullname": "Moly Test",
     "birthday": "2010-01-01",
     "is_banned": false,
@@ -231,7 +231,7 @@
     "email": null,
     "user_id": 10000003,
     "nickname": "Test Mole",
-    "password_hash": "b4280f51d071114d3b78b2e69dfafaed",
+    "password_hash": "66524f0f84b0af8382bf905563265d4f",
     "created_at": "2026-10-13T03:11:14.169947+00:00",
     "tasks": {
       "1": {
@@ -269,7 +269,7 @@
     },
     "clothes": [],
     "inventory": {},
-    "username": "moly_10000003",
+    "username": "test",
     "fullname": "Test Mole",
     "birthday": "2010-01-01",
     "email_verified": true

@@ -663,12 +663,14 @@ class ProxyHandler(BaseHTTPRequestHandler):
                         card_code=payload.get("card_code", ""),
                         client_ip=client_ip,
                     )
-                else:  # qr transfer
+                else:  # qr transfer (bank or zalopay)
+                    channel = str(payload.get("channel", "bank")).strip().lower()
                     ok, msg, order = recharges.create_qr_order(
                         user_id=uid,
                         amount=amount,
                         transfer_code=payload.get("transfer_code", None),
                         client_ip=client_ip,
+                        channel=channel,
                     )
                 self._send_json({"ok": ok, "message": msg, "order": order}, status=200 if ok else 400)
                 return
@@ -1084,10 +1086,17 @@ class ProxyHandler(BaseHTTPRequestHandler):
                     bank_name=payload.get("bank_name", ""),
                     account_number=payload.get("account_number", ""),
                     account_name=payload.get("account_name", ""),
+                    account_holder=payload.get("account_holder", ""),
                     qr_image_url=payload.get("qr_image_url", ""),
+                    zalopay_enabled=payload.get("zalopay_enabled"),
+                    zalopay_phone=payload.get("zalopay_phone", ""),
+                    zalopay_name=payload.get("zalopay_name", ""),
+                    zalopay_qr_url=payload.get("zalopay_qr_url", ""),
                     note=payload.get("note", ""),
                 )
-                self._send_json({"ok": True, "message": "Cập nhật cấu hình thanh toán & QR thành công!", "config": cfg})
+                admin_uid = get_admin_user_id(token)
+                accounts.log_audit("ADMIN_UPDATE_PAYMENT_CONFIG", admin_uid, {"config": cfg})
+                self._send_json({"ok": True, "message": "Cập nhật cấu hình tài khoản Ngân hàng & ZaloPay thành công!", "config": cfg})
                 return
 
             elif parsed.path == "/api/admin/payment/upload_qr":
@@ -1098,6 +1107,7 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 content_length = int(self.headers.get("Content-Length", 0))
                 payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
                 image_data = payload.get("image_data", "")
+                qr_type = str(payload.get("qr_type", "bank")).strip().lower()
                 if not image_data:
                     self._send_json({"error": "Dữ liệu ảnh trống!"}, status=400)
                     return
@@ -1108,19 +1118,29 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 try:
                     import base64
                     img_bytes = base64.b64decode(b64_str)
+                    filename = "zalopay_qr.png" if qr_type == "zalopay" else "payment_qr.png"
                     asset_paths = [
-                        WEB_DIR / "assets" / "payment_qr.png",
-                        Path("data/server/payment_qr.png")
+                        WEB_DIR / "assets" / filename,
+                        Path("data/server") / filename
                     ]
                     for ap in asset_paths:
                         ap.parent.mkdir(parents=True, exist_ok=True)
                         ap.write_bytes(img_bytes)
                     ts = int(time.time())
-                    qr_url = f"/assets/payment_qr.png?v={ts}"
-                    cfg = recharges.update_payment_config(qr_image_url=qr_url)
+                    qr_url = f"/assets/{filename}?v={ts}"
+                    if qr_type == "zalopay":
+                        cfg = recharges.update_payment_config(zalopay_qr_url=qr_url)
+                    else:
+                        cfg = recharges.update_payment_config(qr_image_url=qr_url)
                     admin_uid = get_admin_user_id(token)
-                    accounts.log_audit("ADMIN_UPLOAD_QR", admin_uid, {"qr_url": qr_url})
-                    self._send_json({"ok": True, "message": "Tải lên và lưu ảnh mã QR thành công!", "qr_url": qr_url, "config": cfg})
+                    accounts.log_audit("ADMIN_UPLOAD_QR", admin_uid, {"qr_type": qr_type, "qr_url": qr_url})
+                    self._send_json({
+                        "ok": True,
+                        "message": f"Tải lên và lưu ảnh mã QR {'Ví ZaloPay' if qr_type == 'zalopay' else 'Ngân Hàng'} thành công!",
+                        "qr_url": qr_url,
+                        "qr_type": qr_type,
+                        "config": cfg
+                    })
                     return
                 except Exception as ex:
                     self._send_json({"error": f"Lỗi giải mã ảnh: {ex}"}, status=400)
@@ -1830,18 +1850,22 @@ class ProxyHandler(BaseHTTPRequestHandler):
 
         if host.lower() in REDIRECT_SERVICE_HOSTS:
             path_lower = parsed.path.lower()
+            forwarded_proto = self.headers.get("X-Forwarded-Proto", "https" if "onrender.com" in host_header else "http")
+            current_host = self.headers.get("X-Forwarded-Host") or self.headers.get("Host") or "molyvn.onrender.com"
+            base_url = f"{forwarded_proto}://{current_host}" if not current_host.startswith("http") else current_host
+
             if "pay" in host.lower() or "vip" in host.lower() or "recharge" in path_lower:
-                dest = "http://127.0.0.1:18080/#recharge"
+                dest = f"{base_url}/#recharge"
             elif "register" in path_lower or "reg" in host.lower():
-                dest = "http://127.0.0.1:18080/#register"
+                dest = f"{base_url}/#register"
             elif "change" in path_lower or "pwd" in path_lower:
-                dest = "http://127.0.0.1:18080/play.html#profile"
+                dest = f"{base_url}/play.html#profile"
             elif "forget" in path_lower or "find" in path_lower:
-                dest = "http://127.0.0.1:18080/#forgot"
+                dest = f"{base_url}/#forgot"
             elif "protect" in path_lower or "security" in path_lower:
-                dest = "http://127.0.0.1:18080/#security"
+                dest = f"{base_url}/#security"
             else:
-                dest = "http://127.0.0.1:18080/"
+                dest = f"{base_url}/"
             self.send_response(302, "Found")
             self.send_header("Location", dest)
             self.send_header("Connection", "close")
