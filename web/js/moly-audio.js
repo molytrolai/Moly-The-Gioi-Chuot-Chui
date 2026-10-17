@@ -127,15 +127,23 @@
 
     updateUI() {
       document.querySelectorAll(".moly-sound-btn").forEach(btn => {
-        if (isSoundEnabled) {
-          btn.innerHTML = `<span class="sound-icon">🔊</span> <span class="sound-text">Âm thanh: Bật</span>`;
-          btn.classList.add("sound-on");
-          btn.classList.remove("sound-off");
-        } else {
-          btn.innerHTML = `<span class="sound-icon">🔇</span> <span class="sound-text">Âm thanh: Tắt</span>`;
-          btn.classList.add("sound-off");
-          btn.classList.remove("sound-on");
+        const iconSpan = btn.querySelector(".sound-icon");
+        const textSpan = btn.querySelector(".sound-text, .moly-dock-label");
+        if (iconSpan) {
+          iconSpan.textContent = isSoundEnabled ? "🔊" : "🔇";
         }
+        if (textSpan) {
+          if (textSpan.classList.contains("moly-dock-label")) {
+            textSpan.textContent = isSoundEnabled ? "Âm thanh" : "Tắt tiếng";
+          } else {
+            textSpan.textContent = isSoundEnabled ? "Âm thanh: Bật" : "Âm thanh: Tắt";
+          }
+        }
+        if (!iconSpan && !textSpan) {
+          btn.innerHTML = `<span class="sound-icon">${isSoundEnabled ? "🔊" : "🔇"}</span> <span class="sound-text">${isSoundEnabled ? "Âm thanh: Bật" : "Âm thanh: Tắt"}</span>`;
+        }
+        btn.classList.toggle("sound-on", isSoundEnabled);
+        btn.classList.toggle("sound-off", !isSoundEnabled);
       });
     },
 

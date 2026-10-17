@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <script src="/js/moly-audio.js"></script>
   <script src="/js/moly-ambient.js"></script>
+  <script src="/js/moly-dock.js"></script>
   <style>
     :root {
       --primary: #ff7e1b;
@@ -3593,7 +3594,7 @@
 
   <!-- ================= MOLY QUICK PLAY LAUNCHER DOCK (DESKTOP & MOBILE RESPONSIVE) ================= -->
   <div class="moly-launcher-dock" id="moly-main-dock">
-    <!-- Desktop-specific dock items -->
+    <!-- Desktop-specific dock items (All rounded capsule pills) -->
     <a href="/play.html" class="moly-dock-btn moly-dock-btn-primary dock-desktop-only" title="Chơi Trực Tiếp Trên Trình Duyệt Web">🎮 Chơi Ngay (Web)</a>
     <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="moly-dock-btn moly-dock-btn-secondary dock-desktop-only" download title="Tải Bản Cài Máy Tính PC">💻 Bản PC (.exe)</a>
     <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="moly-dock-btn moly-dock-btn-secondary dock-desktop-only" download title="Tải File APK Cài Điện Thoại Android">📱 Bản Android (.apk)</a>
@@ -3601,30 +3602,133 @@
     <button type="button" class="moly-dock-btn moly-dock-btn-secondary dock-desktop-only" onclick="openGiftcodeModal()" title="Nhập Mã Quà Tặng Nhận Quà Tân Thủ">🎁 Giftcode</button>
     <button type="button" class="moly-sound-btn dock-desktop-only" onclick="MolyAudio.toggle()" title="Bật/Tắt Hiệu Ứng Âm Thanh"><span class="sound-icon">🔊</span> <span class="sound-text">Âm thanh</span></button>
 
-    <!-- Mobile-specific 5-Tab Ergonomic App Bar -->
-    <a href="javascript:void(0)" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="moly-dock-btn moly-dock-btn-secondary dock-mobile-only" title="Trang Chủ">
-      <span class="moly-dock-icon">🏠</span>
-      <span class="moly-dock-label">Trang Chủ</span>
-    </a>
-    <a href="/play.html" class="moly-dock-btn moly-dock-btn-primary dock-mobile-only" title="Vào Chơi Game Ngay">
-      <span class="moly-dock-icon">⚡</span>
-      <span class="moly-dock-label">Chơi Ngay</span>
-    </a>
-    <button type="button" class="moly-dock-btn moly-dock-btn-zalopay dock-mobile-only" onclick="openRechargeTab()" title="Nạp Đậu &amp; VIP">
-      <span class="moly-dock-icon">💎</span>
-      <span class="moly-dock-label">Nạp Đậu</span>
-    </button>
-    <button type="button" class="moly-dock-btn moly-dock-btn-secondary dock-mobile-only" onclick="openGiftcodeModal()" title="Nhận Quà Giftcode">
-      <span class="moly-dock-icon">🎁</span>
-      <span class="moly-dock-label">Giftcode</span>
-    </button>
-    <button type="button" class="moly-dock-btn moly-dock-btn-secondary dock-mobile-only" onclick="openDashboardTab()" title="Tài Khoản &amp; Hồ Sơ">
-      <span class="moly-dock-icon">👤</span>
-      <span class="moly-dock-label">Hồ Sơ</span>
-    </button>
-    <button type="button" class="moly-sound-btn dock-mobile-only" onclick="MolyAudio.toggle()" title="Bật/Tắt Âm Thanh" style="padding: 6px; border-radius: 50%; min-width: 38px; height: 38px; justify-content: center;">
-      <span class="sound-icon">🔊</span>
-    </button>
+    <!-- Mobile-specific Ergonomic App Bar (5 Tabs: Tải Về, Dịch Vụ, CHƠI NGAY Chính Giữa, Tài Khoản, Âm Thanh) -->
+    
+    <!-- Tab 1: Tải Về Popup -->
+    <div class="moly-dock-tab-item dock-mobile-only">
+      <button type="button" class="moly-dock-btn moly-dock-btn-secondary" id="dock-btn-download" onclick="toggleDockPopup('dock-popup-download', event)">
+        <span class="moly-dock-icon">📥</span>
+        <span class="moly-dock-label">Tải Về</span>
+      </button>
+      <div class="moly-dock-popup" id="dock-popup-download">
+        <div class="moly-popup-header">📥 Tải Bản Game Moly</div>
+        <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="moly-popup-item" download="Moly Thế Giới Chuột chũi.apk" onclick="closeAllDockPopups()">
+          <span class="popup-item-icon">📱</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Bản Android (APK)</span>
+            <span class="popup-item-desc">File APK 13 MB cài điện thoại</span>
+          </div>
+        </a>
+        <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="moly-popup-item" download="Moly Thế Giới Chuột chũi.zip" onclick="closeAllDockPopups()">
+          <span class="popup-item-icon">💻</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Bản Máy Tính (PC .exe)</span>
+            <span class="popup-item-desc">150 MB chuẩn 60 FPS offline map</span>
+          </div>
+        </a>
+        <a href="/play.html" class="moly-popup-item" onclick="closeAllDockPopups()">
+          <span class="popup-item-icon">🌐</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Chơi Trực Tiếp Web</span>
+            <span class="popup-item-desc">Mở trình duyệt chơi ngay lập tức</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Tab 2: Dịch Vụ Popup -->
+    <div class="moly-dock-tab-item dock-mobile-only">
+      <button type="button" class="moly-dock-btn moly-dock-btn-secondary" id="dock-btn-services" onclick="toggleDockPopup('dock-popup-services', event)">
+        <span class="moly-dock-icon">💎</span>
+        <span class="moly-dock-label">Dịch Vụ</span>
+      </button>
+      <div class="moly-dock-popup" id="dock-popup-services">
+        <div class="moly-popup-header">💎 Tiện Ích &amp; Giao Dịch</div>
+        <button type="button" class="moly-popup-item" onclick="openRechargeTab(); closeAllDockPopups();">
+          <span class="popup-item-icon">⚡</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Nạp Đậu &amp; QR Tự Động</span>
+            <span class="popup-item-desc">Qua Ngân hàng hoặc ZaloPay</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openGiftcodeModal(); closeAllDockPopups();">
+          <span class="popup-item-icon">🎁</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Nhập Mã Giftcode</span>
+            <span class="popup-item-desc">Nhận quà tân thủ &amp; sự kiện</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openSuperLamuModal(); closeAllDockPopups();">
+          <span class="popup-item-icon">🐾</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Đậu Đậu Siêu Cấp</span>
+            <span class="popup-item-desc">Viện nghiên cứu &amp; Quyền lợi VIP</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openLeaderboardModal(); closeAllDockPopups();">
+          <span class="popup-item-icon">🏆</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Bảng Xếp Hạng Cư Dân</span>
+            <span class="popup-item-desc">Top giàu có &amp; điểm cống hiến</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab 3 (CHÍNH GIỮA): NÚT CHƠI NGAY SIÊU TO NỔI BẬT -->
+    <div class="moly-dock-tab-item moly-dock-hero-tab dock-mobile-only">
+      <a href="/play.html" class="moly-dock-hero-btn" title="Vào Chơi Game Ngay">
+        <span class="hero-play-icon">🎮</span>
+        <span class="hero-play-label">CHƠI NGAY</span>
+      </a>
+    </div>
+
+    <!-- Tab 4: Tài Khoản Popup -->
+    <div class="moly-dock-tab-item dock-mobile-only">
+      <button type="button" class="moly-dock-btn moly-dock-btn-secondary" id="dock-btn-account" onclick="toggleDockPopup('dock-popup-account', event)">
+        <span class="moly-dock-icon">👤</span>
+        <span class="moly-dock-label">Tài Khoản</span>
+      </button>
+      <div class="moly-dock-popup" id="dock-popup-account">
+        <div class="moly-popup-header">👤 Quản Lý Tài Khoản</div>
+        <button type="button" class="moly-popup-item" onclick="openLoginTab(); closeAllDockPopups();">
+          <span class="popup-item-icon">🔑</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Đăng Nhập</span>
+            <span class="popup-item-desc">Vào tài khoản cư dân Moly</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openRegisterTab(); closeAllDockPopups();">
+          <span class="popup-item-icon">➕</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Đăng Ký Mới</span>
+            <span class="popup-item-desc">Tạo tài khoản ID ngẫu nhiên</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openDashboardTab(); closeAllDockPopups();">
+          <span class="popup-item-info">👤</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Hồ Sơ Cư Dân</span>
+            <span class="popup-item-desc">Xem Đậu Vàng, VIP &amp; Đổi MK</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openForgotTab(); closeAllDockPopups();">
+          <span class="popup-item-icon">🔒</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Quên Mật Khẩu</span>
+            <span class="popup-item-desc">Khôi phục qua mã OTP Gmail</span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab 5: Âm Thanh Toggle -->
+    <div class="moly-dock-tab-item dock-mobile-only">
+      <button type="button" class="moly-dock-btn moly-sound-btn" onclick="MolyAudio.toggle()" title="Bật/Tắt Âm Thanh">
+        <span class="moly-dock-icon sound-icon">🔊</span>
+        <span class="moly-dock-label">Âm thanh</span>
+      </button>
+    </div>
   </div>
 </body>
 </html>

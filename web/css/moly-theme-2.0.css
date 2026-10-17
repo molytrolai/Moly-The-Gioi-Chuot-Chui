@@ -1,6 +1,7 @@
 /**
  * Moly Vietnam 2.0 - Complete Luxury Liquid Frosted Glassmorphism Design System
- * Universal Glossy Glass Panels, Ambient Underlay Mesh, and Responsive Mobile Dock Navigation
+ * Universal Glossy Glass Panels, Ambient Underlay Mesh, Floating Pill Navbar,
+ * Bulb-Luminous Capsule Buttons, Mobile Ergonomic Popup Dock & High-Contrast Typography
  */
 
 :root {
@@ -9,6 +10,7 @@
   --moly-gold-light: #fde047;
   --moly-gold-dark: #d97706;
   --moly-gold-glow: rgba(246, 168, 40, 0.45);
+  --moly-bulb-glow: rgba(253, 224, 71, 0.65);
   
   --moly-cyan: #06b6d4;
   --moly-cyan-light: #38bdf8;
@@ -27,15 +29,15 @@
 
   /* Liquid Glass Core Variables */
   --moly-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(15, 23, 42, 0.72);
-  --moly-glass-bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(18, 28, 38, 0.75);
-  --moly-glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(24, 36, 48, 0.85);
+  --moly-glass-bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(18, 28, 38, 0.78);
+  --moly-glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(24, 36, 48, 0.88);
   
   --moly-glass-border: rgba(255, 255, 255, 0.18);
-  --moly-glass-border-strong: rgba(255, 255, 255, 0.32);
-  --moly-glass-rim-top: rgba(255, 255, 255, 0.55);
+  --moly-glass-border-strong: rgba(255, 255, 255, 0.35);
+  --moly-glass-rim-top: rgba(255, 255, 255, 0.65);
   
   --moly-glass-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
-  --moly-glass-shadow-hover: 0 20px 48px 0 rgba(0, 0, 0, 0.6), 0 0 24px rgba(246, 168, 40, 0.28), inset 0 1px 2px 0 rgba(255, 255, 255, 0.55);
+  --moly-glass-shadow-hover: 0 20px 48px 0 rgba(0, 0, 0, 0.6), 0 0 24px rgba(246, 168, 40, 0.3), inset 0 1px 2px 0 rgba(255, 255, 255, 0.65);
 
   --moly-blur: 24px;
   --moly-saturate: 190%;
@@ -47,11 +49,11 @@
 body {
   background-color: #0b0f19 !important;
   background-image: 
-    radial-gradient(circle at 12% 18%, rgba(6, 182, 212, 0.22) 0px, transparent 45%),
-    radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.26) 0px, transparent 48%),
-    radial-gradient(circle at 50% 55%, rgba(245, 158, 11, 0.18) 0px, transparent 55%),
-    radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.22) 0px, transparent 45%),
-    radial-gradient(circle at 18% 82%, rgba(99, 102, 241, 0.24) 0px, transparent 50%) !important;
+    radial-gradient(circle at 12% 18%, rgba(6, 182, 212, 0.24) 0px, transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.28) 0px, transparent 48%),
+    radial-gradient(circle at 50% 55%, rgba(245, 158, 11, 0.20) 0px, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.24) 0px, transparent 45%),
+    radial-gradient(circle at 18% 82%, rgba(99, 102, 241, 0.26) 0px, transparent 50%) !important;
   background-attachment: fixed !important;
   background-size: 100% 100% !important;
   color: #f8fafc !important;
@@ -94,18 +96,18 @@ body {
 .ranking-card:hover {
   background: var(--moly-glass-bg-hover) !important;
   border-color: rgba(246, 168, 40, 0.5) !important;
-  border-top-color: rgba(255, 255, 255, 0.75) !important;
+  border-top-color: rgba(255, 255, 255, 0.8) !important;
   box-shadow: var(--moly-glass-shadow-hover) !important;
   transform: translateY(-3px) !important;
 }
 
 /* Glass Dividers */
 hr, .card-header, .dropdown-divider {
-  border-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
 }
 
 /* ==========================================================================
-   3. GLOSSY GLASS BUTTONS & INTERACTIVE PILLS (NÚT BẤM BÓNG KÍNH)
+   3. BULB-LUMINOUS BUTTONS & INTERACTIVE PILLS (NÚT BẤM BÓNG ĐÈN MỜ SÁNG)
    ========================================================================== */
 .btn,
 .btn-primary,
@@ -120,100 +122,218 @@ hr, .card-header, .dropdown-divider {
 .hero-btn-primary,
 .hero-btn-secondary,
 .moly-dock-btn,
-.tab-btn {
+.tab-btn,
+.card-btn {
   position: relative;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%),
+              rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.45), inset 0 -1px 1px rgba(0, 0, 0, 0.2) !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35),
+              0 0 12px rgba(255, 255, 255, 0.10),
+              inset 0 1px 1px rgba(255, 255, 255, 0.45) !important;
+  color: #f8fafc !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
   user-select: none;
+  cursor: pointer;
 }
 
-/* Specific button color treatments with glossy glass overlay */
-.btn-primary, .nav-btn-play, .hero-btn-primary, .moly-dock-btn-primary {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #f59e0b 0%, #ea580c 100%) !important;
+/* Hover or Active / Selected: Bright Bulb Illumination */
+.btn:hover,
+.nav-link-btn:hover,
+.nav-dropdown-btn:hover,
+.moly-dock-btn:hover,
+.tab-btn:hover,
+.card-btn:hover,
+.moly-dock-btn.active,
+.tab-btn.active {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.36) 0%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0.05) 100%),
+              rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(254, 240, 138, 0.85) !important;
+  border-top-color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5),
+              0 0 25px rgba(253, 224, 71, 0.65),
+              0 0 45px rgba(246, 168, 40, 0.35),
+              inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.85) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+/* Specific button color variants with glowing bulb overlays */
+.btn-primary, .nav-btn-play, .hero-btn-primary, .moly-dock-btn-primary, .btn-web {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.36) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 0, 0, 0.15) 100%),
+              linear-gradient(135deg, #f59e0b 0%, #ea580c 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5),
+              0 0 16px rgba(246, 168, 40, 0.4),
+              inset 0 1px 2px rgba(255, 255, 255, 0.65) !important;
   color: #ffffff !important;
 }
-.btn-primary:hover, .nav-btn-play:hover, .hero-btn-primary:hover, .moly-dock-btn-primary:hover {
-  transform: translateY(-2px) scale(1.02) !important;
-  box-shadow: 0 8px 25px rgba(234, 88, 12, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
-  border-color: rgba(255, 255, 255, 0.45) !important;
+.btn-primary:hover, .nav-btn-play:hover, .hero-btn-primary:hover, .moly-dock-btn-primary:hover, .btn-web:hover {
+  box-shadow: 0 10px 32px rgba(234, 88, 12, 0.7),
+              0 0 35px rgba(253, 224, 71, 0.85),
+              0 0 60px rgba(246, 168, 40, 0.55),
+              inset 0 1px 3px rgba(255, 255, 255, 0.9) !important;
+  border-color: #fde047 !important;
+  transform: translateY(-2px) scale(1.03) !important;
 }
 
-.btn-secondary, .nav-link-btn, .nav-dropdown-btn, .hero-btn-secondary, .moly-dock-btn-secondary {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(0, 0, 0, 0.15) 100%), rgba(22, 34, 46, 0.65) !important;
+.btn-secondary, .hero-btn-secondary, .moly-dock-btn-secondary, .btn-desktop {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.15) 100%),
+              rgba(22, 34, 48, 0.75) !important;
   color: #f1f5f9 !important;
 }
-.btn-secondary:hover, .nav-link-btn:hover, .nav-dropdown-btn:hover, .hero-btn-secondary:hover, .moly-dock-btn-secondary:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(0, 0, 0, 0.15) 100%), rgba(30, 48, 64, 0.8) !important;
+.btn-secondary:hover, .hero-btn-secondary:hover, .moly-dock-btn-secondary:hover, .btn-desktop:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 0, 0, 0.15) 100%),
+              rgba(30, 48, 68, 0.85) !important;
   color: #fde047 !important;
   border-color: var(--moly-gold) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(246, 168, 40, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45),
+              0 0 20px rgba(246, 168, 40, 0.45),
+              inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
 }
 
-.btn-success {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
+.btn-success, .btn-android {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(0, 0, 0, 0.12) 100%),
+              linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
   color: #ffffff !important;
 }
-.btn-success:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
-}
-
-.btn-warning {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #f59e0b 0%, #b45309 100%) !important;
-  color: #ffffff !important;
-}
-.btn-warning:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
-}
-
-.btn-danger {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
-  color: #ffffff !important;
-}
-.btn-danger:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+.btn-success:hover, .btn-android:hover {
+  box-shadow: 0 8px 26px rgba(16, 185, 129, 0.6),
+              0 0 25px rgba(52, 211, 153, 0.65),
+              inset 0 1px 2px rgba(255, 255, 255, 0.75) !important;
+  border-color: #6ee7b7 !important;
 }
 
 .moly-dock-btn-zalopay {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #0284c7 0%, #0068ff 100%) !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(0, 0, 0, 0.15) 100%),
+              linear-gradient(135deg, #0284c7 0%, #0068ff 100%) !important;
   color: #ffffff !important;
 }
 .moly-dock-btn-zalopay:hover {
+  box-shadow: 0 10px 30px rgba(0, 104, 255, 0.65),
+              0 0 30px rgba(56, 189, 248, 0.8),
+              inset 0 1px 3px rgba(255, 255, 255, 0.9) !important;
+  border-color: #7dd3fc !important;
+}
+
+/* Sound Button (Round Bulb Pill) */
+.moly-sound-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(15, 23, 42, 0.72) !important;
+  border: 1px solid rgba(246, 168, 40, 0.4) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
+  color: #fef08a !important;
+  padding: 8px 16px !important;
+  border-radius: 9999px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35),
+              0 0 12px rgba(253, 224, 71, 0.2),
+              inset 0 1px 1px rgba(255, 255, 255, 0.5) !important;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.moly-sound-btn:hover {
+  background: rgba(246, 168, 40, 0.3) !important;
+  border-color: var(--moly-gold) !important;
+  border-top-color: #ffffff !important;
   transform: translateY(-2px) scale(1.03) !important;
-  box-shadow: 0 8px 24px rgba(0, 104, 255, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 0 25px var(--moly-bulb-glow), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
 }
 
 /* ==========================================================================
-   4. GLOSSY GLASS NAVBAR & DROPDOWNS (MENU KÍNH TRONG SUỐT)
+   4. FLOATING CAPSULE PILL NAVBAR & DROPDOWNS (MENU VIÊN THUỐC BO TRÒN)
    ========================================================================== */
-.navbar, header {
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.72) 100%) !important;
-  backdrop-filter: blur(28px) saturate(200%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+
+/* Desktop Floating Pill Navbar */
+@media (min-width: 769px) {
+  .navbar {
+    position: sticky !important;
+    top: 14px !important;
+    margin: 14px auto 14px auto !important;
+    width: calc(100% - 48px) !important;
+    max-width: 1240px !important;
+    border-radius: 9999px !important;
+    padding: 8px 24px !important;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.66) 100%) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  /* Inner Navbar Buttons as Rounded Pills */
+  .nav-link-btn,
+  .nav-dropdown-btn,
+  .nav-btn-play,
+  .status-badge {
+    border-radius: 9999px !important;
+    padding: 7px 16px !important;
+  }
+
+  .nav-menu {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
 }
 
+/* Mobile Compact Top Bar */
+@media (max-width: 768px) {
+  .navbar {
+    position: sticky !important;
+    top: 8px !important;
+    margin: 8px 12px 10px 12px !important;
+    width: calc(100% - 24px) !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.75) 100%) !important;
+    backdrop-filter: blur(24px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+    z-index: 1000 !important;
+  }
+  .nav-menu {
+    display: none !important;
+  }
+  .nav-actions .nav-btn-play {
+    display: none !important; /* Center hero button at bottom dock handles this */
+  }
+}
+
+/* Navbar Dropdowns */
 .dropdown-menu {
-  background: linear-gradient(135deg, rgba(20, 32, 44, 0.94) 0%, rgba(15, 23, 42, 0.96) 100%) !important;
+  background: linear-gradient(135deg, rgba(20, 32, 46, 0.96) 0%, rgba(15, 23, 42, 0.98) 100%) !important;
   backdrop-filter: blur(30px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
-  border: 1px solid rgba(255, 255, 255, 0.24) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
-  border-radius: 14px !important;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.7), 0 0 24px rgba(246, 168, 40, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.75), 0 0 25px rgba(246, 168, 40, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+  padding: 8px !important;
 }
 
 .dropdown-item {
   color: #e2e8f0 !important;
+  padding: 9px 14px !important;
+  border-radius: 10px !important;
   transition: all 0.2s ease !important;
 }
 .dropdown-item:hover {
@@ -229,6 +349,7 @@ hr, .card-header, .dropdown-divider {
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-top: 1px solid rgba(255, 255, 255, 0.45) !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+  border-radius: 9999px !important;
 }
 
 /* ==========================================================================
@@ -241,12 +362,12 @@ input[type="number"],
 select,
 textarea,
 .search-input {
-  background: rgba(15, 23, 42, 0.65) !important;
+  background: rgba(15, 23, 42, 0.68) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.32) !important;
-  border-radius: 10px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
+  border-radius: 12px !important;
   color: #f8fafc !important;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.08) !important;
   transition: all 0.2s ease !important;
@@ -254,7 +375,7 @@ textarea,
 input:focus, select:focus, textarea:focus, .search-input:focus {
   border-color: #38bdf8 !important;
   border-top-color: #7dd3fc !important;
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
   outline: none !important;
 }
 
@@ -263,66 +384,48 @@ table {
   border-spacing: 0 !important;
 }
 th {
-  background: rgba(15, 23, 42, 0.85) !important;
-  backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
 }
 td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #e2e8f0 !important;
 }
 tr:hover td {
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-
-/* Sound Button */
-.moly-sound-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(246, 168, 40, 0.35);
-  border-top: 1px solid rgba(255, 255, 255, 0.55);
-  color: #fef08a;
-  padding: 6px 14px;
-  border-radius: 9999px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-  transition: all 0.2s ease;
-  user-select: none;
-}
-.moly-sound-btn:hover {
-  background: rgba(246, 168, 40, 0.25);
-  border-color: var(--moly-gold);
-  transform: translateY(-1px);
-  box-shadow: 0 0 16px var(--moly-gold-glow), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.06) !important;
 }
 
 /* ==========================================================================
-   6. RESPONSIVE DESKTOP VS MOBILE NAVIGATION (KHÁC BIỆT MÁY TÍNH & ĐIỆN THOẠI)
+   6. RESPONSIVE LAUNCHER DOCK WITH SCROLL FADE EFFECT
    ========================================================================== */
 
-/* Launcher Dock Base */
+/* Base Launcher Dock Container */
 .moly-launcher-dock {
   position: fixed;
   z-index: 10000;
-  background: linear-gradient(180deg, rgba(20, 30, 42, 0.90) 0%, rgba(15, 23, 35, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(20, 30, 44, 0.92) 0%, rgba(14, 21, 33, 0.96) 100%);
   backdrop-filter: blur(28px) saturate(200%);
   -webkit-backdrop-filter: blur(28px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-top: 1px solid rgba(255, 255, 255, 0.65);
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 30px var(--moly-gold-glow), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s ease !important;
 }
 
-/* --- DESKTOP VIEW (> 768px): CÓ CẢ MENU TRÊN VÀ THANH DOCK NHỎ PHÍA DƯỚI --- */
+/* Scroll Fade Out Effect on Both Desktop & Mobile */
+.moly-launcher-dock.moly-dock-scrolling {
+  opacity: 0.16 !important;
+  pointer-events: none !important;
+  filter: blur(2px) !important;
+}
+
+/* --- DESKTOP DOCK (> 768px): ALL BUTTONS ARE FULL ROUNDED PILLS --- */
 @media (min-width: 769px) {
-  .nav-menu {
-    display: flex !important;
-  }
   .moly-launcher-dock {
     bottom: 22px;
     left: 50%;
@@ -330,35 +433,41 @@ tr:hover td {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 8px 16px;
-    border-radius: 9999px;
+    padding: 8px 18px;
+    border-radius: 9999px !important;
+  }
+  .moly-launcher-dock.moly-dock-scrolling {
+    transform: translateX(-50%) translateY(16px) scale(0.96) !important;
   }
   .moly-launcher-dock:hover {
     border-color: var(--moly-gold);
     box-shadow: 0 24px 55px rgba(0, 0, 0, 0.75), 0 0 40px var(--moly-gold-glow);
   }
+
+  /* Force all desktop dock buttons into smooth rounded capsule pills */
+  #moly-main-dock .moly-dock-btn,
+  #moly-main-dock .moly-sound-btn,
+  .dock-desktop-only {
+    border-radius: 9999px !important;
+    padding: 9px 20px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+  }
+
   .dock-mobile-only {
     display: none !important;
   }
-  .dock-desktop-only {
-    display: inline-flex !important;
-  }
 }
 
-/* --- MOBILE VIEW (<= 768px): ẨN MENU TRÊN, CHỈ DÙNG MENU THANH DOCK 5 TAB BÓNG KÍNH TIỆN LỢI --- */
+/* --- MOBILE DOCK (<= 768px): 5-SLOT ERGONOMIC POPUP SYSTEM --- */
 @media (max-width: 768px) {
-  /* Ẩn thanh menu trên máy tính để tránh chật màn hình */
-  .nav-menu {
-    display: none !important;
-  }
-  .navbar, header {
-    padding: 10px 16px !important;
-  }
-  .nav-actions .nav-btn-play {
-    display: none !important; /* Đã có nút Chơi Ngay siêu to ở dock dưới */
-  }
-
-  /* Ẩn các nút desktop và hiển thị thanh dock 5 tab chuẩn App Mobile */
   .dock-desktop-only {
     display: none !important;
   }
@@ -372,29 +481,41 @@ tr:hover td {
     right: 0 !important;
     width: 100% !important;
     transform: none !important;
-    border-radius: 22px 22px 0 0 !important;
+    border-radius: 24px 24px 0 0 !important;
     padding: 8px 6px calc(10px + env(safe-area-inset-bottom, 12px)) 6px !important;
     display: flex !important;
     justify-content: space-around !important;
     align-items: center !important;
     gap: 4px !important;
-    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--moly-gold-glow) !important;
+    box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.75), 0 0 25px var(--moly-gold-glow) !important;
+  }
+  .moly-launcher-dock.moly-dock-scrolling {
+    transform: translateY(20px) scale(0.97) !important;
   }
 
-  .moly-dock-btn {
+  /* Dock Tabs */
+  .moly-dock-tab-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: 1;
+  }
+
+  .moly-dock-tab-item .moly-dock-btn {
+    width: 100% !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: 6px 4px !important;
+    padding: 6px 3px !important;
     border-radius: 12px !important;
     text-align: center !important;
     min-height: 48px !important;
-    font-size: 11px !important;
-    font-weight: 600 !important;
     gap: 3px !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
   }
+
   .moly-dock-icon {
     font-size: 19px !important;
     line-height: 1 !important;
@@ -403,14 +524,267 @@ tr:hover td {
     font-size: 10.5px !important;
     letter-spacing: -0.2px !important;
     white-space: nowrap !important;
+    font-weight: 700 !important;
+  }
+
+  /* Mobile Center Hero "CHƠI NGAY" Button */
+  .moly-dock-hero-tab {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    z-index: 2 !important;
+    flex: 1.15 !important;
+  }
+
+  .moly-dock-hero-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 58px !important;
+    height: 58px !important;
+    margin-top: -24px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0.15) 100%),
+                linear-gradient(135deg, #f59e0b 0%, #ea580c 100%) !important;
+    border: 2px solid rgba(255, 255, 255, 0.75) !important;
+    box-shadow: 0 8px 25px rgba(234, 88, 12, 0.65),
+                0 0 25px rgba(253, 224, 71, 0.75),
+                inset 0 2px 3px rgba(255, 255, 255, 0.9) !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    animation: heroPulseGlow 2.5s infinite alternate ease-in-out;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  @keyframes heroPulseGlow {
+    0% {
+      box-shadow: 0 8px 25px rgba(234, 88, 12, 0.5), 0 0 16px rgba(253, 224, 71, 0.5), inset 0 2px 3px rgba(255, 255, 255, 0.8);
+      transform: scale(1);
+    }
+    100% {
+      box-shadow: 0 10px 32px rgba(234, 88, 12, 0.85), 0 0 32px rgba(253, 224, 71, 0.95), inset 0 2px 4px rgba(255, 255, 255, 1);
+      transform: scale(1.06);
+    }
+  }
+
+  .moly-dock-hero-btn:active {
+    transform: scale(0.95) !important;
+  }
+
+  .moly-dock-hero-btn .hero-play-icon {
+    font-size: 20px !important;
+    line-height: 1 !important;
+  }
+
+  .moly-dock-hero-btn .hero-play-label {
+    font-size: 8.5px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.3px !important;
+    text-transform: uppercase !important;
+    line-height: 1.1 !important;
+    margin-top: 2px !important;
+    color: #ffffff !important;
+  }
+
+  /* Mobile Popup Drawers */
+  .moly-dock-popup {
+    position: absolute;
+    bottom: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%) translateY(12px) scale(0.94);
+    opacity: 0;
+    pointer-events: none;
+    min-width: 250px;
+    background: linear-gradient(145deg, rgba(20, 30, 46, 0.96) 0%, rgba(12, 18, 30, 0.98) 100%) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 25px rgba(246, 168, 40, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+    padding: 8px !important;
+    z-index: 10010 !important;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .moly-dock-popup.open {
+    opacity: 1 !important;
+    transform: translateX(-50%) translateY(0) scale(1) !important;
+    pointer-events: auto !important;
+  }
+
+  /* Keep popups from clipping screen edges */
+  .moly-dock-tab-item:first-child .moly-dock-popup {
+    left: 0;
+    transform: translateX(0) translateY(12px) scale(0.94);
+  }
+  .moly-dock-tab-item:first-child .moly-dock-popup.open {
+    transform: translateX(0) translateY(0) scale(1) !important;
+  }
+
+  .moly-dock-tab-item:last-child .moly-dock-popup {
+    left: auto;
+    right: 0;
+    transform: translateX(0) translateY(12px) scale(0.94);
+  }
+  .moly-dock-tab-item:last-child .moly-dock-popup.open {
+    transform: translateX(0) translateY(0) scale(1) !important;
+  }
+
+  .moly-popup-header {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #fbbf24;
+    padding: 6px 10px 8px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 4px;
+  }
+
+  .moly-popup-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 9px 10px !important;
+    border-radius: 12px !important;
+    color: #f8fafc !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    width: 100% !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: all 0.18s ease !important;
+    font-family: inherit !important;
+    box-sizing: border-box !important;
+  }
+
+  .moly-popup-item:hover,
+  .moly-popup-item:active {
+    background: rgba(255, 255, 255, 0.12) !important;
+    color: #fde047 !important;
+    transform: translateX(4px) !important;
+  }
+
+  .popup-item-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .popup-item-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .popup-item-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #f8fafc;
+    line-height: 1.2;
+  }
+
+  .moly-popup-item:hover .popup-item-title {
+    color: #fde047;
+  }
+
+  .popup-item-desc {
+    font-size: 11px;
+    color: #94a3b8;
+    line-height: 1.2;
+    margin-top: 2px;
   }
 }
 
 /* Modals & Safe Actions */
 .modal-overlay, #login-overlay, .moly-safe-modal-backdrop {
-  background: rgba(8, 12, 22, 0.82) !important;
-  backdrop-filter: blur(18px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+  background: rgba(8, 12, 22, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+}
+
+/* ==========================================================================
+   7. UNIVERSAL HIGH-CONTRAST TEXT & READABILITY (CHỮ TRẮNG & MÀU NỔI BẬT)
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6,
+.hero-title, .benefits-title, .card-title, .section-title, .ranking-title {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75) !important;
+}
+
+.hero-subtitle, .hero-badge {
+  color: #fde047 !important;
+  text-shadow: 0 0 14px rgba(253, 224, 71, 0.6), 0 2px 6px rgba(0, 0, 0, 0.85) !important;
+}
+
+.hero-desc,
+.hero p,
+.card p,
+.card-features li,
+.news-card p,
+.news-item p,
+.benefit-item p,
+.benefits-box p,
+.feature-card p,
+.quick-actions-bar p,
+.guide-step p,
+.stat-card p,
+.table-container td,
+.table-container p,
+.modal p,
+.account-modal p,
+.moly-safe-modal p,
+#qa-guest-view p,
+#qa-logged-view p {
+  color: #e2e8f0 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65) !important;
+}
+
+/* Card Headers, Subtitles & Quick Action Text */
+.card-header h3,
+.card-header .card-title,
+#quick-actions-bar h3,
+#qa-guest-view h3,
+#qa-logged-view h3 {
+  color: #ffffff !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
+}
+
+.card-header p,
+.card-header small,
+.card-subtitle {
+  color: #93c5fd !important;
+}
+
+#quick-actions-bar p,
+#qa-guest-view p,
+#qa-logged-view p {
+  color: #f1f5f9 !important;
+}
+
+/* Secondary labels and muted text become crisp silver-blue */
+.text-muted,
+.stat-label,
+.news-date,
+.card-tag-sub,
+.footnote,
+small {
+  color: #94a3b8 !important;
+}
+
+/* Highlighted accents */
+.accent-gold, strong.gold, span.gold {
+  color: #fde047 !important;
+}
+.accent-cyan, strong.cyan, span.cyan {
+  color: #38bdf8 !important;
+}
+.accent-green, strong.green, span.green {
+  color: #34d399 !important;
 }
 
 /* Denomination Chips & Payment Channel Tabs */
@@ -422,37 +796,38 @@ tr:hover td {
 }
 .moly-amount-chip {
   padding: 10px 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 12px;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
 }
 .moly-amount-chip:hover {
-  background: rgba(246, 168, 40, 0.15);
+  background: rgba(246, 168, 40, 0.2);
   border-color: var(--moly-gold);
+  transform: translateY(-2px);
 }
 .moly-amount-chip.active {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(234, 88, 12, 0.3));
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.35), rgba(234, 88, 12, 0.35));
   border-color: var(--moly-gold);
   border-top-color: #fde047;
-  box-shadow: 0 0 16px var(--moly-gold-glow), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 18px var(--moly-gold-glow), inset 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 .moly-amount-chip .chip-val {
   font-size: 14px;
   font-weight: 700;
-  color: #f8fafc;
+  color: #ffffff;
 }
 .moly-amount-chip.active .chip-val {
   color: #fde047;
 }
 .moly-amount-chip .chip-beans {
   font-size: 11px;
-  color: #94a3b8;
+  color: #cbd5e1;
   margin-top: 2px;
 }
 .moly-amount-chip.active .chip-beans {
