@@ -913,9 +913,52 @@ class ProxyHandler(BaseHTTPRequestHandler):
                     super_lamu=bool(payload.get("super_lamu", False)),
                     super_lamu_species=payload.get("super_lamu_species"),
                     items=payload.get("items", []),
+                    items_detail=payload.get("items_detail", []),
                     max_uses=int(payload.get("max_uses", 100)),
+                    is_unlimited_uses=bool(payload.get("is_unlimited_uses", False)),
+                    is_permanent=bool(payload.get("is_permanent", True)),
+                    valid_from=payload.get("valid_from"),
+                    valid_until=payload.get("valid_until"),
                 )
                 accounts.log_audit("CREATE_GIFTCODE", admin_uid, {"code": code, "details": gc})
+                self._send_json({"ok": True, "giftcode": gc})
+                return
+
+            elif parsed.path == "/api/admin/giftcodes/edit":
+                token = get_admin_token(self.headers)
+                if not verify_admin_session(token):
+                    self._send_json({"error": "Chưa xác thực quản trị"}, status=401)
+                    return
+                admin_uid = get_admin_user_id(token)
+                content_length = int(self.headers.get("Content-Length", 0))
+                payload = json.loads(self.rfile.read(content_length).decode("utf-8", errors="ignore"))
+                code = str(payload.get("code", "")).strip().upper()
+                if not code:
+                    self._send_json({"ok": False, "error": "Mã quà tặng không được để trống!"}, status=400)
+                    return
+                gc = giftcodes.edit_giftcode(
+                    code=code,
+                    description=str(payload.get("description", "")) if "description" in payload else None,
+                    beans=int(payload.get("beans", 0)) if "beans" in payload else None,
+                    vip_level=int(payload.get("vip_level", 0)) if "vip_level" in payload else None,
+                    vip_months=int(payload.get("vip_months", 0)) if "vip_months" in payload else None,
+                    trial_days=int(payload.get("trial_days", 0)) if "trial_days" in payload else None,
+                    vip_value_add=int(payload.get("vip_value_add", 0)) if "vip_value_add" in payload else None,
+                    super_lamu=bool(payload.get("super_lamu", False)) if "super_lamu" in payload else None,
+                    super_lamu_species=payload.get("super_lamu_species") if "super_lamu_species" in payload else None,
+                    items=payload.get("items") if "items" in payload else None,
+                    items_detail=payload.get("items_detail") if "items_detail" in payload else None,
+                    max_uses=int(payload.get("max_uses", 100)) if "max_uses" in payload else None,
+                    is_unlimited_uses=bool(payload.get("is_unlimited_uses", False)) if "is_unlimited_uses" in payload else None,
+                    is_permanent=bool(payload.get("is_permanent", True)) if "is_permanent" in payload else None,
+                    valid_from=payload.get("valid_from") if "valid_from" in payload else None,
+                    valid_until=payload.get("valid_until") if "valid_until" in payload else None,
+                    active=bool(payload.get("active", True)) if "active" in payload else None,
+                )
+                if not gc:
+                    self._send_json({"ok": False, "error": f"Không tìm thấy mã quà tặng [{code}]!"}, status=404)
+                    return
+                accounts.log_audit("EDIT_GIFTCODE", admin_uid, {"code": code, "details": gc})
                 self._send_json({"ok": True, "giftcode": gc})
                 return
 
@@ -1370,6 +1413,21 @@ class ProxyHandler(BaseHTTPRequestHandler):
             admin_path = WEB_DIR / "admin.html"
             if admin_path.is_file():
                 content = admin_path.read_bytes()
+                self.send_response(200, "OK")
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.send_header("Cache-Control", "no-cache, no-store, must-revalidate")
+                self.send_header("Pragma", "no-cache")
+                self.send_header("Expires", "0")
+                self.send_header("Connection", "close")
+                self.end_headers()
+                self.wfile.write(content)
+                return
+
+        if parsed.path in {"/profile", "/profile.html"}:
+            profile_path = WEB_DIR / "profile.html"
+            if profile_path.is_file():
+                content = profile_path.read_bytes()
                 self.send_response(200, "OK")
                 self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.send_header("Content-Length", str(len(content)))

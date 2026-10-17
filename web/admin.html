@@ -1032,6 +1032,144 @@
     </div>
   </div>
 
+  <!-- Modal Chỉnh Sửa Giftcode Nâng Cao -->
+  <div id="modal-edit-giftcode" class="modal-overlay" onclick="if(event.target===this){closeEditGiftcodeModal();}">
+    <div class="modal" style="max-width: 640px; max-height: 90vh; display: flex; flex-direction: column;">
+      <div class="modal-header">
+        <h3 id="edit-gc-title">✏️ Chỉnh Sửa Mã Quà Tặng Nâng Cao</h3>
+        <button class="modal-close" onclick="closeEditGiftcodeModal()">&times;</button>
+      </div>
+      <div style="overflow-y: auto; padding-right: 6px;">
+        <form id="edit-giftcode-form" onsubmit="handleSaveEditGiftcode(event)">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Mã Giftcode (Không thể đổi)</label>
+              <input type="text" id="edit-gc-code" readonly style="background: rgba(15, 23, 42, 0.7); font-weight: bold; color: #fde047; cursor: not-allowed;">
+            </div>
+            <div class="input-group" style="margin-bottom: 0;">
+              <label>Trạng Thái Khả Dụng</label>
+              <select id="edit-gc-active">
+                <option value="true">🟢 Đang Kích Hoạt (Khả Dụng)</option>
+                <option value="false">🔴 Tạm Khóa (Vô Hiệu Hóa)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Mô Tả / Nội Dung Thông Điệp Quà</label>
+            <input type="text" id="edit-gc-desc" placeholder="VD: Quà Tri Ân Khai Mở...">
+          </div>
+
+          <!-- Section: Phần Thưởng Tài Nguyên -->
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 14px; margin-bottom: 14px;">
+            <div style="font-size: 13px; font-weight: bold; color: #f59e0b; margin-bottom: 10px;">💎 Phần Thưởng Đậu &amp; VIP &amp; Pet</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
+              <div class="input-group" style="margin-bottom: 0;">
+                <label>Đậu Vàng</label>
+                <input type="number" id="edit-gc-beans" min="0">
+              </div>
+              <div class="input-group" style="margin-bottom: 0;">
+                <label>Cấp VIP (0-19)</label>
+                <input type="number" id="edit-gc-vip-level" min="0" max="19">
+              </div>
+              <div class="input-group" style="margin-bottom: 0;">
+                <label>Tháng VIP</label>
+                <input type="number" id="edit-gc-months" min="0">
+              </div>
+              <div class="input-group" style="margin-bottom: 0;">
+                <label>VIP Thử (Ngày)</label>
+                <input type="number" id="edit-gc-trial-days" min="0">
+              </div>
+            </div>
+            <div style="margin-top: 10px;">
+              <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Đậu Đậu Siêu Cấp (Lamu)</label>
+              <select id="edit-gc-species">
+                <option value="">Không tặng Siêu Lamu</option>
+                <option value="classic">⭐ Lamu Hoàng Kim (Kinh Điển)</option>
+                <option value="dark">🌑 Lamu Hắc Ám</option>
+                <option value="cosmic">🌌 Lamu Vũ Trụ</option>
+                <option value="fire">🔥 Lamu Hỏa Diệm</option>
+                <option value="water">💧 Lamu Thủy Tinh</option>
+                <option value="plant">🌿 Lamu Mộc Linh</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Section: Thời Gian & Số Lượng -->
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 14px; margin-bottom: 14px;">
+            <div style="font-size: 13px; font-weight: bold; color: #38bdf8; margin-bottom: 10px;">⏱️ Thời Hạn Duy Trì &amp; Giới Hạn Số Lượng Nhập</div>
+            
+            <div style="margin-bottom: 10px;">
+              <label style="display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #e2e8f0; cursor: pointer;">
+                <input type="checkbox" id="edit-gc-unlimited-uses" onchange="toggleUnlimitedUses(this.checked)"> Không giới hạn lượt nhập (Vô hạn cư dân dùng)
+              </label>
+              <div id="edit-gc-uses-wrap" style="margin-top: 6px;">
+                <label style="font-size: 12px; color: var(--text-muted);">Số Lượt Nhập Tối Đa</label>
+                <input type="number" id="edit-gc-max-uses" min="1" placeholder="VD: 50, 100, 1000...">
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 10px; margin-top: 10px;">
+              <label style="display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: #e2e8f0; cursor: pointer;">
+                <input type="checkbox" id="edit-gc-permanent" onchange="togglePermanentDate(this.checked)"> Vô hạn thời gian (Vĩnh viễn không hết hạn)
+              </label>
+              <div id="edit-gc-dates-wrap" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
+                <div>
+                  <label style="font-size: 11px; color: var(--text-muted);">Ngày Bắt Đầu Hiệu Lực</label>
+                  <input type="datetime-local" id="edit-gc-valid-from" style="font-size: 12px;">
+                </div>
+                <div>
+                  <label style="font-size: 11px; color: var(--text-muted);">Ngày Hết Hạn</label>
+                  <input type="datetime-local" id="edit-gc-valid-until" style="font-size: 12px;">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section: Tặng Kèm Trang Phục & Vật Phẩm -->
+          <div style="background: rgba(15, 23, 42, 0.45); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 14px; margin-bottom: 14px;">
+            <div style="font-size: 13px; font-weight: bold; color: #a78bfa; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span>👗 Quà Tặng Trang Phục &amp; Vật Phẩm Nhân Vật</span>
+              <span id="edit-gc-item-count-badge" style="font-size: 11px; color: #94a3b8;">0 món</span>
+            </div>
+            
+            <div style="display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap;">
+              <select id="preset-item-selector" style="flex: 1; min-width: 200px;">
+                <option value="">-- Chọn trang phục gợi ý nhanh --</option>
+                <option value="12001" data-name="Bộ Giáp Hiệp Sĩ Rồng">🛡️ Bộ Giáp Hiệp Sĩ Rồng (12001)</option>
+                <option value="12002" data-name="Áo Choàng Thám Hiểm Rừng Đậu">🧥 Áo Choàng Thám Hiểm Rừng Đậu (12002)</option>
+                <option value="12003" data-name="Cánh Thiên Thần Ánh Sáng">🪽 Cánh Thiên Thần Ánh Sáng (12003)</option>
+                <option value="12004" data-name="Mũ Phù Thủy Đậu Đậu">🧙 Mũ Phù Thủy Đậu Đậu (12004)</option>
+                <option value="12005" data-name="Gậy Phép Thuật Ngôi Sao">🪄 Gậy Phép Thuật Ngôi Sao (12005)</option>
+                <option value="12006" data-name="Vương Miện Hoàng Gia">👑 Vương Miện Hoàng Gia (12006)</option>
+                <option value="12007" data-name="Giày Pha Lê Thần Tốc">👠 Giày Pha Lê Thần Tốc (12007)</option>
+                <option value="160002" data-name="Bàn Học Gỗ Cổ Điển">🪑 Bàn Học Gỗ Cổ Điển (160002)</option>
+                <option value="160003" data-name="Giường Ngủ Nấm Hoàng Cung">🍄 Giường Ngủ Nấm Hoàng Cung (160003)</option>
+                <option value="160004" data-name="Tủ Sách Pháp Thuật">📚 Tủ Sách Pháp Thuật (160004)</option>
+              </select>
+              <button type="button" class="btn btn-sm btn-primary" onclick="addPresetItem()">+ Thêm Gợi Ý</button>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+              <input type="number" id="custom-item-id" placeholder="ID Món đồ..." style="width: 110px;">
+              <input type="text" id="custom-item-name" placeholder="Tên món đồ (tùy chọn)..." style="flex: 1; min-width: 140px;">
+              <input type="number" id="custom-item-count" value="1" min="1" style="width: 65px;" title="Số lượng">
+              <button type="button" class="btn btn-sm" style="background: #475569; color: #fff;" onclick="addCustomItem()">+ Thêm Tự Chọn</button>
+            </div>
+
+            <!-- List of current items attached -->
+            <div id="edit-gc-items-list" style="margin-top: 10px; display: flex; flex-direction: column; gap: 6px;"></div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 16px;">
+            <button type="button" class="btn" style="background: #334155; color: #fff;" onclick="closeEditGiftcodeModal()">Hủy Bỏ</button>
+            <button type="submit" class="btn btn-primary" id="btn-save-edit-gc">💾 Lưu Thay Đổi</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script>
     let token = localStorage.getItem("moly_admin_token") || "";
     let allUsers = [];
@@ -1448,6 +1586,9 @@
     // Tab Navigation
     function switchAdminTab(tab) {
       document.querySelectorAll(".tabs .tab-btn").forEach(b => {
+        b.classList.toggle("active", b.dataset.tab === tab);
+      });
+      document.querySelectorAll(".moly-admin-dock-btn").forEach(b => {
         b.classList.toggle("active", b.dataset.tab === tab);
       });
       const allTabs = ["tab-admin-hub", "tab-residents", "tab-recharge", "tab-giftcodes", "tab-broadcast", "tab-system", "tab-recovery"];
@@ -1900,8 +2041,9 @@
                 gc.active ? '<span class="badge badge-normal" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">Khả Dụng</span>' :
                 '<span class="badge badge-admin">Bị Khóa</span>'}
             </td>
-            <td>
-              <button class="btn btn-sm btn-danger" onclick="deleteGiftcode('${gc.code}')" title="Xóa mã quà tặng">Xóa</button>
+            <td style="white-space: nowrap;">
+              <button class="btn btn-sm btn-primary" onclick="openEditGiftcodeModal('${gc.code}')" style="margin-right: 4px; padding: 4px 10px; font-size: 11.5px;" title="Chỉnh sửa mã quà tặng">✏️ Sửa</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteGiftcode('${gc.code}')" style="padding: 4px 10px; font-size: 11.5px;" title="Xóa mã quà tặng">🗑️ Xóa</button>
             </td>
           </tr>
         `;
@@ -1965,6 +2107,211 @@
           loadGiftcodes();
         } else {
           alert("Không thể xóa mã quà tặng!");
+        }
+      } catch (err) {
+        alert("Lỗi kết nối máy chủ: " + err.message);
+      }
+    }
+
+    // --- Edit Giftcode Logic ---
+    let currentEditItems = [];
+
+    function openEditGiftcodeModal(code) {
+      const gc = allGiftcodes.find(c => c.code === code);
+      if (!gc) {
+        alert("Không tìm thấy thông tin mã quà tặng!");
+        return;
+      }
+      document.getElementById("edit-gc-code").value = gc.code;
+      document.getElementById("edit-gc-title").textContent = `✏️ Chỉnh Sửa Mã [${gc.code}]`;
+      document.getElementById("edit-gc-active").value = gc.active ? "true" : "false";
+      document.getElementById("edit-gc-desc").value = gc.description || "";
+      document.getElementById("edit-gc-beans").value = gc.beans || 0;
+      document.getElementById("edit-gc-vip-level").value = gc.vip_level || 0;
+      document.getElementById("edit-gc-months").value = gc.vip_months || 0;
+      document.getElementById("edit-gc-trial-days").value = gc.trial_days || 0;
+      document.getElementById("edit-gc-species").value = gc.super_lamu_species || "";
+
+      // Unlimited uses
+      const isUnlimitedUses = !!gc.is_unlimited_uses || (gc.max_uses >= 99999999);
+      document.getElementById("edit-gc-unlimited-uses").checked = isUnlimitedUses;
+      document.getElementById("edit-gc-max-uses").value = isUnlimitedUses ? 1000 : (gc.max_uses || 1000);
+      toggleUnlimitedUses(isUnlimitedUses);
+
+      // Permanent dates
+      const isPermanent = gc.is_permanent !== false && !gc.valid_until;
+      document.getElementById("edit-gc-permanent").checked = isPermanent;
+      document.getElementById("edit-gc-valid-from").value = gc.valid_from ? gc.valid_from.slice(0, 16) : new Date().toISOString().slice(0, 16);
+      document.getElementById("edit-gc-valid-until").value = gc.valid_until ? gc.valid_until.slice(0, 16) : "";
+      togglePermanentDate(isPermanent);
+
+      // Items / Costumes
+      currentEditItems = [];
+      if (Array.isArray(gc.items_detail) && gc.items_detail.length > 0) {
+        currentEditItems = JSON.parse(JSON.stringify(gc.items_detail));
+      } else if (Array.isArray(gc.items)) {
+        currentEditItems = gc.items.map(id => ({ id: id, name: getItemNamePreset(id), count: 1 }));
+      }
+      renderEditItemsList();
+
+      document.getElementById("modal-edit-giftcode").classList.add("open");
+    }
+
+    function closeEditGiftcodeModal() {
+      document.getElementById("modal-edit-giftcode").classList.remove("open");
+    }
+
+    function toggleUnlimitedUses(isUnlimited) {
+      const wrap = document.getElementById("edit-gc-uses-wrap");
+      if (wrap) wrap.style.display = isUnlimited ? "none" : "block";
+    }
+
+    function togglePermanentDate(isPerm) {
+      const wrap = document.getElementById("edit-gc-dates-wrap");
+      if (wrap) wrap.style.display = isPerm ? "none" : "grid";
+    }
+
+    function getItemNamePreset(id) {
+      const map = {
+        12001: "Bộ Giáp Hiệp Sĩ Rồng",
+        12002: "Áo Choàng Thám Hiểm Rừng Đậu",
+        12003: "Cánh Thiên Thần Ánh Sáng",
+        12004: "Mũ Phù Thủy Đậu Đậu",
+        12005: "Gậy Phép Thuật Ngôi Sao",
+        12006: "Vương Miện Hoàng Gia",
+        12007: "Giày Pha Lê Thần Tốc",
+        160002: "Bàn Học Gỗ Cổ Điển",
+        160003: "Giường Ngủ Nấm Hoàng Cung",
+        160004: "Tủ Sách Pháp Thuật"
+      };
+      return map[id] || `Vật phẩm #${id}`;
+    }
+
+    function addPresetItem() {
+      const sel = document.getElementById("preset-item-selector");
+      const val = parseInt(sel.value);
+      if (!val) return;
+      const opt = sel.options[sel.selectedIndex];
+      const name = opt.getAttribute("data-name") || getItemNamePreset(val);
+      const existing = currentEditItems.find(it => it.id === val);
+      if (existing) {
+        existing.count = (existing.count || 1) + 1;
+      } else {
+        currentEditItems.push({ id: val, name: name, count: 1 });
+      }
+      renderEditItemsList();
+      sel.value = "";
+    }
+
+    function addCustomItem() {
+      const idInp = document.getElementById("custom-item-id");
+      const nameInp = document.getElementById("custom-item-name");
+      const countInp = document.getElementById("custom-item-count");
+      const id = parseInt(idInp.value);
+      if (!id || id <= 0) {
+        alert("Vui lòng nhập mã Item ID hợp lệ (số nguyên dương)!");
+        return;
+      }
+      const count = Math.max(1, parseInt(countInp.value) || 1);
+      const name = nameInp.value.trim() || getItemNamePreset(id);
+
+      const existing = currentEditItems.find(it => it.id === id);
+      if (existing) {
+        existing.count = (existing.count || 1) + count;
+      } else {
+        currentEditItems.push({ id: id, name: name, count: count });
+      }
+      renderEditItemsList();
+      idInp.value = "";
+      nameInp.value = "";
+      countInp.value = 1;
+    }
+
+    function removeEditItem(idx) {
+      currentEditItems.splice(idx, 1);
+      renderEditItemsList();
+    }
+
+    function renderEditItemsList() {
+      const list = document.getElementById("edit-gc-items-list");
+      const countBadge = document.getElementById("edit-gc-item-count-badge");
+      countBadge.textContent = `${currentEditItems.length} món đính kèm`;
+
+      if (!currentEditItems.length) {
+        list.innerHTML = `<div style="font-size: 12px; color: var(--text-muted); font-style: italic;">Chưa có trang phục hoặc vật phẩm nào được đính kèm.</div>`;
+        return;
+      }
+
+      list.innerHTML = currentEditItems.map((it, idx) => `
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 6px 10px;">
+          <div style="font-size: 12.5px; color: #f1f5f9;">
+            <strong style="color: #fde047;">ID: ${it.id}</strong> - <span>${it.name || getItemNamePreset(it.id)}</span>
+            <span style="color: #38bdf8; font-weight: bold; margin-left: 6px;">(x${it.count || 1})</span>
+          </div>
+          <button type="button" class="btn btn-sm btn-danger" style="padding: 2px 8px; font-size: 11px;" onclick="removeEditItem(${idx})">✕</button>
+        </div>
+      `).join("");
+    }
+
+    async function handleSaveEditGiftcode(e) {
+      e.preventDefault();
+      const code = document.getElementById("edit-gc-code").value.trim().toUpperCase();
+      const desc = document.getElementById("edit-gc-desc").value.trim();
+      const active = document.getElementById("edit-gc-active").value === "true";
+      const beans = parseInt(document.getElementById("edit-gc-beans").value) || 0;
+      const vipLevel = parseInt(document.getElementById("edit-gc-vip-level").value) || 0;
+      const months = parseInt(document.getElementById("edit-gc-months").value) || 0;
+      const trialDays = parseInt(document.getElementById("edit-gc-trial-days").value) || 0;
+      const species = document.getElementById("edit-gc-species").value || null;
+      const superLamu = !!species;
+
+      const isUnlimitedUses = document.getElementById("edit-gc-unlimited-uses").checked;
+      const maxUses = isUnlimitedUses ? 999999999 : (parseInt(document.getElementById("edit-gc-max-uses").value) || 100);
+
+      const isPermanent = document.getElementById("edit-gc-permanent").checked;
+      let validFrom = null;
+      let validUntil = null;
+      if (!isPermanent) {
+        const vf = document.getElementById("edit-gc-valid-from").value;
+        const vu = document.getElementById("edit-gc-valid-until").value;
+        if (vf) validFrom = new Date(vf).toISOString();
+        if (vu) validUntil = new Date(vu).toISOString();
+      }
+
+      const rawItems = currentEditItems.map(it => it.id);
+
+      const payload = {
+        code: code,
+        description: desc,
+        active: active,
+        beans: beans,
+        vip_level: vipLevel,
+        vip_months: months,
+        trial_days: trialDays,
+        super_lamu: superLamu,
+        super_lamu_species: species,
+        is_unlimited_uses: isUnlimitedUses,
+        max_uses: maxUses,
+        is_permanent: isPermanent,
+        valid_from: validFrom,
+        valid_until: validUntil,
+        items: rawItems,
+        items_detail: currentEditItems
+      };
+
+      try {
+        const resp = await fetch("/api/admin/giftcodes/edit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+          body: JSON.stringify(payload)
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          alert(`✅ Đã lưu thay đổi cho mã quà tặng [${code}] thành công!`);
+          closeEditGiftcodeModal();
+          loadGiftcodes();
+        } else {
+          alert(res.error || "Không thể cập nhật mã quà tặng!");
         }
       } catch (err) {
         alert("Lỗi kết nối máy chủ: " + err.message);
@@ -2768,5 +3115,29 @@
     setInterval(loadStats, 10000);
     checkLogin();
   </script>
+
+  <!-- Admin Dedicated Floating Dock (5 Essential Tools) -->
+  <nav class="moly-admin-dock">
+    <button type="button" class="moly-admin-dock-btn active" data-tab="tab-admin-hub" onclick="switchAdminTab('tab-admin-hub')" title="Tổng quan hệ thống">
+      <span class="moly-admin-dock-icon">📊</span>
+      <span class="moly-admin-dock-label">Tổng Quan</span>
+    </button>
+    <button type="button" class="moly-admin-dock-btn" data-tab="tab-residents" onclick="switchAdminTab('tab-residents')" title="Quản lý cư dân">
+      <span class="moly-admin-dock-icon">👥</span>
+      <span class="moly-admin-dock-label">Cư Dân</span>
+    </button>
+    <button type="button" class="moly-admin-dock-btn" data-tab="tab-recharge" onclick="switchAdminTab('tab-recharge')" title="Duyệt đơn nạp tiền">
+      <span class="moly-admin-dock-icon">💳</span>
+      <span class="moly-admin-dock-label">Duyệt Nạp</span>
+    </button>
+    <button type="button" class="moly-admin-dock-btn" data-tab="tab-giftcodes" onclick="switchAdminTab('tab-giftcodes')" title="Quản lý mã quà tặng">
+      <span class="moly-admin-dock-icon">🎁</span>
+      <span class="moly-admin-dock-label">Giftcode</span>
+    </button>
+    <button type="button" class="moly-admin-dock-btn" data-tab="tab-system" onclick="switchAdminTab('tab-system')" title="Cấu hình hệ thống & Sao lưu">
+      <span class="moly-admin-dock-icon">🛡️</span>
+      <span class="moly-admin-dock-label">Hệ Thống</span>
+    </button>
+  </nav>
 </body>
 </html>

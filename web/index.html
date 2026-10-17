@@ -791,18 +791,22 @@
             <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="dropdown-item" download="Moly Thế Giới Chuột chũi.zip">💻 Bản Windows (PC - 150 MB)</a>
           </div>
         </div>
+
+        <!-- Nút Chơi Ngay (Nằm bên khung chính cạnh Tải Về) -->
+        <a href="/play.html" class="nav-btn-play">🎮 Chơi Ngay</a>
       </nav>
     </div>
 
-    <!-- Khung Viên Thuốc Phụ Bên Phải (Pill 2: Tách Biệt Tài Khoản + Chơi Ngay + Online) -->
+    <!-- Khung Viên Thuốc Phụ Bên Phải (Pill 2: Gọn gàng chỉ 2 mục Tài Khoản & Online) -->
     <div class="navbar-aux">
       <!-- Tài Khoản Dropdown -->
       <div class="nav-dropdown" id="nav-aux-account">
         <button class="nav-dropdown-btn" id="nav-btn-account" type="button">👤 Tài Khoản <span class="caret">▾</span></button>
         <div class="dropdown-menu dropdown-menu-right" id="dropdown-account-menu">
+          <a href="/profile.html" id="dd-account-profile" class="dropdown-item" style="color: #38bdf8; font-weight: 700; display: none;">👤 Xem Hồ Sơ &amp; Quản Lý Cư Dân</a>
           <a href="javascript:void(0)" onclick="openLoginTab()" id="dd-account-login" class="dropdown-item">🔑 Đăng Nhập</a>
           <a href="javascript:void(0)" onclick="openRegisterTab()" id="dd-account-reg" class="dropdown-item">➕ Đăng Ký Tài Khoản</a>
-          <a href="javascript:void(0)" onclick="openDashboardTab()" id="dd-account-dash" class="dropdown-item" style="display: none;">👤 Hồ Sơ Cư Dân</a>
+          <a href="javascript:void(0)" onclick="openDashboardTab()" id="dd-account-dash" class="dropdown-item" style="display: none;">⚙️ Cài Đặt Nhanh</a>
           <a href="javascript:void(0)" onclick="openLookupModal()" class="dropdown-item">🔍 Tra Cứu Nhân Vật</a>
           <a href="javascript:void(0)" onclick="openForgotTab()" class="dropdown-item" style="color: #38bdf8;">🔒 Lấy Lại Mật Khẩu (OTP Gmail)</a>
           <div class="dropdown-divider"></div>
@@ -811,7 +815,6 @@
         </div>
       </div>
 
-      <a href="/play.html" class="nav-btn-play">🎮 Chơi Ngay</a>
       <span class="status-badge">
         <span class="status-dot"></span>
         Online
@@ -2259,11 +2262,23 @@
     }
     function openRechargeTab() { switchAccountTab('recharge'); document.getElementById("modal-account").classList.add("open"); }
 
-    // --- User Session Management via localStorage ---
+    // --- User Session Management via localStorage (3-Hour Timeout vs Remember Me) ---
     function getSavedUser() {
       try {
         const raw = localStorage.getItem("moly_current_user");
-        return raw ? JSON.parse(raw) : null;
+        if (!raw) return null;
+        const u = JSON.parse(raw);
+        if (u && !u.remember_me && u.expires_at && Date.now() > u.expires_at) {
+          localStorage.removeItem("moly_current_user");
+          localStorage.removeItem("moly_auto_sso");
+          sessionStorage.removeItem("moly_game_authorized_token");
+          refreshUIWithUser(null);
+          if (window.MolyNotify) {
+            MolyNotify.toast("Phiên đăng nhập đã hết hạn sau 3 giờ, vui lòng đăng nhập lại.", "warning", 4000);
+          }
+          return null;
+        }
+        return u;
       } catch (e) {
         return null;
       }
@@ -2271,11 +2286,15 @@
 
     function saveUser(user) {
       localStorage.setItem("moly_current_user", JSON.stringify(user));
+      // Auto enable game SSO if logged in on web
+      localStorage.setItem("moly_auto_sso", "true");
       refreshUIWithUser(user);
     }
 
     function clearUser() {
       localStorage.removeItem("moly_current_user");
+      localStorage.removeItem("moly_auto_sso");
+      sessionStorage.removeItem("moly_game_authorized_token");
       refreshUIWithUser(null);
     }
 
@@ -2287,6 +2306,7 @@
       
       const ddLogin = document.getElementById("dd-account-login");
       const ddReg = document.getElementById("dd-account-reg");
+      const ddProfile = document.getElementById("dd-account-profile");
       const ddDash = document.getElementById("dd-account-dash");
       const ddLogout = document.getElementById("dd-account-logout");
 
@@ -2295,8 +2315,10 @@
         if (loggedQA) loggedQA.style.display = "flex";
         if (tabDash) tabDash.style.display = "inline-block";
 
+        // Hide login and register completely when logged in
         if (ddLogin) ddLogin.style.display = "none";
         if (ddReg) ddReg.style.display = "none";
+        if (ddProfile) ddProfile.style.display = "flex";
         if (ddDash) ddDash.style.display = "flex";
         if (ddLogout) ddLogout.style.display = "flex";
 
@@ -2329,6 +2351,7 @@
 
         if (ddLogin) ddLogin.style.display = "flex";
         if (ddReg) ddReg.style.display = "flex";
+        if (ddProfile) ddProfile.style.display = "none";
         if (ddDash) ddDash.style.display = "none";
         if (ddLogout) ddLogout.style.display = "none";
 
@@ -2380,10 +2403,12 @@
     }
 
     function handleWebLogout() {
-      if (confirm("Bạn có chắc chắn muốn đăng xuất tài khoản web?")) {
+      if (confirm("Bạn có chắc chắn muốn đăng xuất tài khoản web? (Lần sau vào lại sẽ cần đăng nhập lại)")) {
         clearUser();
         closeAccountModal();
-        alert("Đã đăng xuất thành công!");
+        if (window.MolyNotify) {
+          MolyNotify.toast("Đã đăng xuất tài khoản Web thành công!", "info");
+        }
       }
     }
 
@@ -2392,6 +2417,7 @@
       e.preventDefault();
       const identifier = document.getElementById("login-identifier").value.trim();
       const pwd = document.getElementById("login-password").value;
+      const remember = document.getElementById("login-remember").checked;
       const msgBox = document.getElementById("login-msg");
       const btn = document.getElementById("btn-submit-login");
 
@@ -2407,7 +2433,14 @@
         });
         const data = await resp.json();
         if (data.ok && data.account) {
-          saveUser(data.account);
+          const acc = data.account;
+          acc.remember_me = !!remember;
+          if (!remember) {
+            acc.expires_at = Date.now() + 3 * 3600 * 1000; // 3 Hours
+          } else {
+            acc.expires_at = null; // Indefinite until manual logout
+          }
+          saveUser(acc);
           msgBox.style.color = "#34d399";
           msgBox.textContent = "🎉 Đăng nhập thành công!";
           msgBox.style.display = "block";

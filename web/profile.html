@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hồ Sơ Cư Dân Vương Quốc | Moly - Thế Giới Chuột Chũi VN</title>
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
+  <script src="/js/moly-audio.js"></script>
+  <script src="/js/moly-notify.js"></script>
+  <style>
+    body {
+      background: #090d16 url('/assets/bg_stars.png') repeat center top;
+      color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-top: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      transition: width 0.4s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dual Floating Pill Navbar -->
+  <header class="navbar-container">
+    <!-- Khung Menu Chính -->
+    <div class="navbar-main">
+      <a href="/" class="brand" title="Moly - Thế Giới Chuột Chũi VN">
+        <img src="/assets/logo-horizontal.png" alt="Moly Thế Giới Chuột Chũi">
+      </a>
+
+      <nav class="nav-menu">
+        <a href="/" class="nav-link-btn">🏠 Trang Chủ</a>
+
+        <!-- Tiện Ích Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" type="button">⚡ Tiện Ích <span class="caret">▾</span></button>
+          <div class="dropdown-menu">
+            <a href="/#leaderboard" class="dropdown-item">🏆 Bảng Xếp Hạng Cư Dân</a>
+            <a href="/#newspaper" class="dropdown-item">📰 Thời Báo Moly (Số 128)</a>
+            <a href="/#smc" class="dropdown-item">🛡️ Cẩm Nang Hiệp Sĩ SMC</a>
+            <a href="javascript:void(0)" onclick="openGiftcodeModal()" class="dropdown-item">🎁 Nhập Giftcode</a>
+            <a href="/#superlamu" class="dropdown-item">🐾 Đậu Đậu Siêu Cấp</a>
+            <a href="/#kingdom" class="dropdown-item">🗺️ 257 Bản Đồ Vương Quốc</a>
+          </div>
+        </div>
+
+        <a href="/#news" class="nav-link-btn">📰 Tin Tức</a>
+
+        <!-- Tải Về Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" type="button">📥 Tải Về <span class="caret">▾</span></button>
+          <div class="dropdown-menu">
+            <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="dropdown-item" download="Moly Thế Giới Chuột chũi.apk">📱 Bản Android (APK - 13 MB)</a>
+            <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="dropdown-item" download="Moly Thế Giới Chuột chũi.zip">💻 Bản Windows (PC - 150 MB)</a>
+          </div>
+        </div>
+
+        <a href="/play.html" class="nav-btn-play">🎮 Chơi Ngay</a>
+      </nav>
+    </div>
+
+    <!-- Khung Viên Thuốc Phụ Bên Phải (Gọn gàng chỉ có 2 mục) -->
+    <div class="navbar-aux">
+      <div class="nav-dropdown" id="nav-aux-account">
+        <button class="nav-dropdown-btn" id="nav-btn-account" type="button">👤 Tài Khoản <span class="caret">▾</span></button>
+        <div class="dropdown-menu dropdown-menu-right" id="dropdown-account-menu">
+          <a href="/" class="dropdown-item">🏠 Về Trang Chủ</a>
+          <a href="javascript:void(0)" onclick="openRechargeModal()" class="dropdown-item" style="color: #f59e0b; font-weight: 700;">💎 Mua Đậu &amp; VIP</a>
+          <a href="javascript:void(0)" onclick="openGiftcodeModal()" class="dropdown-item" style="color: #a855f7;">🎁 Nhập Giftcode</a>
+          <div class="dropdown-divider"></div>
+          <a href="javascript:void(0)" onclick="handleWebLogout()" class="dropdown-item" style="color: #ef4444;">🚪 Đăng Xuất</a>
+        </div>
+      </div>
+
+      <span class="status-badge">
+        <span class="status-dot"></span>
+        Online
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Profile Dashboard Container -->
+  <main class="profile-container">
+    
+    <!-- Hero Profile Identity Card -->
+    <div class="profile-hero-card">
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <div class="profile-avatar-wrapper">
+          <img src="/assets/avatar_moly.png" alt="Avatar Chuột Chũi" class="profile-avatar-img" id="prof-avatar-img" onerror="this.src='/assets/logo_square.png'">
+          <span class="profile-vip-tag" id="prof-vip-tag">VIP 0</span>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <h1 style="font-size: 24px; font-weight: 900; color: #ffffff; margin: 0; text-shadow: 0 0 15px rgba(253, 224, 71, 0.6);" id="prof-fullname">Đang tải...</h1>
+            <span class="stat-pill" style="background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; color: #38bdf8;" id="prof-role-badge">Cư Dân Chính Thức</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-top: 6px; font-size: 13px; color: #cbd5e1; flex-wrap: wrap;">
+            <span>Tên tài khoản: <strong id="prof-username" style="color: #ffffff;">-</strong></span>
+            <span>•</span>
+            <span>ID Moly: <strong id="prof-uid" style="color: #fde047; font-family: monospace; font-size: 15px;">-</strong></span>
+            <button type="button" class="btn btn-sm" style="padding: 2px 8px; font-size: 11px; background: rgba(255,255,255,0.1); color: #fff;" onclick="copyMyId()">📋 Copy ID</button>
+          </div>
+          <div style="font-size: 12px; color: #94a3b8; margin-top: 6px;">
+            Tham gia vương quốc: <span id="prof-created-at">15/10/2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="/play.html" class="btn btn-primary" style="padding: 10px 22px; font-size: 14px; text-decoration: none;">🎮 Vào Chơi Game</a>
+        <button type="button" class="btn btn-web" onclick="openRechargeModal()" style="padding: 10px 20px; font-size: 14px;">💎 Nạp Đậu &amp; VIP</button>
+        <button type="button" class="btn" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #f87171; padding: 10px 16px; font-size: 13px;" onclick="handleWebLogout()">🚪 Đăng Xuất</button>
+      </div>
+    </div>
+
+    <!-- 4 Dashboard Management Panels -->
+    <div class="profile-grid">
+      
+      <!-- Panel 1: Tài Sản & Đẳng Cấp VIP -->
+      <div class="profile-panel">
+        <div class="profile-panel-title">
+          <span>💎 Kho Tài Sản &amp; Đẳng Cấp VIP</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08);">
+            <div style="font-size: 11px; color: #94a3b8;">Số Dư Đậu Vàng</div>
+            <div style="font-size: 22px; font-weight: 900; color: #f59e0b; margin-top: 4px;" id="prof-beans">0</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08);">
+            <div style="font-size: 11px; color: #94a3b8;">Điểm Tích Lũy VIP</div>
+            <div style="font-size: 22px; font-weight: 900; color: #a855f7; margin-top: 4px;" id="prof-points">0</div>
+          </div>
+        </div>
+        <div style="margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #cbd5e1;">
+            <span>Cấp độ: <strong id="prof-vip-level-text" style="color: #fde047;">VIP 0</strong></span>
+            <span id="prof-vip-days-left">Chưa đăng ký VIP</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="prof-vip-progress" style="width: 15%; background: linear-gradient(90deg, #f59e0b, #ea580c);"></div>
+          </div>
+        </div>
+        <p style="font-size: 12px; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">
+          ✨ Cấp VIP tại Moly VN được <strong>bảo lưu vĩnh viễn</strong>. Mỗi mốc VIP mở khóa trang phục giới hạn, tăng sản lượng nông trại và nhận lương Đậu hàng tháng.
+        </p>
+        <button type="button" class="btn btn-primary" style="width: 100%; padding: 8px 16px; font-size: 13px;" onclick="openRechargeModal()">Nâng Cấp Hội Viên VIP</button>
+      </div>
+
+      <!-- Panel 2: Đậu Đậu Siêu Cấp (Lamu) -->
+      <div class="profile-panel">
+        <div class="profile-panel-title">
+          <span>🐾 Viện Nghiên Cứu Đậu Đậu Siêu Cấp</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+          <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(168, 85, 247, 0.2); border: 2px solid #c084fc; display: flex; align-items: center; justify-content: center; font-size: 30px;">
+            🐾
+          </div>
+          <div>
+            <div style="font-size: 15px; font-weight: 800; color: #ffffff;" id="prof-lamu-name">Bé Đậu Đậu</div>
+            <div style="font-size: 12px; color: #c084fc; font-weight: 700;" id="prof-lamu-species">Hệ: Hoàng Kim (Kinh Điển)</div>
+            <div style="font-size: 11px; color: #94a3b8;">Cấp độ trưởng thành: <strong id="prof-lamu-level">Cấp 5 (Siêu Cấp)</strong></div>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #cbd5e1; margin-bottom: 14px;">
+          <div>
+            <div style="display: flex; justify-content: space-between;"><span>Thể Lực (Đói bụng):</span> <strong id="prof-lamu-hunger">100/100</strong></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%; background: #10b981;"></div></div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between;"><span>Độ Sạch Sẽ:</span> <strong id="prof-lamu-clean">100/100</strong></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%; background: #38bdf8;"></div></div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between;"><span>Tâm Trạng Vui Vẻ:</span> <strong id="prof-lamu-mood">100/100</strong></div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%; background: #f59e0b;"></div></div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+          <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 11px;">🕊️ Bay Lượn</span>
+          <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 11px;">🌊 Lặn Sâu</span>
+          <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 11px;">🎭 Biến Hình</span>
+          <span class="badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; font-size: 11px;">💎 Dò Kho Báu</span>
+        </div>
+      </div>
+
+      <!-- Panel 3: Trung Tâm Bảo Mật & OTP Gmail -->
+      <div class="profile-panel">
+        <div class="profile-panel-title">
+          <span>🔒 Trung Tâm Bảo Mật Cư Dân</span>
+        </div>
+        <form onsubmit="handleSaveProfileSecurity(event)">
+          <div class="input-group">
+            <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">Gmail Liên Kết Bảo Vệ</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="email" id="prof-edit-email" placeholder="VD: an@gmail.com" style="flex: 1; padding: 8px 12px; border-radius: 8px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 13px;">
+              <span id="prof-email-badge" class="badge" style="background: #10b981; color: #fff; font-size: 11px; display: inline-flex; align-items: center; padding: 0 10px;">Đã Xác Thực</span>
+            </div>
+          </div>
+
+          <div class="input-group" style="margin-top: 12px;">
+            <label style="font-size: 12px; color: #cbd5e1; display: block; margin-bottom: 4px;">Đổi Mật Khẩu Mới</label>
+            <input type="password" id="prof-new-pwd" placeholder="Mật khẩu mới (tối thiểu 6 ký tự)..." style="width: 100%; box-sizing: border-box; padding: 8px 12px; border-radius: 8px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 13px; margin-bottom: 8px;">
+            <input type="password" id="prof-confirm-pwd" placeholder="Nhập lại mật khẩu mới..." style="width: 100%; box-sizing: border-box; padding: 8px 12px; border-radius: 8px; background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 13px;">
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; margin-top: 14px;">
+            <button type="submit" class="btn btn-primary" style="padding: 7px 18px; font-size: 13px;">Lưu Thay Đổi</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Panel 4: Tủ Đồ & Trang Phục Nhân Vật -->
+      <div class="profile-panel">
+        <div class="profile-panel-title">
+          <span>👗 Tủ Đồ &amp; Trang Phục Nhân Vật</span>
+          <span id="prof-inventory-count" style="font-size: 12px; color: #94a3b8; font-weight: normal; margin-left: auto;">Đang tải...</span>
+        </div>
+        <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 10px;">
+          Vật phẩm và trang phục thu thập từ Giftcode và sự kiện hoàng gia:
+        </p>
+
+        <div class="inventory-grid" id="prof-inventory-container">
+          <!-- Filled dynamically -->
+          <div class="inventory-item-card">
+            <div class="inventory-item-icon">🛡️</div>
+            <div class="inventory-item-name">Bộ Giáp Hiệp Sĩ</div>
+            <div class="inventory-item-count">Số lượng: 1</div>
+          </div>
+          <div class="inventory-item-card">
+            <div class="inventory-item-icon">🧥</div>
+            <div class="inventory-item-name">Áo Tân Thủ Moly</div>
+            <div class="inventory-item-count">Số lượng: 1</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px; text-align: center;">
+          <button type="button" class="btn btn-web" style="padding: 7px 18px; font-size: 12px;" onclick="openGiftcodeModal()">🎁 Nhập Thêm Giftcode Nhận Quà</button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Floating Navigation Dock (5 Nút Tiện Ích Chuẩn Moly) -->
+  <nav class="moly-admin-dock" style="gap: 12px;">
+    <a href="/" class="moly-admin-dock-btn" title="Về trang chủ">
+      <span class="moly-admin-dock-icon">🏠</span>
+      <span class="moly-admin-dock-label">Trang Chủ</span>
+    </a>
+    <button type="button" class="moly-admin-dock-btn active" title="Trang hồ sơ cá nhân">
+      <span class="moly-admin-dock-icon">👤</span>
+      <span class="moly-admin-dock-label">Hồ Sơ</span>
+    </button>
+    <button type="button" class="moly-admin-dock-btn" onclick="openRechargeModal()" title="Cửa hàng Đậu Vàng">
+      <span class="moly-admin-dock-icon">💎</span>
+      <span class="moly-admin-dock-label">Nạp Đậu</span>
+    </button>
+    <button type="button" class="moly-admin-dock-btn" onclick="openGiftcodeModal()" title="Nhập Giftcode">
+      <span class="moly-admin-dock-icon">🎁</span>
+      <span class="moly-admin-dock-label">Giftcode</span>
+    </button>
+    <a href="/play.html" class="moly-admin-dock-btn" title="Vào chơi game ngay">
+      <span class="moly-admin-dock-icon">🎮</span>
+      <span class="moly-admin-dock-label">Vào Game</span>
+    </a>
+  </nav>
+
+  <!-- Modal Nhập Giftcode Nhanh -->
+  <div id="modal-profile-giftcode" class="modal-overlay" style="display: none;" onclick="if(event.target===this){closeGiftcodeModal();}">
+    <div class="modal-box" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 style="color: #fff; margin: 0;">🎁 Kích Hoạt Mã Quà Tặng (Giftcode)</h3>
+        <button class="modal-close" onclick="closeGiftcodeModal()">&times;</button>
+      </div>
+      <form onsubmit="handleRedeemGiftcode(event)" style="margin-top: 14px;">
+        <label style="font-size: 12.5px; color: #cbd5e1; display: block; margin-bottom: 6px;">Nhập Mã Quà Tặng</label>
+        <input type="text" id="prof-giftcode-input" placeholder="VD: TANTHU2026, MOLYVIET..." style="width: 100%; box-sizing: border-box; text-transform: uppercase; padding: 10px 14px; border-radius: 10px; background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.2); color: #fde047; font-weight: bold; font-size: 15px; margin-bottom: 14px;" required>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" class="btn" style="background: #334155; color: #fff;" onclick="closeGiftcodeModal()">Hủy</button>
+          <button type="submit" class="btn btn-primary" id="btn-redeem-submit">Kích Hoạt Ngay</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // --- Session Verification with 3-Hour Expiry Logic ---
+    function getSavedUser() {
+      try {
+        const raw = localStorage.getItem("moly_current_user");
+        if (!raw) return null;
+        const u = JSON.parse(raw);
+        if (u && !u.remember_me && u.expires_at && Date.now() > u.expires_at) {
+          localStorage.removeItem("moly_current_user");
+          localStorage.removeItem("moly_auto_sso");
+          sessionStorage.removeItem("moly_game_authorized_token");
+          return null;
+        }
+        return u;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function checkAuth() {
+      const user = getSavedUser();
+      if (!user) {
+        if (window.MolyNotify) {
+          MolyNotify.alert("Bạn chưa đăng nhập hoặc phiên làm việc đã hết hạn sau 3 giờ!\nĐang chuyển hướng về trang đăng nhập...", "Thông Báo", "warning")
+            .then(() => {
+              window.location.href = "/#login";
+            });
+        } else {
+          alert("Bạn chưa đăng nhập hoặc phiên làm việc đã hết hạn. Vui lòng đăng nhập lại!");
+          window.location.href = "/#login";
+        }
+        return false;
+      }
+      populateProfileUI(user);
+      return true;
+    }
+
+    function populateProfileUI(u) {
+      const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
+      const fname = u.fullname || u.nickname || "Cư Dân Chuột Chũi";
+      const uname = u.username || dispId;
+      const vip = u.is_vip ? `VIP ${u.vip_level}` : "VIP 0";
+
+      document.getElementById("prof-fullname").textContent = fname;
+      document.getElementById("prof-username").textContent = uname;
+      document.getElementById("prof-uid").textContent = dispId;
+      document.getElementById("prof-vip-tag").textContent = vip;
+      document.getElementById("prof-role-badge").textContent = u.is_admin ? "Quản Trị Viên" : (u.is_vip ? `Hiệp Sĩ Hoàng Gia (${vip})` : "Cư Dân Chính Thức");
+      
+      document.getElementById("prof-beans").textContent = (u.gold_beans || 0).toLocaleString();
+      document.getElementById("prof-points").textContent = (u.vip_value || 0).toLocaleString();
+      document.getElementById("prof-vip-level-text").textContent = vip;
+      document.getElementById("prof-vip-days-left").textContent = u.is_vip ? `Còn lại ${u.vip_days_left || 30} ngày` : "Chưa kích hoạt VIP";
+
+      const navBtn = document.getElementById("nav-btn-account");
+      if (navBtn) navBtn.innerHTML = `👤 ${uname} (${vip}) <span class="caret">▾</span>`;
+
+      // Email
+      const emailInp = document.getElementById("prof-edit-email");
+      if (emailInp) emailInp.value = u.email || "";
+
+      // Inventory
+      renderInventory(u.inventory || {});
+    }
+
+    function renderInventory(inv) {
+      const container = document.getElementById("prof-inventory-container");
+      const countEl = document.getElementById("prof-inventory-count");
+      
+      const itemPresets = {
+        12001: { name: "Bộ Giáp Hiệp Sĩ Rồng", icon: "🛡️" },
+        12002: { name: "Áo Choàng Thám Hiểm Rừng Đậu", icon: "🧥" },
+        12003: { name: "Cánh Thiên Thần Ánh Sáng", icon: "🪽" },
+        12004: { name: "Mũ Phù Thủy Đậu Đậu", icon: "🧙" },
+        12005: { name: "Gậy Phép Thuật Ngôi Sao", icon: "🪄" },
+        12006: { name: "Vương Miện Hoàng Gia", icon: "👑" },
+        12007: { name: "Giày Pha Lê Thần Tốc", icon: "👠" },
+        160002: { name: "Bàn Học Gỗ Cổ Điển", icon: "🪑" },
+        160003: { name: "Giường Ngủ Nấm Hoàng Cung", icon: "🍄" },
+        160004: { name: "Tủ Sách Pháp Thuật", icon: "📚" }
+      };
+
+      const keys = Object.keys(inv || {});
+      countEl.textContent = `${keys.length} vật phẩm`;
+
+      if (!keys.length) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; color: #94a3b8; font-size: 13px; padding: 20px;">
+            🎒 Rương đồ chưa có vật phẩm nào. Nhập mã Giftcode để nhận trang phục miễn phí!
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = keys.map(k => {
+        const id = parseInt(k);
+        const count = inv[k];
+        const itm = itemPresets[id] || { name: `Vật phẩm #${id}`, icon: "🎁" };
+        return `
+          <div class="inventory-item-card">
+            <div class="inventory-item-icon">${itm.icon}</div>
+            <div class="inventory-item-name">${itm.name}</div>
+            <div class="inventory-item-count">Số lượng: ${count}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function copyMyId() {
+      const u = getSavedUser();
+      if (!u) return;
+      const dispId = u.display_id || (u.user_id === 0 ? "00000000" : String(u.user_id));
+      navigator.clipboard.writeText(dispId);
+      if (window.MolyNotify) {
+        MolyNotify.toast(`Đã sao chép ID Moly: ${dispId}`, "success");
+      } else {
+        alert(`Đã sao chép ID Moly: ${dispId}`);
+      }
+    }
+
+    function handleWebLogout() {
+      if (confirm("Bạn có chắc chắn muốn đăng xuất tài khoản? (Lần sau vào lại sẽ cần đăng nhập lại)")) {
+        localStorage.removeItem("moly_current_user");
+        localStorage.removeItem("moly_auto_sso");
+        sessionStorage.removeItem("moly_game_authorized_token");
+        window.location.href = "/";
+      }
+    }
+
+    function openGiftcodeModal() {
+      document.getElementById("modal-profile-giftcode").style.display = "flex";
+      document.getElementById("prof-giftcode-input").focus();
+    }
+    function closeGiftcodeModal() {
+      document.getElementById("modal-profile-giftcode").style.display = "none";
+    }
+
+    function openRechargeModal() {
+      window.location.href = "/#recharge";
+    }
+
+    async function handleRedeemGiftcode(e) {
+      e.preventDefault();
+      const u = getSavedUser();
+      if (!u) { alert("Vui lòng đăng nhập lại!"); return; }
+      const code = document.getElementById("prof-giftcode-input").value.trim().toUpperCase();
+      const btn = document.getElementById("btn-redeem-submit");
+      btn.disabled = true;
+      btn.textContent = "Đang kiểm tra...";
+
+      try {
+        const resp = await fetch("/api/giftcode/redeem", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ code: code, user_id: u.user_id })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          if (window.MolyNotify) {
+            MolyNotify.alert(`🎉 Kích hoạt mã [${code}] thành công!\nPhần thưởng đã được chuyển thẳng vào tài khoản và rương đồ của bạn.`, "Đổi Quà Thành Công", "success");
+          } else {
+            alert(`Kích hoạt mã [${code}] thành công!`);
+          }
+          closeGiftcodeModal();
+          // Reload user profile
+          if (res.rewards) {
+            if (res.rewards.beans) u.gold_beans = (u.gold_beans || 0) + res.rewards.beans;
+            if (res.rewards.vip_level) u.vip_level = res.rewards.vip_level;
+            if (Array.isArray(res.rewards.items)) {
+              u.inventory = u.inventory || {};
+              res.rewards.items.forEach(iid => {
+                u.inventory[iid] = (u.inventory[iid] || 0) + 1;
+              });
+            }
+            localStorage.setItem("moly_current_user", JSON.stringify(u));
+            populateProfileUI(u);
+          }
+        } else {
+          if (window.MolyNotify) {
+            MolyNotify.alert(`❌ ${res.message || "Không thể đổi mã quà tặng!"}`, "Thông Báo Lỗi", "error");
+          } else {
+            alert(res.message || "Không thể đổi mã quà tặng!");
+          }
+        }
+      } catch (err) {
+        alert("Lỗi kết nối máy chủ: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Kích Hoạt Ngay";
+      }
+    }
+
+    async function handleSaveProfileSecurity(e) {
+      e.preventDefault();
+      const u = getSavedUser();
+      if (!u) return;
+      const email = document.getElementById("prof-edit-email").value.trim();
+      const newPwd = document.getElementById("prof-new-pwd").value;
+      const confirmPwd = document.getElementById("prof-confirm-pwd").value;
+
+      if (newPwd && newPwd.length < 6) {
+        alert("Mật khẩu mới tối thiểu 6 ký tự!");
+        return;
+      }
+      if (newPwd && newPwd !== confirmPwd) {
+        alert("Mật khẩu xác nhận không trùng khớp!");
+        return;
+      }
+
+      try {
+        const resp = await fetch("/api/user/profile/update", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: u.user_id,
+            email: email,
+            new_password: newPwd || undefined
+          })
+        });
+        const res = await resp.json();
+        if (res.ok) {
+          u.email = email;
+          localStorage.setItem("moly_current_user", JSON.stringify(u));
+          if (window.MolyNotify) {
+            MolyNotify.toast("Cập nhật thông tin bảo mật thành công!", "success");
+          } else {
+            alert("Cập nhật thông tin bảo mật thành công!");
+          }
+          document.getElementById("prof-new-pwd").value = "";
+          document.getElementById("prof-confirm-pwd").value = "";
+        } else {
+          alert(res.message || "Không thể cập nhật!");
+        }
+      } catch (err) {
+        alert("Lỗi kết nối máy chủ: " + err.message);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      checkAuth();
+    });
+  </script>
+</body>
+</html>

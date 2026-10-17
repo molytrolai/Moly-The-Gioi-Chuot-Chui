@@ -1002,3 +1002,238 @@ small {
   color: #fbbf24;
   font-weight: 600;
 }
+
+/* =========================================================================
+   NAVBAR MAIN PLAY BUTTON & COMPACT 2-ITEM NAVBAR AUX
+   ========================================================================= */
+.navbar-main .nav-menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 1;
+}
+
+.navbar-main .nav-btn-play {
+  margin-left: 6px;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px !important;
+  font-size: 13.5px !important;
+  font-weight: 800 !important;
+  border-radius: 9999px !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
+}
+
+.navbar-aux {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 6px 14px !important;
+  flex-shrink: 0 !important;
+}
+
+/* =========================================================================
+   ADMIN DEDICATED FLOATING DOCK (5 ESSENTIAL SHORTCUTS)
+   ========================================================================= */
+.moly-admin-dock {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.94) 100%);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 9999px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(56, 189, 248, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.moly-admin-dock:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 35px rgba(56, 189, 248, 0.4);
+}
+
+.moly-admin-dock-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 13px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  min-width: 65px;
+  user-select: none;
+}
+
+.moly-admin-dock-btn:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%), rgba(56, 189, 248, 0.25);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4), 0 0 16px rgba(56, 189, 248, 0.5);
+}
+
+.moly-admin-dock-btn.active {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 0, 0, 0.15) 100%),
+              linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  border-color: #38bdf8 !important;
+  border-top-color: #e0f2fe !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.6), 0 0 20px rgba(56, 189, 248, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+.moly-admin-dock-icon {
+  font-size: 18px;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.moly-admin-dock-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+/* =========================================================================
+   STANDALONE PROFILE PAGE STYLING (profile.html)
+   ========================================================================= */
+.profile-container {
+  max-width: 1140px;
+  margin: 95px auto 120px auto;
+  padding: 0 20px;
+}
+
+.profile-hero-card {
+  background: linear-gradient(135deg, rgba(22, 34, 54, 0.88) 0%, rgba(15, 23, 42, 0.94) 100%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 24px;
+  padding: 28px 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 35px rgba(246, 168, 40, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  padding: 3px;
+  box-shadow: 0 8px 24px rgba(234, 88, 12, 0.5), 0 0 20px rgba(253, 224, 71, 0.6);
+  flex-shrink: 0;
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #0f172a;
+}
+
+.profile-vip-tag {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+}
+
+.profile-panel {
+  background: linear-gradient(135deg, rgba(20, 30, 48, 0.82) 0%, rgba(12, 18, 30, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.profile-panel-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 10px;
+}
+
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.inventory-item-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 12px 10px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.inventory-item-card:hover {
+  transform: translateY(-3px);
+  border-color: #fde047;
+  box-shadow: 0 6px 18px rgba(246, 168, 40, 0.3);
+}
+
+.inventory-item-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.inventory-item-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.3;
+}
+
+.inventory-item-count {
+  font-size: 11px;
+  color: #38bdf8;
+  font-weight: 600;
+  margin-top: 3px;
+}

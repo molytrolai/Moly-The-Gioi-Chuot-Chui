@@ -1902,7 +1902,12 @@ class GiftcodeManager:
         super_lamu: bool = False,
         super_lamu_species: Optional[str] = None,
         items: Optional[list[int]] = None,
+        items_detail: Optional[list[dict[str, Any]]] = None,
         max_uses: int = 1,
+        is_unlimited_uses: bool = False,
+        is_permanent: bool = True,
+        valid_from: Optional[str] = None,
+        valid_until: Optional[str] = None,
     ) -> dict[str, Any]:
         norm_code = code.strip().upper()
         with self._lock:
@@ -1918,15 +1923,87 @@ class GiftcodeManager:
                 "super_lamu": bool(super_lamu or super_lamu_species),
                 "super_lamu_species": super_lamu_species or ("classic" if super_lamu else None),
                 "items": items or [],
-                "max_uses": max(1, max_uses),
+                "items_detail": items_detail or [],
+                "max_uses": 999999999 if is_unlimited_uses else max(1, max_uses),
+                "is_unlimited_uses": bool(is_unlimited_uses),
+                "is_permanent": bool(is_permanent),
+                "valid_from": valid_from or datetime.now(timezone.utc).isoformat(),
+                "valid_until": valid_until if not is_permanent else None,
                 "used_count": 0,
                 "redeemed_users": [],
                 "active": True,
                 "created_at": datetime.now(timezone.utc).isoformat(),
+                "updated_at": datetime.now(timezone.utc).isoformat(),
             }
             self._codes[norm_code] = new_entry
             self._save()
             return new_entry
+
+    def edit_giftcode(
+        self,
+        code: str,
+        description: Optional[str] = None,
+        beans: Optional[int] = None,
+        vip_level: Optional[int] = None,
+        vip_months: Optional[int] = None,
+        trial_days: Optional[int] = None,
+        vip_value_add: Optional[int] = None,
+        super_lamu: Optional[bool] = None,
+        super_lamu_species: Optional[str] = None,
+        items: Optional[list[int]] = None,
+        items_detail: Optional[list[dict[str, Any]]] = None,
+        max_uses: Optional[int] = None,
+        is_unlimited_uses: Optional[bool] = None,
+        is_permanent: Optional[bool] = None,
+        valid_from: Optional[str] = None,
+        valid_until: Optional[str] = None,
+        active: Optional[bool] = None,
+    ) -> Optional[dict[str, Any]]:
+        norm_code = code.strip().upper()
+        with self._lock:
+            self._load()
+            if norm_code not in self._codes:
+                return None
+            gc = self._codes[norm_code]
+            if description is not None:
+                gc["description"] = description
+            if beans is not None:
+                gc["beans"] = max(0, beans)
+            if vip_level is not None:
+                gc["vip_level"] = min(max(0, vip_level), 19)
+            if vip_months is not None:
+                gc["vip_months"] = max(0, vip_months)
+            if trial_days is not None:
+                gc["trial_days"] = max(0, trial_days)
+            if vip_value_add is not None:
+                gc["vip_value_add"] = max(0, vip_value_add)
+            if super_lamu is not None:
+                gc["super_lamu"] = bool(super_lamu)
+            if super_lamu_species is not None:
+                gc["super_lamu_species"] = super_lamu_species or None
+            if items is not None:
+                gc["items"] = items
+            if items_detail is not None:
+                gc["items_detail"] = items_detail
+            if is_unlimited_uses is not None:
+                gc["is_unlimited_uses"] = bool(is_unlimited_uses)
+                if is_unlimited_uses:
+                    gc["max_uses"] = 999999999
+            if max_uses is not None and not gc.get("is_unlimited_uses", False):
+                gc["max_uses"] = max(1, max_uses)
+            if is_permanent is not None:
+                gc["is_permanent"] = bool(is_permanent)
+                if is_permanent:
+                    gc["valid_until"] = None
+            if valid_from is not None:
+                gc["valid_from"] = valid_from
+            if valid_until is not None and not gc.get("is_permanent", True):
+                gc["valid_until"] = valid_until
+            if active is not None:
+                gc["active"] = bool(active)
+            gc["updated_at"] = datetime.now(timezone.utc).isoformat()
+            self._save()
+            return gc
 
     def delete_giftcode(self, code: str) -> bool:
         norm_code = code.strip().upper()
@@ -1950,10 +2027,23 @@ class GiftcodeManager:
 
             gc = self._codes[norm_code]
             if not gc.get("active", True):
-                return False, "Mã quà tặng đã bị khóa!", {}
+                return False, "Mã quà tặng đã bị khóa hoặc tạm dừng!", {}
 
-            if gc.get("used_count", 0) >= gc.get("max_uses", 1):
-                return False, "Mã quà tặng đã hết lượt sử dụng!", {}
+            # Check validity time window
+            now_iso = datetime.now(timezone.utc).isoformat()
+            is_perm = gc.get("is_permanent", True) if ("valid_until" not in gc or not gc.get("valid_until")) else False
+            if not is_perm:
+                vf = gc.get("valid_from")
+                vu = gc.get("valid_until")
+                if vf and now_iso < vf:
+                    return False, f"Mã quà tặng chưa đến ngày sự kiện ({vf[:10]})!", {}
+                if vu and now_iso > vu:
+                    return False, f"Mã quà tặng đã hết hạn sử dụng vào ngày {vu[:10]}!", {}
+
+            # Check usage limit
+            is_unlimited = gc.get("is_unlimited_uses", False) or gc.get("max_uses", 1) >= 99999999
+            if not is_unlimited and gc.get("used_count", 0) >= gc.get("max_uses", 1):
+                return False, "Mã quà tặng đã hết số lượt sử dụng tối đa!", {}
 
             redeemed = gc.setdefault("redeemed_users", [])
             if user_id in redeemed or str(user_id) in redeemed:
@@ -2007,8 +2097,26 @@ class GiftcodeManager:
                     },
                 )
 
+            # Award items and costumes
+            items_granted = []
             for itm in gc.get("items", []):
-                self.account_mgr.add_item(user_id, itm, 1)
+                try:
+                    iid = int(itm)
+                    self.account_mgr.add_item(user_id, iid, 1)
+                    items_granted.append(iid)
+                except Exception:
+                    pass
+
+            for itm_obj in gc.get("items_detail", []):
+                if isinstance(itm_obj, dict) and "id" in itm_obj:
+                    try:
+                        iid = int(itm_obj["id"])
+                        cnt = int(itm_obj.get("count", 1))
+                        if iid not in items_granted:
+                            self.account_mgr.add_item(user_id, iid, cnt)
+                            items_granted.append(iid)
+                    except Exception:
+                        pass
 
             # Record redemption
             gc["used_count"] = gc.get("used_count", 0) + 1
@@ -2022,7 +2130,8 @@ class GiftcodeManager:
                 "vip_months": vip_months,
                 "days_left": vip_status.get("days_left", 0),
                 "super_lamu": gc.get("super_lamu", False),
-                "items": gc.get("items", []),
+                "items": items_granted,
+                "items_detail": gc.get("items_detail", []),
             }
             return True, "Kích hoạt mã quà tặng thành công!", rewards
 
