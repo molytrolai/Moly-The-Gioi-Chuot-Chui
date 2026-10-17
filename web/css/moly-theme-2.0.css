@@ -888,6 +888,18 @@ tr:hover td {
 /* Modals & Safe Actions Backdrop (Chỉ hơi mờ dạng trong suốt theo yêu cầu người dùng) */
 .modal-overlay,
 #login-overlay,
+#modal-account,
+#modal-news,
+#modal-knight,
+#modal-smc,
+#modal-gc,
+#modal-lamu,
+#modal-super-lamu,
+#modal-leaderboard,
+#modal-newspaper,
+#modal-kingdom,
+#modal-faq,
+#modal-lookup,
 .moly-safe-modal-backdrop,
 .moly-alert-overlay {
   background: rgba(10, 16, 30, 0.45) !important;
@@ -895,6 +907,11 @@ tr:hover td {
   -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
   overflow: hidden !important;
   overscroll-behavior: contain !important;
+  padding-bottom: 110px !important; /* Luôn cách thanh dock ít nhất 30px */
+  padding-top: 25px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
 }
 
 .modal-box, .modal-card, .modal {
@@ -906,6 +923,329 @@ tr:hover td {
   border-radius: 20px !important;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(246, 168, 40, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.45) !important;
   overscroll-behavior: contain !important;
+  max-height: calc(100vh - 140px) !important;
+  margin-bottom: 25px !important;
+  overflow-y: auto !important;
+  transition: max-width 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Inner scroll areas never push modal box beyond viewport */
+#modal-news .modal-box > div[style*="overflow-y"],
+#modal-kingdom .modal-box > div[style*="overflow-y"],
+#modal-smc .modal-box > div[style*="overflow-y"] {
+  max-height: calc(100vh - 280px) !important;
+}
+
+/* Horizontal Rectangular Layout for Account & Recharge Modal on Desktop */
+@media (min-width: 769px) {
+  #modal-account .modal-box {
+    max-width: 500px;
+    width: 90% !important;
+  }
+
+  #modal-account.is-wide .modal-box,
+  #modal-account:has(#tab-content-recharge:not([style*="display: none"])) .modal-box,
+  #modal-account:has(#tab-content-dashboard:not([style*="display: none"])) .modal-box {
+    max-width: 860px !important;
+    width: 90% !important;
+  }
+
+  .recharge-layout-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 18px !important;
+    align-items: start !important;
+  }
+
+  .recharge-layout-grid .rc-grid-col {
+    min-width: 0 !important;
+  }
+
+  .rc-grid-footer {
+    grid-column: span 2 !important;
+    margin-top: 14px !important;
+    padding-top: 10px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .modal-overlay,
+  #modal-account,
+  #modal-news,
+  #modal-knight,
+  #modal-smc,
+  #modal-gc,
+  #modal-lamu,
+  #modal-super-lamu,
+  #modal-leaderboard,
+  #modal-newspaper,
+  #modal-kingdom,
+  #modal-faq,
+  #modal-lookup,
+  .moly-safe-modal-backdrop,
+  .moly-alert-overlay {
+    padding-bottom: 90px !important;
+    padding-top: 15px !important;
+  }
+
+  .modal-box, .modal-card, .modal {
+    max-height: calc(100dvh - 115px) !important;
+    margin-bottom: 20px !important;
+    width: 95% !important;
+    max-width: 95% !important;
+    padding: 16px !important;
+    border-radius: 18px !important;
+  }
+
+  .recharge-layout-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE 3.0 APP EXPERIENCE (HEADER, DRAWER & QUICK-ACTION GRID)
+   ========================================================================== */
+.moly-mobile-topbar {
+  display: none;
+}
+.moly-mobile-quick-grid {
+  display: none;
+}
+.moly-mobile-tabs {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Hide classic desktop navbar container on mobile in favor of topbar */
+  .navbar-container {
+    display: none !important;
+  }
+
+  .moly-mobile-topbar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: sticky !important;
+    top: 8px !important;
+    left: 10px !important;
+    right: 10px !important;
+    margin: 8px 10px 10px 10px !important;
+    height: 52px !important;
+    padding: 0 14px !important;
+    background: linear-gradient(135deg, rgba(22, 34, 52, 0.94) 0%, rgba(14, 22, 36, 0.98) 100%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 9999px !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(246, 168, 40, 0.2) !important;
+    z-index: 1000 !important;
+  }
+
+  .moly-topbar-btn {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .moly-topbar-btn:active {
+    transform: scale(0.92) !important;
+    background: rgba(245, 158, 11, 0.3) !important;
+    border-color: #f59e0b !important;
+  }
+
+  .moly-topbar-brand img {
+    height: 28px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  /* Slide-Out Navigation Drawer */
+  .moly-drawer-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(10, 16, 30, 0.6) !important;
+    backdrop-filter: blur(8px) saturate(130%) !important;
+    -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
+    z-index: 100000 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.25s ease !important;
+  }
+
+  .moly-drawer-overlay.open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .moly-mobile-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 82% !important;
+    max-width: 330px !important;
+    background: linear-gradient(180deg, rgba(20, 32, 48, 0.98) 0%, rgba(12, 18, 30, 0.99) 100%) !important;
+    backdrop-filter: blur(28px) saturate(190%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.8) !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 100001 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .moly-drawer-overlay.open .moly-mobile-drawer {
+    transform: translateX(0) !important;
+  }
+
+  .moly-drawer-header {
+    padding: 20px 18px 16px 18px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+  }
+
+  .moly-drawer-body {
+    padding: 12px 14px 40px 14px !important;
+    flex: 1 !important;
+  }
+
+  .moly-drawer-section-title {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    color: #94a3b8 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    margin: 14px 6px 6px 6px !important;
+  }
+
+  .moly-drawer-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 11px 14px !important;
+    border-radius: 12px !important;
+    color: #f1f5f9 !important;
+    text-decoration: none !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    margin-bottom: 4px !important;
+    transition: all 0.15s ease !important;
+  }
+
+  .moly-drawer-link:active {
+    background: rgba(245, 158, 11, 0.18) !important;
+    color: #fde047 !important;
+    transform: translateX(4px) !important;
+  }
+
+  /* App Quick-Action Grid 4x2 on Mobile */
+  .moly-mobile-quick-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px !important;
+    margin: 14px 10px 18px 10px !important;
+    padding: 14px 10px !important;
+    background: linear-gradient(135deg, rgba(22, 34, 52, 0.8) 0%, rgba(14, 22, 36, 0.85) 100%) !important;
+    backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  .moly-quick-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    gap: 6px !important;
+    cursor: pointer !important;
+    user-select: none !important;
+  }
+
+  .moly-quick-icon {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .moly-quick-btn:active .moly-quick-icon {
+    transform: scale(0.92) !important;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.4) 0%, rgba(234, 88, 12, 0.4) 100%) !important;
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.6) !important;
+  }
+
+  .moly-quick-label {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #e2e8f0 !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Segmented Content Switcher on Mobile */
+  .moly-mobile-tabs {
+    display: flex !important;
+    gap: 6px !important;
+    margin: 0 10px 14px 10px !important;
+    padding: 4px !important;
+    background: rgba(15, 23, 42, 0.75) !important;
+    border-radius: 9999px !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .moly-mobile-tabs::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .moly-mobile-tab-btn {
+    flex: 1 !important;
+    padding: 7px 12px !important;
+    border-radius: 9999px !important;
+    border: none !important;
+    background: transparent !important;
+    color: #94a3b8 !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-align: center !important;
+  }
+
+  .moly-mobile-tab-btn.active {
+    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4) !important;
+  }
 }
 
 /* ==========================================================================
