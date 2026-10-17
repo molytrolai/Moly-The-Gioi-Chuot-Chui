@@ -2325,11 +2325,13 @@
       alert(`📋 Đã sao chép ID Moly: ${dispId} vào bộ nhớ tạm!`);
     }
 
-    function handleWebLogout() {
-      if (confirm("Bạn có chắc chắn muốn đăng xuất tài khoản web?")) {
+    async function handleWebLogout() {
+      if (await MolyNotify.confirm("Bạn có chắc chắn muốn đăng xuất tài khoản web?", "Đăng Xuất Web")) {
         clearUser();
         closeAccountModal();
-        alert("Đã đăng xuất thành công!");
+        if (window.MolyNotify) {
+          MolyNotify.toast("Đã đăng xuất tài khoản thành công!", "info");
+        }
       }
     }
 
@@ -2761,10 +2763,10 @@
         navigator.clipboard.writeText(txt).then(() => {
           alert(successMsg || "Đã sao chép vào bộ nhớ tạm!");
         }).catch(() => {
-          prompt("Vui lòng sao chép thủ công:", txt);
+          MolyNotify.prompt("Vui lòng sao chép thủ công (Ctrl+C):", txt, "Sao Chép");
         });
       } else {
-        prompt("Vui lòng sao chép thủ công:", txt);
+        MolyNotify.prompt("Vui lòng sao chép thủ công (Ctrl+C):", txt, "Sao Chép");
       }
     }
 
@@ -3191,7 +3193,7 @@
     }
 
     async function selectLamuSpecies(speciesId, uid) {
-      if (!confirm(`Bạn có chắc muốn chuyển sang loài này? Lưu ý: Nếu loài mới chưa từng nuôi dưỡng sẽ bắt đầu lại từ Lv.1!`)) return;
+      if (!await MolyNotify.confirm(`Bạn có chắc muốn chuyển sang loài này? Lưu ý: Nếu loài mới chưa từng nuôi dưỡng sẽ bắt đầu lại từ Lv.1!`, "Đổi Chủng Loài Đậu Đậu")) return;
       try {
         const resp = await fetch("/api/user/lamu/species", {
           method: "POST",

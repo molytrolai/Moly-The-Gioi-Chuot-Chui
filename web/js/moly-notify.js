@@ -133,6 +133,31 @@
       color: #ffffff;
     }
 
+    .moly-alert-input-wrap {
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .moly-alert-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-top: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 12px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    .moly-alert-input:focus {
+      border-color: #f59e0b;
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.45), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
     /* Floating Toast System */
     .moly-toast-container {
       position: fixed;
@@ -176,9 +201,12 @@
   let alertIcon = null;
   let alertTitle = null;
   let alertMsg = null;
+  let alertInputWrap = null;
+  let alertInput = null;
   let alertConfirmBtn = null;
   let alertCancelBtn = null;
   let activeCallback = null;
+  let isPromptMode = false;
 
   function initAlertModal() {
     if (alertOverlay) return;
@@ -189,6 +217,9 @@
         <div class="moly-alert-icon" id="moly-alert-icon">✨</div>
         <h3 class="moly-alert-title" id="moly-alert-title">Thông Báo Vương Quốc</h3>
         <div class="moly-alert-msg" id="moly-alert-msg"></div>
+        <div class="moly-alert-input-wrap" id="moly-alert-input-wrap" style="display: none;">
+          <input type="text" class="moly-alert-input" id="moly-alert-input" autocomplete="off" spellcheck="false">
+        </div>
         <div class="moly-alert-actions">
           <button type="button" class="moly-alert-btn moly-alert-btn-secondary" id="moly-alert-cancel" style="display: none;">Hủy Bỏ</button>
           <button type="button" class="moly-alert-btn moly-alert-btn-primary" id="moly-alert-confirm">Đã Hiểu</button>
@@ -200,8 +231,20 @@
     alertIcon = alertOverlay.querySelector("#moly-alert-icon");
     alertTitle = alertOverlay.querySelector("#moly-alert-title");
     alertMsg = alertOverlay.querySelector("#moly-alert-msg");
+    alertInputWrap = alertOverlay.querySelector("#moly-alert-input-wrap");
+    alertInput = alertOverlay.querySelector("#moly-alert-input");
     alertConfirmBtn = alertOverlay.querySelector("#moly-alert-confirm");
     alertCancelBtn = alertOverlay.querySelector("#moly-alert-cancel");
+
+    alertInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        closeAlert(true);
+      } else if (e.key === "Escape") {
+        e.preventDefault();
+        closeAlert(false);
+      }
+    });
 
     alertConfirmBtn.addEventListener("click", () => {
       closeAlert(true);
@@ -220,7 +263,7 @@
     document.addEventListener("keydown", (e) => {
       if (alertOverlay.classList.contains("open")) {
         if (e.key === "Escape") closeAlert(false);
-        if (e.key === "Enter") closeAlert(true);
+        if (e.key === "Enter" && document.activeElement !== alertInput) closeAlert(true);
       }
     });
   }
@@ -228,10 +271,19 @@
   function closeAlert(isConfirmed) {
     if (!alertOverlay) return;
     alertOverlay.classList.remove("open");
+    const wasPrompt = isPromptMode;
+    const promptValue = alertInput ? alertInput.value : "";
+    isPromptMode = false;
+    if (alertInputWrap) alertInputWrap.style.display = "none";
+
     if (activeCallback) {
       const cb = activeCallback;
       activeCallback = null;
-      cb(isConfirmed);
+      if (wasPrompt) {
+        cb(isConfirmed ? promptValue : null);
+      } else {
+        cb(isConfirmed);
+      }
     }
   }
 
@@ -308,6 +360,38 @@
       });
     },
 
+    prompt(message, defaultValue = "", title = "Nhập Thông Tin", placeholder = "") {
+      return new Promise((resolve) => {
+        initAlertModal();
+        isPromptMode = true;
+
+        alertIcon.className = "moly-alert-icon info";
+        alertIcon.textContent = "✍️";
+        alertTitle.textContent = title;
+        alertMsg.innerHTML = String(message || "").replace(/\n/g, "<br>");
+
+        alertInputWrap.style.display = "block";
+        alertInput.value = defaultValue || "";
+        alertInput.placeholder = placeholder || "Nhập nội dung...";
+
+        alertCancelBtn.style.display = "inline-block";
+        alertCancelBtn.textContent = "Hủy Bỏ";
+        alertConfirmBtn.textContent = "Xác Nhận";
+
+        activeCallback = (result) => resolve(result);
+        alertOverlay.classList.add("open");
+
+        if (window.MolyAudio) {
+          window.MolyAudio.playPop();
+        }
+
+        setTimeout(() => {
+          alertInput.focus();
+          alertInput.select();
+        }, 60);
+      });
+    },
+
     toast(message, type = "info", duration = 3000) {
       const container = getToastContainer();
       const toast = document.createElement("div");
@@ -339,8 +423,14 @@
   // Gracefully intercept standard browser alert
   window.originalAlert = window.alert;
   window.alert = function(msg) {
-    MolyNotify.alert(msg);
+    return MolyNotify.alert(msg);
   };
+
+  // Provide convenient universal aliases
+  window.molyAlert = MolyNotify.alert;
+  window.molyConfirm = MolyNotify.confirm;
+  window.molyPrompt = MolyNotify.prompt;
+  window.molyToast = MolyNotify.toast;
 
   window.MolyNotify = MolyNotify;
 })();

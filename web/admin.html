@@ -1865,7 +1865,7 @@
     }
 
     async function quickDeleteUser(userId, nickname) {
-      if (!confirm(`⚠️ CẢNH BÁO: Bạn có chắc chắn muốn XÓA VĨNH VIỄN tài khoản "${nickname}" (ID: ${userId}) không?\n\nThao tác này sẽ xóa toàn bộ nhân vật, túi đồ, thú cưng và không thể khôi phục!`)) {
+      if (!await MolyNotify.confirm(`⚠️ CẢNH BÁO: Bạn có chắc chắn muốn XÓA VĨNH VIỄN tài khoản "${nickname}" (ID: ${userId}) không?\n\nThao tác này sẽ xóa toàn bộ nhân vật, túi đồ, thú cưng và không thể khôi phục!`, "Xác Nhận Xóa Vĩnh Viễn")) {
         return;
       }
       try {
@@ -1904,7 +1904,7 @@
 
     // Quick Actions
     async function quickAddBeans(uid) {
-      if (!confirm(`Cộng 500 Đậu Vàng cho cư dân ${uid}?`)) return;
+      if (!await MolyNotify.confirm(`Cộng 500 Đậu Vàng cho cư dân ${uid}?`, "Cộng Đậu Vàng")) return;
       await fetch("/api/admin/user/beans", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
@@ -1914,7 +1914,7 @@
     }
 
     async function quickTrialVIP(uid) {
-      if (!confirm(`Cấp VIP 1 dùng thử 3 ngày cho cư dân ${uid}?`)) return;
+      if (!await MolyNotify.confirm(`Cấp VIP 1 dùng thử 3 ngày cho cư dân ${uid}?`, "Cấp VIP Dùng Thử")) return;
       await fetch("/api/admin/user/vip_trial", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
@@ -1924,7 +1924,7 @@
     }
 
     async function quickAddMonthVIP(uid) {
-      if (!confirm(`Kích hoạt 1 Tháng Thẻ Thành Viên (+100 điểm thăng cấp) cho cư dân ${uid}?`)) return;
+      if (!await MolyNotify.confirm(`Kích hoạt 1 Tháng Thẻ Thành Viên (+100 điểm thăng cấp) cho cư dân ${uid}?`, "Kích Hoạt Thẻ Thành Viên")) return;
       await fetch("/api/admin/user/vip_membership", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
@@ -1934,7 +1934,7 @@
     }
 
     async function quickSetVipLevel(uid) {
-      const val = prompt(`Nhập cấp VIP muốn cấp cho cư dân ${uid} (từ 1 đến 19):`, "1");
+      const val = await MolyNotify.prompt(`Nhập cấp VIP muốn cấp cho cư dân ${uid} (từ 1 đến 19):`, "1", "Cấp VIP Tùy Chọn");
       if (!val) return;
       const lvl = parseInt(val, 10);
       if (isNaN(lvl) || lvl < 1 || lvl > 19) {
@@ -1954,7 +1954,7 @@
     }
 
     async function quickSetSuperLamu(uid) {
-      const sp = prompt(
+      const sp = await MolyNotify.prompt(
         `Chọn chủng loại Đậu Đậu Siêu Cấp cho cư dân ${uid}:\n` +
         "1: classic (Hoàng Kim)\n" +
         "2: dark (Hắc Ám)\n" +
@@ -1963,7 +1963,8 @@
         "5: ice (Băng Tuyết)\n" +
         "6: flame (Lửa Thiêng)\n" +
         "Nhập tên loại (classic, dark, cosmic, mythic, ice, flame):",
-        "dark"
+        "dark",
+        "Cấp Đậu Đậu Siêu Cấp"
       );
       if (!sp) return;
       const valid = ["classic", "dark", "cosmic", "mythic", "ice", "flame"];
@@ -1985,7 +1986,7 @@
     }
 
     async function quickMaxSMC(uid) {
-      if (!confirm(`Cấp trọn bộ nghề nghiệp SMC (Hiệp sĩ, Cảnh sát, HDV, Nhà báo) cho cư dân ${uid}?`)) return;
+      if (!await MolyNotify.confirm(`Cấp trọn bộ nghề nghiệp SMC (Hiệp sĩ, Cảnh sát, HDV, Nhà báo) cho cư dân ${uid}?`, "Cấp Nghề SMC")) return;
       await fetch("/api/admin/user/smc", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
@@ -1995,16 +1996,17 @@
     }
 
     async function quickGiveItem(uid) {
-      const itemIdStr = prompt(`Nhập ID Trang Phục hoặc Vật Phẩm muốn tặng cư dân ${uid}:\n(Ví dụ: 12001 - Mũ kỵ sĩ, 13002 - Áo giáp):`);
+      const itemIdStr = await MolyNotify.prompt(`Nhập ID Trang Phục hoặc Vật Phẩm muốn tặng cư dân ${uid}:\n(Ví dụ: 12001 - Mũ kỵ sĩ, 13002 - Áo giáp):`, "", "Tặng Vật Phẩm / Trang Phục");
       if (!itemIdStr) return;
       const itemId = parseInt(itemIdStr, 10);
       if (isNaN(itemId) || itemId <= 0) {
         alert("ID không hợp lệ! Phải là số dương.");
         return;
       }
-      const countStr = prompt(`Nhập số lượng muốn tặng:`, "1");
+      const countStr = await MolyNotify.prompt(`Nhập số lượng muốn tặng:`, "1", "Số Lượng Vật Phẩm");
+      if (!countStr) return;
       const count = parseInt(countStr, 10) || 1;
-      const isCloth = confirm(`Vật phẩm này có phải là Trang Phục mặc lên người không?\n- Bấm OK (Đồng ý) nếu là Trang Phục / Quần Áo\n- Bấm Cancel (Hủy) nếu là Vật Phẩm Túi Đồ / Đạo Cụ`);
+      const isCloth = await MolyNotify.confirm(`Vật phẩm này có phải là Trang Phục mặc lên người không?\n- Chọn "Xác Nhận" nếu là Trang Phục / Quần Áo\n- Chọn "Hủy Bỏ" nếu là Vật Phẩm Túi Đồ / Đạo Cụ`, "Loại Vật Phẩm");
       const resp = await fetch("/api/admin/user/give_item", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
@@ -2016,7 +2018,7 @@
     }
 
     async function quickBan(uid) {
-      const reason = prompt(`Nhập lý do khóa tài khoản ${uid}:`, "Vi phạm điều lệ vương quốc Moly");
+      const reason = await MolyNotify.prompt(`Nhập lý do khóa tài khoản ${uid}:`, "Vi phạm điều lệ vương quốc Moly", "Khóa Tài Khoản Cư Dân");
       if (!reason) return;
       const resp = await fetch("/api/admin/user/ban", {
         method: "POST",
@@ -2029,7 +2031,7 @@
     }
 
     async function quickUnban(uid) {
-      if (!confirm(`Bạn có chắc chắn muốn mở khóa tài khoản ${uid}?`)) return;
+      if (!await MolyNotify.confirm(`Bạn có chắc chắn muốn mở khóa tài khoản ${uid}?`, "Mở Khóa Tài Khoản")) return;
       const resp = await fetch("/api/admin/user/unban", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
@@ -2248,7 +2250,7 @@
     }
 
     async function deleteGiftcode(code) {
-      if (!confirm(`Bạn có chắc chắn muốn xóa mã quà tặng [${code}]?`)) return;
+      if (!await MolyNotify.confirm(`Bạn có chắc chắn muốn xóa mã quà tặng [${code}]?`, "Xác Nhận Xóa Giftcode")) return;
       try {
         const resp = await fetch("/api/admin/giftcodes/delete", {
           method: "POST",
@@ -2824,7 +2826,7 @@
     }
 
     async function approveRechargeOrder(orderId) {
-      if (!confirm(`Bạn có chắc chắn muốn DUYỆT đơn nạp [${orderId}]? Hệ thống sẽ tự động cộng Đậu Vàng và điểm VIP tương ứng cho cư dân!`)) return;
+      if (!await MolyNotify.confirm(`Bạn có chắc chắn muốn DUYỆT đơn nạp [${orderId}]?\n\nHệ thống sẽ tự động cộng Đậu Vàng và điểm VIP tương ứng cho cư dân!`, "Duyệt Đơn Nạp Tiền")) return;
 
       try {
         const resp = await fetch("/api/admin/recharge/approve", {
@@ -3053,7 +3055,7 @@
     }
 
     async function promptResetAdmin2Password() {
-      const newPwd = prompt("Nhập mật khẩu mới cho tài khoản Phụ Tá Quản Trị 2 (admin2 / 10000002):", "MolyAdmin2@2026");
+      const newPwd = await MolyNotify.prompt("Nhập mật khẩu mới cho tài khoản Phụ Tá Quản Trị 2 (admin2 / 10000002):", "MolyAdmin2@2026", "Đổi Mật Khẩu Admin 2");
       if (!newPwd) return;
       if (newPwd.length < 6) {
         alert("Mật khẩu mới tối thiểu 6 ký tự!");
@@ -3188,10 +3190,10 @@
     }
 
     async function handleOpenResolveModal(reqId, ident, email, rememberedPwd) {
-      const newPwd = prompt(`Cấp lại mật khẩu cho cư dân "${ident}" (Email: ${email}):\n\nMật khẩu cũ họ nhớ gần đúng là: "${rememberedPwd}"\n\nNhập MẬT KHẨU MỚI cần cấp (để trống nếu chỉ đánh dấu đã giải quyết):`, "");
+      const newPwd = await MolyNotify.prompt(`Cấp lại mật khẩu cho cư dân "${ident}" (Email: ${email}):\n\nMật khẩu cũ họ nhớ gần đúng là: "${rememberedPwd}"\n\nNhập MẬT KHẨU MỚI cần cấp (để trống nếu chỉ đánh dấu đã giải quyết):`, "", "Cấp Lại Mật Khẩu");
       if (newPwd === null) return;
       
-      const adminNote = prompt(`Nội dung ghi chú phản hồi cho cư dân (sẽ gửi qua email nếu cấu hình Gmail SMTP):`, `Ban Quản Trị Moly đã đối chiếu thông tin và cấp lại mật khẩu mới cho bạn.`);
+      const adminNote = await MolyNotify.prompt(`Nội dung ghi chú phản hồi cho cư dân (sẽ gửi qua email nếu cấu hình Gmail SMTP):`, `Ban Quản Trị Moly đã đối chiếu thông tin và cấp lại mật khẩu mới cho bạn.`, "Ghi Chú Phản Hồi");
       if (adminNote === null) return;
 
       try {
@@ -3220,7 +3222,7 @@
     }
 
     async function handleMarkResolvedOnly(reqId) {
-      if (!confirm(`Bạn có chắc muốn đánh dấu yêu cầu #${reqId} là ĐÃ GIẢI QUYẾT?`)) return;
+      if (!await MolyNotify.confirm(`Bạn có chắc muốn đánh dấu yêu cầu #${reqId} là ĐÃ GIẢI QUYẾT?`, "Đánh Dấu Đã Giải Quyết")) return;
       try {
         const resp = await fetch("/api/admin/recovery_requests/resolve", {
           method: "POST",

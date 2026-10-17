@@ -453,8 +453,8 @@
       }
     }
 
-    function handleWebLogout() {
-      if (confirm("Bạn có chắc chắn muốn đăng xuất tài khoản? (Lần sau vào lại sẽ cần đăng nhập lại)")) {
+    async function handleWebLogout() {
+      if (await MolyNotify.confirm("Bạn có chắc chắn muốn đăng xuất tài khoản? (Lần sau vào lại sẽ cần đăng nhập lại)", "Đăng Xuất Tài Khoản")) {
         localStorage.removeItem("moly_current_user");
         localStorage.removeItem("moly_auto_sso");
         sessionStorage.removeItem("moly_game_authorized_token");
@@ -534,11 +534,11 @@
       const confirmPwd = document.getElementById("prof-confirm-pwd").value;
 
       if (newPwd && newPwd.length < 6) {
-        alert("Mật khẩu mới tối thiểu 6 ký tự!");
+        MolyNotify.alert("Mật khẩu mới tối thiểu 6 ký tự!", "Lỗi Bảo Mật", "warning");
         return;
       }
       if (newPwd && newPwd !== confirmPwd) {
-        alert("Mật khẩu xác nhận không trùng khớp!");
+        MolyNotify.alert("Mật khẩu xác nhận không trùng khớp!", "Lỗi Bảo Mật", "warning");
         return;
       }
 
@@ -556,18 +556,14 @@
         if (res.ok) {
           u.email = email;
           localStorage.setItem("moly_current_user", JSON.stringify(u));
-          if (window.MolyNotify) {
-            MolyNotify.toast("Cập nhật thông tin bảo mật thành công!", "success");
-          } else {
-            alert("Cập nhật thông tin bảo mật thành công!");
-          }
+          MolyNotify.toast("Cập nhật thông tin bảo mật thành công!", "success");
           document.getElementById("prof-new-pwd").value = "";
           document.getElementById("prof-confirm-pwd").value = "";
         } else {
-          alert(res.message || "Không thể cập nhật!");
+          MolyNotify.alert(res.message || "Không thể cập nhật thông tin bảo mật!", "Lỗi Cập Nhật", "error");
         }
       } catch (err) {
-        alert("Lỗi kết nối máy chủ: " + err.message);
+        MolyNotify.alert("Lỗi kết nối máy chủ: " + err.message, "Lỗi Kết Nối", "error");
       }
     }
 
