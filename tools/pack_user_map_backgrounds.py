@@ -42,7 +42,7 @@ MAP_REPLACES = [
         MIRROR_MAP / "Map_10003.swf",
         [OVERRIDES_MAP / "Map_10003.swf", OVERRIDES_MAP / "3.swf"],
         "4",
-        PROJECT_ROOT / "work" / "map_buildings" / "map3_bg_vi.jpg"
+        PROJECT_ROOT / "work" / "exported" / "Map3" / "4.jpg"
     ),
     (
         "Map 4 (Chân Núi Molylaya / Bãi Trượt Tuyết)",
