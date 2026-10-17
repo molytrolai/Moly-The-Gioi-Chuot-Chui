@@ -120,8 +120,16 @@ def create_package() -> None:
         except Exception:
             pass
 
+    # Also mirror to standard ASCII filename for web compatibility
+    ascii_zip = OUTPUT_DIR / "Moly-The-Gioi-Chuot-Chui.zip"
+    try:
+        import shutil
+        shutil.copy2(OUTPUT_ZIP, ascii_zip)
+    except Exception as e:
+        print(f"[WARN] Failed to copy ASCII zip: {e}")
+
     size_mb = OUTPUT_ZIP.stat().st_size / (1024 * 1024)
-    print(f"[OK] Successfully packaged {total_files} files into '{OUTPUT_ZIP.name}' ({size_mb:.2f} MB)")
+    print(f"[OK] Successfully packaged {total_files} files into '{OUTPUT_ZIP.name}' and '{ascii_zip.name}' ({size_mb:.2f} MB)")
 
 
 if __name__ == "__main__":

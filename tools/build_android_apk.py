@@ -120,11 +120,13 @@ def setup_project_structure() -> None:
     main_activity = """package com.molyviet.thegioichuotchui;
 
 import android.app.Activity;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -149,6 +151,8 @@ public class MainActivity extends Activity {
         webView = new WebView(this);
         setContentView(webView);
 
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
@@ -160,6 +164,10 @@ public class MainActivity extends Activity {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        settings.setSupportZoom(false);
+        settings.setBuiltInZoomControls(false);
+        settings.setDisplayZoomControls(false);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
@@ -168,7 +176,7 @@ public class MainActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                if (failingUrl != null && failingUrl.startsWith("http")) {
+                if (failingUrl != null && (failingUrl.equals(ONLINE_URL) || failingUrl.startsWith("https://molyvn.onrender.com/play"))) {
                     view.loadUrl(OFFLINE_URL);
                 }
             }
@@ -178,6 +186,11 @@ public class MainActivity extends Activity {
                 if (request != null && request.isForMainFrame()) {
                     view.loadUrl(OFFLINE_URL);
                 }
+            }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
             }
         });
         webView.setWebChromeClient(new WebChromeClient());
@@ -217,7 +230,7 @@ public class MainActivity extends Activity {
 }
 """
     (java_dir / "MainActivity.java").write_text(main_activity, encoding="utf-8")
-    print("  -> Created MainActivity.java with Immersive Mode and WebAssembly WebView.")
+    print("  -> Created MainActivity.java with Immersive Mode, Hardware Acceleration, and SSL Resilience.")
 
 
 def setup_mobile_assets() -> None:
@@ -238,12 +251,12 @@ def setup_mobile_assets() -> None:
     shutil.copy(PROJECT_ROOT / "web" / "assets" / "logo-square.png", logo_dst / "logo-square.png")
     shutil.copy(PROJECT_ROOT / "web" / "assets" / "logo-horizontal.png", logo_dst / "logo-horizontal.png")
 
-    # Offline retry page
+    # Smart auto-connecting offline page
     offline_html = """<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Moly VN - Kết Nối Máy Chủ</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -257,34 +270,110 @@ def setup_mobile_assets() -> None:
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: #f8fafc;
       text-align: center;
-      padding: 24px;
+      padding: 20px;
+      overflow: hidden;
     }
     .logo {
-      width: 80px; height: 80px;
-      border-radius: 18px;
+      width: 72px; height: 72px;
+      border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+      animation: pulse 2s infinite ease-in-out;
     }
-    h2 { font-size: 20px; font-weight: 800; color: #ff7e1b; margin-bottom: 8px; }
-    p { font-size: 14px; color: #94a3b8; max-width: 420px; line-height: 1.5; margin-bottom: 24px; }
-    .btn-retry {
-      background: linear-gradient(135deg, #ff7e1b, #ea580c);
-      color: #ffffff;
-      border: none;
-      padding: 12px 32px;
-      font-size: 15px;
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    h2 { font-size: 18px; font-weight: 800; color: #ff7e1b; margin-bottom: 6px; }
+    p { font-size: 13px; color: #94a3b8; max-width: 460px; line-height: 1.4; margin-bottom: 16px; }
+    .status-box {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 10px 18px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12.5px;
+      color: #cbd5e1;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-top-color: #ff7e1b;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn {
+      padding: 10px 24px;
+      font-size: 14px;
       font-weight: 700;
       border-radius: 9999px;
       cursor: pointer;
-      box-shadow: 0 6px 16px rgba(234, 88, 12, 0.4);
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #ff7e1b, #ea580c);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
   </style>
 </head>
 <body>
   <img src="assets/logo-square.png" alt="Moly" class="logo">
   <h2>VƯƠNG QUỐC CHUỘT CHŨI (MOLY VN)</h2>
-  <p>Không thể kết nối đến máy chủ trực tuyến. Vui lòng kiểm tra lại kết nối WiFi hoặc dữ liệu 4G/5G trên điện thoại và nhấn Thử Lại nhé!</p>
-  <button class="btn-retry" onclick="window.location.href='https://molyvn.onrender.com/play.html'">🔄 THỬ LẠI KẾT NỐI</button>
+  <p id="msg-desc">Máy chủ trực tuyến đang trong quá trình thức giấc hoặc kết nối mạng cần tải lại. Hệ thống đang tự động kiểm tra kết nối...</p>
+  
+  <div class="status-box">
+    <div class="spinner" id="spinner"></div>
+    <span id="status-text">Đang tự động kiểm tra máy chủ...</span>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn btn-primary" onclick="checkServerAndConnect()">🔄 Thử Lại Ngay</button>
+    <button class="btn btn-secondary" onclick="window.location.href='mobile.html'">🎮 Chơi Bản Tạm</button>
+  </div>
+
+  <script>
+    const SERVER_URL = "https://molyvn.onrender.com/play.html";
+    const HEALTH_URL = "https://molyvn.onrender.com/health";
+    let attempts = 0;
+
+    async function checkServerAndConnect() {
+      const statusText = document.getElementById("status-text");
+      statusText.innerText = "Đang kiểm tra tín hiệu máy chủ...";
+      attempts++;
+      try {
+        const resp = await fetch(HEALTH_URL, { cache: "no-store", mode: "cors" });
+        if (resp.ok) {
+          statusText.innerText = "Kết nối thành công! Đang vào vương quốc...";
+          setTimeout(() => { window.location.href = SERVER_URL; }, 500);
+          return;
+        }
+      } catch (e) {
+        // Still waking up
+      }
+      statusText.innerText = `Máy chủ đang thức dậy (${attempts}). Sẽ thử lại sau 3 giây...`;
+    }
+
+    setInterval(checkServerAndConnect, 3500);
+    setTimeout(checkServerAndConnect, 1000);
+  </script>
 </body>
 </html>
 """
@@ -523,8 +612,9 @@ def compile_and_build_apk() -> None:
     ]
     subprocess.check_call(cmd_sign, shell=True)
 
-    # Copy signed apk to final Unicode destination using Python
+    # Copy signed apk to final Unicode and ASCII destinations
     shutil.copy2(signed_apk, APK_OUTPUT)
+    shutil.copy2(signed_apk, OUTPUT_DIR / "Moly-The-Gioi-Chuot-Chui.apk")
 
     size_mb = APK_OUTPUT.stat().st_size / (1024 * 1024)
     print(f"\n[OK] Successfully built and signed: '{APK_OUTPUT.name}' ({size_mb:.2f} MB)")

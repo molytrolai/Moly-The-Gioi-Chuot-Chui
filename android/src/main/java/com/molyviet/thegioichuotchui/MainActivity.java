@@ -1,11 +1,13 @@
 package com.molyviet.thegioichuotchui;
 
 import android.app.Activity;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -30,6 +32,8 @@ public class MainActivity extends Activity {
         webView = new WebView(this);
         setContentView(webView);
 
+        webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
@@ -41,6 +45,10 @@ public class MainActivity extends Activity {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        settings.setSupportZoom(false);
+        settings.setBuiltInZoomControls(false);
+        settings.setDisplayZoomControls(false);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
@@ -49,7 +57,7 @@ public class MainActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                if (failingUrl != null && failingUrl.startsWith("http")) {
+                if (failingUrl != null && (failingUrl.equals(ONLINE_URL) || failingUrl.startsWith("https://molyvn.onrender.com/play"))) {
                     view.loadUrl(OFFLINE_URL);
                 }
             }
@@ -59,6 +67,11 @@ public class MainActivity extends Activity {
                 if (request != null && request.isForMainFrame()) {
                     view.loadUrl(OFFLINE_URL);
                 }
+            }
+
+            @Override
+            public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+                handler.proceed();
             }
         });
         webView.setWebChromeClient(new WebChromeClient());
