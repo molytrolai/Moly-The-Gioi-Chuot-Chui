@@ -1391,10 +1391,15 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 online_ccu = moly_mod.world_hub.get_online_count()
             except Exception:
                 online_ccu = 0
+            pending_orders = len(recharges.list_orders(status_filter="pending"))
+            all_approved = recharges.list_orders(status_filter="approved")
+            total_recharged_beans = sum(int(o.get("points", 0)) for o in all_approved)
             stats = {
                 "total_accounts": len(accounts.list_accounts()),
                 "online_ccu": online_ccu,
                 "uptime_seconds": int(time.time() - PROXY_START_TIME),
+                "pending_orders": pending_orders,
+                "total_recharged_beans": total_recharged_beans,
                 "server_status": "Hoạt động ổn định (Tri-Play Ready)",
             }
             self._send_json(stats)

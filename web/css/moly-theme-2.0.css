@@ -1,126 +1,419 @@
 /**
- * Moly Vietnam 2.0 - Mole Kingdom Glassmorphic Theme System
+ * Moly Vietnam 2.0 - Complete Luxury Liquid Frosted Glassmorphism Design System
+ * Universal Glossy Glass Panels, Ambient Underlay Mesh, and Responsive Mobile Dock Navigation
  */
+
 :root {
+  /* Brand Accents */
   --moly-gold: #f6a828;
   --moly-gold-light: #fde047;
   --moly-gold-dark: #d97706;
   --moly-gold-glow: rgba(246, 168, 40, 0.45);
   
+  --moly-cyan: #06b6d4;
+  --moly-cyan-light: #38bdf8;
+  --moly-cyan-glow: rgba(6, 182, 212, 0.45);
+
+  --moly-purple: #8b5cf6;
+  --moly-purple-light: #c084fc;
+  --moly-purple-glow: rgba(139, 92, 246, 0.45);
+
   --moly-green: #10b981;
   --moly-green-glow: rgba(16, 185, 129, 0.4);
   
   --moly-zalopay: #0068ff;
   --moly-zalopay-light: #38bdf8;
   --moly-zalopay-glow: rgba(0, 104, 255, 0.45);
+
+  /* Liquid Glass Core Variables */
+  --moly-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(15, 23, 42, 0.72);
+  --moly-glass-bg-card: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.02) 100%), rgba(18, 28, 38, 0.75);
+  --moly-glass-bg-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(24, 36, 48, 0.85);
   
-  --moly-glass-bg: rgba(15, 23, 19, 0.78);
-  --moly-glass-card: rgba(22, 34, 28, 0.72);
-  --moly-glass-card-hover: rgba(28, 44, 36, 0.85);
-  --moly-glass-border: rgba(246, 168, 40, 0.25);
-  --moly-glass-border-strong: rgba(246, 168, 40, 0.55);
+  --moly-glass-border: rgba(255, 255, 255, 0.18);
+  --moly-glass-border-strong: rgba(255, 255, 255, 0.32);
+  --moly-glass-rim-top: rgba(255, 255, 255, 0.55);
   
-  --moly-text-main: #f8fafc;
-  --moly-text-muted: #94a3b8;
-  --moly-text-gold: #fde047;
+  --moly-glass-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+  --moly-glass-shadow-hover: 0 20px 48px 0 rgba(0, 0, 0, 0.6), 0 0 24px rgba(246, 168, 40, 0.28), inset 0 1px 2px 0 rgba(255, 255, 255, 0.55);
+
+  --moly-blur: 24px;
+  --moly-saturate: 190%;
 }
 
-/* Sound Button Styling */
+/* ==========================================================================
+   1. LUMINOUS AMBIENT MESH BACKGROUND (NỀN MÀU MỜ PHÍA DƯỚI)
+   ========================================================================== */
+body {
+  background-color: #0b0f19 !important;
+  background-image: 
+    radial-gradient(circle at 12% 18%, rgba(6, 182, 212, 0.22) 0px, transparent 45%),
+    radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.26) 0px, transparent 48%),
+    radial-gradient(circle at 50% 55%, rgba(245, 158, 11, 0.18) 0px, transparent 55%),
+    radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.22) 0px, transparent 45%),
+    radial-gradient(circle at 18% 82%, rgba(99, 102, 241, 0.24) 0px, transparent 50%) !important;
+  background-attachment: fixed !important;
+  background-size: 100% 100% !important;
+  color: #f8fafc !important;
+}
+
+/* ==========================================================================
+   2. UNIVERSAL LIQUID FROSTED GLASS PANELS & CARDS (HIỆU ỨNG KÍNH BÓNG)
+   ========================================================================== */
+.card,
+.glass-card,
+.stat-card,
+.news-card,
+.news-item,
+.feature-card,
+.ranking-card,
+.benefits-box,
+.benefit-item,
+.quick-actions-bar,
+.login-box,
+.modal,
+.modal-card,
+.account-modal,
+.moly-safe-modal,
+.moly-qr-box,
+.table-container {
+  background: var(--moly-glass-bg-card) !important;
+  backdrop-filter: blur(var(--moly-blur)) saturate(var(--moly-saturate)) !important;
+  -webkit-backdrop-filter: blur(var(--moly-blur)) saturate(var(--moly-saturate)) !important;
+  border: 1px solid var(--moly-glass-border) !important;
+  border-top: 1px solid var(--moly-glass-rim-top) !important;
+  box-shadow: var(--moly-glass-shadow) !important;
+  border-radius: 18px !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease !important;
+}
+
+.card:hover,
+.stat-card:hover,
+.news-card:hover,
+.feature-card:hover,
+.ranking-card:hover {
+  background: var(--moly-glass-bg-hover) !important;
+  border-color: rgba(246, 168, 40, 0.5) !important;
+  border-top-color: rgba(255, 255, 255, 0.75) !important;
+  box-shadow: var(--moly-glass-shadow-hover) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Glass Dividers */
+hr, .card-header, .dropdown-divider {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ==========================================================================
+   3. GLOSSY GLASS BUTTONS & INTERACTIVE PILLS (NÚT BẤM BÓNG KÍNH)
+   ========================================================================== */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-success,
+.btn-warning,
+.btn-danger,
+.btn-ctrl,
+.nav-link-btn,
+.nav-dropdown-btn,
+.nav-btn-play,
+.hero-btn-primary,
+.hero-btn-secondary,
+.moly-dock-btn,
+.tab-btn {
+  position: relative;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.45), inset 0 -1px 1px rgba(0, 0, 0, 0.2) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  user-select: none;
+}
+
+/* Specific button color treatments with glossy glass overlay */
+.btn-primary, .nav-btn-play, .hero-btn-primary, .moly-dock-btn-primary {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #f59e0b 0%, #ea580c 100%) !important;
+  color: #ffffff !important;
+}
+.btn-primary:hover, .nav-btn-play:hover, .hero-btn-primary:hover, .moly-dock-btn-primary:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 25px rgba(234, 88, 12, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.btn-secondary, .nav-link-btn, .nav-dropdown-btn, .hero-btn-secondary, .moly-dock-btn-secondary {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 50%, rgba(0, 0, 0, 0.15) 100%), rgba(22, 34, 46, 0.65) !important;
+  color: #f1f5f9 !important;
+}
+.btn-secondary:hover, .nav-link-btn:hover, .nav-dropdown-btn:hover, .hero-btn-secondary:hover, .moly-dock-btn-secondary:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.06) 50%, rgba(0, 0, 0, 0.15) 100%), rgba(30, 48, 64, 0.8) !important;
+  color: #fde047 !important;
+  border-color: var(--moly-gold) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(246, 168, 40, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+}
+
+.btn-success {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
+  color: #ffffff !important;
+}
+.btn-success:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+}
+
+.btn-warning {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #f59e0b 0%, #b45309 100%) !important;
+  color: #ffffff !important;
+}
+.btn-warning:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+}
+
+.btn-danger {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
+  color: #ffffff !important;
+}
+.btn-danger:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+}
+
+.moly-dock-btn-zalopay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.12) 100%), linear-gradient(135deg, #0284c7 0%, #0068ff 100%) !important;
+  color: #ffffff !important;
+}
+.moly-dock-btn-zalopay:hover {
+  transform: translateY(-2px) scale(1.03) !important;
+  box-shadow: 0 8px 24px rgba(0, 104, 255, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ==========================================================================
+   4. GLOSSY GLASS NAVBAR & DROPDOWNS (MENU KÍNH TRONG SUỐT)
+   ========================================================================== */
+.navbar, header {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.72) 100%) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.25) !important;
+}
+
+.dropdown-menu {
+  background: linear-gradient(135deg, rgba(20, 32, 44, 0.94) 0%, rgba(15, 23, 42, 0.96) 100%) !important;
+  backdrop-filter: blur(30px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(200%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.7), 0 0 24px rgba(246, 168, 40, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+}
+
+.dropdown-item {
+  color: #e2e8f0 !important;
+  transition: all 0.2s ease !important;
+}
+.dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #fde047 !important;
+  padding-left: 18px !important;
+}
+
+.user-pill {
+  background: rgba(15, 23, 42, 0.75) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ==========================================================================
+   5. GLOSSY GLASS FORM INPUTS & TABLES
+   ========================================================================== */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+select,
+textarea,
+.search-input {
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.32) !important;
+  border-radius: 10px !important;
+  color: #f8fafc !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+  transition: all 0.2s ease !important;
+}
+input:focus, select:focus, textarea:focus, .search-input:focus {
+  border-color: #38bdf8 !important;
+  border-top-color: #7dd3fc !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  outline: none !important;
+}
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+}
+th {
+  background: rgba(15, 23, 42, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
+td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+tr:hover td {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Sound Button */
 .moly-sound-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(246, 168, 40, 0.3);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(246, 168, 40, 0.35);
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
   color: #fef08a;
   padding: 6px 14px;
   border-radius: 9999px;
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
   transition: all 0.2s ease;
   user-select: none;
 }
 .moly-sound-btn:hover {
-  background: rgba(246, 168, 40, 0.2);
+  background: rgba(246, 168, 40, 0.25);
   border-color: var(--moly-gold);
   transform: translateY(-1px);
-  box-shadow: 0 0 12px var(--moly-gold-glow);
-}
-.moly-sound-btn.sound-off {
-  color: #94a3b8;
-  border-color: rgba(148, 163, 184, 0.2);
-  background: rgba(15, 23, 42, 0.4);
+  box-shadow: 0 0 16px var(--moly-gold-glow), inset 0 1px 2px rgba(255, 255, 255, 0.6);
 }
 
-/* Floating Quick Play Launcher Dock */
+/* ==========================================================================
+   6. RESPONSIVE DESKTOP VS MOBILE NAVIGATION (KHÁC BIỆT MÁY TÍNH & ĐIỆN THOẠI)
+   ========================================================================== */
+
+/* Launcher Dock Base */
 .moly-launcher-dock {
   position: fixed;
-  bottom: 22px;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 10000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 14px;
-  background: rgba(15, 23, 19, 0.88);
-  border: 1px solid var(--moly-glass-border-strong);
-  border-radius: 9999px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px var(--moly-gold-glow);
+  background: linear-gradient(180deg, rgba(20, 30, 42, 0.90) 0%, rgba(15, 23, 35, 0.95) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 30px var(--moly-gold-glow), inset 0 1px 1px rgba(255, 255, 255, 0.4);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.moly-launcher-dock:hover {
-  border-color: var(--moly-gold);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.7), 0 0 32px var(--moly-gold-glow);
-}
-.moly-dock-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 16px;
-  border-radius: 9999px;
-  font-size: 13px;
-  font-weight: 700;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  border: none;
-}
-.moly-dock-btn-primary {
-  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
-  color: #ffffff !important;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.4);
-}
-.moly-dock-btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.6);
-}
-.moly-dock-btn-secondary {
-  background: rgba(255, 255, 255, 0.08);
-  color: #e2e8f0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-}
-.moly-dock-btn-secondary:hover {
-  background: rgba(246, 168, 40, 0.18);
-  border-color: var(--moly-gold);
-  color: #fef08a !important;
-  transform: translateY(-2px);
-}
-.moly-dock-btn-zalopay {
-  background: linear-gradient(135deg, #0284c7 0%, #0068ff 100%);
-  color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(0, 104, 255, 0.35);
-}
-.moly-dock-btn-zalopay:hover {
-  transform: scale(1.04);
-  box-shadow: 0 6px 18px rgba(0, 104, 255, 0.55);
+
+/* --- DESKTOP VIEW (> 768px): CÓ CẢ MENU TRÊN VÀ THANH DOCK NHỎ PHÍA DƯỚI --- */
+@media (min-width: 769px) {
+  .nav-menu {
+    display: flex !important;
+  }
+  .moly-launcher-dock {
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 9999px;
+  }
+  .moly-launcher-dock:hover {
+    border-color: var(--moly-gold);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.75), 0 0 40px var(--moly-gold-glow);
+  }
+  .dock-mobile-only {
+    display: none !important;
+  }
+  .dock-desktop-only {
+    display: inline-flex !important;
+  }
 }
 
-/* Denomination Selector Chips */
+/* --- MOBILE VIEW (<= 768px): ẨN MENU TRÊN, CHỈ DÙNG MENU THANH DOCK 5 TAB BÓNG KÍNH TIỆN LỢI --- */
+@media (max-width: 768px) {
+  /* Ẩn thanh menu trên máy tính để tránh chật màn hình */
+  .nav-menu {
+    display: none !important;
+  }
+  .navbar, header {
+    padding: 10px 16px !important;
+  }
+  .nav-actions .nav-btn-play {
+    display: none !important; /* Đã có nút Chơi Ngay siêu to ở dock dưới */
+  }
+
+  /* Ẩn các nút desktop và hiển thị thanh dock 5 tab chuẩn App Mobile */
+  .dock-desktop-only {
+    display: none !important;
+  }
+  .dock-mobile-only {
+    display: flex !important;
+  }
+
+  .moly-launcher-dock {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    border-radius: 22px 22px 0 0 !important;
+    padding: 8px 6px calc(10px + env(safe-area-inset-bottom, 12px)) 6px !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+    gap: 4px !important;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.7), 0 0 20px var(--moly-gold-glow) !important;
+  }
+
+  .moly-dock-btn {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 6px 4px !important;
+    border-radius: 12px !important;
+    text-align: center !important;
+    min-height: 48px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    gap: 3px !important;
+  }
+  .moly-dock-icon {
+    font-size: 19px !important;
+    line-height: 1 !important;
+  }
+  .moly-dock-label {
+    font-size: 10.5px !important;
+    letter-spacing: -0.2px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* Modals & Safe Actions */
+.modal-overlay, #login-overlay, .moly-safe-modal-backdrop {
+  background: rgba(8, 12, 22, 0.82) !important;
+  backdrop-filter: blur(18px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
+}
+
+/* Denomination Chips & Payment Channel Tabs */
 .moly-amount-chips {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
@@ -130,21 +423,24 @@
 .moly-amount-chip {
   padding: 10px 8px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
+  backdrop-filter: blur(10px);
 }
 .moly-amount-chip:hover {
-  background: rgba(246, 168, 40, 0.12);
+  background: rgba(246, 168, 40, 0.15);
   border-color: var(--moly-gold);
 }
 .moly-amount-chip.active {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(234, 88, 12, 0.25));
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(234, 88, 12, 0.3));
   border-color: var(--moly-gold);
-  box-shadow: 0 0 14px var(--moly-gold-glow);
+  border-top-color: #fde047;
+  box-shadow: 0 0 16px var(--moly-gold-glow), inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 .moly-amount-chip .chip-val {
   font-size: 14px;
@@ -162,131 +458,4 @@
 .moly-amount-chip.active .chip-beans {
   color: #fbbf24;
   font-weight: 600;
-}
-
-/* Payment Channel Tabs */
-.moly-pay-tabs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 4px;
-  border-radius: 12px;
-}
-.moly-pay-tab {
-  flex: 1;
-  padding: 9px 12px;
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  color: #94a3b8;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.2s ease;
-}
-.moly-pay-tab:hover {
-  color: #f1f5f9;
-}
-.moly-pay-tab.active {
-  background: rgba(255, 255, 255, 0.12);
-  color: #fef08a;
-  border-color: var(--moly-glass-border);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-.moly-pay-tab.active.tab-zalopay {
-  background: rgba(0, 104, 255, 0.22);
-  color: #60a5fa;
-  border-color: rgba(0, 104, 255, 0.45);
-  box-shadow: 0 0 12px var(--moly-zalopay-glow);
-}
-
-/* QR Presentation Box */
-.moly-qr-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(10, 17, 13, 0.85);
-  border: 1px solid var(--moly-glass-border);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-}
-.moly-qr-img {
-  width: 220px;
-  height: 220px;
-  object-fit: contain;
-  border-radius: 12px;
-  background: #ffffff;
-  padding: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
-}
-.moly-qr-copy-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 380px;
-  margin-top: 10px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  font-size: 13px;
-}
-.moly-copy-btn {
-  background: rgba(246, 168, 40, 0.18);
-  border: 1px solid var(--moly-gold);
-  color: #fef08a;
-  padding: 3px 9px;
-  border-radius: 6px;
-  font-size: 11px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.moly-copy-btn:hover {
-  background: var(--moly-gold);
-  color: #000;
-}
-
-/* Safe Action Confirmation Modal */
-.moly-safe-modal-backdrop {
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(8px);
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.moly-safe-modal {
-  background: #181f1b;
-  border: 2px solid #ef4444;
-  border-radius: 18px;
-  padding: 26px;
-  max-width: 460px;
-  width: 90%;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(239, 68, 68, 0.4);
-}
-
-/* Mobile Responsiveness for Dock */
-@media (max-width: 768px) {
-  .moly-launcher-dock {
-    bottom: 0;
-    left: 0;
-    transform: none;
-    width: 100%;
-    border-radius: 20px 20px 0 0;
-    justify-content: space-around;
-    padding: 10px 8px 18px;
-    gap: 4px;
-  }
-  .moly-dock-btn {
-    padding: 7px 11px;
-    font-size: 11px;
-    flex-direction: column;
-    gap: 3px;
-  }
 }

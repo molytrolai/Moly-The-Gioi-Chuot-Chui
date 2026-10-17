@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bảng Điều Khiển Quản Trị - Moly - Thế Giới Chuột Chũi VN</title>
   <link rel="icon" type="image/png" href="/assets/logo_square.png">
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
   <script src="/js/moly-audio.js"></script>
   <style>
     :root {
@@ -150,6 +149,7 @@
     .modal-close { background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
     .modal-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
   </style>
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
 </head>
 <body>
 
@@ -311,6 +311,11 @@
         <span class="stat-title">Thời Gian Hoạt Động (Uptime)</span>
         <div class="stat-value" id="stat-uptime" style="color: #fbbf24;">--</div>
         <span class="stat-desc">Cụm máy chủ World & Proxy</span>
+      </div>
+      <div class="stat-card" onclick="switchAdminTab('tab-recharge')" style="cursor: pointer;" title="Bấm để chuyển nhanh đến duyệt đơn nạp">
+        <span class="stat-title">Đơn Nạp Chờ Duyệt</span>
+        <div class="stat-value" id="stat-pending-orders" style="color: #f59e0b;">0</div>
+        <span class="stat-desc" id="stat-pending-desc" style="color: #fbbf24;">⚡ Chờ Admin duyệt</span>
       </div>
       <div class="stat-card">
         <span class="stat-title">Trạng Thái Cụm Máy Chủ</span>
@@ -1480,6 +1485,16 @@
         const h = Math.floor(uptime / 3600);
         const m = Math.floor((uptime % 3600) / 60);
         document.getElementById("stat-uptime").textContent = `${h}h ${m}m`;
+        const pendingEl = document.getElementById("stat-pending-orders");
+        if (pendingEl) pendingEl.textContent = (data.pending_orders || 0).toLocaleString();
+        const pendingDesc = document.getElementById("stat-pending-desc");
+        if (pendingDesc) {
+          if (data.pending_orders > 0) {
+            pendingDesc.innerHTML = `<span style="color: #ef4444; font-weight: bold;">⚠️ Có ${data.pending_orders} đơn cần duyệt</span>`;
+          } else {
+            pendingDesc.innerHTML = `<span style="color: #34d399;">✓ Không có đơn tồn đọng</span>`;
+          }
+        }
       } catch (e) {
         console.error("Stats error", e);
       }
@@ -1569,13 +1584,16 @@
         });
         const res = await resp.json();
         if (resp.ok && res.ok) {
+          if (window.MolyAudio) window.MolyAudio.play("chime");
           alert(`✅ ${res.message || "Đã xóa tài khoản thành công!"}`);
           loadUsers();
           loadStats();
         } else {
+          if (window.MolyAudio) window.MolyAudio.play("warn");
           alert(`❌ Không thể xóa tài khoản: ${res.error || res.message || "Lỗi không xác định"}`);
         }
       } catch (err) {
+        if (window.MolyAudio) window.MolyAudio.play("warn");
         alert(`❌ Lỗi kết nối: ${err.message}`);
       }
     }
