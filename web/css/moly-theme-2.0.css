@@ -690,7 +690,7 @@ tr:hover td {
 
   /* Dock Tabs */
   .moly-dock-tab-item {
-    position: relative;
+    position: static !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -783,17 +783,17 @@ tr:hover td {
     color: #ffffff !important;
   }
 
-  /* Mobile Popup Drawers */
+  /* Mobile Popup Drawers - Screen-Safe Centered Bottom Sheets */
   .moly-dock-popup {
-    position: absolute;
-    bottom: calc(100% + 14px);
-    left: 50%;
-    transform: translateX(-50%) translateY(12px) scale(0.94);
-    opacity: 0;
-    pointer-events: none;
-    min-width: 250px;
-    max-width: calc(100vw - 20px) !important;
-    max-height: calc(82dvh - 75px) !important;
+    position: absolute !important;
+    bottom: calc(100% + 12px) !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) translateY(12px) scale(0.95) !important;
+    width: calc(100% - 20px) !important;
+    max-width: 440px !important;
+    min-width: 0 !important;
+    max-height: calc(80vh - 80px) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
     background: linear-gradient(145deg, rgba(20, 30, 46, 0.96) 0%, rgba(12, 18, 30, 0.98) 100%) !important;
@@ -801,10 +801,12 @@ tr:hover td {
     -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
     border: 1px solid rgba(255, 255, 255, 0.28) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
-    border-radius: 18px !important;
+    border-radius: 20px !important;
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 25px rgba(246, 168, 40, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
     padding: 8px !important;
     z-index: 10010 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
     transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
@@ -812,31 +814,7 @@ tr:hover td {
   .moly-dock-popup.open {
     opacity: 1 !important;
     pointer-events: auto !important;
-  }
-
-  /* Keep popups from clipping screen edges */
-  .moly-dock-tab-item:nth-child(1) .moly-dock-popup,
-  .moly-dock-tab-item:nth-child(2) .moly-dock-popup {
-    left: 4px;
-    right: auto;
-    transform: translateX(0) translateY(12px) scale(0.94);
-  }
-  .moly-dock-tab-item:nth-child(1) .moly-dock-popup.open,
-  .moly-dock-tab-item:nth-child(2) .moly-dock-popup.open {
-    transform: translateX(0) translateY(0) scale(1) !important;
-  }
-
-  .moly-dock-tab-item:nth-child(4) .moly-dock-popup,
-  .moly-dock-tab-item:nth-child(5) .moly-dock-popup,
-  .moly-dock-tab-item:last-child .moly-dock-popup {
-    left: auto;
-    right: 4px;
-    transform: translateX(0) translateY(12px) scale(0.94);
-  }
-  .moly-dock-tab-item:nth-child(4) .moly-dock-popup.open,
-  .moly-dock-tab-item:nth-child(5) .moly-dock-popup.open,
-  .moly-dock-tab-item:last-child .moly-dock-popup.open {
-    transform: translateX(0) translateY(0) scale(1) !important;
+    transform: translateX(-50%) translateY(0) scale(1) !important;
   }
 
   .moly-popup-header {
@@ -1033,7 +1011,12 @@ tr:hover td {
 .moly-mobile-drawer,
 .moly-mobile-quick-grid,
 .moly-mobile-tabs,
-.dock-mobile-only {
+.dock-mobile-only,
+.moly-mobile-sound-fab {
+  display: none !important;
+}
+
+#moly-bgm-widget {
   display: none !important;
 }
 
@@ -1050,6 +1033,37 @@ tr:hover td {
 
   .dock-mobile-only {
     display: flex !important;
+  }
+
+  /* Mobile Floating Sound Toggle FAB (Right edge) */
+  .moly-mobile-sound-fab {
+    display: flex !important;
+    position: fixed !important;
+    right: 14px !important;
+    bottom: 82px !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 50% !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    border: 1.5px solid rgba(245, 158, 11, 0.5) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(245, 158, 11, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 9998 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease !important;
+  }
+  .moly-mobile-sound-fab:active {
+    transform: scale(0.9) !important;
+  }
+  .moly-mobile-sound-fab .moly-fab-sound-icon {
+    width: 22px !important;
+    height: 22px !important;
+    display: block !important;
+    pointer-events: none !important;
   }
 
   /* Mobile Topbar (Floating Minimal Pill with Brand & Online Counter) */

@@ -753,7 +753,7 @@
       body { padding-bottom: 70px !important; }
     }
   </style>
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.5">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.6">
 </head>
 <body>
 
@@ -764,7 +764,7 @@
     </a>
     <div class="moly-topbar-right">
       <span class="moly-topbar-online" id="topbar-live-online">● Online: 1,280+</span>
-      <button type="button" class="moly-topbar-btn" onclick="handleMobileUserBtnClick(event)" id="btn-topbar-user" aria-label="Tài Khoản Cư Dân" title="Tài Khoản">👤</button>
+      <button type="button" class="moly-topbar-btn" onclick="handleMobileUserBtnClick(event)" id="btn-topbar-user" aria-label="Tài Khoản Cư Dân" title="Tài Khoản"><img src="/assets/icons/glass-user.svg" style="width: 20px; height: 20px; display: block;" alt=""></button>
     </div>
   </div>
 
@@ -2165,8 +2165,8 @@
       </div>
     </div>
   </div>
-  <!-- Kingdom BGM Player Widget -->
-  <div id="moly-bgm-widget" style="position: fixed; bottom: 24px; right: 24px; z-index: 998; background: rgba(15, 23, 42, 0.95); border: 2px solid #f59e0b; border-radius: 50px; padding: 6px 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); backdrop-filter: blur(8px);">
+  <!-- Kingdom BGM Player Widget (Ẩn theo yêu cầu để tránh vướng víu) -->
+  <div id="moly-bgm-widget" style="display: none !important; position: fixed; bottom: 24px; right: 24px; z-index: 998; background: rgba(15, 23, 42, 0.95); border: 2px solid #f59e0b; border-radius: 50px; padding: 6px 16px; align-items: center; gap: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); backdrop-filter: blur(8px);">
     <button type="button" id="bgm-toggle-btn" onclick="toggleKingdomBgm()" style="width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #ff7e1b); border: none; color: #fff; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);" title="Bật/Tắt Nhạc Nền Vương Quốc">
       🎵
     </button>
@@ -2418,7 +2418,7 @@
         // Sync Mobile Dock Account Popup & Topbar for Guest
         dockLogins.forEach(el => el.style.display = "flex");
         dockLoggeds.forEach(el => el.style.display = "none");
-        if (topbarUserBtn) topbarUserBtn.innerHTML = `👤`;
+        if (topbarUserBtn) topbarUserBtn.innerHTML = `<img src="/assets/icons/glass-user.svg" style="width: 20px; height: 20px; display: block;" alt="">`;
       }
     }
 
@@ -4085,9 +4085,17 @@
       </a>
     </div>
 
-    <!-- Tab 4: Tài Khoản Popup -->
+    <!-- Tab 4: Nhập Giftcode Nhanh -->
     <div class="moly-dock-tab-item dock-mobile-only">
-      <button type="button" class="moly-dock-btn moly-dock-btn-secondary" id="dock-btn-account" onclick="toggleDockPopup('dock-popup-account', event)">
+      <button type="button" class="moly-dock-btn moly-dock-btn-secondary" id="dock-btn-giftcode" onclick="openGiftcodeModal(); closeAllDockPopups();" title="Nhập Mã Giftcode Đổi Quà Tân Thủ">
+        <span class="moly-dock-icon"><img src="/assets/icons/glass-gift.svg" class="moly-mobile-dock-icon" alt=""></span>
+        <span class="moly-dock-label">Giftcode</span>
+      </button>
+    </div>
+
+    <!-- Tab 5: Tài Khoản (Nằm Ở Mép Phải Chuẩn UX App Mobile) -->
+    <div class="moly-dock-tab-item dock-mobile-only">
+      <button type="button" class="moly-dock-btn moly-dock-btn-secondary" id="dock-btn-account" onclick="toggleDockPopup('dock-popup-account', event)" title="Quản Lý Tài Khoản Cư Dân">
         <span class="moly-dock-icon"><img src="/assets/icons/glass-user.svg" class="moly-mobile-dock-icon" alt=""></span>
         <span class="moly-dock-label">Tài Khoản</span>
       </button>
@@ -4140,14 +4148,11 @@
         </button>
       </div>
     </div>
-
-    <!-- Tab 5: Âm Thanh Toggle -->
-    <div class="moly-dock-tab-item dock-mobile-only">
-      <button type="button" class="moly-dock-btn moly-sound-btn" onclick="MolyAudio.toggle()" title="Bật/Tắt Âm Thanh">
-        <span class="moly-dock-icon sound-icon"><img src="/assets/icons/glass-sound.svg" class="moly-mobile-dock-icon" alt=""></span>
-        <span class="moly-dock-label">Âm thanh</span>
-      </button>
-    </div>
   </div>
+
+  <!-- Floating Sound Toggle FAB (Biến thành icon nổi ở mép phải màn hình cho mobile) -->
+  <button type="button" class="moly-mobile-sound-fab moly-sound-btn" onclick="MolyAudio.toggle()" title="Bật/Tắt Âm Thanh" aria-label="Bật/Tắt Âm Thanh">
+    <span class="sound-icon"><img src="/assets/icons/glass-sound.svg" class="moly-fab-sound-icon" alt=""></span>
+  </button>
 </body>
 </html>

@@ -130,7 +130,12 @@
         const iconSpan = btn.querySelector(".sound-icon");
         const textSpan = btn.querySelector(".sound-text, .moly-dock-label");
         if (iconSpan) {
-          iconSpan.textContent = isSoundEnabled ? "🔊" : "🔇";
+          const img = iconSpan.querySelector("img");
+          if (img) {
+            img.style.filter = isSoundEnabled ? "none" : "grayscale(1) opacity(0.4)";
+          } else {
+            iconSpan.textContent = isSoundEnabled ? "🔊" : "🔇";
+          }
         }
         if (textSpan) {
           if (textSpan.classList.contains("moly-dock-label")) {
