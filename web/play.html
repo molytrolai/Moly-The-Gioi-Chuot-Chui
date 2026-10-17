@@ -29,10 +29,11 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--dark-bg);
       color: #f1f5f9;
+      height: 100vh;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     /* Universal Brand Logo Protection */
@@ -52,56 +53,6 @@
       max-width: 200px !important;
       object-fit: contain !important;
       display: block !important;
-    }
-
-    /* Dual Floating Pill Navbar */
-    .navbar-container {
-      width: calc(100% - 32px) !important;
-      max-width: 1240px !important;
-      margin: 12px auto 8px auto !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      gap: 12px !important;
-      padding: 0 !important;
-      background: transparent !important;
-      border: none !important;
-      box-shadow: none !important;
-      height: 56px !important;
-      min-height: 56px !important;
-      box-sizing: border-box !important;
-      z-index: 1000 !important;
-    }
-
-    .navbar-main {
-      flex: 1 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-      height: 56px !important;
-      min-height: 56px !important;
-      padding: 6px 22px !important;
-      border-radius: 9999px !important;
-      box-sizing: border-box !important;
-    }
-
-    .navbar-main .nav-menu {
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      margin-left: auto !important;
-    }
-
-    .navbar-aux {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      height: 56px !important;
-      min-height: 56px !important;
-      padding: 6px 16px !important;
-      border-radius: 9999px !important;
-      box-sizing: border-box !important;
-      flex-shrink: 0 !important;
     }
 
     /* Controls & Buttons (Capsule Pills) */
@@ -149,58 +100,442 @@
       color: #fff !important;
     }
 
-    /* SSO Bar (Luxury Liquid Frosted Glass Pill) */
-    .sso-bar {
-      width: 100% !important;
-      max-width: 1140px !important;
-      background: linear-gradient(180deg, rgba(20, 30, 48, 0.85) 0%, rgba(15, 23, 42, 0.92) 100%) !important;
+    /* Floating Brand Logo Pill (Top-Left) */
+    .moly-brand-float {
+      position: fixed;
+      top: 14px;
+      left: 18px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 9999px;
+      text-decoration: none;
+      opacity: 0.6;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .moly-brand-float img {
+      height: 24px;
+      width: auto;
+      display: block;
+    }
+    .moly-brand-float:hover {
+      opacity: 1;
+      background: rgba(15, 23, 42, 0.95);
+      border-color: rgba(246, 168, 40, 0.5);
+      box-shadow: 0 0 20px rgba(246, 168, 40, 0.35);
+      transform: translateY(-1px);
+    }
+    .moly-brand-float.dimmed {
+      opacity: 0.2;
+    }
+    .moly-brand-float.dimmed:hover {
+      opacity: 1;
+    }
+
+    /* Smart Right-Edge Floating Dock */
+    .moly-game-smart-nav {
+      position: fixed !important;
+      right: 14px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      z-index: 9999 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, filter 0.35s ease !important;
+      user-select: none !important;
+    }
+
+    .moly-smart-dock-pill {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 10px 8px !important;
+      background: linear-gradient(180deg, rgba(20, 30, 48, 0.88) 0%, rgba(15, 23, 42, 0.94) 100%) !important;
       backdrop-filter: blur(24px) saturate(180%) !important;
       -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.18) !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.50) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
       border-radius: 9999px !important;
-      padding: 7px 18px !important;
-      margin: 0 auto 10px auto !important;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(246, 168, 40, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .moly-game-smart-nav.dimmed {
+      opacity: 0.28 !important;
+      transform: translateY(-50%) translateX(24px) !important;
+      filter: grayscale(40%) !important;
+    }
+
+    .moly-game-smart-nav.dimmed:hover,
+    .moly-game-smart-nav:hover {
+      opacity: 1 !important;
+      transform: translateY(-50%) translateX(0) !important;
+      filter: none !important;
+      box-shadow: 0 0 30px rgba(246, 168, 40, 0.5) !important;
+    }
+
+    .moly-smart-btn {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(255, 255, 255, 0.22) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
+      color: #f1f5f9 !important;
       display: flex !important;
       align-items: center !important;
-      justify-content: space-between !important;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.3) !important;
-      box-sizing: border-box !important;
+      justify-content: center !important;
+      font-size: 19px !important;
+      cursor: pointer !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      position: relative !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
     }
-    .sso-content {
-      width: 100%;
+
+    .moly-smart-btn:hover {
+      background: linear-gradient(135deg, rgba(246, 168, 40, 0.35) 0%, rgba(234, 88, 12, 0.35) 100%) !important;
+      border-color: rgba(254, 240, 138, 0.8) !important;
+      box-shadow: 0 0 20px rgba(253, 224, 71, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.6) !important;
+      transform: scale(1.1) !important;
+      color: #fff !important;
+    }
+
+    .moly-smart-btn-menu {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25) 0%, rgba(37, 99, 235, 0.2) 100%) !important;
+    }
+    .moly-smart-btn-menu:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.4) 0%, rgba(59, 130, 246, 0.4) 100%) !important;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.6) !important;
+    }
+
+    /* Tooltip on hover (points to the left) */
+    .moly-smart-btn::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: calc(100% + 12px);
+      top: 50%;
+      transform: translateY(-50%) scale(0.9);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #f1f5f9;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 8px;
+      white-space: nowrap;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      opacity: 0;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10000;
+    }
+
+    .moly-smart-btn:hover::before {
+      opacity: 1;
+      transform: translateY(-50%) scale(1);
+    }
+
+    /* Slide-out Game Drawer */
+    .moly-game-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .moly-game-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .moly-game-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 340px;
+      max-width: 88vw;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.96) 0%, rgba(9, 13, 22, 0.98) 100%);
+      backdrop-filter: blur(32px) saturate(190%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
+      border-left: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: -15px 0 50px rgba(0, 0, 0, 0.85);
+      z-index: 10001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(105%);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .moly-game-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 16px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
-    .sso-status-text {
+
+    .drawer-brand {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 13px;
+    }
+
+    .drawer-tag {
+      background: linear-gradient(135deg, #f59e0b, #ea580c);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .drawer-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       color: #cbd5e1;
-      flex-wrap: wrap;
-    }
-    .status-dot-green {
-      width: 8px;
-      height: 8px;
-      background: #10b981;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
-    }
-    .status-dot-grey {
-      width: 8px;
-      height: 8px;
-      background: #64748b;
-      border-radius: 50%;
-    }
-    .sso-actions {
+      font-size: 18px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .drawer-close-btn:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: #ef4444;
+      color: #fff;
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .drawer-user-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .drawer-user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .drawer-user-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .drawer-avatar-active {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(234, 88, 12, 0.3));
+      border-color: rgba(254, 240, 138, 0.6);
+    }
+
+    .drawer-user-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .drawer-user-sub {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    .drawer-user-badges {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
       flex-wrap: wrap;
+    }
+
+    .badge-id { background: #334155; color: #cbd5e1; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+    .badge-vip { background: #7c3aed; color: #fff; font-weight: 700; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+    .badge-beans { background: #eab308; color: #000; font-weight: 800; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+
+    .drawer-btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .drawer-sso-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .drawer-btn-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-block {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .drawer-section-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: #64748b;
+      letter-spacing: 0.8px;
+      margin-top: 4px;
+    }
+
+    .drawer-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drawer-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      text-decoration: none;
+      color: #cbd5e1;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .drawer-nav-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(254, 240, 138, 0.4);
+      color: #fff;
+      transform: translateX(-2px);
+    }
+
+    .drawer-nav-highlight {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(234, 88, 12, 0.15) 100%);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .drawer-nav-highlight:hover {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(234, 88, 12, 0.3) 100%);
+      border-color: rgba(254, 240, 138, 0.7);
+    }
+
+    .drawer-item-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .drawer-item-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .drawer-item-sub {
+      font-size: 11px;
+      color: #94a3b8;
+    }
+
+    .drawer-control-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .drawer-ctrl-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      color: #e2e8f0;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .drawer-ctrl-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(254, 240, 138, 0.6);
+      color: #fff;
+    }
+
+    .drawer-download-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .drawer-dl-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .drawer-dl-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.25);
     }
 
     /* Main Theater Game Stage */
@@ -209,29 +544,31 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 6px 12px 24px 12px;
+      justify-content: center;
+      padding: 10px;
       position: relative;
       width: 100%;
+      height: 100vh;
       box-sizing: border-box;
+      overflow: hidden;
     }
 
     .stage-container {
       width: 1140px; /* Cinema size default */
       height: 665px;
       max-width: calc(100vw - 32px);
-      max-height: calc(100vh - 165px);
+      max-height: calc(100vh - 20px);
       aspect-ratio: 12 / 7;
       background: #000000;
       border-radius: 16px;
-      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 35px rgba(246, 168, 40, 0.15);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.18), 0 0 35px rgba(246, 168, 40, 0.2);
       overflow: hidden;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      margin-bottom: 75px; /* Leave space for bottom floating dock */
+      margin: auto;
     }
 
     .stage-container.stage-classic {
@@ -240,8 +577,8 @@
     }
 
     .stage-container.stage-fit {
-      width: min(calc((100vh - 165px) * 12 / 7), calc(100vw - 32px)) !important;
-      height: min(calc(100vh - 165px), calc((100vw - 32px) * 7 / 12)) !important;
+      width: min(calc((100vh - 20px) * 12 / 7), calc(100vw - 32px)) !important;
+      height: min(calc(100vh - 20px), calc((100vw - 32px) * 7 / 12)) !important;
     }
 
     /* Fullscreen Mode: fills 100% of screen */
@@ -488,130 +825,189 @@
 </head>
 <body>
 
-  <!-- Dual Floating Pill Navbar (Đồng bộ chuẩn giao diện Moly 2.0) -->
-  <header class="navbar-container">
-    <!-- Khung Menu Chính -->
-    <div class="navbar-main">
-      <a href="/" class="brand" title="Moly - Thế Giới Chuột Chũi VN">
-        <img src="/assets/logo-horizontal.png" alt="Moly Thế Giới Chuột Chũi">
-      </a>
+  <!-- Floating Brand Logo Capsule (Góc Trên Trái Nhẹ Nhàng Tinh Tế) -->
+  <a href="/" class="moly-brand-float" id="moly-brand-float" title="Vương Quốc Chuột Chũi - Về Trang Chủ">
+    <img src="/assets/logo-horizontal.png" alt="Moly Thế Giới Chuột Chũi">
+  </a>
 
-      <nav class="nav-menu">
-        <a href="/" class="nav-link-btn">🏠 Trang Chủ</a>
+  <!-- Smart Right-Edge Dock (Thanh Công Cụ Thông Minh Tích Hợp 3 Nút Cạnh Phải Màn Hình) -->
+  <aside class="moly-game-smart-nav" id="moly-game-smart-nav">
+    <div class="moly-smart-dock-pill">
+      <!-- Nút 1: Menu Tiện Ích & Cư Dân (🎛️) -->
+      <button type="button" class="moly-smart-btn moly-smart-btn-menu" id="btn-smart-menu" onclick="toggleGameDrawer()" data-tooltip="Menu &amp; Cư Dân" title="Menu Tiện Ích, Cư Dân &amp; Cửa Hàng">
+        <span class="smart-btn-icon">🎛️</span>
+      </button>
 
-        <!-- Tiện Ích Dropdown -->
-        <div class="nav-dropdown">
-          <button class="nav-dropdown-btn" type="button">⚡ Tiện Ích <span class="caret">▾</span></button>
-          <div class="dropdown-menu">
-            <a href="javascript:void(0)" onclick="openLeaderboardModal()" class="dropdown-item">🏆 Bảng Xếp Hạng Cư Dân</a>
-            <a href="javascript:void(0)" onclick="openNewspaperModal()" class="dropdown-item">📰 Thời Báo Moly (Số 128)</a>
-            <a href="javascript:void(0)" onclick="openSmcModal()" class="dropdown-item">🛡️ Cẩm Nang Hiệp Sĩ SMC</a>
-            <a href="javascript:void(0)" onclick="openGiftcodeModal()" class="dropdown-item">🎁 Nhập Giftcode</a>
-            <a href="javascript:void(0)" onclick="openSuperLamuModal()" class="dropdown-item">🐾 Đậu Đậu Siêu Cấp</a>
-            <a href="javascript:void(0)" onclick="openKingdomInfoModal()" class="dropdown-item">🗺️ 257 Bản Đồ Vương Quốc</a>
-            <a href="javascript:void(0)" onclick="openFaqModal()" class="dropdown-item">❓ Cẩm Nang &amp; FAQ</a>
-          </div>
-        </div>
+      <!-- Nút 2: Tỉ Lệ Hiển Thị & Toàn Màn (📐) -->
+      <button type="button" class="moly-smart-btn moly-smart-btn-scale" id="btn-smart-scale" onclick="toggleScaleMode()" data-tooltip="Tỉ Lệ: Rạp Chiếu" title="Chuyển Đổi Kích Thước: Rạp Chiếu (1140x665) / Chuẩn (960x560) / Vừa Màn">
+        <span class="smart-btn-icon" id="smart-scale-icon">📐</span>
+      </button>
 
-        <!-- Tin Tức -->
-        <a href="javascript:void(0)" onclick="openNewsModal()" class="nav-link-btn">📰 Tin Tức</a>
+      <!-- Nút 3: Bật/Tắt Âm Thanh (🔊) -->
+      <button type="button" class="moly-smart-btn moly-smart-btn-sound moly-sound-btn" id="btn-smart-sound" onclick="MolyAudio.toggle()" data-tooltip="Âm Thanh: Bật" title="Bật/Tắt Âm Thanh Vương Quốc">
+        <span class="smart-btn-icon sound-icon">🔊</span>
+      </button>
+    </div>
+  </aside>
 
-        <!-- Tải Về Dropdown -->
-        <div class="nav-dropdown">
-          <button class="nav-dropdown-btn" type="button">📥 Tải Về <span class="caret">▾</span></button>
-          <div class="dropdown-menu">
-            <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="dropdown-item" download="Moly Thế Giới Chuột chũi.apk">📱 Bản Android (APK - 13 MB)</a>
-            <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="dropdown-item" download="Moly Thế Giới Chuột chũi.zip">💻 Bản Windows (PC - 150 MB)</a>
-          </div>
-        </div>
-
-        <!-- Nút Trạng Thái Game -->
-        <span class="nav-btn-play" style="cursor: default;">🎮 Đang Trong Game</span>
-      </nav>
+  <!-- Slide-out Game Drawer (Khung Menu Tiện Ích Trượt Kính Mờ Bên Phải) -->
+  <div class="moly-game-drawer-backdrop" id="moly-drawer-backdrop" onclick="closeGameDrawer()"></div>
+  <aside class="moly-game-drawer" id="moly-game-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <img src="/assets/logo-horizontal.png" alt="Moly" style="height: 26px;">
+        <span class="drawer-tag">Game Hub</span>
+      </div>
+      <button type="button" class="drawer-close-btn" onclick="closeGameDrawer()" title="Đóng Menu (Esc)">&times;</button>
     </div>
 
-    <!-- Khung Viên Thuốc Phụ Bên Phải (Gọn gàng chỉ 2 mục Tài Khoản & Online) -->
-    <div class="navbar-aux">
-      <!-- Tài Khoản Dropdown -->
-      <div class="nav-dropdown" id="nav-aux-account">
-        <button class="nav-dropdown-btn" id="nav-btn-account" type="button">👤 Tài Khoản <span class="caret">▾</span></button>
-        <div class="dropdown-menu dropdown-menu-right" id="dropdown-account-menu">
-          <a href="/profile.html" id="dd-account-profile" class="dropdown-item" style="color: #38bdf8; font-weight: 700; display: none;">👤 Xem Hồ Sơ &amp; Quản Lý Cư Dân</a>
-          <a href="javascript:void(0)" onclick="openLoginTab()" id="dd-account-login" class="dropdown-item">🔑 Đăng Nhập</a>
-          <a href="javascript:void(0)" onclick="openRegisterTab()" id="dd-account-reg" class="dropdown-item">➕ Đăng Ký Tài Khoản</a>
-          <a href="javascript:void(0)" onclick="openDashboardTab()" id="dd-account-dash" class="dropdown-item" style="display: none;">⚙️ Cài Đặt Nhanh</a>
-          <a href="javascript:void(0)" onclick="openLookupModal()" class="dropdown-item">🔍 Tra Cứu Nhân Vật</a>
-          <a href="javascript:void(0)" onclick="openForgotTab()" class="dropdown-item" style="color: #38bdf8;">🔒 Lấy Lại Mật Khẩu (OTP Gmail)</a>
-          <div class="dropdown-divider"></div>
-          <a href="javascript:void(0)" onclick="openRechargeTab()" class="dropdown-item" style="color: #f59e0b; font-weight: 700;">💎 Mua Đậu &amp; Hội Viên</a>
-          <a href="javascript:void(0)" onclick="handleWebLogout()" id="dd-account-logout" class="dropdown-item" style="display: none; color: #ef4444;">🚪 Đăng Xuất</a>
+    <div class="drawer-body">
+      <!-- Cư Dân / SSO Panel -->
+      <div class="drawer-user-card" id="drawer-user-card">
+        <!-- Guest State -->
+        <div id="sso-guest-view" class="drawer-auth-state">
+          <div class="drawer-user-info">
+            <div class="drawer-user-avatar">👤</div>
+            <div>
+              <div class="drawer-user-name">Khách Vãng Lai</div>
+              <div class="drawer-user-sub">Chưa đăng nhập web</div>
+            </div>
+          </div>
+          <div class="drawer-btn-grid">
+            <button type="button" class="btn-ctrl btn-ctrl-primary" onclick="openLoginTab(); closeGameDrawer();">🔑 Đăng Nhập</button>
+            <button type="button" class="btn-ctrl" onclick="openRegisterTab(); closeGameDrawer();">➕ Đăng Ký</button>
+          </div>
+        </div>
+
+        <!-- Logged-in State -->
+        <div id="sso-logged-view" class="drawer-auth-state" style="display: none;">
+          <div class="drawer-user-info">
+            <div class="drawer-user-avatar drawer-avatar-active">👑</div>
+            <div style="flex: 1; min-width: 0;">
+              <div class="drawer-user-name">
+                <span id="sso-user-fullname">-</span>
+                <span style="font-size: 11px; color: #94a3b8; font-weight: normal;">(@<span id="sso-user-username">-</span>)</span>
+              </div>
+              <div class="drawer-user-badges">
+                <span class="badge badge-id" id="sso-user-id-badge">ID: -</span>
+                <span class="badge badge-vip" id="sso-user-vip-badge">VIP 1</span>
+                <span class="badge badge-beans" id="sso-user-beans-badge">0 Đậu</span>
+              </div>
+            </div>
+          </div>
+          <div class="drawer-sso-actions">
+            <label style="font-size: 11px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 4px; cursor: pointer;">
+              <input type="checkbox" id="chk-auto-sso" onchange="toggleAutoSso(this.checked)"> Tự ủy quyền đăng nhập vào game
+            </label>
+            <button type="button" id="btn-sso-auth" class="btn-ctrl btn-ctrl-green btn-block" onclick="authorizeGameLogin()">⚡ Vào Game Nick Này</button>
+            <button type="button" class="btn-ctrl btn-block" style="background: #334155; color: #fff;" onclick="enterGameLoginScreen()">🔐 Đăng Nhập Trong Game</button>
+            <div class="drawer-btn-row">
+              <a href="/profile.html" class="btn-ctrl" style="flex:1; text-align:center;">👤 Hồ Sơ</a>
+              <button type="button" class="btn-ctrl" style="background: #dc2626; color: #fff;" onclick="handleWebLogout()">🚪 Đăng Xuất</button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <span class="status-badge">
-        <span class="status-dot"></span>
-        Online
-      </span>
+      <!-- Quick Shortcuts Grid -->
+      <div class="drawer-section-title">⚡ DỊCH VỤ &amp; CỬA HÀNG</div>
+      <div class="drawer-nav-list">
+        <a href="javascript:void(0)" onclick="openRechargeTab(); closeGameDrawer();" class="drawer-nav-item drawer-nav-highlight">
+          <span class="drawer-item-icon">💎</span>
+          <div class="drawer-item-text">
+            <div class="drawer-item-title">Nạp Đậu Vàng &amp; QR ZaloPay</div>
+            <div class="drawer-item-sub">Ngân Hàng, VietQR, ZaloPay tự động</div>
+          </div>
+        </a>
+        <a href="javascript:void(0)" onclick="openGiftcodeModal(); closeGameDrawer();" class="drawer-nav-item">
+          <span class="drawer-item-icon">🎁</span>
+          <div class="drawer-item-text">
+            <div class="drawer-item-title">Nhập Giftcode Nhận Quà</div>
+            <div class="drawer-item-sub">Giftcode tân thủ, trang phục &amp; vật phẩm</div>
+          </div>
+        </a>
+        <a href="javascript:void(0)" onclick="openSuperLamuModal(); closeGameDrawer();" class="drawer-nav-item">
+          <span class="drawer-item-icon">🐾</span>
+          <div class="drawer-item-text">
+            <div class="drawer-item-title">Đậu Đậu Siêu Cấp (Lamu)</div>
+            <div class="drawer-item-sub">Huấn luyện &amp; biến hình loài</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="drawer-section-title">🏆 THÔNG TIN &amp; CẨM NANG</div>
+      <div class="drawer-nav-list">
+        <a href="javascript:void(0)" onclick="openLeaderboardModal(); closeGameDrawer();" class="drawer-nav-item">
+          <span class="drawer-item-icon">🏆</span>
+          <div class="drawer-item-text">
+            <div class="drawer-item-title">Bảng Xếp Hạng Cư Dân</div>
+            <div class="drawer-item-sub">Top Phú Hộ &amp; Thám Tử SMC</div>
+          </div>
+        </a>
+        <a href="javascript:void(0)" onclick="openNewspaperModal(); closeGameDrawer();" class="drawer-nav-item">
+          <span class="drawer-item-icon">📰</span>
+          <div class="drawer-item-text">
+            <div class="drawer-item-title">Thời Báo Moly (Số 128)</div>
+            <div class="drawer-item-sub">Ấn bản tuần hoàn vương quốc</div>
+          </div>
+        </a>
+        <a href="javascript:void(0)" onclick="openSmcModal(); closeGameDrawer();" class="drawer-nav-item">
+          <span class="drawer-item-icon">🛡️</span>
+          <div class="drawer-item-text">
+            <div class="drawer-item-title">Cẩm Nang Hiệp Sĩ SMC</div>
+            <div class="drawer-item-sub">Cảnh sát, Bác sĩ, Nông dân</div>
+          </div>
+        </a>
+        <a href="javascript:void(0)" onclick="openNewsModal(); closeGameDrawer();" class="drawer-nav-item">
+          <span class="drawer-item-icon">📢</span>
+          <div class="drawer-item-text">
+            <div class="drawer-item-title">Tin Tức &amp; Hướng Dẫn</div>
+            <div class="drawer-item-sub">Sự kiện mới &amp; bản cập nhật</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Điều Khiển Khung Hình -->
+      <div class="drawer-section-title">🖥️ ĐIỀU KHIỂN KHUNG HÌNH</div>
+      <div class="drawer-control-grid">
+        <button type="button" class="drawer-ctrl-btn" onclick="toggleScaleMode()">
+          <span class="ctrl-icon">📐</span>
+          <span class="ctrl-label" id="drawer-scale-label">Tỉ Lệ: Rạp Chiếu</span>
+        </button>
+        <button type="button" class="drawer-ctrl-btn" onclick="toggleFullscreen()">
+          <span class="ctrl-icon">⛶</span>
+          <span class="ctrl-label">Toàn Màn Hình</span>
+        </button>
+      </div>
+
+      <!-- Tải Bản Cài Đặt -->
+      <div class="drawer-section-title">📥 TẢI BẢN CÀI ĐẶT</div>
+      <div class="drawer-download-row">
+        <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="drawer-dl-btn" download="Moly-The-Gioi-Chuot-Chui.apk">
+          📱 Bản Android (APK - 13 MB)
+        </a>
+        <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="drawer-dl-btn" download="Moly-The-Gioi-Chuot-Chui.zip">
+          💻 Bản Windows (PC - 150 MB)
+        </a>
+      </div>
+
+      <!-- Về Trang Chủ -->
+      <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.12);">
+        <a href="/" class="btn-ctrl btn-block" style="text-align: center; justify-content: center; padding: 10px; font-size: 13px;">
+          🏠 Về Trang Chủ Vương Quốc
+        </a>
+      </div>
     </div>
-  </header>
+  </aside>
 
   <!-- Focused Game Viewport -->
   <main class="game-viewport">
-    
-    <!-- Web SSO & Game Authorization Bar -->
-    <div id="web-sso-bar" class="sso-bar">
-      <!-- Guest view -->
-      <div id="sso-guest-view" class="sso-content">
-        <div class="sso-status-text">
-          <span class="status-dot-grey"></span>
-          <span>Chưa đăng nhập Web. Đăng nhập để lưu hồ sơ cư dân và <strong>Ủy quyền vào game 1-Click</strong>.</span>
-        </div>
-        <div class="sso-actions">
-          <button class="btn-ctrl btn-ctrl-primary" onclick="openLoginTab()">Đăng Nhập</button>
-          <button class="btn-ctrl" onclick="openRegisterTab()">Đăng Ký Cư Dân Mới</button>
-          <button class="btn-ctrl btn-ctrl-green" onclick="openRechargeTab()">💎 Nạp Đậu &amp; VIP</button>
-        </div>
-      </div>
-
-      <!-- Logged in view -->
-      <div id="sso-logged-view" class="sso-content" style="display: none;">
-        <div class="sso-status-text">
-          <span class="status-dot-green"></span>
-          <span>Cư dân: <strong id="sso-user-fullname" style="color: #38bdf8;">-</strong> (@<span id="sso-user-username">-</span>)</span>
-          <span class="badge" id="sso-user-id-badge" style="background: #334155; color: #fff; padding: 2px 7px; border-radius: 4px;">ID: -</span>
-          <span class="badge" id="sso-user-vip-badge" style="background: #7c3aed; color: #fff; padding: 2px 7px; border-radius: 4px;">VIP 1</span>
-          <span class="badge" id="sso-user-beans-badge" style="background: #eab308; color: #000; padding: 2px 7px; border-radius: 4px; font-weight: bold;">0 Đậu</span>
-        </div>
-        <div class="sso-actions">
-          <label style="font-size: 12px; color: #cbd5e1; display: inline-flex; align-items: center; gap: 4px; cursor: pointer;">
-            <input type="checkbox" id="chk-auto-sso" onchange="toggleAutoSso(this.checked)"> Tự ủy quyền
-          </label>
-          <button id="btn-sso-auth" class="btn-ctrl btn-ctrl-green" onclick="authorizeGameLogin()">⚡ Vào Game Bằng Nick Này</button>
-          <button type="button" class="btn-ctrl" style="background: #475569; color: #fff;" onclick="enterGameLoginScreen()" title="Mở màn hình đăng nhập trong game để tự gõ tài khoản/mật khẩu">🔐 Đăng Nhập Trong Game</button>
-          <button class="btn-ctrl btn-ctrl-green" onclick="openRechargeTab()">💎 Nạp Đậu &amp; VIP</button>
-          <button class="btn-ctrl" onclick="copyMyCredentials()">📋 Copy ID</button>
-          <button class="btn-ctrl" onclick="openDashboardTab()">👤 Hồ Sơ</button>
-          <button class="btn-ctrl" style="background: #dc2626;" onclick="handleWebLogout()">🚪 Đăng Xuất</button>
-        </div>
-      </div>
-    </div>
-
     <!-- Flash Game Stage Container -->
     <div id="game-stage" class="stage-container">
       <div id="loading-overlay" class="loading-overlay">
         <img src="/assets/logo-square.png" alt="Moly Logo">
         <div class="loading-spinner"></div>
         <div class="loading-text">Đang tải Flash Player và kết nối máy chủ Moly - Thế Giới Chuột Chũi VN...</div>
-      </div>
-    </div>
-
-    <!-- Minimal Hint Bar below Canvas -->
-    <div class="quick-hint-bar">
-      <div>
-        👑 <strong>Cư dân Moly:</strong> Đăng nhập hoặc tạo tài khoản trên web để dùng tính năng <strong>Ủy Quyền 1-Click</strong> vào thẳng game!
-      </div>
-      <div>
-        Phím tắt: Bấm <strong>⛶ Toàn Màn Hình</strong> hoặc phím <strong>F11</strong> để mở rộng khung chơi toàn bộ màn hình.
       </div>
     </div>
   </main>
@@ -1297,9 +1693,36 @@
     // --- Scale Mode state (Cinema 1140x665 -> Classic 960x560 -> Fit Viewport) ---
     let stageScaleMode = 'cinema'; // 'cinema' | 'classic' | 'fit'
 
+    function toggleGameDrawer() {
+      const drawer = document.getElementById("moly-game-drawer");
+      const backdrop = document.getElementById("moly-drawer-backdrop");
+      if (!drawer) return;
+      const isOpen = drawer.classList.contains("open");
+      if (isOpen) {
+        closeGameDrawer();
+      } else {
+        drawer.classList.add("open");
+        if (backdrop) backdrop.classList.add("open");
+        drawer.setAttribute("aria-hidden", "false");
+        if (window.MolyAudio) MolyAudio.playClick();
+      }
+    }
+
+    function closeGameDrawer() {
+      const drawer = document.getElementById("moly-game-drawer");
+      const backdrop = document.getElementById("moly-drawer-backdrop");
+      if (drawer) {
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden", "true");
+      }
+      if (backdrop) backdrop.classList.remove("open");
+    }
+
     function toggleScaleMode() {
       const stage = document.getElementById("game-stage");
       const btn = document.getElementById("btn-scale-toggle");
+      const smartScaleBtn = document.getElementById("btn-smart-scale");
+      const drawerScaleLabel = document.getElementById("drawer-scale-label");
       const player = document.getElementById("moly-ruffle-player");
       if (!stage) return;
 
@@ -1308,6 +1731,8 @@
         stage.classList.remove('stage-fit');
         stage.classList.add('stage-classic');
         if (btn) btn.innerHTML = '📐 Tỉ Lệ: Chuẩn (960x560)';
+        if (smartScaleBtn) smartScaleBtn.setAttribute("data-tooltip", "Tỉ Lệ: Chuẩn (960x560)");
+        if (drawerScaleLabel) drawerScaleLabel.textContent = "Tỉ Lệ: Chuẩn (960x560)";
         if (player && player.setScale) player.setScale("showall");
         if (window.MolyNotify) MolyNotify.show("📐 Đã chuyển sang kích thước Chuẩn Gốc (960x560)", "info");
       } else if (stageScaleMode === 'classic') {
@@ -1315,12 +1740,16 @@
         stage.classList.remove('stage-classic');
         stage.classList.add('stage-fit');
         if (btn) btn.innerHTML = '↔️ Tỉ Lệ: Vừa Màn (Fit)';
+        if (smartScaleBtn) smartScaleBtn.setAttribute("data-tooltip", "Tỉ Lệ: Vừa Màn (Fit)");
+        if (drawerScaleLabel) drawerScaleLabel.textContent = "Tỉ Lệ: Vừa Màn (Fit)";
         if (player && player.setScale) player.setScale("showall");
         if (window.MolyNotify) MolyNotify.show("↔️ Đã phóng to tối đa vừa màn hình (giữ tỉ lệ 12:7)", "info");
       } else {
         stageScaleMode = 'cinema';
         stage.classList.remove('stage-classic', 'stage-fit');
-        if (btn) btn.innerHTML = '📐 Tỉ Lệ: Rạp Chiếu (1140x665)';
+        if (btn) btn.innerHTML = '🎬 Tỉ Lệ: Rạp Chiếu (1140x665)';
+        if (smartScaleBtn) smartScaleBtn.setAttribute("data-tooltip", "Tỉ Lệ: Rạp Chiếu (1140x665)");
+        if (drawerScaleLabel) drawerScaleLabel.textContent = "Tỉ Lệ: Rạp Chiếu (1140x665)";
         if (player && player.setScale) player.setScale("showall");
         if (window.MolyNotify) MolyNotify.show("🎬 Đã chuyển sang Rạp Chiếu Rộng (1140x665)", "info");
       }
@@ -1762,36 +2191,48 @@
       const navBtn = document.getElementById("nav-btn-account");
 
       if (user) {
-        guestView.style.display = "none";
-        loggedView.style.display = "flex";
-        tabDash.style.display = "inline-block";
+        if (guestView) guestView.style.display = "none";
+        if (loggedView) loggedView.style.display = "block";
+        if (tabDash) tabDash.style.display = "inline-block";
 
         const dispId = user.display_id || (user.user_id === 0 ? "00000000" : String(user.user_id));
-        document.getElementById("sso-user-fullname").textContent = user.fullname || user.nickname || "Cư Dân";
-        document.getElementById("sso-user-username").textContent = user.username || dispId;
-        document.getElementById("sso-user-id-badge").textContent = `ID: ${dispId}`;
-        document.getElementById("sso-user-vip-badge").textContent = user.is_vip ? `VIP ${user.vip_level}` : "VIP 0";
-        document.getElementById("sso-user-beans-badge").textContent = `${(user.gold_beans || 0).toLocaleString()} Đậu`;
-        navBtn.innerHTML = `👤 ${user.username || dispId}`;
+        const elFn = document.getElementById("sso-user-fullname");
+        if (elFn) elFn.textContent = user.fullname || user.nickname || "Cư Dân";
+        const elUn = document.getElementById("sso-user-username");
+        if (elUn) elUn.textContent = user.username || dispId;
+        const elId = document.getElementById("sso-user-id-badge");
+        if (elId) elId.textContent = `ID: ${dispId}`;
+        const elVip = document.getElementById("sso-user-vip-badge");
+        if (elVip) elVip.textContent = user.is_vip ? `VIP ${user.vip_level}` : "VIP 0";
+        const elBeans = document.getElementById("sso-user-beans-badge");
+        if (elBeans) elBeans.textContent = `${(user.gold_beans || 0).toLocaleString()} Đậu`;
+        if (navBtn) navBtn.innerHTML = `👤 ${user.username || dispId}`;
 
         // Auto fill into input fields
-        document.getElementById("recharge-uid").value = dispId;
-        document.getElementById("play-gc-uid").value = dispId;
-        document.getElementById("lamu-uid-input").value = dispId;
+        const rUid = document.getElementById("recharge-uid");
+        if (rUid) rUid.value = dispId;
+        const gcUid = document.getElementById("play-gc-uid");
+        if (gcUid) gcUid.value = dispId;
+        const lUid = document.getElementById("lamu-uid-input");
+        if (lUid) lUid.value = dispId;
 
         // Checkbox auto SSO
         const auto = localStorage.getItem("moly_auto_sso") === "true";
-        document.getElementById("chk-auto-sso").checked = auto;
+        const chkAuto = document.getElementById("chk-auto-sso");
+        if (chkAuto) chkAuto.checked = auto;
         if (auto) {
           window.sso_authorized = true;
-          document.getElementById("btn-sso-auth").style.background = "#047857";
-          document.getElementById("btn-sso-auth").innerHTML = "✓ Đã Tự Ủy Quyền Vào Game";
+          const btnAuth = document.getElementById("btn-sso-auth");
+          if (btnAuth) {
+            btnAuth.style.background = "#047857";
+            btnAuth.innerHTML = "✓ Đã Tự Ủy Quyền Vào Game";
+          }
         }
       } else {
-        guestView.style.display = "flex";
-        loggedView.style.display = "none";
-        tabDash.style.display = "none";
-        navBtn.innerHTML = `👤 Tài Khoản`;
+        if (guestView) guestView.style.display = "block";
+        if (loggedView) loggedView.style.display = "none";
+        if (tabDash) tabDash.style.display = "none";
+        if (navBtn) navBtn.innerHTML = `👤 Tài Khoản`;
       }
     }
 
@@ -2841,6 +3282,35 @@
       ]
     };
 
+    // --- Window Fullscreen Controller ---
+    window.toggleFullscreen = function() {
+      const stage = document.getElementById("game-stage");
+      const activePlayer = document.getElementById("moly-ruffle-player");
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        if (activePlayer && typeof activePlayer.enterFullscreen === "function") {
+          try {
+            activePlayer.enterFullscreen();
+            return;
+          } catch (e) {
+            console.warn("enterFullscreen fallback:", e);
+          }
+        }
+        if (stage) {
+          if (stage.requestFullscreen) {
+            stage.requestFullscreen();
+          } else if (stage.webkitRequestFullscreen) {
+            stage.webkitRequestFullscreen();
+          }
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      }
+    };
+
     window.addEventListener("DOMContentLoaded", () => {
       // Restore user session if saved
       const saved = getSavedUser();
@@ -2854,35 +3324,22 @@
       const btnFs = document.getElementById("btn-fullscreen");
       let activePlayer = null;
 
-      // Fullscreen handling: Native Ruffle Fullscreen + Stage Fullscreen fallback
-      btnFs.addEventListener("click", () => {
-        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-          if (activePlayer && typeof activePlayer.enterFullscreen === "function") {
-            try {
-              activePlayer.enterFullscreen();
-              return;
-            } catch (e) {
-              console.warn("enterFullscreen fallback:", e);
-            }
-          }
-          if (stage.requestFullscreen) {
-            stage.requestFullscreen();
-          } else if (stage.webkitRequestFullscreen) {
-            stage.webkitRequestFullscreen();
-          }
-        } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-          }
-        }
-      });
+      if (btnFs) {
+        btnFs.addEventListener("click", window.toggleFullscreen);
+      }
 
       // Window resize triggers player re-layout
       window.addEventListener("resize", () => {
         window.dispatchEvent(new Event("resize"));
       });
+
+      // Fail-safe overlay timer: overlay will always fade out within 3.5s max
+      const overlaySafetyTimer = setTimeout(() => {
+        if (overlay && overlay.parentNode) {
+          overlay.style.opacity = "0";
+          setTimeout(() => { if (overlay && overlay.parentNode) overlay.remove(); }, 500);
+        }
+      }, 3500);
 
       try {
         const ruffle = window.RufflePlayer.newest();
@@ -2894,17 +3351,26 @@
           url: "/Client.swf?v=20261016_vn5",
           parameters: {}
         }).then(() => {
+          clearTimeout(overlaySafetyTimer);
           setTimeout(() => {
-            overlay.style.opacity = "0";
-            setTimeout(() => overlay.remove(), 500);
-          }, 800);
+            if (overlay && overlay.parentNode) {
+              overlay.style.opacity = "0";
+              setTimeout(() => { if (overlay && overlay.parentNode) overlay.remove(); }, 500);
+            }
+          }, 600);
         }).catch(err => {
           console.error("Lỗi nạp SWF:", err);
-          document.querySelector(".loading-text").innerText = "Lỗi khi tải Client.swf: " + err;
+          if (overlay && overlay.parentNode) {
+            overlay.style.opacity = "0";
+            setTimeout(() => { if (overlay && overlay.parentNode) overlay.remove(); }, 500);
+          }
         });
       } catch (err) {
         console.error("Lỗi khởi tạo Ruffle:", err);
-        document.querySelector(".loading-text").innerText = "Lỗi khởi tạo Ruffle: " + err;
+        if (overlay && overlay.parentNode) {
+          overlay.style.opacity = "0";
+          setTimeout(() => { if (overlay && overlay.parentNode) overlay.remove(); }, 500);
+        }
       }
 
       // Modal Backdrop Click & Escape Key Listeners
@@ -2922,8 +3388,9 @@
 
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") {
-          document.querySelectorAll(".modal-overlay.open").forEach(overlay => {
-            overlay.classList.remove("open");
+          closeGameDrawer();
+          document.querySelectorAll(".modal-overlay.open").forEach(ov => {
+            ov.classList.remove("open");
           });
         }
       });
@@ -2957,44 +3424,51 @@
       }
       window.addEventListener("hashchange", handlePlayHashRoute);
       setTimeout(handlePlayHashRoute, 400);
+
+      // --- Smart Auto-Hide / Auto-Dim Right Floating Dock & Brand Float ---
+      (function setupSmartNavAutoDim() {
+        const stage = document.getElementById("game-stage");
+        const nav = document.getElementById("moly-game-smart-nav");
+        const brand = document.getElementById("moly-brand-float");
+        if (!nav) return;
+
+        let dimTimeout = null;
+
+        function dimNav() {
+          const drawer = document.getElementById("moly-game-drawer");
+          if (drawer && drawer.classList.contains("open")) return;
+          nav.classList.add("dimmed");
+          if (brand) brand.classList.add("dimmed");
+        }
+
+        function wakeNav() {
+          nav.classList.remove("dimmed");
+          if (brand) brand.classList.remove("dimmed");
+        }
+
+        if (stage) {
+          stage.addEventListener("mouseenter", dimNav);
+        }
+        nav.addEventListener("mouseenter", wakeNav);
+        if (brand) brand.addEventListener("mouseenter", wakeNav);
+
+        document.addEventListener("mousemove", (e) => {
+          if (window.innerWidth - e.clientX <= 80) {
+            wakeNav();
+            clearTimeout(dimTimeout);
+          } else if (stage && stage.contains(e.target)) {
+            dimNav();
+          } else {
+            wakeNav();
+            clearTimeout(dimTimeout);
+            dimTimeout = setTimeout(dimNav, 3000);
+          }
+        });
+
+        // Dim after 4 seconds initially
+        dimTimeout = setTimeout(dimNav, 4000);
+      })();
     });
-  </script>
-
-  <!-- Floating Game Control Dock (Tiện ích chuẩn game Moly 2.0: Tỷ lệ, Toàn màn, Nạp đậu, Giftcode, Hồ sơ, Âm thanh, Về Web) -->
-  <nav class="moly-game-dock" id="moly-game-dock">
-    <button type="button" class="moly-dock-btn moly-dock-btn-primary" id="btn-scale-toggle" onclick="toggleScaleMode()" title="Chuyển đổi tỉ lệ &amp; kích thước rạp chiếu">
-      📐 Tỉ Lệ: Rạp Chiếu (1140x665)
-    </button>
-    <button type="button" class="moly-dock-btn moly-dock-btn-secondary" onclick="toggleFullscreen()" title="Toàn màn hình trình duyệt">
-      ⛶ Toàn Màn
-    </button>
-    <button type="button" class="moly-dock-btn moly-dock-btn-zalopay" onclick="openRechargeTab()" title="Cửa hàng Nạp Đậu Vàng &amp; VIP qua Ngân Hàng/ZaloPay">
-      💎 Nạp Đậu &amp; QR
-    </button>
-    <button type="button" class="moly-dock-btn moly-dock-btn-secondary" onclick="openGiftcodeModal()" title="Nhập Giftcode nhận quà tân thủ">
-      🎁 Giftcode
-    </button>
-    <a href="/profile.html" class="moly-dock-btn moly-dock-btn-secondary" title="Xem hồ sơ &amp; trang bị cư dân">
-      👤 Hồ Sơ
-    </a>
-    <button type="button" class="moly-sound-btn" onclick="MolyAudio.toggle()" title="Bật/Tắt âm thanh vương quốc">
-      <span class="sound-icon">🔊</span> <span class="sound-text">Âm Thanh</span>
-    </button>
-    <a href="/" class="moly-dock-btn moly-dock-btn-secondary" title="Về trang chủ vương quốc">
-      🏠 Về Web
-    </a>
-  </nav>
-
-  <script>
-    // Tự động mờ thanh dock khi chuột di vào màn hình chơi game để tránh cản trở tầm nhìn
-    (function setupGameDockFade() {
-      const stage = document.getElementById("game-stage");
-      const dock = document.getElementById("moly-game-dock");
-      if (stage && dock) {
-        stage.addEventListener("mouseenter", () => dock.classList.add("dock-dimmed"));
-        stage.addEventListener("mouseleave", () => dock.classList.remove("dock-dimmed"));
-      }
-    })();
   </script>
 </body>
 </html>
