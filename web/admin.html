@@ -65,47 +65,147 @@
     .btn-danger { background: #dc2626; color: #fff; }
     .btn-danger:hover { background: #b91c1c; }
 
-    /* Top Navigation */
+    /* Top Navigation (Dual Floating Glass Capsule Bar) */
     header {
-      background: rgba(30, 41, 59, 0.8); backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--card-border); padding: 14px 28px;
-      display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 50;
+      width: calc(100% - 32px);
+      max-width: 1400px;
+      margin: 14px auto 10px auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      position: sticky;
+      top: 10px;
+      z-index: 100;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; }
-    .brand img { width: 36px; height: 36px; border-radius: 8px; }
-    .brand span { background: linear-gradient(135deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(180deg, rgba(20, 30, 48, 0.88) 0%, rgba(15, 23, 42, 0.94) 100%);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-top: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 9999px;
+      padding: 8px 22px;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      flex-shrink: 0;
+    }
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 0 12px rgba(246, 168, 40, 0.4);
+    }
+    .brand span {
+      background: linear-gradient(135deg, #ffffff 0%, #fde047 50%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: -0.2px;
+    }
     .user-pill {
-      display: flex; align-items: center; gap: 12px; background: #0f172a;
-      border: 1px solid var(--card-border); padding: 6px 16px; border-radius: 999px; font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(180deg, rgba(20, 30, 48, 0.88) 0%, rgba(15, 23, 42, 0.94) 100%);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-top: 1px solid rgba(255, 255, 255, 0.65);
+      border-radius: 9999px;
+      padding: 6px 18px;
+      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+      font-size: 13px;
+      flex-shrink: 0;
     }
-    .btn-logout { background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 600; font-size: 13px; margin-left: 8px; }
+    .btn-logout { background: none; border: none; color: #ef4444; cursor: pointer; font-weight: 700; font-size: 13px; margin-left: 8px; transition: color 0.2s; }
+    .btn-logout:hover { color: #f87171; text-shadow: 0 0 8px rgba(239, 68, 68, 0.6); }
 
     /* Layout */
-    .container { flex: 1; padding: 28px; max-width: 1400px; margin: 0 auto; width: 100%; }
+    .container { flex: 1; padding: 14px 20px 40px 20px; max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box; }
 
     /* Stats Grid */
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 28px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-bottom: 24px; }
     .stat-card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 12px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
+      border-radius: 14px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;
     }
-    .stat-title { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
-    .stat-value { font-size: 32px; font-weight: 700; margin: 10px 0 4px; }
+    .stat-title { font-size: 12.5px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+    .stat-value { font-size: 30px; font-weight: 800; margin: 8px 0 4px; }
     .stat-desc { font-size: 12px; color: var(--success); display: flex; align-items: center; gap: 4px; }
 
-    /* Tabs */
-    .tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px; }
-    .tab-btn {
-      padding: 10px 20px; background: transparent; border: none; border-radius: 8px;
-      color: var(--text-muted); font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.2s;
+    /* Tabs as a Sleek Floating Glass Capsule Bar */
+    .tabs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(180deg, rgba(20, 30, 48, 0.78) 0%, rgba(15, 23, 42, 0.88) 100%);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-top: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 9999px;
+      padding: 8px 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      box-sizing: border-box;
     }
-    .tab-btn.active { background: var(--card-bg); color: var(--primary); border: 1px solid var(--card-border); }
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .tab-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 9999px;
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.35);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      user-select: none;
+    }
+    .tab-btn:hover {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 100%), rgba(246, 168, 40, 0.2);
+      border-color: rgba(253, 224, 71, 0.7);
+      border-top-color: #ffffff;
+      color: #ffffff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 18px rgba(253, 224, 71, 0.5);
+      transform: translateY(-2px);
+    }
+    .tab-btn.active {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 0, 0, 0.15) 100%),
+                  linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+      border-color: #38bdf8 !important;
+      border-top-color: #e0f2fe !important;
+      color: #ffffff !important;
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.6), 0 0 20px rgba(56, 189, 248, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+      transform: translateY(-1px);
+    }
 
     /* Content Cards */
     .card {
       background: var(--card-bg); border: 1px solid var(--card-border);
-      border-radius: 12px; padding: 24px; margin-bottom: 24px;
+      border-radius: 16px; padding: 24px; margin-bottom: 24px;
     }
     .card-header {
       display: flex; justify-content: space-between; align-items: center;
@@ -114,11 +214,38 @@
     .card-title { font-size: 17px; font-weight: 700; color: #fff; }
 
     /* Table */
-    .table-container { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
-    th { padding: 12px 16px; background: #0f172a; color: var(--text-muted); font-weight: 600; border-bottom: 1px solid var(--card-border); }
-    td { padding: 14px 16px; border-bottom: 1px solid rgba(51, 65, 85, 0.5); vertical-align: middle; }
-    tr:hover td { background: rgba(255,255,255,0.02); }
+    .table-container {
+      overflow-x: auto;
+      scrollbar-width: thin;
+      border-radius: 12px;
+    }
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      text-align: left;
+      font-size: 13px;
+    }
+    th {
+      padding: 10px 10px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid var(--card-border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 10px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+      vertical-align: middle;
+      font-size: 13px;
+    }
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.04);
+    }
     .badge {
       display: inline-block; padding: 4px 10px; border-radius: 999px;
       font-size: 11px; font-weight: 700; text-transform: uppercase;
@@ -327,9 +454,9 @@
       </div>
     </div>
 
-    <!-- Navigation Tabs -->
-    <div class="tabs" style="overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px;">
-      <button class="tab-btn active" data-tab="tab-admin-hub" style="background: rgba(124, 58, 237, 0.25); border: 1px solid #7c3aed; color: #c4b5fd; font-weight: bold;">👑 Quản Trị Hệ Thống &amp; Admin</button>
+    <!-- Navigation Tabs (Sleek Floating Glass Capsule Bar) -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-admin-hub">👑 Quản Trị Hệ Thống &amp; Admin</button>
       <button class="tab-btn" data-tab="tab-residents">👥 Quản Lý Cư Dân</button>
       <button class="tab-btn" data-tab="tab-recharge">💳 Quản Lý Nạp Tiền &amp; QR</button>
       <button class="tab-btn" data-tab="tab-giftcodes">🎁 Quản Lý Mã Quà Tặng (Giftcodes)</button>
@@ -729,14 +856,14 @@
           <table>
             <thead>
               <tr>
-                <th>Mã Giftcode</th>
-                <th>Mô Tả</th>
-                <th>Đậu Vàng</th>
-                <th>Cấp VIP</th>
-                <th>Đậu Đậu Siêu Cấp</th>
-                <th>Đã Dùng / Tối Đa</th>
-                <th>Trạng Thái</th>
-                <th>Thao Tác</th>
+                <th style="width: 130px; white-space: nowrap;">Mã Giftcode</th>
+                <th style="max-width: 220px;">Mô Tả</th>
+                <th style="width: 90px; white-space: nowrap;">Đậu Vàng</th>
+                <th style="width: 120px; white-space: nowrap;">Cấp VIP</th>
+                <th style="width: 130px; white-space: nowrap;">Đậu Đậu Siêu Cấp</th>
+                <th style="width: 110px; white-space: nowrap;">Đã Dùng / Tối Đa</th>
+                <th style="width: 95px; white-space: nowrap;">Trạng Thái</th>
+                <th style="width: 120px; white-space: nowrap; text-align: center;">Thao Tác</th>
               </tr>
             </thead>
             <tbody id="giftcode-table-body">
@@ -2010,15 +2137,15 @@
         const isExpired = used >= max;
         return `
           <tr>
-            <td><strong style="color: #fbbf24; letter-spacing: 1px;">${gc.code}</strong></td>
-            <td>${gc.description || "-"}</td>
-            <td><strong style="color: #f59e0b;">+${(gc.beans || 0).toLocaleString()}</strong></td>
-            <td>
+            <td style="white-space: nowrap;"><strong style="color: #fbbf24; letter-spacing: 0.5px; font-size: 13px;">${gc.code}</strong></td>
+            <td style="max-width: 220px; font-size: 12px; line-height: 1.35; color: #cbd5e1; word-break: break-word;">${gc.description || "-"}</td>
+            <td style="white-space: nowrap;"><strong style="color: #f59e0b;">+${(gc.beans || 0).toLocaleString()}</strong></td>
+            <td style="white-space: nowrap;">
               ${gc.trial_days > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level || 1} Thử (${gc.trial_days}N)</span>` :
                 gc.vip_months > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level || 2} (${gc.vip_months}T, +${gc.vip_value_add || 100}đ)</span>` :
                 gc.vip_level > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level}</span>` : "Không"}
             </td>
-            <td>
+            <td style="white-space: nowrap;">
               ${(() => {
                 if (gc.super_lamu_species) {
                   const speciesMap = {
@@ -2035,13 +2162,13 @@
                 return gc.super_lamu ? '<span style="color: #a78bfa; font-weight: bold;">⭐ Đậu Đậu Siêu Cấp</span>' : "Không";
               })()}
             </td>
-            <td><strong>${used}</strong> / ${max}</td>
-            <td>
+            <td style="white-space: nowrap;"><strong>${used}</strong> / ${max}</td>
+            <td style="white-space: nowrap;">
               ${isExpired ? '<span class="badge badge-admin">Hết Lượt</span>' :
                 gc.active ? '<span class="badge badge-normal" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">Khả Dụng</span>' :
                 '<span class="badge badge-admin">Bị Khóa</span>'}
             </td>
-            <td style="white-space: nowrap;">
+            <td style="white-space: nowrap; text-align: center;">
               <button class="btn btn-sm btn-primary" onclick="openEditGiftcodeModal('${gc.code}')" style="margin-right: 4px; padding: 4px 10px; font-size: 11.5px;" title="Chỉnh sửa mã quà tặng">✏️ Sửa</button>
               <button class="btn btn-sm btn-danger" onclick="deleteGiftcode('${gc.code}')" style="padding: 4px 10px; font-size: 11.5px;" title="Xóa mã quà tặng">🗑️ Xóa</button>
             </td>
