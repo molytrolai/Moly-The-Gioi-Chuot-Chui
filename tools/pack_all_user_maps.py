@@ -25,7 +25,8 @@ USER_MAPS_DIR = ROOT / "scratch" / "cac_map_can_sua"
 
 # 1. Core 4 Maps already edited by user (Clean versions without plaque)
 CORE_4_MAPS = [
-    ("Map 1 (Lâu Đài Moly)", "Map_10001.swf", ["Map_10001.swf", "1.swf"], "5", ROOT / "work/exported/Map1/5.jpg"),
+    ("Map 1 (Lâu Đài Moly - Background)", "Map_10001.swf", ["Map_10001.swf", "1.swf"], "5", ROOT / "work/exported/Map1/5.jpg"),
+    ("Map 1 (Lâu Đài Moly - Cổng Vòm)", "Map_10001.swf", ["Map_10001.swf", "1.swf"], "124", ROOT / "work/exported/Map1/124.png"),
     ("Map 2 (Quảng Trường Ái Tâm)", "Map_10002.swf", ["Map_10002.swf", "2.swf"], "57", ROOT / "work/exported/Map2/57.jpg"),
     ("Map 3 (Phố Mua Sắm Taotao)", "Map_10003.swf", ["Map_10003.swf", "3.swf"], "4", ROOT / "work/exported/Map3/4.jpg"),
     ("Map 4 (Chân Núi Molylaya)", "Map_10004.swf", ["Map_10004.swf", "4.swf"], "15", ROOT / "work/exported/Map4/15.jpg"),
