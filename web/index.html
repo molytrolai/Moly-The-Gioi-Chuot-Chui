@@ -751,60 +751,18 @@
       body { padding-bottom: 70px !important; }
     }
   </style>
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.2">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.3">
 </head>
 <body>
 
-  <!-- Mobile Sticky Topbar (Hiển thị riêng cho điện thoại di động) -->
+  <!-- Mobile Sticky Topbar (Tối ưu riêng cho điện thoại di động, thanh dock làm điều khiển chính) -->
   <div class="moly-mobile-topbar">
-    <button type="button" class="moly-topbar-btn" onclick="openMobileDrawer()" aria-label="Menu Ngăn Kéo" title="Mở Danh Mục">☰</button>
     <a href="/" class="moly-topbar-brand" title="Moly Vương Quốc Chuột Chũi">
       <img src="/assets/logo-horizontal.png" alt="Moly Vương Quốc Chuột Chũi">
     </a>
-    <button type="button" class="moly-topbar-btn" onclick="handleMobileUserBtnClick()" id="btn-topbar-user" aria-label="Tài Khoản" title="Tài Khoản">👤</button>
-  </div>
-
-  <!-- Mobile Slide-Out Drawer (Menu Ngăn Kéo Trượt Trái Siêu Mượt) -->
-  <div id="moly-drawer-overlay" class="moly-drawer-overlay" onclick="closeMobileDrawer()">
-    <div class="moly-mobile-drawer" onclick="event.stopPropagation()">
-      <div class="moly-drawer-header">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <span style="font-weight: 800; font-size: 14.5px; color: #fde047; display: flex; align-items: center; gap: 6px;">🏰 Cư Dân Vương Quốc</span>
-          <button type="button" onclick="closeMobileDrawer()" style="background: rgba(255,255,255,0.08); border: none; color: #cbd5e1; width: 28px; height: 28px; border-radius: 50%; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
-        </div>
-        <div id="drawer-user-info" style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 14px; padding: 10px 12px; display: flex; align-items: center; gap: 10px;">
-          <img src="/assets/super_lamu_head.png" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; border: 2px solid #f59e0b; background: #0f172a; flex-shrink: 0;">
-          <div style="min-width: 0;">
-            <div id="drawer-user-name" style="font-weight: 700; color: #ffffff; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Khách Vãng Lai</div>
-            <div id="drawer-user-sub" style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Chưa đăng nhập tài khoản</div>
-          </div>
-        </div>
-      </div>
-      <div class="moly-drawer-body">
-        <div class="moly-drawer-section-title">🎮 Khu Vực Trải Nghiệm</div>
-        <a href="/play.html" class="moly-drawer-link"><span>🌐</span> Chơi Trực Tiếp Trên Web</a>
-        <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="moly-drawer-link" download="Moly Thế Giới Chuột chũi.apk"><span>📱</span> Tải Bản Android (APK 13MB)</a>
-        <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="moly-drawer-link" download="Moly Thế Giới Chuột chũi.zip"><span>💻</span> Tải Bản Máy Tính PC (.exe)</a>
-
-        <div class="moly-drawer-section-title">💎 Giao Dịch &amp; Phúc Lợi</div>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openRechargeTab();" class="moly-drawer-link" style="color: #fde047;"><span>💎</span> Cửa Hàng Đậu Vàng &amp; VIP</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openGiftcodeModal();" class="moly-drawer-link" style="color: #c084fc;"><span>🎁</span> Nhập Mã Quà Tặng Giftcode</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openSuperLamuModal();" class="moly-drawer-link"><span>🐾</span> Viện Nghiên Cứu Đậu Đậu</a>
-
-        <div class="moly-drawer-section-title">📚 Cẩm Nang &amp; Vương Quốc</div>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openLeaderboardModal();" class="moly-drawer-link"><span>🏆</span> Bảng Xếp Hạng Cư Dân</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openNewspaperModal();" class="moly-drawer-link"><span>📰</span> Thời Báo Moly Hàng Tuần</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openSmcModal();" class="moly-drawer-link"><span>🛡️</span> Cẩm Nang Hiệp Sĩ SMC</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openKingdomInfoModal();" class="moly-drawer-link"><span>🗺️</span> 257 Bản Đồ Vương Quốc</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openFaqModal();" class="moly-drawer-link"><span>❓</span> Hướng Dẫn &amp; Hỏi Đáp FAQ</a>
-
-        <div class="moly-drawer-section-title">👤 Tài Khoản Cư Dân</div>
-        <a href="/profile.html" id="drawer-link-profile" class="moly-drawer-link" style="display: none; color: #38bdf8;"><span>👤</span> Xem Hồ Sơ &amp; Đổi Mật Khẩu</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openLoginTab();" id="drawer-link-login" class="moly-drawer-link"><span>🔑</span> Đăng Nhập Tài Khoản</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openRegisterTab();" id="drawer-link-reg" class="moly-drawer-link"><span>➕</span> Đăng Ký Cư Dân Mới</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openForgotTab();" class="moly-drawer-link"><span>🔒</span> Lấy Lại Mật Khẩu (Gmail)</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); handleWebLogout();" id="drawer-link-logout" class="moly-drawer-link" style="display: none; color: #ef4444;"><span>🚪</span> Đăng Xuất Web</a>
-      </div>
+    <div class="moly-topbar-right">
+      <span class="moly-topbar-online" id="topbar-live-online">● Online: 1,280+</span>
+      <button type="button" class="moly-topbar-btn" onclick="handleMobileUserBtnClick(event)" id="btn-topbar-user" aria-label="Tài Khoản Cư Dân" title="Tài Khoản">👤</button>
     </div>
   </div>
 
@@ -924,41 +882,6 @@
     </div>
   </div>
 
-  <!-- App Quick-Action Grid 4x2 (Dành riêng cho màn hình điện thoại di động Mobile 3.0) -->
-  <div class="moly-mobile-quick-grid">
-    <a href="/play.html" class="moly-quick-btn">
-      <div class="moly-quick-icon" style="color: #38bdf8; border-color: rgba(56, 189, 248, 0.4);">🎮</div>
-      <div class="moly-quick-label">Chơi Ngay</div>
-    </a>
-    <div class="moly-quick-btn" onclick="openRechargeTab()">
-      <div class="moly-quick-icon" style="color: #f59e0b; border-color: rgba(245, 158, 11, 0.4);">💎</div>
-      <div class="moly-quick-label">Nạp Đậu</div>
-    </div>
-    <div class="moly-quick-btn" onclick="openGiftcodeModal()">
-      <div class="moly-quick-icon" style="color: #ec4899; border-color: rgba(236, 72, 153, 0.4);">🎁</div>
-      <div class="moly-quick-label">Giftcode</div>
-    </div>
-    <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="moly-quick-btn" download="Moly Thế Giới Chuột chũi.apk">
-      <div class="moly-quick-icon" style="color: #10b981; border-color: rgba(16, 185, 129, 0.4);">📱</div>
-      <div class="moly-quick-label">Tải APK</div>
-    </a>
-    <div class="moly-quick-btn" onclick="openLeaderboardModal()">
-      <div class="moly-quick-icon" style="color: #fbbf24; border-color: rgba(251, 191, 36, 0.4);">🏆</div>
-      <div class="moly-quick-label">Xếp Hạng</div>
-    </div>
-    <div class="moly-quick-btn" onclick="openNewsModal()">
-      <div class="moly-quick-icon" style="color: #60a5fa; border-color: rgba(96, 165, 250, 0.4);">📰</div>
-      <div class="moly-quick-label">Tin Tức</div>
-    </div>
-    <div class="moly-quick-btn" onclick="openSmcModal()">
-      <div class="moly-quick-icon" style="color: #a78bfa; border-color: rgba(167, 139, 250, 0.4);">🛡️</div>
-      <div class="moly-quick-label">Hiệp Sĩ</div>
-    </div>
-    <div class="moly-quick-btn" onclick="openSuperLamuModal()">
-      <div class="moly-quick-icon" style="color: #f43f5e; border-color: rgba(244, 63, 94, 0.4);">🐾</div>
-      <div class="moly-quick-label">Siêu Đậu</div>
-    </div>
-  </div>
 
   <!-- Hero Section -->
   <main class="hero">
@@ -2313,27 +2236,19 @@
     }
 
     function openMobileDrawer() {
-      const o = document.getElementById("moly-drawer-overlay");
-      if (o) {
-        o.classList.add("open");
-        document.body.style.overflow = "hidden";
-      }
+      toggleDockPopup('dock-popup-services');
     }
 
     function closeMobileDrawer() {
-      const o = document.getElementById("moly-drawer-overlay");
-      if (o) {
-        o.classList.remove("open");
-        document.body.style.overflow = "";
-      }
+      closeAllDockPopups();
     }
 
-    function handleMobileUserBtnClick() {
+    function handleMobileUserBtnClick(event) {
       const u = getSavedUser();
       if (u) {
         window.location.href = "/profile.html";
       } else {
-        openLoginTab();
+        toggleDockPopup('dock-popup-account', event);
       }
     }
 
@@ -2437,13 +2352,11 @@
       const ddDash = document.getElementById("dd-account-dash");
       const ddLogout = document.getElementById("dd-account-logout");
 
-      // Mobile Drawer Elements
-      const drawerName = document.getElementById("drawer-user-name");
-      const drawerSub = document.getElementById("drawer-user-sub");
-      const drawerProf = document.getElementById("drawer-link-profile");
-      const drawerLogout = document.getElementById("drawer-link-logout");
-      const drawerLogin = document.getElementById("drawer-link-login");
-      const drawerReg = document.getElementById("drawer-link-reg");
+      // Mobile Dock & Topbar Elements
+      const dockLogins = document.querySelectorAll(".dock-guest-only");
+      const dockLoggeds = document.querySelectorAll(".dock-logged-only");
+      const dockLoggedName = document.getElementById("dock-logged-name");
+      const dockLoggedSub = document.getElementById("dock-logged-sub");
       const topbarUserBtn = document.getElementById("btn-topbar-user");
 
       if (user) {
@@ -2476,13 +2389,11 @@
 
         if (navBtn) navBtn.innerHTML = `👤 ${uname} (VIP ${user.vip_level || 0}) <span class="caret">▾</span>`;
 
-        // Sync Mobile Drawer & Topbar
-        if (drawerName) drawerName.textContent = fname;
-        if (drawerSub) drawerSub.textContent = `ID: ${dispId} • VIP ${user.vip_level || 0}`;
-        if (drawerProf) drawerProf.style.display = "flex";
-        if (drawerLogout) drawerLogout.style.display = "flex";
-        if (drawerLogin) drawerLogin.style.display = "none";
-        if (drawerReg) drawerReg.style.display = "none";
+        // Sync Mobile Dock Account Popup & Topbar
+        dockLogins.forEach(el => el.style.display = "none");
+        dockLoggeds.forEach(el => el.style.display = "flex");
+        if (dockLoggedName) dockLoggedName.textContent = fname;
+        if (dockLoggedSub) dockLoggedSub.textContent = `ID: ${dispId} • VIP ${user.vip_level || 0}`;
         if (topbarUserBtn) topbarUserBtn.innerHTML = `👑`;
 
         const gcUid = document.getElementById("gc-user-id");
@@ -2502,13 +2413,9 @@
 
         if (navBtn) navBtn.innerHTML = `👤 Tài Khoản <span class="caret">▾</span>`;
 
-        // Sync Mobile Drawer & Topbar for Guest
-        if (drawerName) drawerName.textContent = "Khách Vãng Lai";
-        if (drawerSub) drawerSub.textContent = "Chưa đăng nhập tài khoản";
-        if (drawerProf) drawerProf.style.display = "none";
-        if (drawerLogout) drawerLogout.style.display = "none";
-        if (drawerLogin) drawerLogin.style.display = "flex";
-        if (drawerReg) drawerReg.style.display = "flex";
+        // Sync Mobile Dock Account Popup & Topbar for Guest
+        dockLogins.forEach(el => el.style.display = "flex");
+        dockLoggeds.forEach(el => el.style.display = "none");
         if (topbarUserBtn) topbarUserBtn.innerHTML = `👤`;
       }
     }
@@ -4137,6 +4044,34 @@
             <span class="popup-item-desc">Top giàu có &amp; điểm cống hiến</span>
           </div>
         </button>
+        <button type="button" class="moly-popup-item" onclick="openNewspaperModal(); closeAllDockPopups();">
+          <span class="popup-item-icon">📰</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Thời Báo Moly Tuần</span>
+            <span class="popup-item-desc">Ấn bản tuần hoàn vương quốc</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openSmcModal(); closeAllDockPopups();">
+          <span class="popup-item-icon">🛡️</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Cẩm Nang Hiệp Sĩ SMC</span>
+            <span class="popup-item-desc">Cảnh sát, Bác sĩ, Nông dân</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openKingdomInfoModal(); closeAllDockPopups();">
+          <span class="popup-item-icon">🗺️</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">257 Bản Đồ Vương Quốc</span>
+            <span class="popup-item-desc">Thế giới thần tiên tuổi thơ</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item" onclick="openFaqModal(); closeAllDockPopups();">
+          <span class="popup-item-icon">❓</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Hỏi Đáp FAQ &amp; Tân Thủ</span>
+            <span class="popup-item-desc">Cẩm nang hướng dẫn đầy đủ</span>
+          </div>
+        </button>
       </div>
     </div>
 
@@ -4156,32 +4091,49 @@
       </button>
       <div class="moly-dock-popup" id="dock-popup-account">
         <div class="moly-popup-header">👤 Quản Lý Tài Khoản</div>
-        <button type="button" class="moly-popup-item" onclick="openLoginTab(); closeAllDockPopups();">
+        <!-- Khi là Khách (Chưa đăng nhập) -->
+        <button type="button" class="moly-popup-item dock-guest-only" id="dock-item-login" onclick="openLoginTab(); closeAllDockPopups();">
           <span class="popup-item-icon">🔑</span>
           <div class="popup-item-info">
             <span class="popup-item-title">Đăng Nhập</span>
             <span class="popup-item-desc">Vào tài khoản cư dân Moly</span>
           </div>
         </button>
-        <button type="button" class="moly-popup-item" onclick="openRegisterTab(); closeAllDockPopups();">
+        <button type="button" class="moly-popup-item dock-guest-only" id="dock-item-reg" onclick="openRegisterTab(); closeAllDockPopups();">
           <span class="popup-item-icon">➕</span>
           <div class="popup-item-info">
             <span class="popup-item-title">Đăng Ký Mới</span>
             <span class="popup-item-desc">Tạo tài khoản ID ngẫu nhiên</span>
           </div>
         </button>
-        <button type="button" class="moly-popup-item" onclick="openDashboardTab(); closeAllDockPopups();">
-          <span class="popup-item-info">👤</span>
-          <div class="popup-item-info">
-            <span class="popup-item-title">Hồ Sơ Cư Dân</span>
-            <span class="popup-item-desc">Xem Đậu Vàng, VIP &amp; Đổi MK</span>
-          </div>
-        </button>
-        <button type="button" class="moly-popup-item" onclick="openForgotTab(); closeAllDockPopups();">
+        <button type="button" class="moly-popup-item dock-guest-only" id="dock-item-forgot" onclick="openForgotTab(); closeAllDockPopups();">
           <span class="popup-item-icon">🔒</span>
           <div class="popup-item-info">
             <span class="popup-item-title">Quên Mật Khẩu</span>
             <span class="popup-item-desc">Khôi phục qua mã OTP Gmail</span>
+          </div>
+        </button>
+
+        <!-- Khi Đã Đăng Nhập -->
+        <a href="/profile.html" class="moly-popup-item dock-logged-only" id="dock-item-profile" style="display: none;" onclick="closeAllDockPopups();">
+          <span class="popup-item-icon">👤</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title" id="dock-logged-name">Hồ Sơ Cư Dân</span>
+            <span class="popup-item-desc" id="dock-logged-sub">Xem Đậu Vàng, VIP &amp; Đổi MK</span>
+          </div>
+        </a>
+        <button type="button" class="moly-popup-item dock-logged-only" id="dock-item-recharge-quick" style="display: none;" onclick="openRechargeTab(); closeAllDockPopups();">
+          <span class="popup-item-icon">💎</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title">Nạp Đậu Vàng</span>
+            <span class="popup-item-desc">Tự động cộng sau 3 giây</span>
+          </div>
+        </button>
+        <button type="button" class="moly-popup-item dock-logged-only" id="dock-item-logout" style="display: none; color: #ef4444;" onclick="handleWebLogout(); closeAllDockPopups();">
+          <span class="popup-item-icon">🚪</span>
+          <div class="popup-item-info">
+            <span class="popup-item-title" style="color: #ef4444;">Đăng Xuất Web</span>
+            <span class="popup-item-desc">Thoát phiên đăng nhập trên web</span>
           </div>
         </button>
       </div>

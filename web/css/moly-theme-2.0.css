@@ -782,6 +782,10 @@ tr:hover td {
     opacity: 0;
     pointer-events: none;
     min-width: 250px;
+    max-width: calc(100vw - 20px) !important;
+    max-height: calc(82dvh - 75px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
     background: linear-gradient(145deg, rgba(20, 30, 46, 0.96) 0%, rgba(12, 18, 30, 0.98) 100%) !important;
     backdrop-filter: blur(28px) saturate(200%) !important;
     -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
@@ -797,24 +801,30 @@ tr:hover td {
 
   .moly-dock-popup.open {
     opacity: 1 !important;
-    transform: translateX(-50%) translateY(0) scale(1) !important;
     pointer-events: auto !important;
   }
 
   /* Keep popups from clipping screen edges */
-  .moly-dock-tab-item:first-child .moly-dock-popup {
-    left: 0;
+  .moly-dock-tab-item:nth-child(1) .moly-dock-popup,
+  .moly-dock-tab-item:nth-child(2) .moly-dock-popup {
+    left: 4px;
+    right: auto;
     transform: translateX(0) translateY(12px) scale(0.94);
   }
-  .moly-dock-tab-item:first-child .moly-dock-popup.open {
+  .moly-dock-tab-item:nth-child(1) .moly-dock-popup.open,
+  .moly-dock-tab-item:nth-child(2) .moly-dock-popup.open {
     transform: translateX(0) translateY(0) scale(1) !important;
   }
 
+  .moly-dock-tab-item:nth-child(4) .moly-dock-popup,
+  .moly-dock-tab-item:nth-child(5) .moly-dock-popup,
   .moly-dock-tab-item:last-child .moly-dock-popup {
     left: auto;
-    right: 0;
+    right: 4px;
     transform: translateX(0) translateY(12px) scale(0.94);
   }
+  .moly-dock-tab-item:nth-child(4) .moly-dock-popup.open,
+  .moly-dock-tab-item:nth-child(5) .moly-dock-popup.open,
   .moly-dock-tab-item:last-child .moly-dock-popup.open {
     transform: translateX(0) translateY(0) scale(1) !important;
   }
@@ -1006,24 +1016,33 @@ tr:hover td {
 }
 
 /* ==========================================================================
-   MOBILE 3.0 APP EXPERIENCE (HEADER, DRAWER & QUICK-ACTION GRID)
+   DESKTOP DEFAULT RULES (STRICT ISOLATION - ZERO MOBILE LEAKS ON DESKTOP)
    ========================================================================== */
-.moly-mobile-topbar {
-  display: none;
-}
-.moly-mobile-quick-grid {
-  display: none;
-}
-.moly-mobile-tabs {
-  display: none;
+.moly-mobile-topbar,
+.moly-drawer-overlay,
+.moly-mobile-drawer,
+.moly-mobile-quick-grid,
+.moly-mobile-tabs,
+.dock-mobile-only {
+  display: none !important;
 }
 
+/* ==========================================================================
+   MOBILE 3.0 APP & ADMIN DOCK-FIRST RESPONSIVE EXPERIENCE (PHONE <= 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
-  /* Hide classic desktop navbar container on mobile in favor of topbar */
-  .navbar-container {
+  /* Strictly hide Desktop elements on Mobile */
+  .navbar-container,
+  .dock-desktop-only,
+  .btn-desktop {
     display: none !important;
   }
 
+  .dock-mobile-only {
+    display: flex !important;
+  }
+
+  /* Mobile Topbar (Floating Minimal Pill with Brand & Online Counter) */
   .moly-mobile-topbar {
     display: flex !important;
     align-items: center !important;
@@ -1033,7 +1052,7 @@ tr:hover td {
     left: 10px !important;
     right: 10px !important;
     margin: 8px 10px 10px 10px !important;
-    height: 52px !important;
+    height: 48px !important;
     padding: 0 14px !important;
     background: linear-gradient(135deg, rgba(22, 34, 52, 0.94) 0%, rgba(14, 22, 36, 0.98) 100%) !important;
     backdrop-filter: blur(20px) saturate(180%) !important;
@@ -1045,9 +1064,34 @@ tr:hover td {
     z-index: 1000 !important;
   }
 
+  .moly-topbar-brand img {
+    height: 26px !important;
+    width: auto !important;
+    display: block !important;
+  }
+
+  .moly-topbar-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+  .moly-topbar-online {
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    color: #4ade80 !important;
+    background: rgba(34, 197, 94, 0.12) !important;
+    border: 1px solid rgba(74, 222, 128, 0.3) !important;
+    padding: 3px 8px !important;
+    border-radius: 9999px !important;
+    letter-spacing: -0.2px !important;
+  }
+
   .moly-topbar-btn {
-    width: 38px !important;
-    height: 38px !important;
+    width: 34px !important;
+    height: 34px !important;
     border-radius: 50% !important;
     background: rgba(255, 255, 255, 0.1) !important;
     border: 1px solid rgba(255, 255, 255, 0.25) !important;
@@ -1055,7 +1099,7 @@ tr:hover td {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     cursor: pointer !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
     transition: all 0.2s ease !important;
@@ -1067,184 +1111,213 @@ tr:hover td {
     border-color: #f59e0b !important;
   }
 
-  .moly-topbar-brand img {
-    height: 28px !important;
-    width: auto !important;
-    display: block !important;
+  /* Mobile Content Typography & Spacing Optimization (Resolves Image 2) */
+  .hero {
+    padding: 14px 10px 20px 10px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* Slide-Out Navigation Drawer */
-  .moly-drawer-overlay {
-    position: fixed !important;
-    inset: 0 !important;
-    background: rgba(10, 16, 30, 0.6) !important;
-    backdrop-filter: blur(8px) saturate(130%) !important;
-    -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
-    z-index: 100000 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transition: opacity 0.25s ease !important;
-  }
-
-  .moly-drawer-overlay.open {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-  }
-
-  .moly-mobile-drawer {
-    position: fixed !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    width: 82% !important;
-    max-width: 330px !important;
-    background: linear-gradient(180deg, rgba(20, 32, 48, 0.98) 0%, rgba(12, 18, 30, 0.99) 100%) !important;
-    backdrop-filter: blur(28px) saturate(190%) !important;
-    -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.25) !important;
-    box-shadow: 10px 0 40px rgba(0, 0, 0, 0.8) !important;
-    transform: translateX(-100%) !important;
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    z-index: 100001 !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  .moly-drawer-overlay.open .moly-mobile-drawer {
-    transform: translateX(0) !important;
-  }
-
-  .moly-drawer-header {
-    padding: 20px 18px 16px 18px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-  }
-
-  .moly-drawer-body {
-    padding: 12px 14px 40px 14px !important;
-    flex: 1 !important;
-  }
-
-  .moly-drawer-section-title {
+  .hero-badge {
     font-size: 11px !important;
-    font-weight: 800 !important;
-    color: #94a3b8 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-    margin: 14px 6px 6px 6px !important;
-  }
-
-  .moly-drawer-link {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 11px 14px !important;
-    border-radius: 12px !important;
-    color: #f1f5f9 !important;
-    text-decoration: none !important;
-    font-size: 13.5px !important;
-    font-weight: 600 !important;
-    margin-bottom: 4px !important;
-    transition: all 0.15s ease !important;
-  }
-
-  .moly-drawer-link:active {
-    background: rgba(245, 158, 11, 0.18) !important;
-    color: #fde047 !important;
-    transform: translateX(4px) !important;
-  }
-
-  /* App Quick-Action Grid 4x2 on Mobile */
-  .moly-mobile-quick-grid {
-    display: grid !important;
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 10px !important;
-    margin: 14px 10px 18px 10px !important;
-    padding: 14px 10px !important;
-    background: linear-gradient(135deg, rgba(22, 34, 52, 0.8) 0%, rgba(14, 22, 36, 0.85) 100%) !important;
-    backdrop-filter: blur(16px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.16) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4) !important;
-  }
-
-  .moly-quick-btn {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-decoration: none !important;
-    gap: 6px !important;
-    cursor: pointer !important;
-    user-select: none !important;
-  }
-
-  .moly-quick-icon {
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 50% !important;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 20px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
-    transition: all 0.2s ease !important;
-  }
-
-  .moly-quick-btn:active .moly-quick-icon {
-    transform: scale(0.92) !important;
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.4) 0%, rgba(234, 88, 12, 0.4) 100%) !important;
-    border-color: #f59e0b !important;
-    box-shadow: 0 0 14px rgba(245, 158, 11, 0.6) !important;
-  }
-
-  .moly-quick-label {
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    color: #e2e8f0 !important;
+    padding: 4px 10px !important;
+    margin: 0 auto 10px auto !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
     text-align: center !important;
-    line-height: 1.2 !important;
+    display: inline-block !important;
+    max-width: 96% !important;
   }
 
-  /* Segmented Content Switcher on Mobile */
-  .moly-mobile-tabs {
-    display: flex !important;
-    gap: 6px !important;
-    margin: 0 10px 14px 10px !important;
-    padding: 4px !important;
-    background: rgba(15, 23, 42, 0.75) !important;
-    border-radius: 9999px !important;
-    border: 1px solid rgba(255, 255, 255, 0.14) !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
+  .hero-title {
+    font-size: clamp(20px, 5.8vw, 25px) !important;
+    line-height: 1.25 !important;
+    margin: 0 auto 10px auto !important;
+    padding: 0 4px !important;
+    letter-spacing: 0.2px !important;
+    text-align: center !important;
+    word-break: keep-all !important;
   }
-  .moly-mobile-tabs::-webkit-scrollbar {
+
+  .hero-desc {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    color: #cbd5e1 !important;
+    margin: 0 auto 16px auto !important;
+    padding: 0 4px !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* Mobile Hero CTA Buttons - Ergonomic Vertical Touch Targets */
+  .cta-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 360px !important;
+    margin: 0 auto 18px auto !important;
+  }
+
+  .cta-container .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    justify-content: center !important;
+    border-radius: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Quick Actions Bar on Mobile */
+  .quick-actions-bar {
+    padding: 14px 12px !important;
+    margin: 14px 0 !important;
+    border-radius: 16px !important;
+  }
+
+  #qa-guest-view,
+  #qa-logged-view {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: center !important;
+    gap: 10px !important;
+  }
+
+  #qa-guest-view h3,
+  #qa-logged-view h3 {
+    text-align: center !important;
+    font-size: 14.5px !important;
+  }
+
+  #qa-guest-view p,
+  #qa-logged-view p {
+    text-align: center !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+  }
+
+  .quick-btn-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-top: 6px !important;
+  }
+
+  .quick-btn-group .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 9px 6px !important;
+    font-size: 11.5px !important;
+    border-radius: 10px !important;
+  }
+
+  /* Comparison Grid & Benefits on Mobile */
+  .comparison-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  .card {
+    padding: 16px 14px !important;
+    border-radius: 16px !important;
+  }
+
+  .benefits-box {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  .benefit-item {
+    padding: 12px 10px !important;
+  }
+
+  /* Body Bottom Spacing to Never Clip with Fixed Bottom Dock */
+  body {
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 12px)) !important;
+  }
+
+  /* Admin Page Mobile Optimizations */
+  header.admin-header,
+  header:has(.brand) {
+    width: calc(100% - 16px) !important;
+    margin: 8px auto !important;
+  }
+
+  .tabs {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    scrollbar-width: none !important;
+    padding: 4px 6px !important;
+    border-radius: 9999px !important;
+    margin-bottom: 16px !important;
+    justify-content: flex-start !important;
+  }
+  .tabs::-webkit-scrollbar {
     display: none !important;
   }
-
-  .moly-mobile-tab-btn {
-    flex: 1 !important;
-    padding: 7px 12px !important;
-    border-radius: 9999px !important;
-    border: none !important;
-    background: transparent !important;
-    color: #94a3b8 !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    white-space: nowrap !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
-    text-align: center !important;
+  .tab-btn {
+    flex: 0 0 auto !important;
+    padding: 6px 12px !important;
+    font-size: 11px !important;
   }
 
-  .moly-mobile-tab-btn.active {
-    background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4) !important;
+  .moly-admin-dock {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    transform: none !important;
+    border-radius: 20px 20px 0 0 !important;
+    padding: 6px 8px calc(8px + env(safe-area-inset-bottom, 10px)) 8px !important;
+    justify-content: space-around !important;
+    gap: 4px !important;
+    z-index: 1000 !important;
+  }
+
+  .moly-admin-dock-btn {
+    flex: 1 !important;
+    padding: 6px 2px !important;
+    min-height: 48px !important;
+    border-radius: 12px !important;
+  }
+
+  .moly-admin-dock-label {
+    font-size: 9.5px !important;
+    letter-spacing: -0.3px !important;
+  }
+
+  .moly-admin-dock-img {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .stat-card {
+    padding: 12px 14px !important;
+  }
+
+  .stat-value {
+    font-size: 22px !important;
+  }
+
+  .stat-title {
+    font-size: 11px !important;
+  }
+
+  .container {
+    padding: 10px 10px 95px 10px !important;
   }
 }
 
@@ -1264,7 +1337,7 @@ h1, h2, h3, h4, h5, h6,
                0 0 32px rgba(246, 168, 40, 0.8),
                0 0 55px rgba(234, 88, 12, 0.55),
                0 2px 4px rgba(0, 0, 0, 0.95) !important;
-  font-size: 42px !important;
+  font-size: 42px;
   font-weight: 900 !important;
   letter-spacing: 0.8px !important;
 }

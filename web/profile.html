@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hồ Sơ Cư Dân Vương Quốc | Moly - Thế Giới Chuột Chũi VN</title>
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.2">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.3">
   <script src="/js/moly-audio.js"></script>
   <script src="/js/moly-notify.js"></script>
   <style>
@@ -66,45 +66,13 @@
 </head>
 <body>
 
-  <!-- Mobile Sticky Topbar (Hiển thị riêng cho điện thoại di động) -->
+  <!-- Mobile Sticky Topbar (Tối ưu riêng cho điện thoại di động) -->
   <div class="moly-mobile-topbar">
-    <button type="button" class="moly-topbar-btn" onclick="openMobileDrawer()" aria-label="Menu Ngăn Kéo" title="Mở Danh Mục">☰</button>
     <a href="/" class="moly-topbar-brand" title="Moly Vương Quốc Chuột Chũi">
       <img src="/assets/logo-horizontal.png" alt="Moly Vương Quốc Chuột Chũi">
     </a>
-    <a href="/" class="moly-topbar-btn" aria-label="Trang Chủ" title="Về Trang Chủ" style="text-decoration: none;">🏠</a>
-  </div>
-
-  <!-- Mobile Slide-Out Drawer (Menu Ngăn Kéo Trượt Trái) -->
-  <div id="moly-drawer-overlay" class="moly-drawer-overlay" onclick="closeMobileDrawer()">
-    <div class="moly-mobile-drawer" onclick="event.stopPropagation()">
-      <div class="moly-drawer-header">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <span style="font-weight: 800; font-size: 14.5px; color: #fde047; display: flex; align-items: center; gap: 6px;">🏰 Cư Dân Vương Quốc</span>
-          <button type="button" onclick="closeMobileDrawer()" style="background: rgba(255,255,255,0.08); border: none; color: #cbd5e1; width: 28px; height: 28px; border-radius: 50%; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
-        </div>
-        <div id="drawer-user-info" style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 14px; padding: 10px 12px; display: flex; align-items: center; gap: 10px;">
-          <img src="/assets/super_lamu_head.png" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; border: 2px solid #f59e0b; background: #0f172a; flex-shrink: 0;">
-          <div style="min-width: 0;">
-            <div id="drawer-user-name" style="font-weight: 700; color: #ffffff; font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Cư Dân Moly</div>
-            <div id="drawer-user-sub" style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Trang Hồ Sơ Cá Nhân</div>
-          </div>
-        </div>
-      </div>
-      <div class="moly-drawer-body">
-        <div class="moly-drawer-section-title">🎮 Điều Hướng Nhanh</div>
-        <a href="/" class="moly-drawer-link"><span>🏠</span> Về Trang Chủ</a>
-        <a href="/play.html" class="moly-drawer-link"><span>🎮</span> Chơi Trực Tiếp Trên Web</a>
-        <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="moly-drawer-link" download="Moly Thế Giới Chuột chũi.apk"><span>📱</span> Tải Bản Android (APK 13MB)</a>
-        <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="moly-drawer-link" download="Moly Thế Giới Chuột chũi.zip"><span>💻</span> Tải Bản Máy Tính PC (.exe)</a>
-
-        <div class="moly-drawer-section-title">💎 Tiện Ích Cư Dân</div>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openRechargeModal();" class="moly-drawer-link" style="color: #fde047;"><span>💎</span> Nạp Đậu Vàng &amp; VIP</a>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); openGiftcodeModal();" class="moly-drawer-link" style="color: #c084fc;"><span>🎁</span> Nhập Mã Quà Tặng Giftcode</a>
-
-        <div class="moly-drawer-section-title">🚪 Tài Khoản</div>
-        <a href="javascript:void(0)" onclick="closeMobileDrawer(); handleWebLogout();" class="moly-drawer-link" style="color: #ef4444;"><span>🚪</span> Đăng Xuất Web</a>
-      </div>
+    <div class="moly-topbar-right">
+      <a href="/" class="moly-topbar-btn" aria-label="Trang Chủ" title="Về Trang Chủ" style="text-decoration: none;">🏠</a>
     </div>
   </div>
 
@@ -394,21 +362,6 @@
       }
     }
 
-    function openMobileDrawer() {
-      const o = document.getElementById("moly-drawer-overlay");
-      if (o) {
-        o.classList.add("open");
-        document.body.style.overflow = "hidden";
-      }
-    }
-
-    function closeMobileDrawer() {
-      const o = document.getElementById("moly-drawer-overlay");
-      if (o) {
-        o.classList.remove("open");
-        document.body.style.overflow = "";
-      }
-    }
 
     function checkAuth() {
       const user = getSavedUser();
