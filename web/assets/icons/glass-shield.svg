@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="gsh_bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#7e22ce" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#3b0764" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="gsh_rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#d8b4fe" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="28" height="28" rx="9" fill="url(#gsh_bg)" stroke="url(#gsh_rim)" stroke-width="1.2"/>
+  <path d="M 3 11 C 3 6 6 3 11 3 L 21 3 C 26 3 29 6 29 11 C 29 13 25 15 16 15 C 7 15 3 13 3 11 Z" fill="#ffffff" opacity="0.35"/>
+  <!-- Shield Shape -->
+  <path d="M 16 8 L 22 10.5 C 22 17 19 21.5 16 23.5 C 13 21.5 10 17 10 10.5 Z" fill="#ffffff" stroke="#581c87" stroke-width="0.8"/>
+  <polygon points="16,11 17.5,14.5 21,15 18,17.5 19,21 16,19 13,21 14,17.5 11,15 14.5,14.5" fill="#fde047"/>
+</svg>

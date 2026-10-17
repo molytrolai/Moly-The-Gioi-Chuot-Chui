@@ -1809,3 +1809,105 @@ small {
   font-weight: 600;
   margin-top: 3px;
 }
+
+/* ==========================================================================
+   FROSTED GLASSMORPHISM ICONS SYSTEM (BÓNG KÍNH TRONG SUỐT)
+   ========================================================================== */
+.moly-glass-icon-large {
+  width: 52px;
+  height: 52px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+}
+
+.benefit-item:hover .moly-glass-icon-large {
+  transform: translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 10px 22px rgba(246, 168, 40, 0.5));
+}
+
+.moly-nav-icon {
+  width: 18px;
+  height: 18px;
+  vertical-align: -3px;
+  margin-right: 4px;
+  display: inline-block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transition: transform 0.2s ease;
+}
+
+.nav-link-btn:hover .moly-nav-icon,
+.nav-dropdown:hover .moly-nav-icon,
+.nav-btn-play:hover .moly-nav-icon {
+  transform: scale(1.15);
+}
+
+.moly-dock-glass-icon {
+  width: 22px;
+  height: 22px;
+  vertical-align: -4px;
+  margin-right: 6px;
+  display: inline-block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.moly-dock-btn:hover .moly-dock-glass-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+.moly-mobile-dock-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  margin: 0 auto 2px auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.moly-hero-dock-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.moly-admin-dock-img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin: 0 auto 3px auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  transition: transform 0.2s ease;
+}
+
+.moly-admin-dock-btn:hover .moly-admin-dock-img,
+.moly-admin-dock-btn.active .moly-admin-dock-img {
+  transform: scale(1.18);
+}
+
+.moly-smart-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+/* ==========================================================================
+   UNIVERSAL IMAGE ROUNDING (BO TRÒN GÓC CHO TẤT CẢ HÌNH ẢNH GAME & BANNER)
+   ========================================================================== */
+.modal-box img,
+.modal-body img,
+.card img,
+.benefit-item img,
+.species-preview img,
+.moly-game-banner img,
+.moly-kingdom-banner img,
+article img,
+figure img {
+  border-radius: 14px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="gt_bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fde047" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#eab308" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#854d0e" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="gt_rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef08a" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="28" height="28" rx="9" fill="url(#gt_bg)" stroke="url(#gt_rim)" stroke-width="1.2"/>
+  <path d="M 3 11 C 3 6 6 3 11 3 L 21 3 C 26 3 29 6 29 11 C 29 13 25 15 16 15 C 7 15 3 13 3 11 Z" fill="#ffffff" opacity="0.35"/>
+  <!-- Lightning Bolt -->
+  <polygon points="17,7 10,17 15,17 13,25 22,14 17,14" fill="#ffffff" stroke="#713f12" stroke-width="1"/>
+</svg>

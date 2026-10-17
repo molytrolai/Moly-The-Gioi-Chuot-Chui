@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="gf_bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#be123c" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#881337" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="gf_rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fda4af" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="28" height="28" rx="9" fill="url(#gf_bg)" stroke="url(#gf_rim)" stroke-width="1.2"/>
+  <path d="M 3 11 C 3 6 6 3 11 3 L 21 3 C 26 3 29 6 29 11 C 29 13 25 15 16 15 C 7 15 3 13 3 11 Z" fill="#ffffff" opacity="0.35"/>
+  <!-- Gift Box Base -->
+  <rect x="9" y="16" width="14" height="8" rx="1.5" fill="#fecdd3" stroke="#fff" stroke-width="0.6"/>
+  <!-- Gift Box Lid -->
+  <rect x="8" y="13" width="16" height="4" rx="1" fill="#ffe4e6" stroke="#fff" stroke-width="0.6"/>
+  <!-- Gold Ribbon -->
+  <rect x="14.5" y="13" width="3" height="11" fill="#fde047"/>
+  <!-- Ribbon Bow -->
+  <path d="M 16 13 C 14 10 11 11 13 13 C 11 11 14 9 16 13 Z" fill="#fde047"/>
+  <path d="M 16 13 C 18 10 21 11 19 13 C 21 11 18 9 16 13 Z" fill="#fde047"/>
+</svg>

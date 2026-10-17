@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="vipBgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#022c22" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="vipRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a7f3d0" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#34d399" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="goldCrown" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="35%" stop-color="#facc15"/>
+      <stop offset="70%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+    <radialGradient id="rubyGem" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#fca5a5"/>
+      <stop offset="35%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </radialGradient>
+    <linearGradient id="vipSpec" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <rect x="4" y="6" width="56" height="54" rx="18" fill="#064e3b" opacity="0.35"/>
+
+  <!-- Glass Container -->
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#vipBgGlow)" stroke="url(#vipRim)" stroke-width="1.8"/>
+
+  <!-- Specular Arc -->
+  <path d="M 6 22 C 6 12 12 6 22 6 L 42 6 C 52 6 58 12 58 22 C 58 26 50 30 32 30 C 14 30 6 26 6 22 Z" fill="url(#vipSpec)"/>
+
+  <!-- Royal Imperial Crown (5 Peaks) -->
+  <path d="M 16 44 L 14 28 L 22 34 L 32 23 L 42 34 L 50 28 L 48 44 Z" fill="url(#goldCrown)" stroke="#fef08a" stroke-width="1"/>
+
+  <!-- Crown Base Velvet Cushion Band -->
+  <rect x="15" y="42" width="34" height="6" rx="3" fill="#047857" stroke="#fbbf24" stroke-width="1"/>
+
+  <!-- Crown Peak Jewels -->
+  <circle cx="14" cy="27" r="2.2" fill="#38bdf8"/>
+  <circle cx="22" cy="33" r="2" fill="#a7f3d0"/>
+  <circle cx="32" cy="22" r="3" fill="#ffffff" stroke="#facc15" stroke-width="0.8"/>
+  <circle cx="42" cy="33" r="2" fill="#a7f3d0"/>
+  <circle cx="50" cy="27" r="2.2" fill="#38bdf8"/>
+
+  <!-- Central Faceted Ruby Heart -->
+  <polygon points="32,32 36,36 32,41 28,36" fill="url(#rubyGem)" stroke="#fef08a" stroke-width="0.6"/>
+
+  <!-- Crown Sparkles -->
+  <polygon points="46,16 47,19 50,20 47,21 46,24 45,21 42,20 45,19" fill="#fef08a"/>
+</svg>

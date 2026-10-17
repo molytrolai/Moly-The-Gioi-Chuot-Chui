@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="cosmicBgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#082f49" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="cosmicRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe" stop-opacity="0.85"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.8"/>
+    </linearGradient>
+    <radialGradient id="cosmicPlanet" cx="30%" cy="28%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#7dd3fc"/>
+      <stop offset="60%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#082f49"/>
+    </radialGradient>
+    <linearGradient id="cosmicRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="cosmicSpec" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="45%" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <rect x="4" y="6" width="56" height="54" rx="18" fill="#0369a1" opacity="0.3"/>
+
+  <!-- Glass Container -->
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#cosmicBgGlow)" stroke="url(#cosmicRim)" stroke-width="1.8"/>
+
+  <!-- Specular Arc -->
+  <path d="M 6 22 C 6 12 12 6 22 6 L 42 6 C 52 6 58 12 58 22 C 58 26 50 30 32 30 C 14 30 6 26 6 22 Z" fill="url(#cosmicSpec)"/>
+
+  <!-- Back of Planetary Ring -->
+  <path d="M 12 37 C 14 31 38 23 52 27 C 48 31 24 39 12 37 Z" fill="url(#cosmicRing)" opacity="0.5"/>
+
+  <!-- Planet Sphere -->
+  <circle cx="32" cy="36" r="13" fill="url(#cosmicPlanet)" stroke="#38bdf8" stroke-width="1"/>
+
+  <!-- Planet Surface Swirl / Cloud Band -->
+  <path d="M 21 34 C 26 31 38 33 44 38 C 42 41 33 39 21 34 Z" fill="#bae6fd" opacity="0.35"/>
+
+  <!-- Front of Planetary Ring -->
+  <path d="M 10 39 C 14 47 48 45 54 33 C 51 32 46 36 34 38 C 22 40 13 38 10 39 Z" fill="url(#cosmicRing)"/>
+
+  <!-- Shiny Sparkles -->
+  <polygon points="48,15 49,18 52,19 49,20 48,23 47,20 44,19 47,18" fill="#ffffff"/>
+  <circle cx="16" cy="22" r="1.5" fill="#fde047"/>
+  <circle cx="48" cy="48" r="1.2" fill="#7dd3fc"/>
+</svg>

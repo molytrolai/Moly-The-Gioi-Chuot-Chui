@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="gn_bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#0284c7" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#0c4a6e" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="gn_rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#7dd3fc" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="28" height="28" rx="9" fill="url(#gn_bg)" stroke="url(#gn_rim)" stroke-width="1.2"/>
+  <path d="M 3 11 C 3 6 6 3 11 3 L 21 3 C 26 3 29 6 29 11 C 29 13 25 15 16 15 C 7 15 3 13 3 11 Z" fill="#ffffff" opacity="0.35"/>
+  <!-- Newspaper / Scroll -->
+  <rect x="8" y="9" width="16" height="14" rx="2" fill="#ffffff" stroke="#0284c7" stroke-width="0.8"/>
+  <rect x="10" y="11" width="5" height="4" fill="#38bdf8" rx="0.5"/>
+  <line x1="17" y1="12" x2="22" y2="12" stroke="#0284c7" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="17" y1="14" x2="21" y2="14" stroke="#0284c7" stroke-width="1" stroke-linecap="round"/>
+  <line x1="10" y1="17" x2="22" y2="17" stroke="#64748b" stroke-width="1" stroke-linecap="round"/>
+  <line x1="10" y1="19.5" x2="19" y2="19.5" stroke="#64748b" stroke-width="1" stroke-linecap="round"/>
+</svg>

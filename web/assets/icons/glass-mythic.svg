@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="mythicBgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#451a03" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="mythicRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#fbbf24" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.8"/>
+    </linearGradient>
+    <linearGradient id="goldWing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#fde047"/>
+      <stop offset="70%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <radialGradient id="sunburstCore" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#fde047"/>
+      <stop offset="75%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </radialGradient>
+    <linearGradient id="mythicSpec" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <rect x="4" y="6" width="56" height="54" rx="18" fill="#78350f" opacity="0.3"/>
+
+  <!-- Glass Container -->
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#mythicBgGlow)" stroke="url(#mythicRim)" stroke-width="1.8"/>
+
+  <!-- Specular Arc -->
+  <path d="M 6 22 C 6 12 12 6 22 6 L 42 6 C 52 6 58 12 58 22 C 58 26 50 30 32 30 C 14 30 6 26 6 22 Z" fill="url(#mythicSpec)"/>
+
+  <!-- Angelic Wings Left -->
+  <path d="M 30 36 C 22 26 12 24 8 28 C 9 34 14 37 17 38 C 11 41 11 46 15 48 C 22 47 26 43 30 38 Z" fill="url(#goldWing)" stroke="#fef08a" stroke-width="0.8"/>
+
+  <!-- Angelic Wings Right -->
+  <path d="M 34 36 C 42 26 52 24 56 28 C 55 34 50 37 47 38 C 53 41 53 46 49 48 C 42 47 38 43 34 38 Z" fill="url(#goldWing)" stroke="#fef08a" stroke-width="0.8"/>
+
+  <!-- Celestial Halo -->
+  <ellipse cx="32" cy="24" rx="12" ry="3.5" fill="none" stroke="#fde047" stroke-width="1.8" opacity="0.85"/>
+
+  <!-- Radiant 8-Point Holy Star -->
+  <polygon points="32,23 34.5,31.5 43,34 34.5,36.5 32,45 29.5,36.5 21,34 29.5,31.5" fill="url(#sunburstCore)" stroke="#fff" stroke-width="0.8"/>
+
+  <!-- Prismatic Gems -->
+  <circle cx="32" cy="34" r="3.2" fill="#ffffff"/>
+  <polygon points="17,16 18,18 20,19 18,20 17,22 16,20 14,19 16,18" fill="#ffffff"/>
+  <polygon points="47,44 48,46 50,47 48,48 47,50 46,48 44,47 46,46" fill="#fef08a"/>
+</svg>

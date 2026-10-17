@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="gu_bg" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#4f46e5" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#312e81" stop-opacity="0.95"/>
+    </radialGradient>
+    <linearGradient id="gu_rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c7d2fe" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="28" height="28" rx="9" fill="url(#gu_bg)" stroke="url(#gu_rim)" stroke-width="1.2"/>
+  <path d="M 3 11 C 3 6 6 3 11 3 L 21 3 C 26 3 29 6 29 11 C 29 13 25 15 16 15 C 7 15 3 13 3 11 Z" fill="#ffffff" opacity="0.35"/>
+  <!-- User Head -->
+  <circle cx="16" cy="12" r="4" fill="#ffffff" stroke="#312e81" stroke-width="0.8"/>
+  <!-- User Shoulders -->
+  <path d="M 9 23 C 9 18 13 17 16 17 C 19 17 23 18 23 23 Z" fill="#ffffff" stroke="#312e81" stroke-width="0.8"/>
+</svg>
