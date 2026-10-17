@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hồ Sơ Cư Dân Vương Quốc | Moly - Thế Giới Chuột Chũi VN</title>
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.2">
   <script src="/js/moly-audio.js"></script>
   <script src="/js/moly-notify.js"></script>
   <style>
@@ -18,6 +18,22 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+    }
+
+    .brand, .navbar-main .brand, .navbar-container .brand {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      text-decoration: none !important;
+      flex-shrink: 0 !important;
+    }
+    .brand img, .navbar-main .brand img, .navbar-container .brand img {
+      height: 38px !important;
+      max-height: 40px !important;
+      width: auto !important;
+      max-width: 200px !important;
+      object-fit: contain !important;
+      display: block !important;
     }
 
     .stat-pill {

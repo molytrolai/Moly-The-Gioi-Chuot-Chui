@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Moly - Thế Giới Chuột Chũi | Khung Chơi Game Chuyên Nghiệp</title>
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.2">
   <script src="/js/moly-audio.js"></script>
   <script src="/js/moly-notify.js"></script>
   <script src="/static/ruffle/ruffle.js"></script>
@@ -35,151 +35,137 @@
       overflow-x: hidden;
     }
 
-    /* Top Navigation Toolbar */
-    .top-bar {
-      background: #111827;
-      border-bottom: 1px solid #1f2937;
-      padding: 8px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      z-index: 100;
+    /* Universal Brand Logo Protection */
+    .brand, .navbar-main .brand, .navbar-container .brand {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      text-decoration: none !important;
+      flex-shrink: 0 !important;
+      cursor: pointer !important;
     }
 
-    .brand-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .brand img, .navbar-main .brand img, .navbar-container .brand img {
+      height: 38px !important;
+      max-height: 40px !important;
+      width: auto !important;
+      max-width: 200px !important;
+      object-fit: contain !important;
+      display: block !important;
     }
 
-    .brand-area a {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
+    /* Dual Floating Pill Navbar */
+    .navbar-container {
+      width: calc(100% - 32px) !important;
+      max-width: 1240px !important;
+      margin: 12px auto 8px auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      padding: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 56px !important;
+      min-height: 56px !important;
+      box-sizing: border-box !important;
+      z-index: 1000 !important;
     }
 
-    .brand-area img {
-      height: 36px;
-      width: auto;
-      object-fit: contain;
+    .navbar-main {
+      flex: 1 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      height: 56px !important;
+      min-height: 56px !important;
+      padding: 6px 22px !important;
+      border-radius: 9999px !important;
+      box-sizing: border-box !important;
     }
 
-    .server-status-pill {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399;
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+    .navbar-main .nav-menu {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      margin-left: auto !important;
     }
 
-    .pulse-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #10b981;
-      animation: pulse 1.8s infinite;
+    .navbar-aux {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      height: 56px !important;
+      min-height: 56px !important;
+      padding: 6px 16px !important;
+      border-radius: 9999px !important;
+      box-sizing: border-box !important;
+      flex-shrink: 0 !important;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.3; transform: scale(0.85); }
-    }
-
-    .controls-area {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
+    /* Controls & Buttons (Capsule Pills) */
     .btn-ctrl {
-      background: #1f2937;
+      background: rgba(255, 255, 255, 0.08);
       color: #e2e8f0;
-      border: 1px solid #374151;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 12.5px;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       white-space: nowrap;
+      user-select: none;
     }
 
     .btn-ctrl:hover {
-      background: #374151;
+      background: rgba(255, 255, 255, 0.18);
       color: #fff;
-      border-color: #4b5563;
+      border-color: rgba(254, 240, 138, 0.7);
+      box-shadow: 0 0 16px rgba(253, 224, 71, 0.4);
+      transform: translateY(-1px);
     }
 
     .btn-ctrl-primary {
-      background: #ff7e1b;
-      border-color: #ea580c;
-      color: #fff;
+      background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%) !important;
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      border-top-color: #fff !important;
+      color: #fff !important;
     }
     .btn-ctrl-primary:hover {
-      background: #ea580c;
-    }
-
-    .btn-ctrl-purple {
-      background: #7c3aed;
-      border-color: #6d28d9;
-      color: #fff;
-    }
-    .btn-ctrl-purple:hover {
-      background: #6d28d9;
-    }
-
-    .btn-ctrl-pink {
-      background: #db2777;
-      border-color: #be185d;
-      color: #fff;
-    }
-    .btn-ctrl-pink:hover {
-      background: #be185d;
+      box-shadow: 0 0 20px rgba(246, 168, 40, 0.6) !important;
     }
 
     .btn-ctrl-green {
-      background: #059669;
-      border-color: #047857;
-      color: #fff;
-    }
-    .btn-ctrl-green:hover {
-      background: #047857;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      border-top-color: #fff !important;
+      color: #fff !important;
     }
 
-    .btn-ctrl-blue {
-      background: #2563eb;
-      border-color: #1d4ed8;
-      color: #fff;
-    }
-    .btn-ctrl-blue:hover {
-      background: #1d4ed8;
-    }
-
-    /* SSO Bar */
+    /* SSO Bar (Luxury Liquid Frosted Glass Pill) */
     .sso-bar {
-      width: 960px;
-      max-width: 100%;
-      background: #111827;
-      border: 1px solid #1f2937;
-      border-radius: 8px;
-      padding: 8px 14px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      width: 100% !important;
+      max-width: 1140px !important;
+      background: linear-gradient(180deg, rgba(20, 30, 48, 0.85) 0%, rgba(15, 23, 42, 0.92) 100%) !important;
+      backdrop-filter: blur(24px) saturate(180%) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.18) !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.50) !important;
+      border-radius: 9999px !important;
+      padding: 7px 18px !important;
+      margin: 0 auto 10px auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.3) !important;
+      box-sizing: border-box !important;
     }
     .sso-content {
       width: 100%;
@@ -223,24 +209,39 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 12px 10px;
+      justify-content: flex-start;
+      padding: 6px 12px 24px 12px;
       position: relative;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .stage-container {
-      width: 960px;
-      height: 560px;
-      max-width: 100%;
+      width: 1140px; /* Cinema size default */
+      height: 665px;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100vh - 165px);
+      aspect-ratio: 12 / 7;
       background: #000000;
-      border-radius: 12px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px #334155;
+      border-radius: 16px;
+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.15), 0 0 35px rgba(246, 168, 40, 0.15);
       overflow: hidden;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: width 0.3s ease, height 0.3s ease;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-bottom: 75px; /* Leave space for bottom floating dock */
+    }
+
+    .stage-container.stage-classic {
+      width: 960px !important;
+      height: 560px !important;
+    }
+
+    .stage-container.stage-fit {
+      width: min(calc((100vh - 165px) * 12 / 7), calc(100vw - 32px)) !important;
+      height: min(calc(100vh - 165px), calc((100vw - 32px) * 7 / 12)) !important;
     }
 
     /* Fullscreen Mode: fills 100% of screen */
@@ -484,12 +485,11 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css">
 </head>
 <body>
 
   <!-- Dual Floating Pill Navbar (Đồng bộ chuẩn giao diện Moly 2.0) -->
-  <header class="navbar-container" style="position: static; margin-bottom: 8px;">
+  <header class="navbar-container">
     <!-- Khung Menu Chính -->
     <div class="navbar-main">
       <a href="/" class="brand" title="Moly - Thế Giới Chuột Chũi VN">
@@ -1294,21 +1294,35 @@
   </div>
 
   <script>
-    // --- Scale Mode state (12:7 standard vs Stretch) ---
-    let isStretchMode = false;
+    // --- Scale Mode state (Cinema 1140x665 -> Classic 960x560 -> Fit Viewport) ---
+    let stageScaleMode = 'cinema'; // 'cinema' | 'classic' | 'fit'
 
     function toggleScaleMode() {
-      const player = document.getElementById("moly-ruffle-player");
+      const stage = document.getElementById("game-stage");
       const btn = document.getElementById("btn-scale-toggle");
-      isStretchMode = !isStretchMode;
-      if (isStretchMode) {
-        if (player && player.setScale) player.setScale("exactfit");
-        btn.textContent = "↔️ Tỷ Lệ: Kéo Dãn (Fit)";
-        btn.style.color = "#38bdf8";
-      } else {
+      const player = document.getElementById("moly-ruffle-player");
+      if (!stage) return;
+
+      if (stageScaleMode === 'cinema') {
+        stageScaleMode = 'classic';
+        stage.classList.remove('stage-fit');
+        stage.classList.add('stage-classic');
+        if (btn) btn.innerHTML = '📐 Tỉ Lệ: Chuẩn (960x560)';
         if (player && player.setScale) player.setScale("showall");
-        btn.textContent = "📐 Tỷ Lệ: Chuẩn (12:7)";
-        btn.style.color = "#e2e8f0";
+        if (window.MolyNotify) MolyNotify.show("📐 Đã chuyển sang kích thước Chuẩn Gốc (960x560)", "info");
+      } else if (stageScaleMode === 'classic') {
+        stageScaleMode = 'fit';
+        stage.classList.remove('stage-classic');
+        stage.classList.add('stage-fit');
+        if (btn) btn.innerHTML = '↔️ Tỉ Lệ: Vừa Màn (Fit)';
+        if (player && player.setScale) player.setScale("showall");
+        if (window.MolyNotify) MolyNotify.show("↔️ Đã phóng to tối đa vừa màn hình (giữ tỉ lệ 12:7)", "info");
+      } else {
+        stageScaleMode = 'cinema';
+        stage.classList.remove('stage-classic', 'stage-fit');
+        if (btn) btn.innerHTML = '📐 Tỉ Lệ: Rạp Chiếu (1140x665)';
+        if (player && player.setScale) player.setScale("showall");
+        if (window.MolyNotify) MolyNotify.show("🎬 Đã chuyển sang Rạp Chiếu Rộng (1140x665)", "info");
       }
     }
 
@@ -2946,28 +2960,41 @@
     });
   </script>
 
-  <!-- Floating Game Control Dock (Tiện ích chuẩn game: Tỷ lệ, Toàn màn hình, Nạp đậu, Giftcode, Âm thanh) -->
-  <nav class="moly-admin-dock" style="gap: 12px;">
-    <button type="button" class="moly-admin-dock-btn" onclick="toggleScaleMode()" title="Chuyển đổi tỉ lệ màn hình">
-      <span class="moly-admin-dock-icon">📐</span>
-      <span class="moly-admin-dock-label">Tỉ Lệ (12:7)</span>
+  <!-- Floating Game Control Dock (Tiện ích chuẩn game Moly 2.0: Tỷ lệ, Toàn màn, Nạp đậu, Giftcode, Hồ sơ, Âm thanh, Về Web) -->
+  <nav class="moly-game-dock" id="moly-game-dock">
+    <button type="button" class="moly-dock-btn moly-dock-btn-primary" id="btn-scale-toggle" onclick="toggleScaleMode()" title="Chuyển đổi tỉ lệ &amp; kích thước rạp chiếu">
+      📐 Tỉ Lệ: Rạp Chiếu (1140x665)
     </button>
-    <button type="button" class="moly-admin-dock-btn" onclick="toggleFullscreen()" title="Toàn màn hình">
-      <span class="moly-admin-dock-icon">⛶</span>
-      <span class="moly-admin-dock-label">Toàn Màn</span>
+    <button type="button" class="moly-dock-btn moly-dock-btn-secondary" onclick="toggleFullscreen()" title="Toàn màn hình trình duyệt">
+      ⛶ Toàn Màn
     </button>
-    <button type="button" class="moly-admin-dock-btn" onclick="openRechargeTab()" title="Cửa hàng Đậu & VIP">
-      <span class="moly-admin-dock-icon">💎</span>
-      <span class="moly-admin-dock-label">Nạp Đậu</span>
+    <button type="button" class="moly-dock-btn moly-dock-btn-zalopay" onclick="openRechargeTab()" title="Cửa hàng Nạp Đậu Vàng &amp; VIP qua Ngân Hàng/ZaloPay">
+      💎 Nạp Đậu &amp; QR
     </button>
-    <button type="button" class="moly-admin-dock-btn" onclick="openGiftcodeModal()" title="Nhập Giftcode">
-      <span class="moly-admin-dock-icon">🎁</span>
-      <span class="moly-admin-dock-label">Giftcode</span>
+    <button type="button" class="moly-dock-btn moly-dock-btn-secondary" onclick="openGiftcodeModal()" title="Nhập Giftcode nhận quà tân thủ">
+      🎁 Giftcode
     </button>
-    <button type="button" class="moly-admin-dock-btn" onclick="MolyAudio.toggle()" title="Bật/Tắt âm thanh">
-      <span class="moly-admin-dock-icon sound-icon">🔊</span>
-      <span class="moly-admin-dock-label sound-text">Âm Thanh</span>
+    <a href="/profile.html" class="moly-dock-btn moly-dock-btn-secondary" title="Xem hồ sơ &amp; trang bị cư dân">
+      👤 Hồ Sơ
+    </a>
+    <button type="button" class="moly-sound-btn" onclick="MolyAudio.toggle()" title="Bật/Tắt âm thanh vương quốc">
+      <span class="sound-icon">🔊</span> <span class="sound-text">Âm Thanh</span>
     </button>
+    <a href="/" class="moly-dock-btn moly-dock-btn-secondary" title="Về trang chủ vương quốc">
+      🏠 Về Web
+    </a>
   </nav>
+
+  <script>
+    // Tự động mờ thanh dock khi chuột di vào màn hình chơi game để tránh cản trở tầm nhìn
+    (function setupGameDockFade() {
+      const stage = document.getElementById("game-stage");
+      const dock = document.getElementById("moly-game-dock");
+      if (stage && dock) {
+        stage.addEventListener("mouseenter", () => dock.classList.add("dock-dimmed"));
+        stage.addEventListener("mouseleave", () => dock.classList.remove("dock-dimmed"));
+      }
+    })();
+  </script>
 </body>
 </html>
