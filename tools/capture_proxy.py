@@ -1643,6 +1643,34 @@ class ProxyHandler(BaseHTTPRequestHandler):
                 self.wfile.write(content)
                 return
 
+        if parsed.path.startswith("/css/"):
+            rel_path = parsed.path[5:].split("?")[0]
+            target_file = (WEB_DIR / "css" / rel_path).resolve()
+            if (WEB_DIR / "css").resolve() in target_file.parents and target_file.is_file():
+                content = target_file.read_bytes()
+                self.send_response(200, "OK")
+                self.send_header("Content-Type", "text/css; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.send_header("Cache-Control", "public, max-age=86400")
+                self.send_header("Connection", "close")
+                self.end_headers()
+                self.wfile.write(content)
+                return
+
+        if parsed.path.startswith("/js/"):
+            rel_path = parsed.path[4:].split("?")[0]
+            target_file = (WEB_DIR / "js" / rel_path).resolve()
+            if (WEB_DIR / "js").resolve() in target_file.parents and target_file.is_file():
+                content = target_file.read_bytes()
+                self.send_response(200, "OK")
+                self.send_header("Content-Type", "application/javascript; charset=utf-8")
+                self.send_header("Content-Length", str(len(content)))
+                self.send_header("Cache-Control", "public, max-age=86400")
+                self.send_header("Connection", "close")
+                self.end_headers()
+                self.wfile.write(content)
+                return
+
         if parsed.path.endswith(".apk") or "apk" in parsed.path.lower():
             if ANDROID_APK_PATH.is_file():
                 content = ANDROID_APK_PATH.read_bytes()
