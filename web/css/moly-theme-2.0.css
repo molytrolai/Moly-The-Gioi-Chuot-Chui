@@ -257,24 +257,65 @@ hr, .card-header, .dropdown-divider {
 
 /* Desktop Floating Pill Navbar */
 @media (min-width: 769px) {
-  .navbar {
+  /* Dual Floating Pill Navbar Container */
+  .navbar-container {
     position: sticky !important;
     top: 14px !important;
     margin: 14px auto 14px auto !important;
     width: calc(100% - 48px) !important;
     max-width: 1240px !important;
-    border-radius: 9999px !important;
-    padding: 8px 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    z-index: 1000 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+
+  /* Main Menu Pill (Logo on left, Nav Menu centered & right-aligned) */
+  .navbar-main {
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.66) 100%) !important;
     backdrop-filter: blur(28px) saturate(200%) !important;
     -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
     border: 1px solid rgba(255, 255, 255, 0.22) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 9999px !important;
+    padding: 8px 24px !important;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
-    z-index: 1000 !important;
+    min-height: 58px !important;
+    box-sizing: border-box !important;
+  }
+
+  .navbar-main .nav-menu {
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
+    margin-left: auto !important; /* Căn sang mép phải khung menu */
+    gap: 8px !important;
+  }
+
+  /* Auxiliary Right Pill (Tách riêng: Tài Khoản + Chơi Ngay + Online Badge) */
+  .navbar-aux {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.70) 100%) !important;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
+    border-radius: 9999px !important;
+    padding: 8px 18px !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55), 0 0 20px rgba(246, 168, 40, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+    flex-shrink: 0 !important;
+    min-height: 58px !important;
+    box-sizing: border-box !important;
   }
 
   /* Inner Navbar Buttons as Rounded Pills */
@@ -285,36 +326,135 @@ hr, .card-header, .dropdown-divider {
     border-radius: 9999px !important;
     padding: 7px 16px !important;
   }
+}
 
-  .nav-menu {
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
+/* Floating Rounded Marquee Server Ticker Strip */
+.moly-ticker-container {
+  position: relative;
+  margin: 10px auto 18px auto;
+  width: calc(100% - 48px);
+  max-width: 1240px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(20, 30, 48, 0.78) 0%, rgba(15, 23, 42, 0.82) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-top: 1px solid rgba(255, 255, 255, 0.50);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 6px 14px;
+  overflow: hidden;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.moly-ticker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  color: #ffffff;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 0 14px rgba(246, 168, 40, 0.6);
+  flex-shrink: 0;
+  margin-right: 14px;
+  z-index: 2;
+}
+
+.moly-ticker-track-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, black 3%, black 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 3%, black 97%, transparent 100%);
+}
+
+.moly-ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  width: max-content;
+  white-space: nowrap;
+  animation: molyTickerScroll 42s linear infinite;
+  will-change: transform;
+}
+
+.moly-ticker-container:hover .moly-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes molyTickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-/* Mobile Compact Top Bar */
+.moly-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #e2e8f0;
+}
+.moly-ticker-item strong {
+  color: #ffffff;
+}
+
+/* Mobile Top Bar */
+@media (max-width: 900px) {
+  .navbar-container {
+    width: calc(100% - 24px) !important;
+    margin: 8px auto !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .navbar-main {
+    width: 100% !important;
+    padding: 8px 16px !important;
+  }
+  .navbar-aux {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
 @media (max-width: 768px) {
-  .navbar {
-    position: sticky !important;
-    top: 8px !important;
+  .navbar-container {
     margin: 8px 12px 10px 12px !important;
     width: calc(100% - 24px) !important;
+  }
+  .navbar-main {
     border-radius: 20px !important;
     padding: 8px 16px !important;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.75) 100%) !important;
-    backdrop-filter: blur(24px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.5) !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
-    z-index: 1000 !important;
   }
-  .nav-menu {
+  .navbar-main .nav-menu {
     display: none !important;
   }
-  .nav-actions .nav-btn-play {
-    display: none !important; /* Center hero button at bottom dock handles this */
+  .navbar-aux {
+    display: none !important; /* Mobile bottom dock handles this */
+  }
+  .moly-ticker-container {
+    width: calc(100% - 24px);
+    padding: 5px 10px;
+    border-radius: 16px;
+  }
+  .moly-ticker-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+    margin-right: 8px;
+  }
+  .moly-ticker-item {
+    font-size: 12px;
   }
 }
 
@@ -700,20 +840,48 @@ tr:hover td {
   }
 }
 
-/* Modals & Safe Actions */
-.modal-overlay, #login-overlay, .moly-safe-modal-backdrop {
-  background: rgba(8, 12, 22, 0.85) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+/* Modals & Safe Actions Backdrop (Chỉ hơi mờ dạng trong suốt theo yêu cầu người dùng) */
+.modal-overlay,
+#login-overlay,
+.moly-safe-modal-backdrop,
+.moly-alert-overlay {
+  background: rgba(10, 16, 30, 0.45) !important;
+  backdrop-filter: blur(8px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
+  overflow: hidden !important;
+  overscroll-behavior: contain !important;
+}
+
+.modal-box, .modal-card, .modal {
+  background: linear-gradient(145deg, rgba(22, 34, 52, 0.95) 0%, rgba(14, 22, 36, 0.98) 100%) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.65) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(246, 168, 40, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.45) !important;
+  overscroll-behavior: contain !important;
 }
 
 /* ==========================================================================
-   7. UNIVERSAL HIGH-CONTRAST TEXT & READABILITY (CHỮ TRẮNG & MÀU NỔI BẬT)
+   7. UNIVERSAL HIGH-CONTRAST TEXT & READABILITY (CHỮ TRẮNG & HÀO QUANG VÀNG)
    ========================================================================== */
 h1, h2, h3, h4, h5, h6,
-.hero-title, .benefits-title, .card-title, .section-title, .ranking-title {
+.benefits-title, .card-title, .section-title, .ranking-title {
   color: #ffffff !important;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75) !important;
+}
+
+/* Tiêu Đề Moly Thế Giới Chuột Chũi: Màu Trắng + Hào Quang Vàng Xung Quanh Chữ */
+.hero-title {
+  color: #ffffff !important;
+  text-shadow: 0 0 16px rgba(253, 224, 71, 0.95),
+               0 0 32px rgba(246, 168, 40, 0.8),
+               0 0 55px rgba(234, 88, 12, 0.55),
+               0 2px 4px rgba(0, 0, 0, 0.95) !important;
+  font-size: 42px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.8px !important;
 }
 
 .hero-subtitle, .hero-badge {

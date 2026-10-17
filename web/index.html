@@ -8,6 +8,7 @@
   <script src="/js/moly-audio.js"></script>
   <script src="/js/moly-ambient.js"></script>
   <script src="/js/moly-dock.js"></script>
+  <script src="/js/moly-notify.js"></script>
   <style>
     :root {
       --primary: #ff7e1b;
@@ -754,45 +755,51 @@
 </head>
 <body>
 
-  <!-- Thanh Điều Hướng Gọn Gàng & Khoa Học -->
-  <header class="navbar">
-    <a href="/" class="brand" title="Moly - Thế Giới Chuột Chũi VN">
-      <img src="/assets/logo-horizontal.png" alt="Moly Thế Giới Chuột Chũi">
-    </a>
+  <!-- Dual Floating Pill Navbar (Khung Chính & Khung Phụ Viên Thuốc Bên Phải) -->
+  <header class="navbar-container">
+    <!-- Khung Menu Chính (Pill 1: Logo + Các Nút Căn Giữa Dọc & Mép Phải) -->
+    <div class="navbar-main">
+      <a href="/" class="brand" title="Moly - Thế Giới Chuột Chũi VN">
+        <img src="/assets/logo-horizontal.png" alt="Moly Thế Giới Chuột Chũi">
+      </a>
 
-    <nav class="nav-menu">
-      <a href="/" class="nav-link-btn">🏠 Trang Chủ</a>
+      <nav class="nav-menu">
+        <a href="/" class="nav-link-btn">🏠 Trang Chủ</a>
 
-      <!-- Tiện Ích Dropdown -->
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-btn" type="button">⚡ Tiện Ích <span class="caret">▾</span></button>
-        <div class="dropdown-menu">
-          <a href="javascript:void(0)" onclick="openLeaderboardModal()" class="dropdown-item">🏆 Bảng Xếp Hạng Cư Dân</a>
-          <a href="javascript:void(0)" onclick="openNewspaperModal()" class="dropdown-item">📰 Thời Báo Moly (Số 128)</a>
-          <a href="javascript:void(0)" onclick="openSmcModal()" class="dropdown-item">🛡️ Cẩm Nang Hiệp Sĩ SMC</a>
-          <a href="javascript:void(0)" onclick="openGiftcodeModal()" class="dropdown-item">🎁 Nhập Giftcode</a>
-          <a href="javascript:void(0)" onclick="openSuperLamuModal()" class="dropdown-item">🐾 Đậu Đậu Siêu Cấp</a>
-          <a href="javascript:void(0)" onclick="openKingdomInfoModal()" class="dropdown-item">🗺️ 257 Bản Đồ Vương Quốc</a>
-          <a href="javascript:void(0)" onclick="openFaqModal()" class="dropdown-item">❓ Cẩm Nang &amp; FAQ</a>
+        <!-- Tiện Ích Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" type="button">⚡ Tiện Ích <span class="caret">▾</span></button>
+          <div class="dropdown-menu">
+            <a href="javascript:void(0)" onclick="openLeaderboardModal()" class="dropdown-item">🏆 Bảng Xếp Hạng Cư Dân</a>
+            <a href="javascript:void(0)" onclick="openNewspaperModal()" class="dropdown-item">📰 Thời Báo Moly (Số 128)</a>
+            <a href="javascript:void(0)" onclick="openSmcModal()" class="dropdown-item">🛡️ Cẩm Nang Hiệp Sĩ SMC</a>
+            <a href="javascript:void(0)" onclick="openGiftcodeModal()" class="dropdown-item">🎁 Nhập Giftcode</a>
+            <a href="javascript:void(0)" onclick="openSuperLamuModal()" class="dropdown-item">🐾 Đậu Đậu Siêu Cấp</a>
+            <a href="javascript:void(0)" onclick="openKingdomInfoModal()" class="dropdown-item">🗺️ 257 Bản Đồ Vương Quốc</a>
+            <a href="javascript:void(0)" onclick="openFaqModal()" class="dropdown-item">❓ Cẩm Nang &amp; FAQ</a>
+          </div>
         </div>
-      </div>
 
-      <!-- Tin Tức -->
-      <a href="javascript:void(0)" onclick="openNewsModal()" class="nav-link-btn">📰 Tin Tức</a>
+        <!-- Tin Tức -->
+        <a href="javascript:void(0)" onclick="openNewsModal()" class="nav-link-btn">📰 Tin Tức</a>
 
-      <!-- Tải Về Dropdown -->
-      <div class="nav-dropdown">
-        <button class="nav-dropdown-btn" type="button">📥 Tải Về <span class="caret">▾</span></button>
-        <div class="dropdown-menu">
-          <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="dropdown-item" download="Moly Thế Giới Chuột chũi.apk">📱 Bản Android (APK - 13 MB)</a>
-          <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="dropdown-item" download="Moly Thế Giới Chuột chũi.zip">💻 Bản Windows (PC - 150 MB)</a>
+        <!-- Tải Về Dropdown -->
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-btn" type="button">📥 Tải Về <span class="caret">▾</span></button>
+          <div class="dropdown-menu">
+            <a href="/download/Moly-The-Gioi-Chuot-Chui.apk" class="dropdown-item" download="Moly Thế Giới Chuột chũi.apk">📱 Bản Android (APK - 13 MB)</a>
+            <a href="/download/Moly-The-Gioi-Chuot-Chui.zip" class="dropdown-item" download="Moly Thế Giới Chuột chũi.zip">💻 Bản Windows (PC - 150 MB)</a>
+          </div>
         </div>
-      </div>
+      </nav>
+    </div>
 
+    <!-- Khung Viên Thuốc Phụ Bên Phải (Pill 2: Tách Biệt Tài Khoản + Chơi Ngay + Online) -->
+    <div class="navbar-aux">
       <!-- Tài Khoản Dropdown -->
-      <div class="nav-dropdown">
+      <div class="nav-dropdown" id="nav-aux-account">
         <button class="nav-dropdown-btn" id="nav-btn-account" type="button">👤 Tài Khoản <span class="caret">▾</span></button>
-        <div class="dropdown-menu" id="dropdown-account-menu">
+        <div class="dropdown-menu dropdown-menu-right" id="dropdown-account-menu">
           <a href="javascript:void(0)" onclick="openLoginTab()" id="dd-account-login" class="dropdown-item">🔑 Đăng Nhập</a>
           <a href="javascript:void(0)" onclick="openRegisterTab()" id="dd-account-reg" class="dropdown-item">➕ Đăng Ký Tài Khoản</a>
           <a href="javascript:void(0)" onclick="openDashboardTab()" id="dd-account-dash" class="dropdown-item" style="display: none;">👤 Hồ Sơ Cư Dân</a>
@@ -803,9 +810,7 @@
           <a href="javascript:void(0)" onclick="handleWebLogout()" id="dd-account-logout" class="dropdown-item" style="display: none; color: #ef4444;">🚪 Đăng Xuất</a>
         </div>
       </div>
-    </nav>
 
-    <div class="nav-actions">
       <a href="/play.html" class="nav-btn-play">🎮 Chơi Ngay</a>
       <span class="status-badge">
         <span class="status-dot"></span>
@@ -814,15 +819,52 @@
     </div>
   </header>
 
-  <!-- Live Server Monitor Strip -->
-  <div class="server-status-strip" style="background: linear-gradient(90deg, #1e1b4b 0%, #0f172a 50%, #1e1b4b 100%); border-bottom: 1px solid rgba(168, 85, 247, 0.3); padding: 8px 16px; font-size: 13px; color: #e2e8f0; display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #10b981; box-shadow: 0 0 10px #10b981;"></span>
-      <span><strong>Máy Chủ Vương Quốc 1:</strong> <span style="color: #34d399; font-weight: 700;">Hoạt Động Hoàn Hảo (Ping: <span id="live-ping">18ms</span> • Ổn định 99.9%)</span></span>
-    </div>
-    <div style="display: flex; align-items: center; gap: 12px; font-size: 12px; color: #94a3b8;">
-      <span>👥 Cư Dân Online: <strong id="live-ccu" style="color: #fde047;">1,280+</strong></span>
-      <span>⚡ Máy chủ: <strong style="color: #60a5fa;">Tri-Play (Web • APK • PC)</strong></span>
+  <!-- Floating Marquee Server Ticker Strip (Chạy chữ liên tục từ phải sang trái) -->
+  <div class="moly-ticker-container">
+    <div class="moly-ticker-badge">⚡ BẢN TIN VƯƠNG QUỐC</div>
+    <div class="moly-ticker-track-wrapper">
+      <div class="moly-ticker-track">
+        <div class="moly-ticker-item">
+          <span style="display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+          <span><strong>Máy Chủ Vương Quốc 1:</strong> <span class="accent-green">Hoạt Động Hoàn Hảo (Ping: 18ms • 99.9% Ổn định)</span></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>👥 Cư Dân Online: <strong id="live-ccu" class="accent-gold">1,280+</strong></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>🎁 Mã Giftcode Mới: <strong class="accent-gold">MOLYCHUOTCHUI</strong> (Tặng 100 Đậu Vàng &amp; Set Nông Dân)</span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>🐾 Sự Kiện: <strong class="accent-cyan">Viện Nghiên Cứu Đậu Đậu Siêu Cấp 5 Hệ Tiến Hóa</strong></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>🛡️ Hiệp Sĩ SMC: <strong style="color: #c084fc;">Kỳ Thi Tuyển Chọn Dũng Sĩ Bảo Vệ Vương Quốc</strong></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>💎 Nạp Đậu Tự Động: <strong class="accent-gold">Quét QR VietQR / ZaloPay nhận Đậu sau 3 giây!</strong></span>
+        </div>
+
+        <!-- Clone cho vòng lặp vô tận mượt mà -->
+        <div class="moly-ticker-item">
+          <span style="display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981;"></span>
+          <span><strong>Máy Chủ Vương Quốc 1:</strong> <span class="accent-green">Hoạt Động Hoàn Hảo (Ping: 18ms • 99.9% Ổn định)</span></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>👥 Cư Dân Online: <strong class="accent-gold">1,280+</strong></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>🎁 Mã Giftcode Mới: <strong class="accent-gold">MOLYCHUOTCHUI</strong> (Tặng 100 Đậu Vàng &amp; Set Nông Dân)</span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>🐾 Sự Kiện: <strong class="accent-cyan">Viện Nghiên Cứu Đậu Đậu Siêu Cấp 5 Hệ Tiến Hóa</strong></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>🛡️ Hiệp Sĩ SMC: <strong style="color: #c084fc;">Kỳ Thi Tuyển Chọn Dũng Sĩ Bảo Vệ Vương Quốc</strong></span>
+        </div>
+        <div class="moly-ticker-item">
+          <span>💎 Nạp Đậu Tự Động: <strong class="accent-gold">Quét QR VietQR / ZaloPay nhận Đậu sau 3 giây!</strong></span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -831,8 +873,8 @@
     <div class="hero-badge">🌟 TUỔI THƠ TRỞ LẠI - TRẢI NGHIỆM ĐA NỀN TẢNG 🌟</div>
     <h1 class="hero-title">MOLY - THẾ GIỚI CHUỘT CHŨI</h1>
     <p class="hero-desc">
-      Hồi sinh trọn vẹn vương quốc Chuột Chũi huyền thoại! Khám phá 257 bản đồ thần tiên, nuôi dưỡng bé Đậu Đậu Siêu Cấp,
-      chinh phục Hiệp Sĩ SMC và so tài với 252 câu đố Minigame thuần Việt văn minh.
+      Hồi sinh trọn vẹn Vương Quốc Chuột Chũi huyền thoại tuổi thơ 2008 – 2015! Khám phá 257 bản đồ thần tiên, nuôi dưỡng bé Đậu Đậu Siêu Cấp 5 hệ tiến hóa,
+      chinh phục Huy Hiệu Hiệp Sĩ SMC và so tài với 252 câu đố Minigame thuần Việt văn minh cùng hàng ngàn cư dân.
     </p>
 
     <!-- 3 Lựa Chọn Trải Nghiệm -->
@@ -1632,80 +1674,234 @@
     </div>
   </div>
 
-  <!-- ================= MODAL: BẢN TIN VƯƠNG QUỐC ================= -->
+  <!-- ================= MODAL: BẢN TIN VƯƠNG QUỐC (TIN TỨC & HƯỚNG DẪN TÂN THỦ) ================= -->
   <div id="modal-news" class="modal-overlay" onclick="if(event.target===this){closeNewsModal();}">
-    <div class="modal-box" style="max-width: 650px;">
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <button type="button" class="nav-btn" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeNewsModal()">← Trở lại</button>
-          <h3>📰 Bản Tin Vương Quốc Moly - Thế Giới Chuột Chũi VN</h3>
+    <div class="modal-box" style="max-width: 840px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button type="button" class="nav-btn" style="background: rgba(255,255,255,0.1); color: #fff; padding: 5px 12px; font-size: 12px; border-radius: 9999px;" onclick="closeNewsModal()">← Trở lại</button>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0;">📰 BẢN TIN VƯƠNG QUỐC CHUỘT CHŨI (SỐ 128)</h3>
+            <span style="font-size: 11px; color: #94a3b8;">Cập nhật tin tức, sự kiện &amp; cẩm nang hướng dẫn chơi game mới nhất</span>
+          </div>
         </div>
         <button class="modal-close" onclick="closeNewsModal()" title="Đóng cửa sổ (ESC)">&times;</button>
       </div>
-      <div class="news-list" style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="background: #0f172a; border-left: 3px solid #ff7e1b; border-radius: 8px; padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-            <span style="font-size: 11px; color: #ff7e1b; font-weight: bold;">SỰ KIỆN NỔI BẬT</span>
-            <span style="font-size: 11px; color: #64748b;">Mới Nhất 2026</span>
-          </div>
-          <h4 style="color: #fff; font-size: 14px; margin-bottom: 4px;">🌟 Khai Mở Đậu Đậu Siêu Cấp Đa Chủng Loại &amp; Thẻ Tháng VIP 19</h4>
-          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0;">
-            Khám phá các chủng loài Đậu Siêu Cấp độc quyền: Hắc Ám, Vũ Trụ, Thần Thoại... Điểm tích lũy Hội Viên được khởi đầu chỉ từ gói 10.000đ và được bảo lưu vĩnh viễn không bao giờ mất điểm!
-          </p>
-        </div>
-        <div style="background: #0f172a; border-left: 3px solid #3b82f6; border-radius: 8px; padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-            <span style="font-size: 11px; color: #38bdf8; font-weight: bold;">CÔNG NGHỆ CLIENT</span>
-            <span style="font-size: 11px; color: #64748b;">Nâng Cấp</span>
-          </div>
-          <h4 style="color: #fff; font-size: 14px; margin-bottom: 4px;">💻 Bản Cài Đặt Desktop Co Giãn Tỉ Lệ 12:7 Không Viền Đen</h4>
-          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0;">
-            Bản máy tính Windows độc lập tự động co giãn kích thước theo đúng tỉ lệ 12:7 (1344x784) của game gốc, mang lại trải nghiệm toàn màn hình sắc nét và không có viền đen thừa thãi.
-          </p>
-        </div>
-        <div style="background: #0f172a; border-left: 3px solid #10b981; border-radius: 8px; padding: 12px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-            <span style="font-size: 11px; color: #34d399; font-weight: bold;">QUÀ TẶNG CƯ DÂN</span>
-            <span style="font-size: 11px; color: #64748b;">Tân Thủ</span>
-          </div>
-          <h4 style="color: #fff; font-size: 14px; margin-bottom: 4px;">🎁 Nhập Mã Quà Tặng Tân Thủ Nhận Đậu Vàng Trải Nghiệm</h4>
-          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0;">
-            Nhập mã <strong style="color: #fde047;">TANTHU2026</strong> nhận ngay 100 Đậu Vàng và VIP 3 ngày dùng thử. Nhập mã <strong style="color: #fde047;">MOLYVIET</strong> nhận 200 Đậu Vàng và 7 ngày VIP!
-          </p>
-        </div>
+
+      <!-- Category Filter Tabs -->
+      <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+        <span class="badge" style="background: rgba(246, 168, 40, 0.25); color: #fde047; border: 1px solid rgba(246, 168, 40, 0.5); padding: 5px 12px; font-size: 12px; cursor: pointer;">🌟 Tất Cả Tin Tức</span>
+        <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 5px 12px; font-size: 12px;">📌 Cẩm Nang Tân Thủ</span>
+        <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); padding: 5px 12px; font-size: 12px;">⚡ Bản Cập Nhật 2.0</span>
+        <span class="badge" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); padding: 5px 12px; font-size: 12px;">🎁 Giftcode &amp; Quà Tặng</span>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
-        <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="closeNewsModal()">← Trở lại</button>
-        <button type="button" class="nav-btn" onclick="closeNewsModal()">Đóng</button>
+
+      <!-- Scrollable News Magazine Content -->
+      <div style="overflow-y: auto; max-height: calc(88vh - 170px); display: flex; flex-direction: column; gap: 14px; padding-right: 4px;">
+        
+        <!-- Bài Ghim Nổi Bật: Hướng Dẫn Tân Thủ Tạo TK & Đăng Nhập -->
+        <article style="background: linear-gradient(135deg, rgba(30, 48, 72, 0.75) 0%, rgba(18, 28, 44, 0.85) 100%); border-left: 4px solid #f59e0b; border-radius: 14px; padding: 18px; border: 1px solid rgba(255, 255, 255, 0.16); border-left: 4px solid #f59e0b; box-shadow: 0 4px 16px rgba(0,0,0,0.35);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="background: linear-gradient(135deg, #f59e0b, #ea580c); color: #fff; font-size: 11px; font-weight: 800; padding: 3px 10px; border-radius: 9999px; text-transform: uppercase; letter-spacing: 0.5px;">📌 BÀI GHIM ĐẶC BIỆT</span>
+            <span style="font-size: 11.5px; color: #94a3b8;">Cẩm Nang Tân Thủ Toàn Diện</span>
+          </div>
+          <h4 style="color: #ffffff; font-size: 16px; font-weight: 800; margin-bottom: 8px; line-height: 1.3;">
+            🧭 Hướng Dẫn Chi Tiết Tạo Tài Khoản, Đăng Nhập &amp; Chơi Game Moly Đa Nền Tảng (Web • Android • PC)
+          </h4>
+          <p style="font-size: 13px; color: #cbd5e1; line-height: 1.6; margin-bottom: 12px;">
+            Chào mừng bạn đến với Vương Quốc Chuột Chũi! Dưới đây là quy trình từng bước giúp bạn gia nhập cư dân Moly thuận tiện nhất:
+          </p>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; color: #e2e8f0; line-height: 1.5; background: rgba(10, 16, 28, 0.6); padding: 12px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.08);">
+            <div><strong>🔹 Bước 1 - Tạo Tài Khoản:</strong> Nhấp vào nút <em>"Tài Khoản" &rarr; "Đăng Ký Mới"</em>. Hệ thống sẽ tự động cấp phát 1 mã <strong>ID Moly ngẫu nhiên (8 chữ số)</strong> duy nhất của bạn. Đặt mật khẩu dễ nhớ (6-20 ký tự) và ghi nhớ mã ID Moly này.</div>
+            <div><strong>🔹 Bước 2 - Liên Kết Gmail Bảo Mật:</strong> Sau khi đăng ký hoặc đăng nhập, vào <em>"Hồ Sơ Cư Dân"</em> và điền Gmail của bạn. Khi cần đổi mật khẩu hoặc quên mật khẩu, hệ thống sẽ gửi mã xác thực <strong>OTP Gmail 6 số</strong> để khôi phục 100% an toàn.</div>
+            <div><strong>🔹 Bước 3 - Chơi Trực Tiếp Trên Web:</strong> Nhấp nút <em>"Chơi Ngay (Web)"</em> trên thanh Menu hoặc Dock dưới. Khung game sử dụng công nghệ Flash Ruffle WebAssembly 60 FPS, không cần cài Flash Player cũ. Bạn có thể bật <strong>Toàn Màn Hình</strong> và tùy chỉnh tỉ lệ 12:7 sắc nét.</div>
+            <div><strong>🔹 Bước 4 - Chơi Trên Điện Thoại Android (APK):</strong> Tải tệp <em>"Moly-The-Gioi-Chuot-Chui.apk" (13 MB)</em>. Khi cài đặt trên điện thoại, bật tùy chọn <em>"Cho phép cài đặt ứng dụng từ nguồn này"</em>. Mở ứng dụng, xoay ngang màn hình và đăng nhập bằng ID Moly.</div>
+            <div><strong>🔹 Bước 5 - Chơi Bản Máy Tính PC (.EXE):</strong> Tải bản nén ZIP (150 MB), giải nén vào ổ đĩa bất kỳ. Chạy trực tiếp tệp <em>"Moly Thế Giới Chuột Chũi.exe"</em> để chơi mượt mà với 257 bản đồ offline tải sẵn, chuyển cảnh tức thì 0 giây giật lag.</div>
+          </div>
+          <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-web" style="padding: 7px 16px; font-size: 12px;" onclick="closeNewsModal(); openRegisterTab();">➕ Đăng Ký Tài Khoản Ngay</button>
+            <a href="/play.html" class="btn btn-primary" style="padding: 7px 16px; font-size: 12px; text-decoration: none;">🎮 Vào Game Chơi Thử</a>
+          </div>
+        </article>
+
+        <!-- Bài Báo 2: Đậu Đậu Siêu Cấp 5 Hệ & VIP 19 -->
+        <article style="background: rgba(22, 34, 52, 0.65); border-left: 4px solid #10b981; border-radius: 14px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.12);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="color: #34d399; font-size: 11px; font-weight: 700; text-transform: uppercase;">🐾 VIỆN NGHIÊN CỨU &amp; CẬP NHẬT 2.0</span>
+            <span style="font-size: 11px; color: #94a3b8;">16/10/2026</span>
+          </div>
+          <h4 style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 6px;">
+            Khai Mở Viện Nghiên Cứu Đậu Đậu Siêu Cấp Đa Chủng Loại &amp; Cơ Chế Hội Viên VIP 19
+          </h4>
+          <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.55; margin: 0;">
+            Cư dân sở hữu Đậu Đậu Siêu Cấp sẽ được mở khóa các siêu năng lực độc quyền: <em>Bay lượn trên không trung</em>, <em>Lặn sâu dưới lòng Hồ Bồ Đề</em>, <em>Biến hình trang phục</em> và <em>Dò tìm kho báu ngầm</em>. Đặc biệt, hệ thống Hội Viên VIP 19 cấp bậc của Moly VN khởi đầu chỉ từ gói nạp 10.000đ và được <strong>bảo lưu điểm tích lũy vĩnh viễn</strong>, không bao giờ bị tụt cấp theo tháng!
+          </p>
+        </article>
+
+        <!-- Bài Báo 3: Tổng Hợp Mã Giftcode -->
+        <article style="background: rgba(22, 34, 52, 0.65); border-left: 4px solid #a855f7; border-radius: 14px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.12);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="color: #c084fc; font-size: 11px; font-weight: 700; text-transform: uppercase;">🎁 QUÀ TẶNG &amp; SỰ KIỆN TÂN THỦ</span>
+            <span style="font-size: 11px; color: #94a3b8;">17/10/2026</span>
+          </div>
+          <h4 style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 6px;">
+            Tổng Hợp 4 Mã Giftcode Tân Thủ Mừng Khai Mở Cổng Game Moly 2.0
+          </h4>
+          <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.55; margin-bottom: 8px;">
+            Nhập ngay các mã quà tặng sau tại mục <em>"Tiện Ích &rarr; Nhập Giftcode"</em> trên trang chủ hoặc thanh Dock để nhận thưởng vào hòm thư tài khoản:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; font-size: 12px;">
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 8px 10px; border-radius: 8px; border: 1px dashed rgba(253, 224, 71, 0.4);">
+              <span style="color: #fde047; font-weight: 800; font-size: 13px;">MOLYCHUOTCHUI</span>: +100 Đậu Vàng &amp; Set Nông Dân
+            </div>
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 8px 10px; border-radius: 8px; border: 1px dashed rgba(253, 224, 71, 0.4);">
+              <span style="color: #fde047; font-weight: 800; font-size: 13px;">TANTHUMOLY2026</span>: +150 Đậu Vàng &amp; 3 Ngày VIP
+            </div>
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 8px 10px; border-radius: 8px; border: 1px dashed rgba(253, 224, 71, 0.4);">
+              <span style="color: #fde047; font-weight: 800; font-size: 13px;">VIPCHUOTCHUI</span>: +200 Đậu Vàng &amp; Huy Hiệu Cư Dân
+            </div>
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 8px 10px; border-radius: 8px; border: 1px dashed rgba(253, 224, 71, 0.4);">
+              <span style="color: #fde047; font-weight: 800; font-size: 13px;">SUPERLAMU2026</span>: +Bộ Thức Ăn Đậu Đậu Siêu Cấp
+            </div>
+          </div>
+        </article>
+
+        <!-- Bài Báo 4: Bản Đồ & Trải Nghiệm -->
+        <article style="background: rgba(22, 34, 52, 0.65); border-left: 4px solid #38bdf8; border-radius: 14px; padding: 16px; border: 1px solid rgba(255, 255, 255, 0.12);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="color: #38bdf8; font-size: 11px; font-weight: 700; text-transform: uppercase;">🗺️ THẾ GIỚI MOLY THẦN TIÊN</span>
+            <span style="font-size: 11px; color: #94a3b8;">15/10/2026</span>
+          </div>
+          <h4 style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 6px;">
+            Khám Phá Toàn Diện 257 Bản Đồ: Từ Quảng Trường Lâu Đài Đến Đỉnh Núi Tuyết &amp; Thành Rồng
+          </h4>
+          <p style="font-size: 12.5px; color: #cbd5e1; line-height: 1.55; margin: 0;">
+            Toàn bộ các bản đồ thần tiên tuổi thơ đã được hồi sinh nguyên bản: Hãy ghé thăm Nhà Hàng Moly để cùng bạn bè trổ tài đầu bếp, trượt tuyết trên đỉnh núi tuyết trắng xóa, chinh phục thử thách dũng sĩ tại Rừng Đen và thuần dưỡng những chú rồng bay uy dũng tại Lãnh Địa Rồng!
+          </p>
+        </article>
+
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.12);">
+        <span style="font-size: 12px; color: #94a3b8;">Thời báo cập nhật liên tục các tin tức nóng hổi</span>
+        <button type="button" class="nav-btn" onclick="closeNewsModal()" style="border-radius: 9999px; padding: 6px 18px;">Đóng Báo</button>
       </div>
     </div>
   </div>
 
-  <!-- ================= MODAL: 257 BẢN ĐỒ VƯƠNG QUỐC ================= -->
+  <!-- ================= MODAL: 257 BẢN ĐỒ VƯƠNG QUỐC (HOÀN THIỆN ĐẦY ĐỦ & ĐẶC SẮC) ================= -->
   <div id="modal-kingdom" class="modal-overlay" onclick="if(event.target===this){closeKingdomInfoModal();}">
-    <div class="modal-box" style="max-width: 620px;">
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <button type="button" class="nav-btn" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeKingdomInfoModal()">← Trở lại</button>
-          <h3>🗺️ 257 Bản Đồ Vương Quốc Chuột Chũi</h3>
+    <div class="modal-box" style="max-width: 840px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button type="button" class="nav-btn" style="background: rgba(255,255,255,0.1); color: #fff; padding: 5px 12px; font-size: 12px; border-radius: 9999px;" onclick="closeKingdomInfoModal()">← Trở lại</button>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0;">🗺️ BẢN ĐỒ TOÀN CẢNH 257 VÙNG ĐẤT VƯƠNG QUỐC MOLY</h3>
+            <span style="font-size: 11px; color: #94a3b8;">Hệ thống địa danh thần tiên khôi phục nguyên vẹn 100% bản gốc</span>
+          </div>
         </div>
         <button class="modal-close" onclick="closeKingdomInfoModal()" title="Đóng cửa sổ (ESC)">&times;</button>
       </div>
-      <div style="margin-bottom: 12px; border-radius: 8px; overflow: hidden; border: 1px solid #475569;">
-        <img src="/assets/game_bg_square.jpg" alt="Quảng Trường Lâu Đài Moly" style="width: 100%; height: auto; display: block;">
+
+      <!-- Banner Minh Họa Sắc Nét -->
+      <div style="margin-bottom: 14px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); position: relative; max-height: 180px;">
+        <img src="/assets/game_bg_square.jpg" alt="Quảng Trường Lâu Đài Moly" style="width: 100%; height: 180px; object-fit: cover; display: block;">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, transparent 0%, rgba(10, 16, 28, 0.95) 100%); padding: 12px 16px;">
+          <span style="font-size: 14px; font-weight: 800; color: #fde047;">🏰 QUẢNG TRƯỜNG TRUNG TÂM VƯƠNG QUỐC CHUỘT CHŨI</span>
+          <p style="font-size: 11.5px; color: #e2e8f0; margin: 2px 0 0 0;">Nơi hội tụ của hơn 10,000 cư dân tham gia lễ hội, giao lưu kết bạn và chuẩn bị hành trình phiêu lưu.</p>
+        </div>
       </div>
-      <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin-bottom: 12px;">
-        Hệ thống máy chủ Moly - Thế Giới Chuột Chũi VN khôi phục nguyên vẹn toàn bộ <strong>257 bản đồ thần tiên</strong> từ Quảng trường Lâu đài, Rừng Đen bí ẩn, Núi Tuyết Moly, Nông Trại Vui Vẻ đến Viện Nghiên Cứu Đậu Đậu.
-      </p>
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px; color: #94a3b8; margin-bottom: 12px;">
-        <div style="background: #0f172a; padding: 8px; border-radius: 6px;">🏰 <strong>Lâu Đài Moly:</strong> Trung tâm hành chính vương quốc</div>
-        <div style="background: #0f172a; padding: 8px; border-radius: 6px;">🌲 <strong>Rừng Đen:</strong> Thử thách dũng sĩ &amp; rồng lửa</div>
-        <div style="background: #0f172a; padding: 8px; border-radius: 6px;">🏔️ <strong>Đỉnh Núi Tuyết:</strong> Cáp treo &amp; trượt tuyết tốc độ</div>
-        <div style="background: #0f172a; padding: 8px; border-radius: 6px;">🌱 <strong>Viện Nghiên Cứu:</strong> Đậu Đậu Siêu Cấp tiến hóa</div>
+
+      <!-- Scrollable 4-Zone Explorer -->
+      <div style="overflow-y: auto; max-height: calc(88vh - 300px); display: flex; flex-direction: column; gap: 12px; padding-right: 4px;">
+        
+        <!-- Khu vực 1: Trung Tâm Hoàng Gia -->
+        <div style="background: rgba(22, 34, 52, 0.7); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-size: 13.5px; font-weight: 800; color: #fbbf24;">🏰 KHU VỰC HOÀNG GIA &amp; TRUNG TÂM ĐÔ THỊ (68 Bản Đồ)</span>
+            <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fde047; font-size: 11px;">Khu Vực Chính</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 12px; color: #cbd5e1;">
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Lâu Đài Moly:</strong> Nơi ở của Công Chúa Lạc Lạc, phòng yến tiệc và hội trường vinh danh SMC.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Quảng Trường Lớn:</strong> Đài phun nước ước nguyện, Bưu Điện Hoàng Gia và Rạp Chiếu Phim.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Phố Mua Sắm:</strong> Cửa hàng quần áo Thỏ Đáng Yêu, Tiệm Đồ Gỗ và Xưởng Chế Tạo Đồ Chơi.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Nhà Hàng Moly:</strong> Nơi các đầu bếp SMC nấu nướng và phục vụ bữa tiệc 5 sao cho cư dân.
+            </div>
+          </div>
+        </div>
+
+        <!-- Khu vực 2: Tự Nhiên & Sinh Thái -->
+        <div style="background: rgba(22, 34, 52, 0.7); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-size: 13.5px; font-weight: 800; color: #34d399;">🌲 VÙNG ĐẤT TỰ NHIÊN &amp; SINH THÁI THẦN TIÊN (82 Bản Đồ)</span>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 11px;">Thu Hoạch Nông Trại</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 12px; color: #cbd5e1;">
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Nông Trại Vui Vẻ:</strong> Trồng trọt hoa tuyết, bắp cải tím, nuôi tằm dệt lụa và thu hoạch bí ngô.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Rừng Đen Bí Ẩn:</strong> Cây Cổ Thụ Ngàn Năm, Thung Lũng Quả Đỏ và các câu đố thử thách dũng sĩ.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Vườn Hoa Cầu Vồng:</strong> Thu thập mật ong hoa thơm, các loại bướm quý và nguyên liệu pha chế.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Viện Nghiên Cứu Đậu Đậu:</strong> Bác sĩ Bồ Đào và phòng ấp nở năng lực cho Đậu Đậu Siêu Cấp.
+            </div>
+          </div>
+        </div>
+
+        <!-- Khu vực 3: Núi Tuyết & Băng Đăng Cực Bắc -->
+        <div style="background: rgba(22, 34, 52, 0.7); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-size: 13.5px; font-weight: 800; color: #38bdf8;">🏔️ NÚI TUYẾT &amp; VƯƠNG QUỐC BĂNG ĐĂNG (54 Bản Đồ)</span>
+            <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 11px;">Minigame Trượt Tuyết</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 12px; color: #cbd5e1;">
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Đỉnh Núi Tuyết Moly:</strong> Tuyết phủ quanh năm, hệ thống cáp treo tốc độ ngắm toàn cảnh vương quốc.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Đấu Trường Trượt Tuyết:</strong> Đua xe trượt tuyết tốc độ cùng bạn bè, săn huy chương vàng mùa đông.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Lâu Đài Băng Giá:</strong> Mê cung pha lê băng tuyết lung linh và đầm câu cá mùa đông.
+            </div>
+          </div>
+        </div>
+
+        <!-- Khu vực 4: Lãnh Địa Rồng & Bí Cảnh Dưới Nước -->
+        <div style="background: rgba(22, 34, 52, 0.7); border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 12px; padding: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <span style="font-size: 13.5px; font-weight: 800; color: #f87171;">🐉 LÃNH ĐỊA RỒNG LỬA &amp; BÍ CẢNH ĐÁY HỒ (53 Bản Đồ)</span>
+            <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; font-size: 11px;">Thám Hiểm Dũng Sĩ</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; font-size: 12px; color: #cbd5e1;">
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Hồ Bồ Đề Dưới Nước:</strong> Dùng Đậu Đậu Siêu Cấp lặn sâu khám phá thành phố san hô huyền ảo.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Thành Rồng Lửa Rừng Đen:</strong> Căn cứ ấp nở trứng rồng thần, luyện tập kỹ năng kỵ sĩ cưỡi rồng bay.
+            </div>
+            <div style="background: rgba(10, 16, 28, 0.5); padding: 8px 10px; border-radius: 8px;">
+              <strong style="color: #ffffff;">Hang Động Dung Nham:</strong> Nơi rèn đúc giáp hiệp sĩ và trang bị thần thoại cao cấp nhất.
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <button type="button" class="nav-btn" style="background: #334155; color: #fff;" onclick="closeKingdomInfoModal()">← Trở lại</button>
-        <button type="button" class="nav-btn" onclick="closeKingdomInfoModal()">Đóng</button>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.12);">
+        <a href="/play.html" class="btn btn-primary" style="padding: 6px 18px; font-size: 12.5px; text-decoration: none;">🎮 Vào Game Khám Phá Bản Đồ</a>
+        <button type="button" class="nav-btn" onclick="closeKingdomInfoModal()" style="border-radius: 9999px; padding: 6px 18px;">Đóng</button>
       </div>
     </div>
   </div>
@@ -1777,49 +1973,131 @@
     </div>
   </div>
 
-  <!-- ================= MODAL: CẨM NANG HIỆP SĨ SMC ================= -->
+  <!-- ================= MODAL: CẨM NANG HIỆP SĨ SMC (SUPER MOLY CLUB) ================= -->
   <div id="modal-smc" class="modal-overlay" onclick="if(event.target===this){closeSmcModal();}">
-    <div class="modal-box" style="max-width: 650px;">
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <button type="button" class="nav-btn" style="background: #334155; color: #fff; padding: 4px 10px; font-size: 12px; border-radius: 6px;" onclick="closeSmcModal()">← Trở lại</button>
-          <h3>🛡️ Học Viện Nghề Nghiệp &amp; Hiệp Sĩ SMC</h3>
+    <div class="modal-box" style="max-width: 840px; max-height: 88vh; display: flex; flex-direction: column;">
+      <div class="modal-header" style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <button type="button" class="nav-btn" style="background: rgba(255,255,255,0.1); color: #fff; padding: 5px 12px; font-size: 12px; border-radius: 9999px;" onclick="closeSmcModal()">← Trở lại</button>
+          <div>
+            <h3 style="font-size: 17px; font-weight: 800; color: #ffffff; margin: 0;">🛡️ HỌC VIỆN NGHỀ NGHIỆP &amp; HIỆP SĨ SMC (SUPER MOLY CLUB)</h3>
+            <span style="font-size: 11px; color: #94a3b8;">Cẩm nang danh vọng, quân trang độc quyền và trợ cấp Đậu Vàng hàng tháng</span>
+          </div>
         </div>
         <button class="modal-close" onclick="closeSmcModal()" title="Đóng cửa sổ (ESC)">&times;</button>
       </div>
-      <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 12px; line-height: 1.5;">
-        SMC (Super Moly Club) là câu lạc bộ những cư dân ưu tú nhất vương quốc. Gia nhập SMC để nhận quân hàm danh giá, trang phục nghề độc quyền và trợ cấp Đậu Vàng hàng tháng!
-      </p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; max-height: 360px; overflow-y: auto;">
-        <div style="background: #0f172a; border-left: 3px solid #3b82f6; border-radius: 8px; padding: 10px;">
-          <div style="font-size: 20px; margin-bottom: 4px;">👮 Cảnh Sát Moly</div>
-          <div style="font-size: 12px; font-weight: 700; color: #60a5fa;">Đồn Cảnh Sát Lâu Đài</div>
-          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Gìn giữ an ninh vương quốc. Yêu cầu: Vượt qua bài thi bắn bia và trinh sát.</p>
-        </div>
-        <div style="background: #0f172a; border-left: 3px solid #f59e0b; border-radius: 8px; padding: 10px;">
-          <div style="font-size: 20px; margin-bottom: 4px;">👨‍🍳 Đầu Bếp Hoàng Gia</div>
-          <div style="font-size: 12px; font-weight: 700; color: #fbbf24;">Nhà Hàng Moly</div>
-          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Chế biến các món ăn thơm ngon phục vụ cư dân. Nhận mũ bếp trưởng hoàng gia.</p>
-        </div>
-        <div style="background: #0f172a; border-left: 3px solid #10b981; border-radius: 8px; padding: 10px;">
-          <div style="font-size: 20px; margin-bottom: 4px;">🌾 Nông Dân Chăm Chỉ</div>
-          <div style="font-size: 12px; font-weight: 700; color: #34d399;">Nông Trại Vui Vẻ</div>
-          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Trồng trọt hoa màu, thu hoạch bí đỏ khổng lồ và nuôi dưỡng thú cưng nông trại.</p>
-        </div>
-        <div style="background: #0f172a; border-left: 3px solid #ec4899; border-radius: 8px; padding: 10px;">
-          <div style="font-size: 20px; margin-bottom: 4px;">🚩 Hướng Dẫn Viên</div>
-          <div style="font-size: 12px; font-weight: 700; color: #f472b6;">Tòa Thị Chính Moly</div>
-          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Hướng dẫn các bạn nhỏ mới đến vương quốc. Nhận cờ hiệu và loa phát thanh.</p>
-        </div>
-        <div style="background: #0f172a; border-left: 3px solid #ef4444; border-radius: 8px; padding: 10px; grid-column: 1 / -1;">
-          <div style="font-size: 20px; margin-bottom: 4px;">🐉 Kỵ Sĩ Rồng Lửa Huyền Thoại</div>
-          <div style="font-size: 12px; font-weight: 700; color: #f87171;">Thành Rồng - Rừng Đen</div>
-          <p style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">Đẳng cấp cao nhất của chiến binh Moly. Thuần hóa ấp trứng rồng, cưỡi rồng bay lượn và sử dụng thương hiệp sĩ hộ quốc.</p>
-        </div>
+
+      <!-- Giới thiệu SMC -->
+      <div style="background: linear-gradient(135deg, rgba(30, 48, 72, 0.7) 0%, rgba(18, 28, 44, 0.8) 100%); border-radius: 12px; padding: 12px 16px; margin-bottom: 12px; border: 1px solid rgba(255, 255, 255, 0.14);">
+        <p style="font-size: 12.5px; color: #cbd5e1; margin: 0; line-height: 1.55;">
+          <strong style="color: #fde047;">SMC (Super Moly Club)</strong> là tổ chức hiệp sĩ danh dự bảo vệ Vương Quốc Chuột Chũi. Trở thành Hiệp Sĩ SMC, bạn sẽ được cấp phát <strong>quân trang nghề nghiệp độc quyền</strong>, nhận <strong>lương Đậu Vàng định kỳ mỗi tháng</strong> và được quyền ra vào <strong>Căn Cứ Tối Mật SMC</strong> dưới lòng Lâu Đài!
+        </p>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; border-top: 1px solid #334155; padding-top: 10px;">
-        <span style="font-size: 11px; color: #94a3b8;">Có thể dùng chức năng Quản Trị hoặc vào game để thi thăng chức</span>
-        <button type="button" class="nav-btn" onclick="closeSmcModal()">Đóng</button>
+
+      <!-- 6 Nghề Nghiệp SMC Chi Tiết -->
+      <div style="overflow-y: auto; max-height: calc(88vh - 240px); display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; padding-right: 4px;">
+        
+        <!-- Nghề 1: Cảnh Sát Moly -->
+        <div style="background: rgba(22, 34, 52, 0.75); border-left: 4px solid #3b82f6; border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 14px; font-weight: 800; color: #60a5fa;">👮 CẢNH SÁT MOLY</span>
+            <span class="badge" style="background: rgba(59, 130, 246, 0.25); color: #93c5fd; font-size: 10.5px;">Đồn Cảnh Sát</span>
+          </div>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0 0 8px 0;">
+            Gìn giữ an ninh vương quốc, tuần tra các tuyến phố và truy vết các manh mối của tên trộm bí ẩn RK.
+          </p>
+          <div style="font-size: 11.5px; color: #94a3b8; line-height: 1.45; background: rgba(10, 16, 28, 0.5); padding: 8px; border-radius: 8px;">
+            <div>🎯 <strong>Bài thi:</strong> Bắn trúng bia ngắm và giải đố trinh sát tại Đồn Cảnh Sát.</div>
+            <div>🎁 <strong>Quân trang:</strong> Mũ cảnh sát, dùi cùi bảo an và còi hiệu lệnh.</div>
+            <div>💰 <strong>Trợ cấp:</strong> <strong style="color: #fde047;">1,000 Đậu Vàng/tháng</strong></div>
+          </div>
+        </div>
+
+        <!-- Nghề 2: Đầu Bếp Hoàng Gia -->
+        <div style="background: rgba(22, 34, 52, 0.75); border-left: 4px solid #f59e0b; border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 14px; font-weight: 800; color: #fbbf24;">👨‍🍳 ĐẦU BẾP HOÀNG GIA</span>
+            <span class="badge" style="background: rgba(245, 158, 11, 0.25); color: #fde047; font-size: 10.5px;">Nhà Hàng Moly</span>
+          </div>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0 0 8px 0;">
+            Chế biến các món ăn thơm ngon, súp nấm hảo hạng và pizza phục vụ các bữa tiệc hoàng gia.
+          </p>
+          <div style="font-size: 11.5px; color: #94a3b8; line-height: 1.45; background: rgba(10, 16, 28, 0.5); padding: 8px; border-radius: 8px;">
+            <div>🎯 <strong>Bài thi:</strong> Hoàn thành minigame nấu súp và làm bánh pizza đạt điểm A.</div>
+            <div>🎁 <strong>Quân trang:</strong> Mũ bếp trưởng hoàng gia, tạp dề vàng và thìa bạc.</div>
+            <div>💰 <strong>Trợ cấp:</strong> <strong style="color: #fde047;">800 Đậu Vàng/tháng</strong></div>
+          </div>
+        </div>
+
+        <!-- Nghề 3: Nông Dân Chăm Chỉ -->
+        <div style="background: rgba(22, 34, 52, 0.75); border-left: 4px solid #10b981; border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 14px; font-weight: 800; color: #34d399;">🌾 NÔNG DÂN CHĂM CHỈ</span>
+            <span class="badge" style="background: rgba(16, 185, 129, 0.25); color: #6ee7b7; font-size: 10.5px;">Nông Trại Vui Vẻ</span>
+          </div>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0 0 8px 0;">
+            Gieo trồng hoa tuyết, bắp cải tím, nuôi tằm dệt lụa và thu hoạch bí ngô khổng lồ.
+          </p>
+          <div style="font-size: 11.5px; color: #94a3b8; line-height: 1.45; background: rgba(10, 16, 28, 0.5); padding: 8px; border-radius: 8px;">
+            <div>🎯 <strong>Bài thi:</strong> Trồng 50 cây hoa màu và đạt cấp độ chăm bón nông nghiệp.</div>
+            <div>🎁 <strong>Quân trang:</strong> Cuốc vàng, nón lá nông thôn và bình tưới cầu vồng.</div>
+            <div>💰 <strong>Trợ cấp:</strong> <strong style="color: #fde047;">800 Đậu Vàng/tháng</strong></div>
+          </div>
+        </div>
+
+        <!-- Nghề 4: Lính Cứu Hỏa SMC -->
+        <div style="background: rgba(22, 34, 52, 0.75); border-left: 4px solid #ef4444; border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 14px; font-weight: 800; color: #f87171;">🚒 LÍNH CỨU HỎA SMC</span>
+            <span class="badge" style="background: rgba(239, 68, 68, 0.25); color: #fca5a5; font-size: 10.5px;">Trạm Cứu Hỏa</span>
+          </div>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0 0 8px 0;">
+            Túc trực dập tắt các đám cháy rừng do rồng lửa gây ra, bảo vệ an toàn cho nhà cửa của cư dân.
+          </p>
+          <div style="font-size: 11.5px; color: #94a3b8; line-height: 1.45; background: rgba(10, 16, 28, 0.5); padding: 8px; border-radius: 8px;">
+            <div>🎯 <strong>Bài thi:</strong> Dập tắt 5 đám cháy thử nghiệm trong 60 giây.</div>
+            <div>🎁 <strong>Quân trang:</strong> Mũ bảo hộ chống lửa, vòi phun bọt tuyết và bình oxy.</div>
+            <div>💰 <strong>Trợ cấp:</strong> <strong style="color: #fde047;">1,200 Đậu Vàng/tháng</strong></div>
+          </div>
+        </div>
+
+        <!-- Nghề 5: Đặc Vụ Ngầm SMC -->
+        <div style="background: rgba(22, 34, 52, 0.75); border-left: 4px solid #8b5cf6; border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 14px; font-weight: 800; color: #c084fc;">🕵️ ĐẶC VỤ NGẦM SMC</span>
+            <span class="badge" style="background: rgba(139, 92, 246, 0.25); color: #d8b4fe; font-size: 10.5px;">Căn Cứ Tối Mật</span>
+          </div>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0 0 8px 0;">
+            Lực lượng phản ứng nhanh tinh nhuệ, giải mã radar bí mật và bảo vệ bảo vật vương quốc.
+          </p>
+          <div style="font-size: 11.5px; color: #94a3b8; line-height: 1.45; background: rgba(10, 16, 28, 0.5); padding: 8px; border-radius: 8px;">
+            <div>🎯 <strong>Bài thi:</strong> Vượt qua 252 câu đố trí tuệ và bài thi trinh sát ban đêm.</div>
+            <div>🎁 <strong>Quân trang:</strong> Kính nhìn đêm, đồng hồ laser và áo choàng tàng hình.</div>
+            <div>💰 <strong>Trợ cấp:</strong> <strong style="color: #fde047;">1,500 Đậu Vàng/tháng</strong></div>
+          </div>
+        </div>
+
+        <!-- Nghề 6: Kỵ Sĩ Rồng Lửa Huyền Thoại -->
+        <div style="background: rgba(22, 34, 52, 0.75); border-left: 4px solid #ec4899; border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 14px; font-weight: 800; color: #f472b6;">🐉 KỴ SĨ RỒNG HUYỀN THOẠI</span>
+            <span class="badge" style="background: rgba(236, 72, 153, 0.25); color: #fbcfe8; font-size: 10.5px;">Thành Rồng Lửa</span>
+          </div>
+          <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin: 0 0 8px 0;">
+            Đẳng cấp cao quý nhất của dũng sĩ Moly: Ấp nở trứng rồng thần và cưỡi rồng bay lượn hộ quốc.
+          </p>
+          <div style="font-size: 11.5px; color: #94a3b8; line-height: 1.45; background: rgba(10, 16, 28, 0.5); padding: 8px; border-radius: 8px;">
+            <div>🎯 <strong>Bài thi:</strong> Hoàn thành chuỗi nhiệm vụ ấp trứng và thuần hóa rồng lửa.</div>
+            <div>🎁 <strong>Quân trang:</strong> Chiến giáp rồng lửa, thương hiệp sĩ và cánh rồng bay.</div>
+            <div>💰 <strong>Trợ cấp:</strong> <strong style="color: #fde047;">2,500 Đậu Vàng/tháng</strong></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.12);">
+        <a href="/play.html" class="btn btn-primary" style="padding: 6px 18px; font-size: 12.5px; text-decoration: none;">🎮 Vào Game Nhận Nhiệm Vụ SMC</a>
+        <button type="button" class="nav-btn" onclick="closeSmcModal()" style="border-radius: 9999px; padding: 6px 18px;">Đóng</button>
       </div>
     </div>
   </div>
