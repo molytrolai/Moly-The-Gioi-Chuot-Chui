@@ -363,13 +363,23 @@ hr, .card-header, .dropdown-divider {
     box-sizing: border-box !important;
   }
 
-  /* Inner Navbar Buttons as Rounded Pills */
+  /* Inner Navbar Buttons as Rounded Pills - Standardized 38px Height & Centered Alignment */
   .nav-link-btn,
   .nav-dropdown-btn,
   .nav-btn-play,
   .status-badge {
     border-radius: 9999px !important;
-    padding: 7px 16px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    padding: 0 16px !important;
+    vertical-align: middle !important;
+    margin: 0 !important;
   }
 }
 
@@ -1475,14 +1485,20 @@ small {
 .navbar-main .nav-btn-play {
   margin-left: 6px;
   display: inline-flex !important;
-  align-items: center;
+  align-items: center !important;
+  justify-content: center !important;
   gap: 6px;
-  padding: 8px 18px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  max-height: 38px !important;
+  box-sizing: border-box !important;
+  padding: 0 18px !important;
   font-size: 13.5px !important;
   font-weight: 800 !important;
   border-radius: 9999px !important;
   white-space: nowrap !important;
   text-decoration: none !important;
+  line-height: 1 !important;
 }
 
 .navbar-aux {
@@ -1491,6 +1507,16 @@ small {
   gap: 8px !important;
   padding: 6px 14px !important;
   flex-shrink: 0 !important;
+}
+
+.navbar-main .nav-dropdown,
+.navbar-aux .nav-dropdown {
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 38px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
 }
 
 /* =========================================================================

@@ -102,8 +102,10 @@
     /* Dropdown Menus */
     .nav-dropdown {
       position: relative;
-      display: inline-block;
-      padding-bottom: 8px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      margin: 0;
     }
 
     .nav-dropdown-btn {
@@ -751,7 +753,7 @@
       body { padding-bottom: 70px !important; }
     }
   </style>
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.3">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.5">
 </head>
 <body>
 
@@ -2387,7 +2389,7 @@
         if (qaBeans) qaBeans.textContent = (user.gold_beans || 0).toLocaleString();
         if (qaVip) qaVip.textContent = user.is_vip ? `VIP ${user.vip_level}` : "VIP 0";
 
-        if (navBtn) navBtn.innerHTML = `👤 ${uname} (VIP ${user.vip_level || 0}) <span class="caret">▾</span>`;
+        if (navBtn) navBtn.innerHTML = `<img src="/assets/icons/glass-user.svg" class="moly-nav-icon" alt=""> ${uname} (VIP ${user.vip_level || 0}) <span class="caret">▾</span>`;
 
         // Sync Mobile Dock Account Popup & Topbar
         dockLogins.forEach(el => el.style.display = "none");
@@ -2411,7 +2413,7 @@
         if (ddDash) ddDash.style.display = "none";
         if (ddLogout) ddLogout.style.display = "none";
 
-        if (navBtn) navBtn.innerHTML = `👤 Tài Khoản <span class="caret">▾</span>`;
+        if (navBtn) navBtn.innerHTML = `<img src="/assets/icons/glass-user.svg" class="moly-nav-icon" alt=""> Tài Khoản <span class="caret">▾</span>`;
 
         // Sync Mobile Dock Account Popup & Topbar for Guest
         dockLogins.forEach(el => el.style.display = "flex");

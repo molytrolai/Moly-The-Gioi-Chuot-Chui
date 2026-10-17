@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hồ Sơ Cư Dân Vương Quốc | Moly - Thế Giới Chuột Chũi VN</title>
   <link rel="icon" type="image/png" href="/assets/favicon.png">
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.3">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.5">
   <script src="/js/moly-audio.js"></script>
   <script src="/js/moly-notify.js"></script>
   <style>
@@ -399,7 +399,7 @@
       document.getElementById("prof-vip-days-left").textContent = u.is_vip ? `Còn lại ${u.vip_days_left || 30} ngày` : "Chưa kích hoạt VIP";
 
       const navBtn = document.getElementById("nav-btn-account");
-      if (navBtn) navBtn.innerHTML = `👤 ${uname} (${vip}) <span class="caret">▾</span>`;
+      if (navBtn) navBtn.innerHTML = `<img src="/assets/icons/glass-user.svg" class="moly-nav-icon" alt=""> ${uname} (${vip}) <span class="caret">▾</span>`;
 
       // Email
       const emailInp = document.getElementById("prof-edit-email");

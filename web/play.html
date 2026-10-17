@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon.png">
   <link rel="preconnect" href="/ws/1863">
   <link rel="preconnect" href="/ws/3200">
-  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.3">
+  <link rel="stylesheet" href="/css/moly-theme-2.0.css?v=2.5">
   <script src="/js/moly-audio.js"></script>
   <script src="/js/moly-notify.js"></script>
   <script src="/static/ruffle/ruffle.js"></script>
@@ -2279,7 +2279,7 @@
         if (elVip) elVip.textContent = user.is_vip ? `VIP ${user.vip_level}` : "VIP 0";
         const elBeans = document.getElementById("sso-user-beans-badge");
         if (elBeans) elBeans.textContent = `${(user.gold_beans || 0).toLocaleString()} Đậu`;
-        if (navBtn) navBtn.innerHTML = `👤 ${user.username || dispId}`;
+        if (navBtn) navBtn.innerHTML = `<img src="/assets/icons/glass-user.svg" class="moly-nav-icon" alt=""> ${user.username || dispId}`;
 
         // Auto fill into input fields
         const rUid = document.getElementById("recharge-uid");
@@ -2305,7 +2305,7 @@
         if (guestView) guestView.style.display = "block";
         if (loggedView) loggedView.style.display = "none";
         if (tabDash) tabDash.style.display = "none";
-        if (navBtn) navBtn.innerHTML = `👤 Tài Khoản`;
+        if (navBtn) navBtn.innerHTML = `<img src="/assets/icons/glass-user.svg" class="moly-nav-icon" alt=""> Tài Khoản`;
       }
     }
 
