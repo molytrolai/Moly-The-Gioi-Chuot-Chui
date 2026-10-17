@@ -144,37 +144,34 @@
     .stat-desc { font-size: 12px; color: var(--success); display: flex; align-items: center; gap: 4px; }
 
     /* Tabs as a Sleek Floating Glass Capsule Bar */
+    /* Tabs as a Sleek Floating Glass Capsule Bar */
     .tabs {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: linear-gradient(180deg, rgba(20, 30, 48, 0.78) 0%, rgba(15, 23, 42, 0.88) 100%);
-      backdrop-filter: blur(24px) saturate(190%);
-      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.18);
       border-top: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 9999px;
-      padding: 8px 12px;
+      padding: 6px 10px;
       margin-bottom: 24px;
       box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3);
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+      width: 100%;
       box-sizing: border-box;
-    }
-    .tabs::-webkit-scrollbar {
-      display: none;
+      justify-content: space-between;
     }
     .tab-btn {
       flex: 1;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 9px 14px;
+      gap: 5px;
+      padding: 7px 10px;
       border-radius: 9999px;
       color: #cbd5e1;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       cursor: pointer;
       background: rgba(255, 255, 255, 0.05);
@@ -190,7 +187,7 @@
       border-top-color: #ffffff;
       color: #ffffff;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 18px rgba(253, 224, 71, 0.5);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
     .tab-btn.active {
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(0, 0, 0, 0.15) 100%),
@@ -218,6 +215,7 @@
       overflow-x: auto;
       scrollbar-width: thin;
       border-radius: 12px;
+      width: 100%;
     }
     table {
       width: 100%;
@@ -226,8 +224,26 @@
       text-align: left;
       font-size: 13px;
     }
+    .table-giftcode {
+      width: 100% !important;
+      table-layout: fixed !important;
+    }
+    .table-giftcode th,
+    .table-giftcode td {
+      padding: 8px 6px !important;
+      font-size: 12px;
+    }
+    .table-giftcode td.cell-desc {
+      width: 130px;
+      max-width: 130px;
+      font-size: 11px;
+      line-height: 1.3;
+      color: #cbd5e1;
+      word-break: break-word;
+      overflow: hidden;
+    }
     th {
-      padding: 10px 10px;
+      padding: 10px 8px;
       background: rgba(15, 23, 42, 0.9);
       color: #94a3b8;
       font-weight: 700;
@@ -238,7 +254,7 @@
       white-space: nowrap;
     }
     td {
-      padding: 10px 10px;
+      padding: 10px 8px;
       border-bottom: 1px solid rgba(51, 65, 85, 0.4);
       vertical-align: middle;
       font-size: 13px;
@@ -456,13 +472,13 @@
 
     <!-- Navigation Tabs (Sleek Floating Glass Capsule Bar) -->
     <div class="tabs">
-      <button class="tab-btn active" data-tab="tab-admin-hub">👑 Quản Trị Hệ Thống &amp; Admin</button>
-      <button class="tab-btn" data-tab="tab-residents">👥 Quản Lý Cư Dân</button>
-      <button class="tab-btn" data-tab="tab-recharge">💳 Quản Lý Nạp Tiền &amp; QR</button>
-      <button class="tab-btn" data-tab="tab-giftcodes">🎁 Quản Lý Mã Quà Tặng (Giftcodes)</button>
-      <button class="tab-btn" data-tab="tab-broadcast">📢 Thông Báo Toàn Server</button>
-      <button class="tab-btn" data-tab="tab-system">⚙️ Hạ Tầng &amp; Triển Khai</button>
-      <button class="tab-btn" data-tab="tab-recovery">📩 Hộp Thư Cấp Lại MK <span id="recovery-badge" class="badge badge-danger" style="display:none; margin-left: 4px; padding: 2px 6px; font-size: 11px;">0</span></button>
+      <button class="tab-btn active" data-tab="tab-admin-hub">👑 Hệ Thống</button>
+      <button class="tab-btn" data-tab="tab-residents">👥 Cư Dân</button>
+      <button class="tab-btn" data-tab="tab-recharge">💳 Nạp Tiền &amp; QR</button>
+      <button class="tab-btn" data-tab="tab-giftcodes">🎁 Quản Lý Giftcode</button>
+      <button class="tab-btn" data-tab="tab-broadcast">📢 Thông Báo</button>
+      <button class="tab-btn" data-tab="tab-system">⚙️ Hạ Tầng</button>
+      <button class="tab-btn" data-tab="tab-recovery">📩 Hộp Thư <span id="recovery-badge" class="badge badge-danger" style="display:none; margin-left: 4px; padding: 2px 6px; font-size: 11px;">0</span></button>
     </div>
 
     <!-- Tab: Trung Tâm Quản Trị Hệ Thống & Admin -->
@@ -853,17 +869,27 @@
 
         <!-- Bảng danh sách Giftcode -->
         <div class="table-container">
-          <table>
+          <table class="table-giftcode">
+            <colgroup>
+              <col style="width: 14%;">
+              <col style="width: 22%;">
+              <col style="width: 10%;">
+              <col style="width: 13%;">
+              <col style="width: 14%;">
+              <col style="width: 10%;">
+              <col style="width: 8%;">
+              <col style="width: 9%;">
+            </colgroup>
             <thead>
               <tr>
-                <th style="width: 130px; white-space: nowrap;">Mã Giftcode</th>
-                <th style="max-width: 220px;">Mô Tả</th>
-                <th style="width: 90px; white-space: nowrap;">Đậu Vàng</th>
-                <th style="width: 120px; white-space: nowrap;">Cấp VIP</th>
-                <th style="width: 130px; white-space: nowrap;">Đậu Đậu Siêu Cấp</th>
-                <th style="width: 110px; white-space: nowrap;">Đã Dùng / Tối Đa</th>
-                <th style="width: 95px; white-space: nowrap;">Trạng Thái</th>
-                <th style="width: 120px; white-space: nowrap; text-align: center;">Thao Tác</th>
+                <th style="white-space: nowrap;">Mã Giftcode</th>
+                <th>Mô Tả</th>
+                <th style="white-space: nowrap; text-align: center;">Đậu Vàng</th>
+                <th style="white-space: nowrap; text-align: center;">Cấp VIP</th>
+                <th style="white-space: nowrap; text-align: center;">Đậu Đậu Siêu Cấp</th>
+                <th style="white-space: nowrap; text-align: center;">Đã Dùng / Tối Đa</th>
+                <th style="white-space: nowrap; text-align: center;">Trạng Thái</th>
+                <th style="white-space: nowrap; text-align: center;">Thao Tác</th>
               </tr>
             </thead>
             <tbody id="giftcode-table-body">
@@ -2137,15 +2163,15 @@
         const isExpired = used >= max;
         return `
           <tr>
-            <td style="white-space: nowrap;"><strong style="color: #fbbf24; letter-spacing: 0.5px; font-size: 13px;">${gc.code}</strong></td>
-            <td style="max-width: 220px; font-size: 12px; line-height: 1.35; color: #cbd5e1; word-break: break-word;">${gc.description || "-"}</td>
-            <td style="white-space: nowrap;"><strong style="color: #f59e0b;">+${(gc.beans || 0).toLocaleString()}</strong></td>
-            <td style="white-space: nowrap;">
-              ${gc.trial_days > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level || 1} Thử (${gc.trial_days}N)</span>` :
-                gc.vip_months > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level || 2} (${gc.vip_months}T, +${gc.vip_value_add || 100}đ)</span>` :
-                gc.vip_level > 0 ? `<span class="badge badge-vip">VIP ${gc.vip_level}</span>` : "Không"}
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><strong style="color: #fbbf24; letter-spacing: 0.5px; font-size: 12.5px;">${gc.code}</strong></td>
+            <td class="cell-desc">${gc.description || "-"}</td>
+            <td style="white-space: nowrap; text-align: center;"><strong style="color: #f59e0b;">+${(gc.beans || 0).toLocaleString()}</strong></td>
+            <td style="white-space: nowrap; text-align: center;">
+              ${gc.trial_days > 0 ? `<span class="badge badge-vip" style="font-size: 10.5px; padding: 2px 6px;">VIP ${gc.vip_level || 1} Thử (${gc.trial_days}N)</span>` :
+                gc.vip_months > 0 ? `<span class="badge badge-vip" style="font-size: 10.5px; padding: 2px 6px;">VIP ${gc.vip_level || 2} (${gc.vip_months}T)</span>` :
+                gc.vip_level > 0 ? `<span class="badge badge-vip" style="font-size: 10.5px; padding: 2px 6px;">VIP ${gc.vip_level}</span>` : "Không"}
             </td>
-            <td style="white-space: nowrap;">
+            <td style="white-space: nowrap; text-align: center; font-size: 11px;">
               ${(() => {
                 if (gc.super_lamu_species) {
                   const speciesMap = {
@@ -2159,18 +2185,18 @@
                   const sName = speciesMap[gc.super_lamu_species] || gc.super_lamu_species;
                   return `<span style="color: #c084fc; font-weight: bold;">🐾 ${sName}</span>`;
                 }
-                return gc.super_lamu ? '<span style="color: #a78bfa; font-weight: bold;">⭐ Đậu Đậu Siêu Cấp</span>' : "Không";
+                return gc.super_lamu ? '<span style="color: #a78bfa; font-weight: bold;">⭐ Đậu Đậu</span>' : "Không";
               })()}
             </td>
-            <td style="white-space: nowrap;"><strong>${used}</strong> / ${max}</td>
-            <td style="white-space: nowrap;">
-              ${isExpired ? '<span class="badge badge-admin">Hết Lượt</span>' :
-                gc.active ? '<span class="badge badge-normal" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">Khả Dụng</span>' :
-                '<span class="badge badge-admin">Bị Khóa</span>'}
+            <td style="white-space: nowrap; text-align: center; font-size: 11.5px;"><strong>${used}</strong>/${max}</td>
+            <td style="white-space: nowrap; text-align: center;">
+              ${isExpired ? '<span class="badge badge-admin" style="font-size: 10.5px; padding: 2px 6px;">Hết</span>' :
+                gc.active ? '<span class="badge badge-normal" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 10.5px; padding: 2px 6px;">Dùng</span>' :
+                '<span class="badge badge-admin" style="font-size: 10.5px; padding: 2px 6px;">Khóa</span>'}
             </td>
             <td style="white-space: nowrap; text-align: center;">
-              <button class="btn btn-sm btn-primary" onclick="openEditGiftcodeModal('${gc.code}')" style="margin-right: 4px; padding: 4px 10px; font-size: 11.5px;" title="Chỉnh sửa mã quà tặng">✏️ Sửa</button>
-              <button class="btn btn-sm btn-danger" onclick="deleteGiftcode('${gc.code}')" style="padding: 4px 10px; font-size: 11.5px;" title="Xóa mã quà tặng">🗑️ Xóa</button>
+              <button class="btn btn-sm btn-primary" onclick="openEditGiftcodeModal('${gc.code}')" style="margin-right: 2px; padding: 3px 6px; font-size: 11px;" title="Chỉnh sửa mã quà tặng">✏️ Sửa</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteGiftcode('${gc.code}')" style="padding: 3px 5px; font-size: 11px;" title="Xóa mã quà tặng">🗑️</button>
             </td>
           </tr>
         `;

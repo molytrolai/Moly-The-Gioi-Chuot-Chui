@@ -971,6 +971,12 @@ class Handler(socketserver.BaseRequestHandler):
             self.request.sendall(data)
 
     def handle(self) -> None:
+        try:
+            self.request.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            self.request.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+        except Exception:
+            pass
+
         server = self.server
         assert isinstance(server, ThreadedServer)
         port = server.server_address[1]
@@ -980,7 +986,7 @@ class Handler(socketserver.BaseRequestHandler):
         )
         if port == 3200:
             world_hub.register(self)
-        self.request.settimeout(1 if port == 3200 else 30)
+        self.request.settimeout(1 if port == 3200 else 60)
         buffer = b""
         try:
             while True:

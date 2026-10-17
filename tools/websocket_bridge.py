@@ -131,6 +131,14 @@ def bridge_sockets(
     on_log: Optional[callable] = None,
 ) -> None:
     """Bi-directionally streams data between a WebSocket and a TCP socket."""
+    try:
+        ws_sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        target_sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+        ws_sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+        target_sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+    except Exception:
+        pass
+
     ws_sock.setblocking(False)
     target_sock.setblocking(False)
 
